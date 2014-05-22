@@ -1,35 +1,31 @@
 #!/usr/bin/env pinpoint
-# default style
 
 [black]
-[center]
-# [text-align=center]
+[font=Sans 30px]
 [text-color=white]
-[shading-opacity=0.0]
+[shading-opacity=0.000000]
 
---- [text-align=center]
-
+-- [text-align=center]
 <b><big>Desenvolvimento iOS</big></b>
 
 <small>Júlio Biason</small>
 
 ---
-
 <b><big>Agenda</big></b>
 
-* Objective-C
-* Storyboards
-* Autolayout
-* Code!
+∘ Objective-C
+∘ Storyboards
+∘ Autolayout
+∘ Code!
 
 ---
-
 <b><big>Objective-C</big></b>
 
-Tipo C/C++, mas tipo Smalltalk.
+∘ Tipo C/C++, mas tipo Smalltalk.
+∘ Headers / Corpo
+∘ (Definição / Implementação)
 
 ---
-
 <b><big>Sem Guardiões</big></b>
 
 <tt>
@@ -41,8 +37,7 @@ Tipo C/C++, mas tipo Smalltalk.
  #endif
 </tt>
 
----
-
+--
 <b><big>Sem Guardiões</big></b>
 
 <tt>
