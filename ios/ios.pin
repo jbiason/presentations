@@ -3,11 +3,11 @@
 
 [black]
 [center]
-[text-align=center]
+# [text-align=center]
 [text-color=white]
 [shading-opacity=0.0]
 
----
+--- [text-align=center]
 
 <b><big>Desenvolvimento iOS</big></b>
 
@@ -15,9 +15,41 @@
 
 ---
 
-<b>Agenda</b>
+<b><big>Agenda</big></b>
 
-- Objective-C
-- Storyboards
-- Autolayout
-- Code!
+* Objective-C
+* Storyboards
+* Autolayout
+* Code!
+
+---
+
+<b><big>Objective-C</big></b>
+
+Tipo C/C++, mas tipo Smalltalk.
+
+---
+
+<b><big>Sem Guardiões</big></b>
+
+<tt>
+ #ifndef MYCLASS_H
+ #define MYCLASS_H
+ 
+ // código aqui
+ 
+ #endif
+</tt>
+
+---
+
+<b><big>Sem Guardiões</big></b>
+
+<tt>
+ <s>#ifndef MYCLASS_H</s>
+ <s>#define MYCLASS_H</s>
+ 
+ // código aqui
+ 
+ <s>#endif</s>
+</tt>
