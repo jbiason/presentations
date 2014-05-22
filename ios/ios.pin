@@ -1,0 +1,23 @@
+#!/usr/bin/env pinpoint
+# default style
+
+[black]
+[center]
+[text-align=center]
+[text-color=white]
+[shading-opacity=0.0]
+
+---
+
+<b><big>Desenvolvimento iOS</big></b>
+
+<small>Júlio Biason</small>
+
+---
+
+<b>Agenda</b>
+
+- Objective-C
+- Storyboards
+- Autolayout
+- Code!
