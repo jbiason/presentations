@@ -6,10 +6,16 @@
 [fill]
 [center]
 [text-align=center]
+[shading-opacity=0.0]
+[text-color=white]
 
 # presentation starts here
---- [font=Sans 100px]
+--- [font=Sans 100px] [header.png]
 
 <big>Git + Git-SVN</big>
 
 <small>Júlio Biason</small>
+
+---
+
+Why git?
