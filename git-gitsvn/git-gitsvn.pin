@@ -1,0 +1,15 @@
+#!/usr/bin/env pinpoint
+# default style
+
+[background.png]
+[font=Sans 50px]
+[fill]
+[center]
+[text-align=center]
+
+# presentation starts here
+--- [font=Sans 100px]
+
+<big>Git + Git-SVN</big>
+
+<small>Júlio Biason</small>
