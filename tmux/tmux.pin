@@ -1,0 +1,17 @@
+#!/usr/bin/env pinpoint
+# default style
+
+[white]
+[center]
+[text-align=center]
+[text-color=black]
+[shading-opacity=0.0]
+
+
+--- [font=Sans 100px]
+
+<big><b>TMUX para Pair-Programming</b></big>
+
+---
+
+
