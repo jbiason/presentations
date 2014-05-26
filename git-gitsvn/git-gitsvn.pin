@@ -8,14 +8,50 @@
 [text-align=center]
 [shading-opacity=0.0]
 [text-color=white]
+[text-align=left]
 
 # presentation starts here
---- [font=Sans 100px] [header.png]
+--- [font=Sans 100px] [header.png] [text-align=center]
 
-<big>Git + Git-SVN</big>
+<big><b>Git + Git-SVN</b></big>
 
 <small>Júlio Biason</small>
 
 ---
 
-Why git?
+<big><b>Por que GIT</b></big>
+
+De tudo que o GIT pode fazer, o que importa aqui é que é possível fazer
+commits sem mandar para o servidor.
+
+---
+
+<big><b>O "index"</b></big>
+
+O conceito do "index" é o que mais diferencia o GIT dos demais SCVs.
+
+"index" são as alterações que serão mandadas, não os arquivos.
+
+---
+
+<tt>git add file.py</tt> - Coloca <i>as alterações</i> do arquivo no "index".
+
+(Se o arquivo nunca esteve no "index", vai o arquivo inteiro).
+
+---
+
+<tt>git commit</tt> - Guarda as alterações como uma revisão.
+
+<tt>git push</tt> - Envia as alterações para um servidor (normalmente, primeira
+execução é <tt>git push origin master</tt>, onde <tt>origin</tt> é um alias
+para o servidor).
+
+---
+
+Até aqui, SVN tá ganhando porque para mandar pro servidor é
+um passo só (<tt>svn commit</tt>) vs 3 do GIT (<tt>git add</tt>, <tt>git commit</tt>,
+<tt>git push</tt>).
+
+---
+
+
