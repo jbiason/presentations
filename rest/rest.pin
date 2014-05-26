@@ -1,0 +1,17 @@
+#!/usr/bin/env pinpoint
+# default style
+
+[background.jpg]
+[font=Sans 50px]
+[fill]
+[center]
+[text-align=center]
+# [shading-opacity=0.0]
+[text-color=white]
+[text-align=left]
+
+# presentation starts here
+--- [font=Sans 100px] [text-align=center]
+
+<big><b>REST</b></big>
+REpresentational State Transfer
