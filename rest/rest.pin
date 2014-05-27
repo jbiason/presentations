@@ -1,7 +1,7 @@
 #!/usr/bin/env pinpoint
 # default style
 
-[background.jpg]
+[../_images/Seascapeshd - 2.png]
 [font=Sans 50px]
 [fill]
 [center]
@@ -13,5 +13,105 @@
 # presentation starts here
 --- [font=Sans 100px] [text-align=center]
 
-<big><b>REST</b></big>
+<big><b>ReST</b></big>
 REpresentational State Transfer
+
+---
+
+⬩ Criado por Roy Fielding em 2000.
+⬩ Fielding trabalhou na definição do HTTP e no início do projeto Apache.
+
+--- [font=Sans 90px] [../_images/mixed.png]
+
+<big>ReST e HTTP</big>
+
+--- [../_images/mixed.png]
+
+⬩ Status das operações são status HTTP.
+⬩ Informações podem ser enviadas nos headers.
+⬩ Autenticação é feita por HTTP Basic Auth (preferencialmente).
+⬩ "CRUD para web".
+
+--- [../_images/mixed.png]
+
+Em HTTP, usam-se "métodos" para descrever o que quer ser feito:
+
+⬩ POST requisita informações, passando um "corpo" de dados.
+⬩ GET requisita informações, sem corpo.
+
+--- [../_images/mixed.png]
+
+Em REST, métodos HTTP viram CRUD:
+
+⬩ Create = POST
+⬩ Retrieve = GET
+⬩ Update = PUT
+⬩ Delete = DELETE
+
+--- [font=Sans 90px] [../_images/jellybeans.jpg]
+
+Recursos
+
+---  [../_images/jellybeans.jpg]
+
+⬩ Em REST, "tabelas" são chamadas "recursos"
+⬩ Existem duas URLs por recurso:
+  ⬨ Uma para o conjunto;
+  ⬨ Uma para elementos específicos.
+
+---  [../_images/jellybeans.jpg]
+
+<tt>GET /recurso/</tt> ⇒ retorna todos os elementos do recurso.
+<tt>POST /recurso/</tt> ⇒ cria um novo elemento.
+<tt>PUT /recurso/</tt> ⇒ atualização em massa.
+<tt>DELETE /recurso/</tt> ⇒ remove todos os elementos do recurso.
+
+---  [../_images/jellybeans.jpg]
+
+<tt>GET /recurso/id</tt> ⇒ retorna informações do elemento com identificador "id".
+<tt>POST /recurso/id</tt> ⇒ não faz sentido, use <tt>POST /recurso/</tt> para criar elementos.
+<tt>PUT /recurso/id</tt> ⇒ atualiza informações do elemento.
+<tt>DELETE /recurso/id</tt> ⇒ Remove um elemento.
+
+---  [../_images/jellybeans.jpg]
+
+Exemplos:
+
+<tt>GET /users/</tt> ⇒ Retorna a lista de todos os usuários.
+<tt>POST /users/</tt> ⇒ Cria um novo usuário.
+
+<tt>GET /users/julio</tt> ⇒ Retorna as informações do usuário "julio".
+<tt>PUT /users/julio</tt> ⇒ Atualiza informações do usuário "julio".
+
+--- [font=Sans 90px] [../_images/content-strategy.jpg]
+
+Conteúdo
+
+--- [../_images/content-strategy.jpg]
+
+Qualquer formato, REST não define um tipo específico.
+
+⬩ Pode ser XML
+⬩ Pode ser JSON
+⬩ Pode ser HTML puro
+
+Decisão fica a cargo da equipe.
+
+--- [font=Sans 90px] [../_images/RightWrongBlackboard.jpg]
+
+Status
+
+--- [../_images/RightWrongBlackboard.jpg]
+
+HTTP status:
+
+⬩ 200 OK ⇒ operação concluída com sucesso.
+⬩ 400 Bad Request ⇒ algo de errado com a requisição.
+⬩ 403 Forbidden ⇒ sem permissão de acesso ao recurso ou elemento.
+⬩ 404 Not Found ⇒ recurso ou elemento não existe.
+⬩ 405 Method Not Allowed ⇒ método inválido para recurso/elemento.
+⬩ 406 Not Acceptable ⇒  algum parâmetro não faz sentido.
+⬩ 409 Conflict ⇒  conflito de opções.
+  
+E assim por diante, mais informações podem ser enviadas no corpo
+da resposta.
