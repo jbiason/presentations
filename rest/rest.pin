@@ -21,25 +21,25 @@ REpresentational State Transfer
 ⬩ Criado por Roy Fielding em 2000.
 ⬩ Fielding trabalhou na definição do HTTP e no início do projeto Apache.
 
---- [font=Sans 90px] [../_images/mixed.png]
+--- [font=Sans 90px] [../_images/20090504102402_dsc_2864 (1).jpg]
 
 <big>ReST e HTTP</big>
 
---- [../_images/mixed.png]
+--- [../_images/20090504102402_dsc_2864 (1).jpg]
 
 ⬩ Status das operações são status HTTP.
 ⬩ Informações podem ser enviadas nos headers.
 ⬩ Autenticação é feita por HTTP Basic Auth (preferencialmente).
 ⬩ "CRUD para web".
 
---- [../_images/mixed.png]
+--- [../_images/20090504102402_dsc_2864 (1).jpg]
 
 Em HTTP, usam-se "métodos" para descrever o que quer ser feito:
 
 ⬩ POST requisita informações, passando um "corpo" de dados.
 ⬩ GET requisita informações, sem corpo.
 
---- [../_images/mixed.png]
+--- [../_images/20090504102402_dsc_2864 (1).jpg]
 
 Em REST, métodos HTTP viram CRUD:
 
