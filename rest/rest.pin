@@ -21,6 +21,26 @@ REpresentational State Transfer
 ⬩ Criado por Roy Fielding em 2000.
 ⬩ Fielding trabalhou na definição do HTTP e no início do projeto Apache.
 
+--- [font=Sans 90px] [../_images/l-What-is-this-sorcery.jpg]
+
+O que é ReST?
+
+--- [../_images/l-What-is-this-sorcery.jpg]
+
+É uma "arquitetura" de transmissão de dados, basicamente.
+
+(Conjunto de idéias para utilizar HTTP para geração de APIs.)
+
+--- [../_images/l-What-is-this-sorcery.jpg]
+
+Linguagem? Qualquer!
+
+Python: Flask, Django, Flask-Restless, Django Rest Framework
+Ruby: Ruby on Rails, Sinatra
+Java: Spring, Restlet, Jersey
+C#: Ramone
+Nodejs: Express
+
 --- [font=Sans 90px] [../_images/20090504102402_dsc_2864 (1).jpg]
 
 <big>ReST e HTTP</big>
@@ -28,7 +48,7 @@ REpresentational State Transfer
 --- [../_images/20090504102402_dsc_2864 (1).jpg]
 
 ⬩ Status das operações são status HTTP.
-⬩ Informações podem ser enviadas nos headers.
+⬩ Meta-informações podem ser enviadas nos headers.
 ⬩ Autenticação é feita por HTTP Basic Auth (preferencialmente).
 ⬩ "CRUD para web".
 
@@ -115,3 +135,11 @@ HTTP status:
   
 E assim por diante, mais informações podem ser enviadas no corpo
 da resposta.
+
+--- [font=Sans 90px] [../_images/house-do-want_cut455_22k.jpg]
+
+Por que ReST?
+
+--- [font=Sans 90px] [../_images/1379026756351.jpg]
+
+Por que não ReST?
