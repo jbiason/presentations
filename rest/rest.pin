@@ -47,20 +47,20 @@ Nodejs: Express
 
 --- [../_images/20090504102402_dsc_2864 (1).jpg]
 
+• Métodos HTTP = operação de banco de dados (CRUD).
 • Status das operações são status HTTP.
 • Meta-informações podem ser enviadas nos headers.
-• Autenticação é feita por HTTP Basic Auth (preferencialmente).
+  • Autenticação é feita por HTTP Basic Auth (preferencialmente).
 • Sem transações/sessões -- todas as operações são atômicas.
-• "CRUD para web".
 
 --- [../_images/20090504102402_dsc_2864 (1).jpg]
 
 Em HTTP, usam-se "métodos" para descrever o que quer ser feito:
 
-• POST requisita informações, passando um "corpo" de dados.
-• GET requisita informações, sem corpo.
+• POST requisita informações, com conteúdo.
+• GET requisita informações, sem conteúdo.
 
-(Ainda: PUT, DELETE, HEAD, TRACE.)
+(Ainda: PUT, DELETE, HEAD, TRACE, PATCH.)
 
 --- [../_images/20090504102402_dsc_2864 (1).jpg]
 
@@ -105,9 +105,9 @@ Exemplos:
 <tt>GET /users/</tt> ⇒ Retorna a lista de todos os usuários.
 <tt>POST /users/</tt> ⇒ Cria um novo usuário.
 
-<tt>GET /users/julio</tt> ⇒ Retorna as informações do usuário "julio".
-<tt>PUT /users/julio</tt> ⇒ Atualiza informações do usuário "julio".
-<tt>DELETE /users/julio</tt> ⇒ Remove o usuário "julio".
+<tt>GET /users/1</tt> ⇒ Retorna as informações do com identificador "1".
+<tt>PUT /users/1</tt> ⇒ Atualiza informações do usuário "1".
+<tt>DELETE /users/1</tt> ⇒ Remove o usuário "1".
 
 ---  [../_images/jellybeans.jpg]
 
@@ -178,16 +178,32 @@ Adicionar um usuário a um grupo:
 
 --- [../_images/Luke-Derp.jpg] [bottom] [font=Sans 20px]
 
+--- [../_images/Luke-Derp.jpg] [bottom] [font=Sans 20px]
+
 (Slide intencionalmente deixando em branco.)
 
 --- [../_images/Luke-Derp.jpg]
 
 • Segurança depende de terceiros (HTTPS).
+  • Existem outras opções (OAuth, por exemplo), mas são complexas
+    e não se parecem com soluções HTTP.
 • Não recomedado para dispositivos com processamento e memória
   extremamente limitados.
 • Necessidade de sessões/transações.
+• Requisito não é um serviço.
 
 --- [../_images/Luke-Derp.jpg] [bottom] [font=Sans 20px]
 
 (Slide intencionalmente deixando em branco -- de novo.)
 
+--- [../_images/thats-all-folks.jpg]
+
+--- [../_images/thats-all-folks.jpg] [bottom]
+
+Perguntas?
+
+--- [../_images/thats-all-folks.jpg] [bottom]
+
+Hangout: julio.biason@gmail.com
+Twitter: @juliobiason
+Email: julioandre@cwi.com.br
