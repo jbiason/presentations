@@ -2,13 +2,14 @@
 # default style
 
 [../_images/Seascapeshd - 2.png]
-[font=Sans 50px]
+[font=Sans 40px]
 [fill]
 [center]
 [text-align=center]
 # [shading-opacity=0.0]
 [text-color=white]
 [text-align=left]
+[duration=0]
 
 # presentation starts here
 --- [font=Sans 100px] [text-align=center]
