@@ -65,7 +65,7 @@ Em HTTP, usam-se "métodos" para descrever o que quer ser feito:
 
 --- [../_images/20090504102402_dsc_2864 (1).jpg]
 
-Em REST, métodos HTTP viram CRUD:
+Em ReST, métodos HTTP viram CRUD:
 
 • Create = POST
 • Retrieve = GET
@@ -78,7 +78,7 @@ Em REST, métodos HTTP viram CRUD:
 
 ---  [../_images/jellybeans.jpg]
 
-• Em REST, "tabelas" chamadas são "recursos".
+• Em ReST, "tabelas" chamadas são "recursos".
   • (Até porque o "R" de "URL" é "resource")
 • Sempre substantivos singulares.
 • Existem duas URLs por recurso:
@@ -122,7 +122,7 @@ Requisições sem recurso são definidas por verbos e GET:
 
 --- [../_images/content-strategy.jpg]
 
-Qualquer formato, REST não define um tipo específico.
+Qualquer formato, ReST não define um tipo específico.
 
 • Pode ser XML
 • Pode ser JSON
