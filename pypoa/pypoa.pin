@@ -1,0 +1,49 @@
+#!/usr/bin/env pinpoint
+# default style
+
+[font=Serif 100px]
+[center]
+
+---
+
+<b>PyPoa 2014</b>
+
+---
+
+<b>Introdução ao Django framework</b>
+Mauricio Abreu Antunes
+
+---
+
+<b>Python + Celery</b>
+Leonardo Korndorfer
+
+---
+
+<b>Web stack com Nginx + Chaussette + Circus + Flask </b>
+Leandro Nunes
+
+---
+
+<b>Machine Learning com Python</b>
+Christian S. Perone
+
+---
+
+<b>Transformando ideias em realidade com web2py</b>
+Relsi Maron
+
+---
+
+<b>Dando vida a robôs com Python !</b>
+Guilherme Schvarcz Franco
+
+---
+
+<b>Introdução a Automação com Fabric</b>
+Volmar Oliveira Junior
+
+---
+
+<b>South, o básico para manter uma "vida saudável"</b>
+Daniel Bastos
