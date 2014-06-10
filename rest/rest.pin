@@ -2,28 +2,29 @@
 # default style
 
 [../_images/Seascapeshd - 2.png]
-[font=Sans 50px]
+[font=Sans 40px]
 [fill]
 [center]
 [text-align=center]
 # [shading-opacity=0.0]
 [text-color=white]
 [text-align=left]
+[duration=0]
 
 # presentation starts here
 --- [font=Sans 100px] [text-align=center]
 
 <big><b>ReST</b></big>
-REpresentational State Transfer
+Representational State Transfer
 
 ---
 
-⬩ Criado por Roy Fielding em 2000.
-⬩ Fielding trabalhou na definição do HTTP e no início do projeto Apache.
+• Criado por Roy Fielding em 2000.
+• Fielding trabalhou na definição do HTTP e no início do projeto Apache.
 
 --- [font=Sans 90px] [../_images/l-What-is-this-sorcery.jpg]
 
-O que é ReST?
+<b>O que é ReST?</b>
 
 --- [../_images/l-What-is-this-sorcery.jpg]
 
@@ -43,41 +44,46 @@ Nodejs: Express
 
 --- [font=Sans 90px] [../_images/20090504102402_dsc_2864 (1).jpg]
 
-<big>ReST e HTTP</big>
+<b>ReST e HTTP</b>
 
 --- [../_images/20090504102402_dsc_2864 (1).jpg]
 
-⬩ Status das operações são status HTTP.
-⬩ Meta-informações podem ser enviadas nos headers.
-⬩ Autenticação é feita por HTTP Basic Auth (preferencialmente).
-⬩ "CRUD para web".
+• Métodos HTTP = operação de banco de dados (CRUD).
+• Status das operações são status HTTP.
+• Meta-informações podem ser enviadas nos headers.
+  • Autenticação é feita por HTTP Basic Auth (preferencialmente).
+• Sem transações/sessões -- todas as operações são atômicas.
 
 --- [../_images/20090504102402_dsc_2864 (1).jpg]
 
 Em HTTP, usam-se "métodos" para descrever o que quer ser feito:
 
-⬩ POST requisita informações, passando um "corpo" de dados.
-⬩ GET requisita informações, sem corpo.
+• POST requisita informações, com conteúdo.
+• GET requisita informações, sem conteúdo.
+
+(Ainda: PUT, DELETE, HEAD, TRACE, PATCH.)
 
 --- [../_images/20090504102402_dsc_2864 (1).jpg]
 
-Em REST, métodos HTTP viram CRUD:
+Em ReST, métodos HTTP viram CRUD:
 
-⬩ Create = POST
-⬩ Retrieve = GET
-⬩ Update = PUT
-⬩ Delete = DELETE
+• Create = POST
+• Retrieve = GET
+• Update = PUT
+• Delete = DELETE
 
 --- [font=Sans 90px] [../_images/jellybeans.jpg]
 
-Recursos
+<b>Recursos</b>
 
 ---  [../_images/jellybeans.jpg]
 
-⬩ Em REST, "tabelas" são chamadas "recursos"
-⬩ Existem duas URLs por recurso:
-  ⬨ Uma para o conjunto;
-  ⬨ Uma para elementos específicos.
+• Em ReST, "tabelas" chamadas são "recursos".
+  • (Até porque o "R" de "URL" é "resource")
+• Sempre substantivos singulares.
+• Existem duas URLs por recurso:
+  • Uma para o conjunto;
+  • Uma para elementos específicos.
 
 ---  [../_images/jellybeans.jpg]
 
@@ -100,46 +106,105 @@ Exemplos:
 <tt>GET /users/</tt> ⇒ Retorna a lista de todos os usuários.
 <tt>POST /users/</tt> ⇒ Cria um novo usuário.
 
-<tt>GET /users/julio</tt> ⇒ Retorna as informações do usuário "julio".
-<tt>PUT /users/julio</tt> ⇒ Atualiza informações do usuário "julio".
+<tt>GET /users/1</tt> ⇒ Retorna as informações do com identificador "1".
+<tt>PUT /users/1</tt> ⇒ Atualiza informações do usuário "1".
+<tt>DELETE /users/1</tt> ⇒ Remove o usuário "1".
+
+---  [../_images/jellybeans.jpg]
+
+Requisições sem recurso são definidas por verbos e GET:
+
+<tt>GET /convert/?source=BRL&amp;value=10&amp;target=AUD</tt>
 
 --- [font=Sans 90px] [../_images/content-strategy.jpg]
 
-Conteúdo
+<b>Conteúdo</b>
 
 --- [../_images/content-strategy.jpg]
 
-Qualquer formato, REST não define um tipo específico.
+Qualquer formato, ReST não define um tipo específico.
 
-⬩ Pode ser XML
-⬩ Pode ser JSON
-⬩ Pode ser HTML puro
+• Pode ser XML
+• Pode ser JSON
+• Pode ser HTML puro
 
 Decisão fica a cargo da equipe.
 
 --- [font=Sans 90px] [../_images/RightWrongBlackboard.jpg]
 
-Status
+<b>Status</b>
 
 --- [../_images/RightWrongBlackboard.jpg]
 
 HTTP status:
 
-⬩ 200 OK ⇒ operação concluída com sucesso.
-⬩ 400 Bad Request ⇒ algo de errado com a requisição.
-⬩ 403 Forbidden ⇒ sem permissão de acesso ao recurso ou elemento.
-⬩ 404 Not Found ⇒ recurso ou elemento não existe.
-⬩ 405 Method Not Allowed ⇒ método inválido para recurso/elemento.
-⬩ 406 Not Acceptable ⇒  algum parâmetro não faz sentido.
-⬩ 409 Conflict ⇒  conflito de opções.
+• 200 OK ⇒ operação concluída com sucesso.
+• 400 Bad Request ⇒ algo de errado com a requisição.
+• 403 Forbidden ⇒ sem permissão de acesso ao recurso ou elemento.
+• 404 Not Found ⇒ recurso ou elemento não existe.
+• 405 Method Not Allowed ⇒ método inválido para recurso/elemento.
+• 406 Not Acceptable ⇒  algum parâmetro não faz sentido.
+• 409 Conflict ⇒  conflito de opções.
   
 E assim por diante, mais informações podem ser enviadas no corpo
 da resposta.
 
+--- [../_images/RightWrongBlackboard.jpg]
+
+Infelizmente, ReST não define o que em fazer casos de conflitos.
+
+--- [../_images/RightWrongBlackboard.jpg]
+
+Exemplo:
+
+Adicionar um usuário a um grupo:
+
+• 404 se o grupo não existir (<tt>PUT /group/1001</tt>)
+• O que retornar se o usuário (dentro do conteúdo) não existir?
+
 --- [font=Sans 90px] [../_images/house-do-want_cut455_22k.jpg]
 
-Por que ReST?
+<b>Por que ReST?</b>
 
---- [font=Sans 90px] [../_images/1379026756351.jpg]
+---  [../_images/house-do-want_cut455_22k.jpg]
 
-Por que não ReST?
+• Reaproveita toda a estrutura de HTTP existente.
+• HTTP praticamente padrão em todas as linguagens.
+• Dificilmente HTTP (porta 80) é bloqueado em proxies.
+• "Sintaxe" simples.
+
+--- [font=Sans 90px] [../_images/Luke-Derp.jpg]
+
+<b>Por que não ReST?</b>
+
+--- [../_images/Luke-Derp.jpg] [bottom] [font=Sans 20px]
+
+--- [../_images/Luke-Derp.jpg] [bottom] [font=Sans 20px]
+
+(Slide intencionalmente deixando em branco.)
+
+--- [../_images/Luke-Derp.jpg]
+
+• Segurança depende de terceiros (HTTPS).
+  • Existem outras opções (OAuth, por exemplo), mas são complexas
+    e não se parecem com soluções HTTP.
+• Não recomedado para dispositivos com processamento e memória
+  extremamente limitados.
+• Necessidade de sessões/transações.
+• Requisito não é um serviço.
+
+--- [../_images/Luke-Derp.jpg] [bottom] [font=Sans 20px]
+
+(Slide intencionalmente deixando em branco -- de novo.)
+
+--- [../_images/thats-all-folks.jpg]
+
+--- [../_images/thats-all-folks.jpg] [bottom]
+
+Perguntas?
+
+--- [../_images/thats-all-folks.jpg] [bottom]
+
+Hangout: julio.biason@gmail.com
+Twitter: @juliobiason
+Email: julioandre@cwi.com.br
