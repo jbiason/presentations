@@ -131,11 +131,11 @@ Portanto, não se alarme.
 Na verdade, irá recuperar tudo que foi feito desde a última revisão
 e aplicar os commits locais, <i>nessa ordem</i>.
 
---- [top] [clone.png] [fit]
+--- [top] [clone2.png]
 
 Visão a partir do clone:
 
---- [top] [rebase.png] [fit]
+--- [top] [rebase2.png]
 
 Visão depois do rebase:
 
