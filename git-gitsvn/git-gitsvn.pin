@@ -1,34 +1,26 @@
 #!/usr/bin/env pinpoint
 # default style
 
-[background.png]
-[font=Sans 50px]
+[../_images/Sketch27014711.png]
+[font=Sans 100px]
 [fill]
 [center]
-[text-align=center]
-[shading-opacity=0.0]
-[text-color=white]
 [text-align=left]
 
 # presentation starts here
---- [font=Sans 100px] [header.png] [text-align=center]
+--- [font=Serif 100px] [text-align=center]
 
-<big><b>Git + Git-SVN</b></big>
-
-<small>Júlio Biason</small>
+<b>GIT + GIT-SVN</b>
 
 ---
 
-<big><b>Por que GIT</b></big>
-
-De tudo que o GIT pode fazer, o que importa aqui é que é possível fazer
-commits sem mandar para o servidor.
+<b>GIT Básico</b>
 
 ---
 
-<big><b>O "index"</b></big>
+<b>O "index"</b>
 
-O conceito do "index" é o que mais diferencia o GIT dos demais SCVs.
+O conceito do "index" é o que mais diferencia o GIT do SVN.
 
 "index" são as alterações que serão mandadas, não os arquivos.
 
@@ -42,16 +34,123 @@ O conceito do "index" é o que mais diferencia o GIT dos demais SCVs.
 
 <tt>git commit</tt> - Guarda as alterações como uma revisão.
 
+(<tt>git commit -a</tt> adiciona TODAS alterações no "index" e gera um commit.)
+
 <tt>git push</tt> - Envia as alterações para um servidor (normalmente, primeira
 execução é <tt>git push origin master</tt>, onde <tt>origin</tt> é um alias
 para o servidor).
 
 ---
 
-Até aqui, SVN tá ganhando porque para mandar pro servidor é
+Até aqui, SVN parece mais simples porque para mandar pro servidor é
 um passo só (<tt>svn commit</tt>) vs 3 do GIT (<tt>git add</tt>, <tt>git commit</tt>,
 <tt>git push</tt>).
 
 ---
 
+<tt>git add -p file.py</tt> - Adição parcial de conteúdo.
 
+Para aqueles momentos de "fiz duas alterações, de dois issues diferentes".
+
+--- [left] [shading-opacity=1.0]
+<tt><span foreground="cyan">@@ -485,7 +485,7 @@</span> class GerenciadorForm(TestCase):
+         """
+ 
+         curso = EntidadeCursoCurriculoGraduacao.objects.get(pk=1001)
+<span foreground="red">-        ano_periodo = AnoPeriodoGraduacao.objects.get(pk=1)</span>
+<span foreground="green">+        ano_periodo = AnoPeriodoGraduacao.objects.get(pk=1001)</span>
+ 
+         # Populando o field com None.
+         dados = {'pessoa_fisica': u'5',
+<b><span foreground="blue">Stage this hunk [y,n,q,a,d,/,e,?]? </span></b></tt>
+
+(Ainda útil para aquela última verificada antes de comitar.)
+
+--- [../_images/boycrying.jpg]
+
+Mas eu uso SVN!
+
+--- [../_images/baby-smile.jpg]
+
+GIT-SVN to the rescue!
+
+---
+
+GIT-SVN cria e mantém um repositório GIT usando um servidor SVN.
+
+Alguns comandos mudam.
+
+---
+
+<tt>git add</tt> continua igual (ainda com <tt>-p</tt>)
+
+<tt>git commit</tt> continua igual.
+
+Pelo menos isso...
+
+---
+
+<b>Criar o repositório GIT a partir do SVN:</b>
+
+<tt>git svn clone http://blahblahblah.com/blah/blah/branch/blah</tt>
+
+---
+
+<b><tt>git svn clone https://ucsvirtual.ucs.br/sesi/svn/yoshi/branches/12266</tt></b>
+
+<tt>	A	yoshi/google/alias/tests.py
+	A	yoshi/google/alias/models.py
+	A	yoshi/google/alias/urls.py
+	A	yoshi/google/alias/forms.py
+	A	yoshi/urls.py
+	A	requirement.txt
+W: +empty_dir: yoshi/autenticacao/esqueceu_senha/fixtures
+W: +empty_dir: yoshi/autenticacao/login/templates/busca
+W: +empty_dir: yoshi/core/busca/templates
+W: +empty_dir: yoshi/core/geral/templates/search
+W: +empty_dir: yoshi/templates/agenda/busca
+r4531 = b3667a084e7d69080e0f1c7235b94dab9cb5a326 (refs/remotes/git-svn)
+	A	yoshi/financeiro/cadastro_beneficio/__init__.py
+	A	yoshi/financeiro/cadastro_beneficio/models.py
+	A	yoshi/financeiro/__init__.py
+r4532 = 65ce3a96d11c13d0be24836af3a276561885118c (refs/remotes/git-svn)
+	M	yoshi/settings.py
+	M	yoshi/modulos.py
+</tt>
+
+--- 
+
+Pro-tip: Isso clona o repositório <i>e todos os commits</i>.
+
+Portanto, não se alarme.
+
+---
+
+<b><tt>git svn rebase</tt></b> = <tt>svn up</tt>
+
+Na verdade, irá recuperar tudo que foi feito desde a última revisão
+e aplicar os commits locais, <i>nessa ordem</i>.
+
+--- [top] [clone.png] [fit]
+
+Visão a partir do clone:
+
+--- [top] [rebase.png] [fit]
+
+Visão depois do rebase:
+
+---
+
+<b><tt>git svn dcommit</tt></b> = <tt>svn commit</tt>
+
+Faz o "upload" dos commits locais para o servidor.
+
+---
+
+Ok, qual a vantagem no final?
+
+---
+
+Tu pode fazer <i>vários</i> commits sem mandar pro servidor.
+
+"Meu branch pode estar quebrado totalmente e ninguém vai ver!"
