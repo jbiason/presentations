@@ -34,7 +34,7 @@ O conceito do "index" é o que mais diferencia o GIT do SVN.
 
 <tt>git commit</tt> - Guarda as alterações como uma revisão.
 
-(<tt>git commit -a</tt> adiciona TODAS alterações no "index" e gera um commit.)
+(<tt>"git commit -a"</tt> adiciona TODAS alterações no "index" e gera um commit.)
 
 <tt>git push</tt> - Envia as alterações para um servidor (normalmente, primeira
 execução é <tt>git push origin master</tt>, onde <tt>origin</tt> é um alias
@@ -65,6 +65,12 @@ Para aqueles momentos de "fiz duas alterações, de dois issues diferentes".
 <b><span foreground="blue">Stage this hunk [y,n,q,a,d,/,e,?]? </span></b></tt>
 
 (Ainda útil para aquela última verificada antes de comitar.)
+
+--- [../_images/grinch-smile.jpg]
+
+Podem ser feitos <i>vários</i> commits sem que sejam enviados ao servidor.
+
+"Meu branch pode estar quebrado totalmente e ninguém vai ver!"
 
 --- [../_images/boycrying.jpg]
 
@@ -151,6 +157,24 @@ Ok, qual a vantagem no final?
 
 ---
 
-Tu pode fazer <i>vários</i> commits sem mandar pro servidor.
+* Commits mais granulares.
+* Branches locais.
+  * GIT Flow para um fluxo de trabalho conveniente.
+* <tt>git stash</tt>: Atira as alterações para uma biblioteca.
+* Compatível com <i>qualquer</i> versão do SVN.
 
-"Meu branch pode estar quebrado totalmente e ninguém vai ver!"
+--- [../_images/tumblr_m3hn8kf49c1ropetlo1_400.jpg]
+
+<b>Novo workflow</b>:
+
+1. Alterar código.
+2. <tt>git add</tt> alteração.
+3. Mais alterações? Goto 1.
+4. <tt>git svn rebase</tt> para verificar alterações <i>upstream</i>.
+5. <tt>git commit</tt>.
+6. Não satisfeito? Goto 1.
+7. Tudo Ok? <tt>git svn dcommit</tt>
+
+---
+
+
