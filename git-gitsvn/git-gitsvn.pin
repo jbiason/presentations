@@ -48,7 +48,9 @@ um passo só (<tt>svn commit</tt>) vs 3 do GIT (<tt>git add</tt>, <tt>git commit
 
 ---
 
-<tt>git add -p file.py</tt> - Adição parcial de conteúdo.
+<tt>git add -p file.py</tt>
+
+* Adição parcial de conteúdo no index.
 
 Para aqueles momentos de "fiz duas alterações, de dois issues diferentes".
 
@@ -66,11 +68,48 @@ Para aqueles momentos de "fiz duas alterações, de dois issues diferentes".
 
 (Ainda útil para aquela última verificada antes de comitar.)
 
+---
+
+<b><tt>git stash</tt></b>
+
+* "Guarda" tudo que não foi commitado em separado.
+* <tt>git stash pop</tt> reaplica as alterações guardadas.
+
+---
+
+<b><tt>git log</tt></b>
+
+Igual ao <tt>svn log</tt>, mas não precisa de less.
+
+<tt>git log --raw</tt>: Mostra inclusive os arquivos alterados.
+
+<tt>git log -u</tt>: Mostra inclusive o que foi alterado.
+
+---
+
+<b><tt>git bisect</tt></b>
+
+Tenta descobrir qual commit introduziu um bug.
+
+* Mostra as alterações em um ponto da história dos logs.
+* "O bug está aqui?"
+  * Se sim, retorna revisões.
+  * Se não, avança.
+
+(Percorre as revisões como se fosse uma árvore binária.)
+
 --- [../_images/grinch-smile.jpg]
 
 Podem ser feitos <i>vários</i> commits sem que sejam enviados ao servidor.
 
 "Meu branch pode estar quebrado totalmente e ninguém vai ver!"
+
+---
+
+<b>Parênteses</b>
+
+As ferramentas de code review para GIT são muito melhores que
+as dos outros SCVs.
 
 --- [../_images/boycrying.jpg]
 
@@ -160,7 +199,8 @@ Ok, qual a vantagem no final?
 * Commits mais granulares.
 * Branches locais.
   * GIT Flow para um fluxo de trabalho conveniente.
-* <tt>git stash</tt>: Atira as alterações para uma biblioteca.
+* <tt>git stash</tt>
+* Commit mesmo quando a rede está fora.
 * Compatível com <i>qualquer</i> versão do SVN.
 
 --- [../_images/tumblr_m3hn8kf49c1ropetlo1_400.jpg]
@@ -169,12 +209,10 @@ Ok, qual a vantagem no final?
 
 1. Alterar código.
 2. <tt>git add</tt> alteração.
-3. Mais alterações? Goto 1.
-4. <tt>git svn rebase</tt> para verificar alterações <i>upstream</i>.
-5. <tt>git commit</tt>.
-6. Não satisfeito? Goto 1.
-7. Tudo Ok? <tt>git svn dcommit</tt>
+3. <tt>git svn rebase</tt> para verificar alterações <i>upstream</i>.
+4. <tt>git commit</tt>.
+5. Não satisfeito? Goto 1.
+6. Tudo Ok? <tt>git svn dcommit</tt>
 
----
-
+--- [../_images/thats-all-folks.jpg]
 
