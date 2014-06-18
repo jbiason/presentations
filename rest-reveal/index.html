@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>ReST - Restructured State Transfer</title>
+
+		<meta name="author" content="Julio Biason">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../reveal.js/css/reveal.min.css">
+		<link rel="stylesheet" href="../reveal.js/css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '../reveal.js/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style>
+img {
+	height: 400px;
+}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>ReST</h1>
+					<h4>Restructured State Transfer</h4>
+				</section>
+
+				<section>
+					<ul>
+						<li>Criado por Roy Fielding em 2000.</li>
+						<li>Fielding trabalhou na definição do HTTP e no início do projeto Apache.</li>
+					</ul>
+				</section>
+
+				<section> <!-- data-background="../_images/l-What-is-this-sorcery.jpg"> -->
+					<section>
+						<h2>O que é ReST?</h2>
+						<img src='../_images/l-What-is-this-sorcery.jpg'></img>
+					</section>
+
+					<section>
+						<p>
+							É uma "arquitetura de transmissão de dados sobre HTTP.
+						</p>
+
+						<p>
+							("Conjunto de idéias para utilizar HTTP para geração de APIs.")
+						</p>
+					</section>
+
+					<section>
+						<p>
+							Linguagem? Qualquer!
+						</p>
+
+						<ul>
+							<li>Python: Flask, Django, Flask-Restless, Django Rest Framework</li>
+							<li>Ruby: Ruby on Rails, Sinatra</li>
+							<li>Java: Spring, Restlet, Jersey</li>
+							<li>C#: Ramone</li>
+							<li>Nodejs: Express</li>
+							<li>Rust: Rustful</li>
+						</dl>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>ReST e HTTP</h2>
+						<img src='../_images/20090504102402_dsc_2864 (1).jpg'></img>
+					</section>
+
+					<section>
+						<ul>
+							<li>Métodos HTTP = operação de banco de dados (CRUD).</li>
+							<li>Status das operações são status HTTP.</li>
+							<li>Meta-informações podem ser enviadas nos headers.
+								<ul>
+									<li>Atenticação é feita por HTTP auth.</li>
+								</ul>
+							</li>
+							<li>Sem transações/sessões -- todas as operações são atômicas.</li>
+						</ul>
+					</section>
+
+					<section>
+						Em HTTP, usam-se métodos para descrever o que quer ser feito:
+
+						<ul>
+							<li><tt>POST</tt> requisita informações, com conteúdo.</li>
+							<li><tt>GET</tt> requisita informações, sem conteúdo.</li>
+						</ul>
+
+						<p class='fragment'>(Ainda: PUT, DELETE, HEAD, TRACE, PATCH, OPTIONS)</p>
+					</section>
+
+					<section>
+						Em ReST, métodos HTTP viram CRUD:
+
+						<table>
+							<thead>
+								<tr><th>Operação</th><th>Método</th></tr>
+							</thead>
+
+							<tbody>
+								<tr><td>Create</td><td>POST</td></tr>
+								<tr><td>Retrieve</td><td>GET</td></tr>
+								<tr><td>Update</td><td>PUT</td></tr>
+								<tr><td>Delete</td><td>DELETE</td></tr>
+							</tbody>
+						</table>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="../reveal.js/lib/js/head.min.js"></script>
+		<script src="../reveal.js/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
