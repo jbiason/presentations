@@ -38,6 +38,9 @@
 img {
 	height: 400px;
 }
+.semi-opaque {
+	background-color: rgba(0, 0, 0, 0.7);
+}
 		</style>
 	</head>
 
@@ -113,8 +116,8 @@ img {
 						Em HTTP, usam-se métodos para descrever o que quer ser feito:
 
 						<ul>
-							<li><tt>POST</tt> requisita informações, com conteúdo.</li>
-							<li><tt>GET</tt> requisita informações, sem conteúdo.</li>
+							<li><code>POST</code> requisita informações, com conteúdo.</li>
+							<li><code>GET</code> requisita informações, sem conteúdo.</li>
 						</ul>
 
 						<p class='fragment'>(Ainda: PUT, DELETE, HEAD, TRACE, PATCH, OPTIONS)</p>
@@ -152,6 +155,161 @@ img {
 								</ul>
 							</li>
 						</ul>
+					</section>
+
+					<section>
+						<h3>URLs para o Recurso</h3>
+
+						<ul>
+							<li><code>GET /recurso/</code> &#8658; retorna todos os elementos do recurso.</li>
+							<li><code>POST /recurso/</code> &#8658; cria um novo elemento.</li>
+							<li><code>PUT /recurso/</code> &#8658; atualização em massa.</li>
+							<li><code>DELETE /recurso/</code> &#8658; remove todos os elementos do recurso.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>URLs para o Elemento</h3>
+
+						<ul>
+							<li><code>GET /recurso/id</code> &#8658; retorna as informações do elemento com identificador "id".</li>
+							<li><code>POST /recurso/id</code> &#8658; proibído, use <code>POST /recurso/</code> para criar elementos.</li>
+							<li><code>PUT /recurso/id</code> &#8658; atualiza as informações do elemento.</li>
+							<li><code>DELETE /recurso/id</code> &#8658; remove o elemento com identificador "id".</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Exemplos</h3>
+
+						<ul>
+							<li><code>GET /users/</code> &#8658; Retorna a lista de todos os usuários.</li>
+							<li><code>POST /users/</code> &#8658; Cria um novo usuário.</li>
+							<br/>
+							<li><code>GET /users/1</code> &#8658; Retorna as informações do usuário com id "1".</li>
+							<li><code>PUT /users/1</code> &#8658; Atualiza as informações do usuário "1".</li>
+							<li><code>DELETE /users/1</code> &#8658; Remove o usuário "1".</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Requisições sem recursos</h3>
+
+						Requisições sem um recurso definido utilizam um verbo e GET:
+
+						<code>GET /covert/?source=BRL&amp;value=10&amp;target=AUD</code>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Conteúdo</h2>
+						<img src='../_images/content-strategy.jpg'></img>
+					</section>
+
+					<section>
+						<p>Qualquer formato, ReST não define um específico.</p>
+
+						<ul>
+							<li>XML</li>
+							<li>JSON</li>
+							<li>HTML (www-form-encoded)</li>
+							<li>CNAB</li>
+						</ul>
+
+						<p>Fica a cargo da equipe decidir o melhor formato para a aplicação.</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Status</h2>
+						<img src='../_images/RightWrongBlackboard.jpg'></img>
+					</section>
+
+					<section>
+						<p>São utilizados os status HTTP</p>
+
+						<ul>
+							<li>200 OK &#8658; operação concluída com sucesso.</li>
+							<li>400 Bad Request &#8658; algo errado com a requisição.</li>
+							<li>401 Unauthorized &#8658; o usuário informado não tem permissão para acessar o recurso.</li>
+							<li>403 Forbidden &#8658; precisa de autenticação e essa não foi informada.</li>
+							<li>404 Not Found &#8658; recurso ou elemento não existe.</li>
+							<li>405 Method Not Allowed &#8658; metódo inválido para recurso/elemento (p.ex. "POST" num elemento)</li>
+						</ul>
+
+						<p>E assim por diante...</p>
+					</section>
+
+					<section>
+						<p>Problema:</p>
+
+						<p>ReST não define o que fazer em caso de conflito dos erros.</p>
+					</section>
+
+					<section>
+						<p>Exemplo:</p>
+
+						<p>Operação para adicionar um usuário à um grupo:</p>
+
+						<ul>
+							<li>404 se o grupo não existir;</li>
+							<li>Qual status a ser retornado quando o usuário não existe, neste caso?</li>
+						</ul>
+
+						<p>Normalmente é enviado um corpo junto com o erro.</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Por que usar ReST?</h2>
+						<img src='../_images/house-do-want_cut455_22k.jpg'></img>
+					</section>
+
+					<section>
+						<ul>
+							<li>Reaproveita toda a estrutura HTTP existente.</li>
+							<li>HTTP praticamente padrão em todas as linguagens na caixa.</li>
+							<li>Dificilmente portas HTTP (80 e 443) são bloequeadas em proxies.</li>
+							<li>"Sintaxe" simples.</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Por que não usar ReST?</h2>
+						<img src='../_images/Luke-Derp.jpg'></img>
+					</section>
+
+					<section>
+					</section>
+
+					<section>
+						<ul>
+							<li>Segurança depende de terceiros (HTTPS).
+								<ul>
+									<li>Existem outras opções (OAuth, por exemplo), mas são complexas e não se parecem
+									    com soluções HTTP.</li>
+								</ul>
+							</li>
+							<li>Não recomendado para dispositivos com processamento e memória
+							    extremamente limitados.</li>
+							<li>Necessidade de sessões/transações.</li>
+							<li>Requisito não é um serviço.</li>
+						</ul>
+					</section>
+
+					<section></section>
+				</section>
+
+				<section data-background='../_images/thats-all-folks.jpg'>
+					<section></section>
+
+					<section class='semi-opaque'>
+						<p><small>Perguntas?</small></p>
 					</section>
 				</section>
 			</div>
