@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>PyPoa</title>
+
+		<meta name="author" content="Julio Biason">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../reveal.js/css/reveal.min.css">
+		<link rel="stylesheet" href="../reveal.js/css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '../reveal.js/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style>
+section {
+	background-color: rgba(0, 0, 0, 0.7);
+}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background='../_images/poa.jpg'>
+					<h1>PyPoa 2014</h1>
+				</section>
+
+				<section data-background='../_images/lightcastle-django.png'>
+					<h2>Introdução ao Django Framework</h2>
+					<p>Maurício Abreu Antunes</p>
+				</section>
+
+				<section data-background='../_images/Celery_cross_section.jpg'>
+					<h2>Python + Celery</h2>
+					<p>Leonardo Korndorfer</p>
+				</section>
+
+				<section data-background='../_images/chaussette.png'>
+					<h2>Web stack com Nginx + Chaussette + Circus + Flask </h2>
+					<p>Leandro Nunes</p>
+				</section>
+
+				<section data-background='../_images/plot_classifier_comparison_1.png'>
+					<h2>Machine Learning com Python</h2>
+					<p>Christian S. Perone</p>
+					<p><small>scikit-learn</small></p>
+				</section>
+
+				<section data-background='../_images/web2py.jpg'>
+					<h2>Transformando ideias em realidade com web2py</h2>
+					<p>Relsi Maron</p>
+				</section>
+
+				<section data-background='../_images/Aldebaran-Robotics-Nao-Screen-Wallpaper.jpg'>
+					<h2>Dando vida a robôs com Python !</h2>
+					<p>Guilherme Schvarcz Franco</p>
+				</section>
+
+				<section data-background='../_images/python_fabric.png'>
+					<h2>Introdução a Automação com Fabric</h2>
+					<p>Volmar Oliveira Junior</p>
+				</section>
+
+				<section data-background='../_images/south.jpg'>
+					<h2>South, o básico para manter uma "vida saudável"</h2>
+					<p>Daniel Bastos</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="../reveal.js/lib/js/head.min.js"></script>
+		<script src="../reveal.js/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
