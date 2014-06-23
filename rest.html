@@ -13,11 +13,11 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="../reveal.js/css/reveal.min.css">
-		<link rel="stylesheet" href="../reveal.js/css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.6.2/css/reveal.min.css">
+		<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.6.2/css/theme/default.css" id="theme">
 
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+		<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.6.2/lib/css/zenburn.css">
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
@@ -25,13 +25,13 @@
 				var link = document.createElement( 'link' );
 				link.rel = 'stylesheet';
 				link.type = 'text/css';
-				link.href = '../reveal.js/css/print/pdf.css';
+				link.href = 'http://cdn.jsdelivr.net/reveal.js/2.6.2/css/print/pdf.css';
 				document.getElementsByTagName( 'head' )[0].appendChild( link );
 			}
 		</script>
 
 		<!--[if lt IE 9]>
-		<script src="../reveal.js/lib/js/html5shiv.js"></script>
+		<script src="reveal.js/lib/js/html5shiv.js"></script>
 		<![endif]-->
 
 		<style>
@@ -61,10 +61,10 @@ img {
 					</ul>
 				</section>
 
-				<section> <!-- data-background="../_images/l-What-is-this-sorcery.jpg"> -->
+				<section> <!-- data-background="_images/l-What-is-this-sorcery.jpg"> -->
 					<section>
 						<h2>O que é ReST?</h2>
-						<img src='../_images/l-What-is-this-sorcery.jpg'></img>
+						<img src='_images/l-What-is-this-sorcery.jpg'></img>
 					</section>
 
 					<section>
@@ -96,7 +96,7 @@ img {
 				<section>
 					<section>
 						<h2>ReST e HTTP</h2>
-						<img src='../_images/20090504102402_dsc_2864 (1).jpg'></img>
+						<img src='_images/20090504102402_dsc_2864 (1).jpg'></img>
 					</section>
 
 					<section>
@@ -141,7 +141,7 @@ img {
 				<section>
 					<section>
 						<h2>Recursos</h2>
-						<img src='../_images/jellybeans.jpg'></img>
+						<img src='_images/jellybeans.jpg'></img>
 					</section>
 
 					<section>
@@ -204,7 +204,7 @@ img {
 				<section>
 					<section>
 						<h2>Conteúdo</h2>
-						<img src='../_images/content-strategy.jpg'></img>
+						<img src='_images/content-strategy.jpg'></img>
 					</section>
 
 					<section>
@@ -224,7 +224,7 @@ img {
 				<section>
 					<section>
 						<h2>Status</h2>
-						<img src='../_images/RightWrongBlackboard.jpg'></img>
+						<img src='_images/RightWrongBlackboard.jpg'></img>
 					</section>
 
 					<section>
@@ -265,7 +265,7 @@ img {
 				<section>
 					<section>
 						<h2>Por que usar ReST?</h2>
-						<img src='../_images/house-do-want_cut455_22k.jpg'></img>
+						<img src='_images/house-do-want_cut455_22k.jpg'></img>
 					</section>
 
 					<section>
@@ -286,7 +286,7 @@ img {
 				<section>
 					<section>
 						<h2>Por que não usar ReST?</h2>
-						<img src='../_images/Luke-Derp.jpg'></img>
+						<img src='_images/Luke-Derp.jpg'></img>
 					</section>
 
 					<section>
@@ -310,7 +310,7 @@ img {
 					<section></section>
 				</section>
 
-				<section data-background='../_images/thats-all-folks.jpg'>
+				<section data-background='_images/thats-all-folks.jpg'>
 					<section></section>
 
 					<section class='semi-opaque'>
@@ -320,8 +320,8 @@ img {
 			</div>
 		</div>
 
-		<script src="../reveal.js/lib/js/head.min.js"></script>
-		<script src="../reveal.js/js/reveal.min.js"></script>
+		<script src="http://cdn.jsdelivr.net/reveal.js/2.6.2/lib/js/head.min.js"></script>
+		<script src="http://cdn.jsdelivr.net/reveal.js/2.6.2/js/reveal.min.js"></script>
 
 		<script>
 
@@ -333,8 +333,8 @@ img {
 				history: true,
 				center: true,
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+				theme: 'night',
+				transition: 'linear',
 
 				// Parallax scrolling
 				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
@@ -342,12 +342,12 @@ img {
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
-					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
 
