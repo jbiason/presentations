@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>GIT Flow</title>
+
+		<meta name="author" content="Julio Biason">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.6.2/css/reveal.min.css">
+		<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.6.2/css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.6.2/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'http://cdn.jsdelivr.net/reveal.js/2.6.2/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style>
+* {
+	hyphens: none !important;
+	-moz-hyphens: none !important;
+}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background='_images/git-workflow-gitflow.png'>
+					<h1>GIT Flow</h1>
+				</section>
+
+				<section>
+					<h2>O que é o GIT Flow?</h2>
+
+					<p>GIT Flow é um módulo extra para GIT para gerenciar o fluxo de desenvolvimento
+					padrão usando GIT.</p>
+
+					<p>Hoje está tão difundido que praticamente todas as distribuições que tem o GIT
+					tem um pacote para GIT Flow (incluindo Windows).</p>
+				</section>
+
+				<section>
+					<h2>Fluxo de Desenvolvimento Padrão</h2>
+					
+					<p><small>(ou, pelo menos, o esperado)</small></p>
+
+					<ul>
+						<li>trunk/master tem a versão estável do projeto.</li>
+						<Li>Existe pelo menos um branch de desenvolvimento.</li>
+						<li>Coisas são desenvolvidas no branch de desenvolvimento e depois passadas
+						para o trunk/master.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Fluxo de Desenvolvimento Anabolizado</h2>
+
+					<ul>
+						<li>Trunk/master tem a versão estável do projeto.</li>
+						<li>Existe um branch de integração.</li>
+						<li>Cada feature tem um branch especializado.</li>
+						<li>Branches são testados individualmente e depois testados de novo no branch
+						de desenvolvimento (testes de integração) e depois passados parao trunk/master.</li>
+					</ul>
+
+					<p>Praticamente comum em SCVs com criação de branchs rápidas (como o GIT).</p>
+				</section>
+
+				<section>
+					<h2>Começando com GIT Flow</h2>
+
+					<p><code>git flow init</code></p>
+
+					<p><pre><code>
+					Branch name for production releases: [master] 
+					Branch name for "next release" development: [develop] 
+
+					How to name your supporting branch prefixes?
+					Feature branches? [feature/] 
+					Release branches? [release/] 
+					Hotfix branches? [hotfix/] 
+					Support branches? [support/] 
+					Version tag prefix? [] 
+					</code></pre></p>
+				</section>
+
+				<section>
+					<ul>
+						<li>Qual o branch estável/de produção?</li>
+						<li>Qual o branch de integração/desenvolvimento?</li>
+						<li>Qual o prefixo dos branches de features/correções?</li>
+						<li>Qual o prefixo dos branches de releases?</li>
+						<li>Qual o prefixo dos branches de correções emergenciais?</li>
+						<li>Qual o prefixo das tags de versão?</li>
+					</ul>
+
+					<p>(Branches de suporte são experimentais: branches criados a partir do master que nunca
+					são feitos merge de volta.)</p>
+				</section>
+
+				<section>
+					<h2>Como Funciona Esse Workflow?</h2>
+				</section>
+
+				<section>
+					<h3>"Vou começar uma feature nova."</h3>
+					<h4><code>git flow feature start minha_feature</code></h4>
+					<p>Irá fazer um fork do branch
+					indicado como desenvolvimento com o nome "minha_feature".</p>
+					<p>(<code>feature start</code> vai começar outro branch a partir do desenvolvimento,
+					não do branch de feature atual.)</p>
+				</section>
+
+				<section>
+					<h3>"Terminei minha feature."</h3>
+					<h4><code>git flow feature finish</code></h4>
+					<p>Faz o merge do branch atual de volta pro branch de desenvolvimento.</p>
+				</section>
+
+				<section>
+					<h3>"Todas as minhas features estão prontas"</h3>
+					<h4><code>git flow release start versão</code></h4>
+					<p>Cria um branch de release a partir
+					do master e faz um merge com o branch de desenvolvimento, para aquela última
+					verificada.</p>
+				</section>
+
+				<section>
+					<h3>"Todas as features estão ok"</h3>
+					<h4><code>git flow release finish</code></h4>
+					<p>Faz o merge da release atual para o master, destrói o branch de release,
+					bota a tag da versão no commit, faz o merge do branch master com desenvolvimento.</p>
+				</section>
+
+				<section>
+					<h3>"Fuck, deu algo errado em produção"</h3>
+					<h4><code>git flow hotfix start fuckingdevs</code></h4>
+					<p>Cria um branch a partir do master, passando por cima do desenvolvimento.</p>
+				</section>
+
+				<section>
+					<h3>"Ok, agora deve resolver o problema de produção"</h3>
+					<h4><code>git flow hotfix finish</code></h4>
+					<p>Faz o merge do branch de hotfix de volta pro master, faz o merge do master com
+					o branch de desenvolvimento.</p>
+				</section>
+
+				<section>
+					<p>Pequeno lembrete: todos os branches do git flow são locais.</p>
+
+					<p>Por que isso é importante?</p>
+				</section>
+
+				<section>
+					<h2>Eu uso SVN!</h2>
+
+					<img src='_images/boycrying.jpg' height='300px'>
+				</section>
+
+				<section>
+					<p>Com branches locais, qualquer alteração que tu faz é feita localmente na máquina.</p>
+					<p><code>git svn dcommit</code> vai mandar o branch atual pro repositório, então se
+					você estiver no seu master... Vai o que estiver depois do <code>git flow release finish</code>.</p>
+				</section>
+
+				<section>
+					<h2>Parênteses</h2>
+
+					<p>O conceito de fluxos do GIT está tão difundido que já existem soluções prontas para:
+
+					<ul>
+						<li>Adicionar o reconhecimento de novos branches por ferramentas de integração contínua.</li>
+						<li>Executar testes nos branches novos.</li>
+						<li>Verificam a possibilidade de merge se passar pelos testes.</li>
+						<li>Se passam os testes e pode ser feito o merge, já faz o merge para desenvolvimento (ou,
+						dependendo do caso, criar um merge request automático).</li>
+					</ul>
+					</p>
+				</section>
+
+				<section>
+					<h2>Parênteses</h2>
+
+					<p>Ou seja: tudo se resume à: <code>git flow feature start</code>, fazer as alterações, verificar se os
+					testes locais passam e fazer um <code>git push</code>.</p>
+				</section>
+
+				<section data-background='_images/thats-all-folks.jpg'>
+					<section></section>
+				</section>
+			</div>
+		</div>
+
+		<script src="http://cdn.jsdelivr.net/reveal.js/2.6.2/lib/js/head.min.js"></script>
+		<script src="http://cdn.jsdelivr.net/reveal.js/2.6.2/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: 'night',
+				transition: 'linear',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
