@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>GIT + GIT-SVN</title>
+
+		<meta name="author" content="Julio Biason">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.6.2/css/reveal.min.css">
+		<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.6.2/css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.6.2/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'http://cdn.jsdelivr.net/reveal.js/2.6.2/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style>
+h1 {
+	background-color: rgba(0, 0, 0, 0.7);
+}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background='_images/Sketch27014711.png'>
+					<h1>GIT + GIT-SVN</h1>
+				</section>
+
+				<section>
+					<h2>GIT Básico</h2>
+				</section>
+
+				<section>
+					<h3>O "index"</h3>
+
+					<p>O conceito do "index" é o que mais diferencia o GIT do SVN (e outros SCVs).</p>
+
+					<p>"index" contém as alterações que gerarão uma revisão, não os arquivos. Isso só é
+					estranho por causa do comando para adicionar alterações no index.</p>
+				</section>
+
+				<section>
+					<p><code>git add file.py</code>: Adiciona <em>as alterações</em> do arquivo no "index".</p>
+
+					<p>(Se o arquivo nunca teve uma revisão, o conteúdo inteiro do arquivo é adicionado.)</p>
+				</section>
+
+				<section>
+					<p><code>git commit</code>: Transforma o index em uma revisão e guarda no repositório <em>local</em>.</p>
+
+					<p>(<code>git commit -a</code> gera um index com <em>todas</em> as alterações e gera uma revisão).</p>
+
+					<p><code>git push</code>: Envia as revisões locais e envia para um servidor SSH/HTTPS/GIT.</p>
+				</section>
+
+				<section>
+					<p>Até aqui, SVN parece melhor por ser mais simples: mandar alterações para o servidor é feito
+					num único passo (<code>svn commit</code>) enquanto o GIT requer 3 (<code>git add</code>,
+					<code>git commit</code>, <code>git push</code>).</p>
+				</section>
+
+				<section>
+					<h2>Onde o GIT se sobresai</h2>
+				</section>
+
+				<section>
+					<h3><code>git add -p file.py</code></h3>
+
+					<p>Permite selecionar quais alterações irão para o index.</p>
+
+					<p>(Excelente para aqueles momentos de "fiz duas alterações de dois issues diferentes.")</p>
+				</section>
+
+				<section>
+					<pre><code data-trim contenteditable>
+@@ -485,7 +485,7 @@ class GerenciadorForm(TestCase):
+         """
+ 
+         curso = EntidadeCursoCurriculoGraduacao.objects.get(pk=1001)
+-        ano_periodo = AnoPeriodoGraduacao.objects.get(pk=1)
++        ano_periodo = AnoPeriodoGraduacao.objects.get(pk=1001)
+ 
+         # Populando o field com None.
+         dados = {'pessoa_fisica': u'5',
+Stage this hunk [y,n,q,a,d,/,e,?]?
+					</code></pre>
+
+					<p>E ainda é útil para aquela última revisada antes de gerar uma revisão.</p>
+				</section>
+
+				<section>
+					<h3>Cores!</h3>
+
+					<img src='_images/gitadd.png'>
+				</section>
+
+				<section>
+					<h3><code>git stash</code></h3>
+
+					<ul>
+						<li>Guarda as alterações que não estão no index e deixa separado.</li>
+						<li><code>git stash pop</code> reaplica as alterações.</li>
+						<li>Vários "stashes" podem existir ao mesmo tempo (e podem ser aplicados em qualquer ordem).</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3><code>git log</code></h3>
+
+					<ul>
+						<li>Igual ao <code>svn log</code>, mas não precisa de less (e nada de "broken pipe" ao fechar o log).</li>
+						<li>Cores!</li>
+						<li><code>git log --raw</code>: mostra os arquivos alterados dentro da revisão.</li>
+						<li><code>git log -u</code>: mostra as alterações dentra da revisão.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3><code>git commit --amend</code></h3>
+
+					<p>Permite alterar um commit depois de feito.</p>
+				</section>
+
+				<section>
+					<h3><code>git bisect</code></h3>
+
+					<p>Percorre os commits em forma de árvore binária, para procura de "onde esse bug foi introduzido?"</p>
+
+					<ul>
+						<li>Mostra as alterações em um ponto do histórico de revisões.</li>
+						<li>"O bug está aqui?"
+							<ul>
+								<li>Se sim, volta metade das revisões entre a revisão inicial e a atual.</li>
+								<li>Se não, avança metade das revisões entre a revisão final e a atual.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Repositório local</h3>
+
+					<p>Como o repositório é local, vários commits podem ser feitos sem serem enviados ao servidor.</p>
+
+					<div class='fragment'>
+						<img src='_images/grinch-smile.jpg' height='200px'>
+
+						<p>"Meu branch tá todo quebrado, mas ninguém vai ver isso!"</p>
+					</div>
+				</section>
+
+				<section>
+					<h3>Parênteses</h3>
+
+					<p>As ferrametnas de code review para GIT são geralmetne melhores de serem usadas de que
+					as de outros SCVs.</p>
+				</section>
+
+				<section>
+					<p>Bem legal, mas...</p>
+
+					<h2>Mas eu uso SVN!</h2>
+
+					<img src='_images/boycrying.jpg' height='300px'>
+				</section>
+
+				<section>
+					<h2>GIT-SVN to the rescue!</h2>
+
+					<img src='_images/baby-smile.jpg' height='300px'>
+				</section>
+
+				<section>
+					<p>GIT-SVN é uma módulo do GIT que cria e mantém um repositório local GIT usando um servidor SVN.</p>
+
+					<p>Alguns comandos mudam.</p>
+
+					<p class='fragment'>(... pelo menos aqueles ligados ao acesso do servidor.)</p>
+				</section>
+
+				<section>
+					<ul>
+						<li><code>git add</code> continua igual (<code>-p</code> também continua).</li>
+						<li><code>git commit</code> continua igual.</li>
+						<li class='fragment'>... na verdade, todos os comandos mostrados anteriormente não mudam.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Criar o repositório GIT a partir do SVN:</h3>
+
+					<p><pre><code>
+					git svn clone http://blahblahblah.com/blah/blah/branch/blah
+					</code></pre></p>
+				</section>
+
+				<section>
+					<p><pre><code>
+	A	yoshi/google/alias/forms.py
+	A	yoshi/urls.py
+	A	requirement.txt
+W: +empty_dir: yoshi/autenticacao/esqueceu_senha/fixtures
+W: +empty_dir: yoshi/autenticacao/login/templates/busca
+W: +empty_dir: yoshi/core/busca/templates
+W: +empty_dir: yoshi/core/geral/templates/search
+W: +empty_dir: yoshi/templates/agenda/busca
+r4531 = b3667a084e7d69080e0f1c7235b94dab9cb5a326 (refs/remotes/git-svn)
+	A	yoshi/financeiro/cadastro_beneficio/__init__.py
+	A	yoshi/financeiro/cadastro_beneficio/models.py
+	A	yoshi/financeiro/__init__.py
+r4532 = 65ce3a96d11c13d0be24836af3a276561885118c (refs/remotes/git-svn)
+	M	yoshi/settings.py
+	M	yoshi/modulos.py
+					</code></pre></p>
+
+					<p class='fragment'>É clonado o repositório e <em>todos os commits</em>.</p>
+					<p class='fragment'>Portanto, não se assuste.</p>
+				</section>
+
+				<section>
+					<h3>Baixar as alterações do servidor SVN:</h3>
+
+					<p><pre><code>
+					git svn rebase
+					</code></pre></p>
+
+					<p class='fragment'>Na verdade, busca commits existentes no servidor que não estejam
+					no repositório local e aplica <em>antes</em> dos commits locais.</p>
+				</section>
+
+				<section>
+					<h4>Árvore de revisões antes do rebase:</h4>
+
+					<img src='_images/clone.png'>
+				</section>
+
+				<section>
+					<h4>Árvore de revisões depois do rebase:</h4>
+
+					<img src='_images/rebase.png'>
+				</section>
+
+				<section>
+					<h3>Subir alterações para o servidor SVN:</h3>
+
+					<p><pre><code>
+					git svn dcommit
+					</code></pre></p>
+				</section>
+
+				<section>
+					<h2>Qual a vantagem de usar GIT ao invés de SVN, então?</h2>
+				</section>
+
+				<section>
+					<ul>
+						<li>Commits mais granulares.</li>
+						<li>Branches locais.</li>
+						<li>Commits mesmo quando a rede está fora.</li>
+						<li>Compatível com <em>qualquer</em> versão do SVN.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Novo workflow</h2>
+
+					<ol>
+						<li>Alterar código.</li>
+						<li><code>git add</code> alterações.</li>
+						<li><code>git svn rebase</code> para verificar se há alterações <em>upstream</em>.</li>
+						<li><code>git commit</code>.</li>
+						<li>Não satisfeito? GOTO 1.</li>
+						<li>Tudo Ok? <code>git svn dcommit</code>.</li>
+					</ol>
+				</section>
+
+				<section data-background='_images/thats-all-folks.jpg'>
+					<section></section>
+				</section>
+			</div>
+		</div>
+
+		<script src="http://cdn.jsdelivr.net/reveal.js/2.6.2/lib/js/head.min.js"></script>
+		<script src="http://cdn.jsdelivr.net/reveal.js/2.6.2/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: 'night',
+				transition: 'linear',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
