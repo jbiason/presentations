@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel='stylesheet' href='joint.min.css'>
+	<style>
+body {
+	background-color: black;
+}
+	</style>
+	</head>
+
+	<body>
+		<div id='graph'></div>
+	</body>
+
+	<script src='joint.min.js'></script>
+	<script src='joint.shapes.fsa.min.js'></script>
+
+	<script>
+var graph = new joint.dia.Graph;
+var paper = new joint.dia.Paper({
+	el: $('#graph'),
+	width: 800,
+	height: 600,
+	gridSize: 1,
+	model: graph
+});
+
+var master = new joint.shapes.fsa.State({
+	position: {x: 10, y: 10},
+	size: { width: 80, height: 80 },
+	attrs: { text: { text: 'master' } },
+	rect: { fill: 'white' }
+});
+graph.addCell(master);
+
+var develop = new joint.shapes.fsa.State({
+	position: { x: 120, y: 60 },
+	size: { width: 80, height: 80 },
+	attrs: { text: { text: 'develop' } }
+});
+graph.addCell(develop);
+
+var link = new joint.shapes.fsa.Arrow({
+	source: { id: master.id },
+	target: { id: develop },
+	attrs: { rect: { fill: 'white' } }
+});
+link._opt.attrs.stroke = 'white';
+graph.addCell(link);
+
+	</script>
+</html>
