@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+body { background-color: darkgray; }
+		</style>
+	</head>
+
+	<body>
+		<canvas id='example' width='800' height='300'></canvas>
+	</body>
+
+	<script>
+var canvas = document.getElementById('example');
+var ctx = canvas.getContext('2d');
+
+// master
+ctx.fillStyle = 'rgb(0, 0, 0)';
+ctx.strokeRect(10, 10, 50, 30);
+ctx.fillText('Master', 15, 25);
+	</script>
+</html>

@@ -4,7 +4,7 @@
 	<link rel='stylesheet' href='joint.min.css'>
 	<style>
 body {
-	background-color: black;
+	background-color: darkgray;
 }
 	</style>
 	</head>
@@ -44,9 +44,8 @@ graph.addCell(develop);
 var link = new joint.shapes.fsa.Arrow({
 	source: { id: master.id },
 	target: { id: develop },
-	attrs: { rect: { fill: 'white' } }
+	attrs: { rect: { stroke: 'white' } }
 });
-link._opt.attrs.stroke = 'white';
 graph.addCell(link);
 
 	</script>
