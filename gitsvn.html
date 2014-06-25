@@ -300,6 +300,20 @@ r4532 = 65ce3a96d11c13d0be24836af3a276561885118c (refs/remotes/git-svn)
 					</ol>
 				</section>
 
+				<section>
+					<h2>Parênteses</h2>
+
+					<p>"Ok, eu posso editar o último commit com <code>git commit --amend</code>. Mas e se o
+					commit errado não for o último?"</p>
+
+					<ol>
+						<li><code>git rebase -i HEAD~[número de revisões a voltar]</code></li>
+						<li>Irá abrir o editor padrão. Selecione o commit alterando o texto "pick" para "edit".</li>
+						<li><code>git commit --amend</code></li>
+						<li><code>git rebase --continue</code></li>
+					</ol>
+				</section>
+
 				<section data-background='_images/thats-all-folks.jpg'>
 					<section></section>
 				</section>
