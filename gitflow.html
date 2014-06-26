@@ -83,7 +83,8 @@
 						<li>Existe um branch de integração.</li>
 						<li>Cada feature tem um branch especializado.</li>
 						<li>Branches são testados individualmente e depois testados de novo no branch
-						de desenvolvimento (testes de integração) e depois passados parao trunk/master.</li>
+						de integração (para que sejam feitos os testes de
+						integração) e depois passados parao trunk/master.</li>
 					</ul>
 
 					<p>Praticamente comum em SCVs com criação de branchs rápidas (como o GIT).</p>
@@ -129,7 +130,7 @@
 					<h3>"Vou começar uma feature nova."</h3>
 					<h4><code>git flow feature start minha_feature</code></h4>
 					<p>Irá fazer um fork do branch
-					indicado como desenvolvimento com o nome "minha_feature".</p>
+					de desenvolvimento com o nome "minha_feature".</p>
 					<p>(<code>feature start</code> vai começar outro branch a partir do desenvolvimento,
 					não do branch de feature atual.)</p>
 				</section>
@@ -137,15 +138,17 @@
 				<section>
 					<h3>"Terminei minha feature."</h3>
 					<h4><code>git flow feature finish</code></h4>
-					<p>Faz o merge do branch atual de volta pro branch de desenvolvimento.</p>
+					<p>Faz o merge do branch de desenvolvimento com o branch da feature e,
+					se tudo ocorreu sem problemas, faz o merge do branch da
+					feature de volta pro branch de desenvolvimento e destrói
+					o branch da feature.</p>
 				</section>
 
 				<section>
 					<h3>"Todas as minhas features estão prontas"</h3>
 					<h4><code>git flow release start versão</code></h4>
 					<p>Cria um branch de release a partir
-					do master e faz um merge com o branch de desenvolvimento, para aquela última
-					verificada.</p>
+					do master e faz um merge com o branch de desenvolvimento.</p>
 				</section>
 
 				<section>
@@ -181,7 +184,7 @@
 				</section>
 
 				<section>
-					<p>Com branches locais, qualquer alteração que tu faz é feita localmente na máquina.</p>
+					<p>Com branches locais, qualquer alteração é feita localmente na máquina.</p>
 					<p><code>git svn dcommit</code> vai mandar o branch atual pro repositório, então se
 					você estiver no seu master... Vai o que estiver depois do <code>git flow release finish</code>.</p>
 				</section>
@@ -202,7 +205,7 @@
 				</section>
 
 				<section>
-					<h2>Parênteses</h2>
+					<h2>Parênteses (cont.)</h2>
 
 					<p>Ou seja: tudo se resume à: <code>git flow feature start</code>, fazer as alterações, verificar se os
 					testes locais passam e fazer um <code>git push</code>.</p>
