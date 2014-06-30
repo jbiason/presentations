@@ -1,86 +1,86 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
 
-		<title>Flask</title>
+        <title>Flask</title>
 
-		<meta name="author" content="Julio Biason">
+        <meta name="author" content="Julio Biason">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.6.2/css/reveal.min.css">
-		<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.6.2/css/theme/default.css" id="theme">
+        <link rel="stylesheet" href="_external/reveal.min.css">
+        <link rel="stylesheet" href="_external/default.css" id="theme">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.6.2/lib/css/zenburn.css">
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="_external/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-		<script>
-			if( window.location.search.match( /print-pdf/gi ) ) {
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = 'http://cdn.jsdelivr.net/reveal.js/2.6.2/css/print/pdf.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-			}
-		</script>
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = '_external/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
 
-		<!--[if lt IE 9]>
-		<script src="reveal.js/lib/js/html5shiv.js"></script>
-		<![endif]-->
+        <!--[if lt IE 9]>
+        <script src="reveal.js/lib/js/html5shiv.js"></script>
+        <![endif]-->
 
-		<style>
+        <style>
 .semi-opaque {
-	background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 * {
-	hyphens: none !important;
-	-moz-hyphens: none !important;
+    hyphens: none !important;
+    -moz-hyphens: none !important;
 }
-		</style>
-	</head>
+        </style>
+    </head>
 
-	<body>
+    <body>
 
-		<div class="reveal">
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section data-background='_images/flask.png'>
-					<h1>Flask</h1>
-				</section>
+        <div class="reveal">
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section data-background='_images/flask.png'>
+                    <h1>Flask</h1>
+                </section>
 
-				<section>
-					<h2>O que é Flask?</h2>
+                <section>
+                    <h2>O que é Flask?</h2>
 
-					<ul>
-						<li>Microframework web em Python.</li>
-						<li>Framework sobre o Werkzeug (outro framework).</li>
-						<li>Sem ORM, mas templates.</li>
-					</ul>
-				</section>
+                    <ul>
+                        <li>Microframework web em Python.</li>
+                        <li>Framework sobre o Werkzeug (outro framework).</li>
+                        <li>Sem ORM, mas templates.</li>
+                    </ul>
+                </section>
 
-				<section>
-					<section>
-						<h2>Aplicativo Flask Básico</h2>
+                <section>
+                    <section>
+                        <h2>Aplicativo Flask Básico</h2>
 
-						<p><pre><code data-trim>
+                        <p><pre><code data-trim>
 from flask import Flask
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return 'Hello world'
-						</code></pre></p>
-					</section>
+    return 'Hello world'
+                        </code></pre></p>
+                    </section>
 
-					<section>
-						<p><pre><code data-trim>
+                    <section>
+                        <p><pre><code data-trim>
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
@@ -89,30 +89,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return 'Hello world'
-						</code></pre></p>
-						<p><small>... mais o header...</small></p>
-					</section>
+    return 'Hello world'
+                        </code></pre></p>
+                        <p><small>... mais o header...</small></p>
+                    </section>
 
-					<section>
-						<p><pre><code data-trim>
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-
-"""Meu aplicativo web em Flask."""
-
-from flask import Flask
-app = Flask(__name__)
-
-@app.route('/')
-def index():
-	return 'Hello world'
-						</code></pre></p>
-						<p><small>... mais a documentação do módulo...</small></p>
-					</section>
-
-					<section>
-						<p><pre><code data-trim>
+                    <section>
+                        <p><pre><code data-trim>
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
@@ -123,15 +106,32 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-	"""Apresentação do 'root' do aplicativo."""
-	return 'Hello world'
-						</code></pre></p>
+    return 'Hello world'
+                        </code></pre></p>
+                        <p><small>... mais a documentação do módulo...</small></p>
+                    </section>
 
-						<p><small>... mais a documentação das funções...</small></p>
-					</section>
+                    <section>
+                        <p><pre><code data-trim>
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
 
-					<section>
-						<p><pre><code data-trim>
+"""Meu aplicativo web em Flask."""
+
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    """Apresentação do 'root' do aplicativo."""
+    return 'Hello world'
+                        </code></pre></p>
+
+                        <p><small>... mais a documentação das funções...</small></p>
+                    </section>
+
+                    <section>
+                        <p><pre><code data-trim>
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
@@ -144,22 +144,22 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-	"""Apresentação do 'root' do aplicativo."""
-	return render_template('hello.html')
-						</code></pre></p>
+    """Apresentação do 'root' do aplicativo."""
+    return render_template('hello.html')
+                        </code></pre></p>
 
-						<p><small>... mais retornar templates ao invés de texto puro...</small></p>
-					</section>
+                        <p><small>... mais retornar templates ao invés de texto puro...</small></p>
+                    </section>
 
-					<section>
-						<p><pre><code data-trim>
+                    <section>
+                        <p><pre><code data-trim>
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
 """Meu aplicativo web em Flask."""
 
 class Settings:
-	SECRET_KEY = 'Sup3rs3cr33t'
+    SECRET_KEY = 'Sup3rs3cr33t'
 
 from flask import Flask
 from flask import render_template
@@ -171,58 +171,496 @@ app.config.from_envvar('MEU_APLICATIVO_CONFIG')
 
 @app.route('/')
 def index():
-	"""Apresentação do 'root' do aplicativo."""
-	return render_template('hello.html')
-						</code></pre></p>
+    """Apresentação do 'root' do aplicativo."""
+    return render_template('hello.html')
+                        </code></pre></p>
 
-						<p><small>... mais adicionar uma configuração...</small></p>
-					</section>
+                        <p><small>... mais adicionar uma configuração...</small></p>
+                    </section>
 
-					<section>
-						<p><small>... mais tratamento de erros...</small></p>
+                    <section>
+                        <p><small>... mais tratamento de erros...</small></p>
 
-						<p><small>... mais outras rotas...</small></p>
+                        <p class='fragment'><small>... mais outras rotas...</small></p>
 
-						<p><small>... mais blueprints/applications...</small></p>
+                        <p class='fragment'><small>... mais blueprints/applications...</small></p>
 
-						<p><small>... mais inicialização do ORM...</small></p>
-					</section>
-				</section>
+                        <p class='fragment'><small>... mais inicialização do ORM...</small></p>
+                    </section>
+                </section>
 
-				<section>
-					<img src='_images/baby-steps.jpg'>
-				</section>
-			</div>
-		</div>
+                <section>
+                    <img src='_images/baby-steps.jpg'>
+                </section>
 
-		<script src="http://cdn.jsdelivr.net/reveal.js/2.6.2/lib/js/head.min.js"></script>
-		<script src="http://cdn.jsdelivr.net/reveal.js/2.6.2/js/reveal.min.js"></script>
+                <section>
+                    <h2>Criando uma app</h2>
 
-		<script>
+                    <p><pre><code data-trim>
+app = Flask(__name__)
+                    </code></pre></p>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+                    <p><code>__name__</code> é usado para que, internamente, os módulos/imports sejam encontrados.</p>
 
-				theme: 'night',
-				transition: 'linear',
+                    <p>Se o app estiver em "meuservico/app.py", as duas linhas abaixo funcionam de forma idêntica:<br/>
+                    <pre><code>app = Flask(__name__)</code></pre>
+                    <pre><code>app = Flask("meuservico")</code></pre>
+                    </p>
+                </section>
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+                <section>
+                    <section>
+                        <h2>Rotas</h2>
+                    </section>
 
-		</script>
+                    <section>
+                        <p>Rotas são definidas com o decorator <code>@[app].route([rota])</code>. Por exemplo:</p>
 
-	</body>
+                        <p><pre><code data-trim>
+app = Flask(__name__)
+@app.route('/')
+def index():
+    return 'Olá mundo'
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p>Rotas também podem definir quais métodos HTTP são aceitos:</p>
+                        <p><pre><code data-trim>
+@app.route('/', methods=['POST', 'GET'])
+def index():
+    return 'Olá mundo'
+                        </code></pre></p>
+
+                        <p>"<code>PUT /</code>" irá retornar status 405: Method Not Allowed.</p>
+                    </section>
+
+                    <section>
+                        <p>Rotas podem ser repetidas, desde que os métodos não colidam:</p>
+                        <p><pre><code data-trim>
+@app.route('/', methods=['GET'])
+def list():
+    return 'Olá mundo'
+
+
+@app.route('/', methods=['POST'])
+def update():
+    return 'O seu mundo foi atualizado'
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p>Rotas podem ter parâmetros:</p>
+                        <p><pre><code data-trim>
+app = Flask(__name__)
+@app.route('/&lt;usuario&gt;/data')
+def index(usuario):
+    return 'Olá {nome}'.format(nome=usuario)
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p>Parâmetros podem ter um tipo definido:</p>
+
+                        <p><pre><code data-trim>
+@app.route('/add/&lt;int:var1&gt;/&lt;int:var2&gt;')
+def add(var1, var2):
+    return 'Soma = {sum}'.format(sum=var1+var2)
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p>Problemas: Número de rotas tente a crescer. E como passar <code>app</code> para cima e para baixo?</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Blueprints</h2>
+                    </section>
+
+                    <section>
+                        <p>Blueprints são funções relacionadas (por exemplo, pelo recurso base)
+                        que podem ser desenvolvidos separados do módulo principal e entre si.</p>
+
+                        <p>(Conceito semelhante aos "apps" do Django ou "scaffolding" do Pyramid/Pylons.)</p>
+                    </section>
+
+                    <section>
+                        <h3>Esqueleto de um Blueprint</h3>
+
+                        <p><pre><code>
+from flask import Blueprint
+
+blueprint_exemplo = Blueprint('exemplo', __name__)
+
+@blueprint_exemplo.route('/say/&lt;usuario&gt;')
+def blueprint_index(usuario):
+    return 'Olá {nome}'.format(nome=usuario)
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <h3>E para ativar o Blueprint...</h3>
+
+                        <p><pre><code>
+app = Flask(__name__)
+
+from exemplo import blueprint_exemplo
+app.register(blueprint_exemplo, url_prefix='/exemplo')
+                        </code></pre></p>
+
+                        <p>A combinação do blueprint anterior com esse carregamento, gera a URL
+                        <code>/exemplo/say/&lt;usuario&gt;</code>.</p>
+                    </section>
+
+                    <section>
+                        <p><pre><code>
+blueprint_exemplo = Blueprint('exemplo', __name__)
+                        </code></pre></p>
+
+                        <ul>
+                            <li><code>exemplo</code> é o nome do blueprint (para que isso serve, mais adiante)</li>
+                            <li><code>__name__</code> tem a mesma finalidade do <code>__name__</code> do app: encontrar módulos/recursos.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <p>Tudo que foi visto sobre rotas continua valendo:</p>
+
+                        <p><pre><code data-trim>
+@blueprint_exemplo.route('/&lt;int:var1&gt;/&lt;int:var2&gt;', methods=['GET'])
+def sum(var1, var2):
+    return 'Soma = {sum}'.format(sum=var1+var2)
+                        </code></pre></p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Templates</h2>
+                    </section>
+
+                    <section>
+                        <p>Flask vem com Jinja2 como renderizado de templates.</p>
+
+                        <p>A sintaxe é muito semelhante ao sistema de templates do Django:</p>
+
+                        <p><pre><code data-trim>
+{% for nome in usuarios %}
+    &lt;div class='usuario'&gt;Olá {{ nome }}&lt;div&gt;
+{% endfor %}
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p>Para usar um template, basta usar a função <code>render_template</code>.</p>
+
+                        <p>Parâmetros para o template devem ser passados como parâmetros adicionais na função:</p>
+
+                        <p><pre><code data-trim>
+from flask import render_template
+
+@app.index('/')
+def index():
+    return render_template('hello-world.html', 
+                           usuarios=['Julio', 'Leandro', 'Bruna', 'Cláudio'])
+                        </code></pre></p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Responses</h2>
+                    </section>
+
+                    <section>
+                        <p><code>render_template()</code> é simplesmente um parser de templates com um gerador
+                        de Responses.</p>
+
+                        <p class='fragment'>(Ou seja, o resultado esperado das funções -- qualquer função -- é um Response.)</p>
+
+                        <p class='fragment'>(Criar um response especializado é algo que somente e feito em 2% dos casos.)</p>
+                    </section>
+
+                    <section>
+                        <p>Por que isso é importante?</p>
+
+                        <p class='fragment'>Responses tem algumas propriedades a mais, como o tipo do retorno (text/html, por exemplo)
+                        e o status.</p>
+                    </section>
+
+                    <section>
+                        <p>Para retornar um status diferente de 200:</p>
+
+                        <p><pre><code data-trim>
+def index():
+    resp = render_template('404-not-found.html')
+    resp.status_code = 404
+    return resp
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p>Para retornar um tipo diferente, é preciso criar o Response do zero:</p>
+    
+                        <p><pre><code data-trim>
+def index():
+    resp = make_response('Olá mundo')
+    resp.status_code = 200
+    resp.mimetype = 'text/plain'
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p>Para JSON, já existe uma função pronta:</p>
+
+                        <p><pre><code data-trim>
+from flask import jsonify
+
+@app.route('/')
+def index():
+    usuarios=['Julio', 'Leandro', 'Bruna', 'Cláudio']
+    return jsonify(status='OK',
+                   usuarios=usuarios)
+                        </code></pre></p>
+
+                        <p>Isso gera o JSON</p>
+                        <p><code>{status: "OK", usuarios=["Julio", "Leandro", "Bruna", "Claudio"]}</code>.</p>
+                    </section>
+
+                    <section>
+                        <p>Como <code>jsonify()</code> gera um Response, ele ainda pode ser mexido:</p>
+
+                        <p><pre><code data-trim>
+def index():
+    resp = jsonify(status='ERROR', code='404')
+    resp.status = 404
+    return resp
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p>Flask também tem funções para auxiliar na geração de respostas que não são "páginas":</p>
+
+                        <p><pre><code data-trim>
+from flask import abort
+
+def index():
+    abort(404)
+                        </code></pre></p>
+
+                        <p>Gera um response com status 404 padrão do sistema.</p>
+
+                        <p><pre><code data-trim>
+from flask import redirect
+
+def index():
+    redirect('/correct-path')
+                        </code></pre></p>
+
+                        <p>Gera um redirectionamento para <code>/correct-path</code>.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Requests</h2>
+                    </section>
+
+                    <section>
+                        <p>Request contém as informações que estão vindo na requisição:</p>
+
+                        <ul>
+                            <li><code>request.method</code>: Método HTTP utilizado.</li>
+                            <li><code>request.form</code>: Dados do formulário com POST/PUT.</li>
+                            <li><code>request.args</code>: Dados do querystring (GET).</li>
+                            <li><code>request.values</code>: form + args.</li>
+                            <li><code>request.cookies</code>: Cookies da página.</li>
+                            <li><code>request.headers</code>: Headers recebidos.</li>
+                            <li><code>request.files</code>: Arquivos enviados.</li>
+                            <li><code>request.get_json()</code>: Parseia a resposta se ela for JSON.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <p><pre><code data-trim>
+from flask import request     # acesso ao objeto de request atual
+from flask import abort
+from flask import render_template
+
+def index():
+    nome = request.values.get('usuario')
+    if not nome:
+        abort(400)     # Bad Request
+
+    return render_template('hello-world.html',
+                           usuarios=[nome])
+                        </code></pre></p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Tratamento de erros</h2>
+                    </section>
+
+                    <section>
+                        <p>Para mostrar páginas diferentes da default, basta adicionar um <code>errorhandler</code>.</p>
+
+                        <p><pre><code data-trim>
+app = Flask(__name__)
+
+@app.errorhandler(404)
+def not_found():
+    return jsonify(status='ERROR',
+                   message='Not found')
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p><code>errorhandler</code> também pode capturar excessões:</p>
+
+                        <p><pre><code data-trim>
+from flask import Flask
+from mongoengine import NotFoundError
+
+app = Flask(__name__)
+
+@app.errorhandler(NotFoundError)
+def not_found():
+    return jsonify(status='ERROR',
+                   message='Mongo object not found')
+                        </code></pre></p>
+
+                        <p>Isso captura qualquer ocorrência de <code>NotFoundError</code>, inclusive
+                        dentro dos blueprints.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>URLs reversas/Endpoints</h2>
+                    </section>
+
+                    <section>
+                        <p>Se eu posso registrar um Blueprint com qualquer prefixo, como eu descubro depois qual a URL
+                        de um recurso (se eu precisar fazer um redirect)?</p>
+
+                        <p class='fragment'><code>url_for()</code></p>
+                    </section>
+
+                    <section>
+                        <p><code>url_for()</code> recebe um endpoint e retorna a URL para aquele endpoint.</p>
+
+                        <p class='fragment'>O que diabos é um endpoint?</p>
+                    </section>
+
+                    <section>
+                        <p><pre><code data-trim>
+@app.route('/')
+def index():
+    return 'Olá mundo'
+                        </code></pre></p>
+
+                        <p>Endpoint = <code>index</code></p>
+                    </section>
+
+                    <section>
+                        <p><pre><code data-trim>
+exemplo = Blueprint('meuexemplo', __name__)
+
+@exemplo.route('/')
+def index():
+    return 'Olá mundo'
+                        </code></pre></p>
+
+                        <p>Endpoint = <code class='fragment'>meuexemplo.index</code></p>
+                    </section>
+
+                    <section>
+                        <p><pre><code data-trim>
+exemplo = Blueprint('meuexemplo', __name__)
+
+@exemplo.route('/')
+def index():
+    return redirect(url_for('meuexemplo.list'))
+
+@exemplo.route('/list')
+def list():
+    return 'Olá todos vocês.'
+                        </code></pre></p>
+
+                        <p>Se registrar o Blueprint com <code>prefix = /exemplo</code>, o <code>index()</code> irá
+                        fazer um redirect para <code>/exemplo/list</code>.</p>
+
+                        <p>Se registrar o Blueprint com <code>prefix = /</code>, o <code>index()</code> irá
+                        fazer um redirect para <code>/list</code>.</p>
+                    </section>
+
+                    <section>
+                        <p><code>url_for()</code> também funciona dentro de templates.</p>
+
+                        <p><pre><code data-trim>
+&lt;button onClick='redirect("{{ url_for('meuexemplo.list') }}")'&gt;
+                        </code></pre></p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Resumo</h2>
+                    </section>
+
+                    <section>
+                        <ul>
+                            <li>Sintaxe simples <span class='fragment'>(a sintaxe foi uma brincadeira de 1o. de abril)</span></li>
+                            <li class='fragment'>Controle centralizado de erros.</li>
+                            <li class='fragment'>Total controle sobre as respostas.</li>
+                            <li class='fragment'>Acesso total ao request.</li>
+                            <li class='fragment'>Módulos completamente isolados<span class='fragment'> mas ainda permite que esses sejam
+                                conectados por endpoints.</span></li>
+                            <li class='fragment'>Não comentado, mas o Werkzeug também expõe todo o controle da aplicação.</li>
+                            <li class='fragment'>Ainda não tem um ORM integrado, mas é fácil de plugar qualquer um.</li>
+                            <li class='fragment'>Pythônico.</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+                    <section></section>
+                </section>
+            </div>
+        </div>
+
+        <script src="_external/head.min.js"></script>
+        <script src="_external/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: 'night',
+                transition: 'linear',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: '_external/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: '_external/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '_external/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '_external/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: '_external/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: '_external/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
 </html>
