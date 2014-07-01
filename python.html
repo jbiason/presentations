@@ -66,6 +66,42 @@
                             <li>Dinamicamente tipada.</li>
                         </ul>
                     </section>
+                    
+                    <section>
+                        <h2>O Zen de Python</h2>
+                        
+                        <ul>
+                            <li>Bonito é melhor que feio.</li>
+                            <li>Explícito é melhor que implícito.</li>
+                            <li>Simples é melhor que complexo.</li>
+                            <li>Complexo é melhor que complicado.</li>
+                            <li>Plano é melhor que aninhado.</li>
+                            <li>Esparço é melhor que denso.</li>
+                            <li>Legibilidade conta.</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <ul>
+                            <li>Casos especiais não são especiais o suficiente para quebrar as regras.</li>
+                            <li>Embora praticabilidade ganhe de puridade.</li>
+                            <li>Erros nunca devem passam silenciosamente.</li>
+                            <li>A não ser que sejam explicitamente silenciados.</li>
+                            <li>Em caso de ambiguidade, evite a tentação de adivinhar.</li>
+                            <li>Deve haver um -- e preferencialmente apenas um -- modo óbvio de fazer algo.</li>
+                            <li>Embora talvez não seja tão óbvio de primeira a não ser que você seja Holandês.</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <ul>
+                            <li>Agora é melhor do que nunca.</li>
+                            <li>Embora nunca seja melhor que <i>agora mesmo</i>.</li>
+                            <li>Se a implementação é difícil de explicar, é uma péssima idéia.</li>
+                            <li>Se a implementação é fácil de explicar, pode ser uma boa idéia.</li>
+                            <li>Namespaces são uma grande idéia - vamos fazer mais desses!</li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section>
@@ -79,6 +115,14 @@ Python 2.7.5 (default, Jun 25 2014, 10:19:55)
 [GCC 4.8.2 20131212 (Red Hat 4.8.2-7)] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
 &gt;&gt;&gt;
+                        </code></pre></p>
+                    </section>
+                    
+                    <section>
+                        <p>Executando scripts Python:</p>
+                        
+                        <p><pre><code data-trim>
+python meuscript.py
                         </code></pre></p>
                     </section>
                 </section>
@@ -97,7 +141,8 @@ Type "help", "copyright", "credits" or "license" for more information.
 
                     <section>
                         <p>Uma variável do tipo "imutável" não pode ser alterada depois de
-                        criada. Tentar modificar a variável vai criar uma nova instância.</p>
+                        criada. Tentar modificar o conteúdo da variável vai criar uma nova
+                        instância.</p>
 
                         <p>Uma variável do tipo "mutável" é o contrário: tentar alterar vai
                         alterar o objeto, não criar um novo.</p>
@@ -105,21 +150,30 @@ Type "help", "copyright", "credits" or "license" for more information.
                         <p>A importância disto será visto mais pra frente, mas tenha isso
                         em mente.</p>
                     </section>
+                    
+                    <section>
+                        <p>... ainda...</p>
+                        
+                        <p>Existem tipos que são, na verdade, objetos e tem toda uma gama
+                        de funções para alterar/manipular/editar o conteúdo de uma variável.</p>
+                        
+                        <p>Outros são tipos simples que não são objetos.</p>
+                    </section>
 
                     <section>
-                        <p><code>bool</code>: Tipo booleano.</p>
+                        <p><code>bool</code>: Tipo booleano. Tipo simples.</p>
 
                         <p><pre><code data-trim>
-a = True
-b = False
+&gt;&gt;&gt; a = True
+&gt;&gt;&gt; b = False
                         </code></pre></p>
                     </section>
 
                     <section>
-                        <p><code>int</code>: Um inteiro.</p>
+                        <p><code>int</code>: Um inteiro. Simples.</p>
 
                         <p><pre><code data-trim>
-a = 1
+&gt;&gt;&gt; a = 1
                         </code></pre></p>
 
                         <p><pre><code data-trim>
@@ -129,56 +183,56 @@ a = 1
                     </section>
 
                     <section>
-                        <p><code>float</code>: Um número com ponto flutuante.</p>
+                        <p><code>float</code>: Um número com ponto flutuante. Simples.</p>
 
                         <p><pre><code data-trim>
-a = 1.1
-b = 1.0
+&gt;&gt;&gt; a = 1.1
+&gt;&gt;&gt; b = 1.0
                         </code></pre></p>
                     </section>
 
                     <section>
-                        <p><code>str</code>: Strings. É um objeto imutável.</p>
+                        <p><code>str</code>: Strings. Objeto imutável.</p>
 
                         <p><pre><code data-trim>
-a = 'Python'
-b = "Python"
-c = """Python
-    Rocks!"""
+&gt;&gt;&gt; a = 'Python'
+&gt;&gt;&gt; b = "Python"
+&gt;&gt;&gt; c = """Python
+&gt;&gt;&gt; Rocks!"""
                         </code></pre></p>
                     </section>
 
                     <section>
-                        <p><code>unicode</code>: Strings em Unicode. É um objeto imutável.</p>
+                        <p><code>unicode</code>: Strings em Unicode. Objeto imutável.</p>
 
                         <p><pre><code data-trim>
-a = u'Python'
+&gt;&gt;&gt; a = u'Python'
                         </code></pre></p>
                     </section>
 
                     <section>
-                        <p><code>list</code>: Listas. É um objeto mutável.</p>
+                        <p><code>list</code>: Listas. Objeto mutável.</p>
 
                         <p><pre><code data-trim>
-a = [1, 2, 'Python', ['Outra lista']]
+&gt;&gt;&gt; a = [1, 2, 'Python', ['Outra lista']]
                         </code></pre></p>
                     </section>
 
                     <section>
-                        <p><code>dict</code>: Um dicionário/objeto/mapa. É um objeto mutável.</p>
+                        <p><code>dict</code>: Um dicionário/objeto/mapa. Objeto mutável.</p>
 
                         <p><pre><code data-trim>
-a = {'Python': 'Rocks',
-     1: 1.0}
+&gt;&gt;&gt; a = {'Python': 'Rocks',
+&gt;&gt;&gt; 1: 1.0}
                         </code></pre></p>
                     </section>
 
                     <section>
-                        <p><code>tuple</code>: Um conjunto de elementos. É um objeto imutável.</p>
+                        <p><code>tuple</code>: Um conjunto de elementos. Objeto imutável.</p>
 
                         <p><pre><code data-trim>
-a = ('Python', 1)
-b = (2,)
+&gt;&gt;&gt; a = ('Python', 1)
+&gt;&gt;&gt; b = (2,)
                         </code></pre></p>
                     </section>
 
@@ -218,9 +272,9 @@ b = (2,)
                         <h3><code>if [condição]</code></h3>
 
                         <p><pre><code data-trim>
-if a = 1:
-    b = 2
-c = 3
+&gt;&gt;&gt; if a == 1:
+&gt;&gt;&gt;     b = 2
+&gt;&gt;&gt; c = 3
                         </code></pre></p>
                     </section>
 
@@ -228,11 +282,11 @@ c = 3
                         <h3><code>while [condição]</code></h3>
 
                         <p><pre><code data-trim>
-a = 1
-while True:
-    a += 1
-    if a &gt; 10:
-        break
+&gt;&gt;&gt; a = 1
+&gt;&gt;&gt; while True:
+&gt;&gt;&gt;     a += 1
+&gt;&gt;&gt;     if a &gt; 10:
+&gt;&gt;&gt;         break
                         </code></pre></p>
                     </section>
 
@@ -240,9 +294,9 @@ while True:
                         <h3><code>for [iterável]</code></h3>
 
                         <p><pre><code data-trim>
-soma = 0
-for valor em [345, 123, 123, 34]:
-    soma += valor
+&gt;&gt;&gt; soma = 0
+&gt;&gt;&gt; for valor em [345, 123, 123, 34]:
+&gt;&gt;&gt;     soma += valor
                         </code></pre></p>
                     </section>
                 </section>
@@ -276,8 +330,8 @@ for valor em [345, 123, 123, 34]:
                         <p>Strings como iteráveis:</p>
 
                         <p><pre><code data-trim>
-for l in 'Python':
-    print l
+&gt;&gt;&gt; for l in 'Python':
+&gt;&gt;&gt;     print l
                         </code></pre></p>
                     </section>
 
@@ -285,10 +339,98 @@ for l in 'Python':
 						<p>Dicionários como iteráveis:</p>
 
 						<p><pre><code data-trim>
-for key in {'Python': 'Rocks', 'Parrot': 'Dead', 'Favorite Color': 'Blue'}:
-	print key
+&gt;&gt;&gt; d =  {'Python': 'Rocks', 'Parrot': 'Dead', 'Favorite Color': 'Blue'}
+&gt;&gt;&gt; for key in d:
+&gt;&gt;&gt; 	print key, d[key]
 						</code></pre></p>
 					</section>
+					
+					<section>
+					    <p>Ou ainda:</p>
+					    
+					    <p><pre><code data-trim>
+&gt;&gt;&gt; d =  {'Python': 'Rocks', 'Parrot': 'Dead', 'Favorite Color': 'Blue'}
+&gt;&gt;&gt; for (key, value) in d.iteritems():
+&gt;&gt;&gt;     print key, value
+					    </code></pre></p>
+					</section>
+                </section>
+                
+                <section>
+                    <section>
+                        <h2>Slices</h2>
+                    </section>
+                    
+                    <section>
+                        <p>Slice é uma "extensão" de indíces de acesso.</p>
+                        
+                        <p>Com slices, é possível "cortar" iteráveis, retornando
+                        um novo iterável.</p>
+                    </section>
+                    
+                    <section>
+                        <p><pre><code data-trim>
+iterável[start:end:step]
+                        </code></pre></p>
+                        
+                        <p>(<code>end</code> é exclusívo.)</p>
+                    </section>
+                    
+                    <section>
+                        <p><pre><code data-trim>
+&gt;&gt;&gt; a = [1, 2, 3, 4]
+&gt;&gt;&gt; print a[1:2]
+[2]
+                        </code></pre></p>
+                    </section>
+                    
+                    <section>
+                        <p>Deixar um índice em branco indica que:</p>
+                        
+                        <ul>
+                            <li><code>start</code> = 0</li>
+                            <li><code>end</code> = len(iterável)</li>
+                            <li><code>step</code> = 1</li>
+                        </ul>
+                        
+                        <p><pre><code data-trim>
+&gt;&gt;&gt; a = [1, 2, 3, 4]
+&gt;&gt;&gt; print a[:2]
+[1, 2]
+                        </code></pre></p>
+                    </section>
+                    
+                    <section>
+                        <p>Índices negativos começam do final do iterável.</p>
+                        
+                        <p><pre><code data-trim>
+&gt;&gt;&gt; a = [1, 2, 3, 4]
+&gt;&gt;&gt; print a[1:-1]
+[2, 3]
+                        </code></pre></p>
+                    </section>
+                    
+                    <section>
+                        <p>Lembre-se que strings também são iteráveis.</p>
+                        
+                        <p><pre><code data-trim>
+&gt;&gt;&gt; a = 'Python Rocks'
+&gt;&gt;&gt; print a[7:-1]
+'Rock'
+                        </code></pre></p>
+                    </section>
+                    
+                    <section>
+                        <p>Deixar os dois índices em branco cria uma cópia "flat".</p>
+                        <p><pre><code data-trim>
+&gt;&gt;&gt; a = [1, 2, 3, 4]
+&gt;&gt;&gt; print a[:]
+[1, 2, 3, 4]
+                        </code></pre></p>
+                        
+                        <p>Para fazer uma cópia de uma lista com outros
+                        iteráveis internos, existe o módulo <code>deepcopy</code>.</p>
+                    </section>
                 </section>
 
 				<section>
@@ -297,13 +439,103 @@ for key in {'Python': 'Rocks', 'Parrot': 'Dead', 'Favorite Color': 'Blue'}:
 					</section>
 
 					<section>
-						<h3><code>def [nome_da_função]([parâmetro], [parâmetro]):</code></h3>
+						<h3><code>def [nome_da_função]([parâmetro], [parâmetro], ...):</code></h3>
 
 						<p><pre><code data-trim>
-def funcao(a, b, c):
-    return (a + b) / c
+&gt;&gt;&gt; def funcao(a, b, c):
+&gt;&gt;&gt;     return (a + b) / c
 						</code></pre></p>
 					</section>
+				</section>
+				
+				<section>
+				    <section>
+				        <h2>Classes</h2>
+				    </section>
+				    
+				    <section>
+				        <p>Ok, algumas coisas a serem vistas antes de entrar em
+				        classes:</p>
+				    </section>
+				    
+				    <section>
+				        <p>Existem dois tipos de classes: old-style e new-style.</p>
+				        
+				        <p>A diferença é que classes "new-style" sempre extendem da
+				        classe <code>object</code>, enquanto que "old-style" não
+				        extendem ninguém.</p>
+				        
+				        <p>Por baixo dos panos, "new-style" e "old-style" funcionam
+				        de forma diferente, mas isso não é visível para o
+				        programador.</p>
+				    </section>
+				    
+				    <section>
+				        <p>Para todos os casos e efeitos, "old-style" não deve
+				        mais ser usado.</p>
+				        
+				        <p class='fragment'>No Python 3, não existem mais
+				        classes "old-style", mas a sintaxe removeu a necessidade
+				        de extender <code>object</code>.</p>
+				        
+				        <p class='fragment'>(Ou seja, no Python 3 uma classe
+				        se parece com o "old-style" do Python 2.)</p>
+				    </section>
+				    
+				    <section>
+				        <p><code>this</code>/<code>self</code> não é uma variável
+				        implícita da classe: Ela tem que constar <i>sempre</i>
+				        na definiçào do método.</p>
+				    </section>
+				    
+				    <section>
+				        <p>O construtor da classe é chamado <code>__init__</code>.</p>
+				        
+				        <p>Não existe função para o destrutor.</p>
+				        
+				        <p class='fragment'>Existem ainda outras funções (como o
+				        <code>__getitem__</code> comentado anteriormente), mas
+				        não vamos falar sobre elas nesse momento.</p>
+				    </section>
+				    
+				    <section>
+	    			    <p><pre><code data-trim>
+&gt;&gt;&gt; class MyClasse(object):
+&gt;&gt;&gt;     def __init__(self):
+&gt;&gt;&gt;         self.valor = 0
+&gt;&gt;&gt;     def show(self):
+&gt;&gt;&gt;         print self.valor
+    				    </code></pre></p>
+				    </section>
+				    
+				    <section>
+				        <p>Para instanciar uma classe, basta chamar a classe
+				        como se fosse uma função.</p>
+				        
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; my = MyClasse()
+&gt;&gt;&gt; my.show()
+0
+				        </code></pre></p>
+				    </section>
+				    
+				    <section>
+				        <p>Se o construtor tiver parâmetros, estes devem ser
+				        passados durante a instanciação, como se a "função"
+				        classe tivesse parâmetros.</p>
+				        
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; class MyClasse(object):
+&gt;&gt;&gt;     def __init__(self, name):
+&gt;&gt;&gt;         self.name = name        
+&gt;&gt;&gt;     def show(self):
+&gt;&gt;&gt;         print self.name
+        
+&gt;&gt;&gt; my = MyClasse('Julio')
+&gt;&gt;&gt; my.show()
+Julio
+				        </code></pre></p>
+				    </section>
 				</section>
             </div>
         </div>
