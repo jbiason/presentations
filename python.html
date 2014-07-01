@@ -1,90 +1,340 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
 
-		<title>Python</title>
+        <title>Python</title>
 
-		<meta name="author" content="Julio Biason">
+        <meta name="author" content="Julio Biason">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.6.2/css/reveal.min.css">
-		<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.6.2/css/theme/default.css" id="theme">
+        <link rel="stylesheet" href="_external/reveal.min.css">
+        <link rel="stylesheet" href="_external/default.css" id="theme">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.6.2/lib/css/zenburn.css">
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="_external/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-		<script>
-			if( window.location.search.match( /print-pdf/gi ) ) {
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = 'http://cdn.jsdelivr.net/reveal.js/2.6.2/css/print/pdf.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-			}
-		</script>
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = '_external/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
 
-		<!--[if lt IE 9]>
-		<script src="reveal.js/lib/js/html5shiv.js"></script>
-		<![endif]-->
+        <!--[if lt IE 9]>
+        <script src="reveal.js/lib/js/html5shiv.js"></script>
+        <![endif]-->
 
-		<style>
+        <style>
 .semi-opaque {
-	background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 * {
-	hyphens: none !important;
-	-moz-hyphens: none !important;
+    hyphens: none !important;
+    -moz-hyphens: none !important;
 }
-		</style>
-	</head>
+        </style>
+    </head>
 
-	<body>
+    <body>
 
-		<div class="reveal">
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section data-background='_images/zen-of-python-poster-a3.png'>
-					<h1 class='semi-opaque'>Python</h1>
+        <div class="reveal">
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section data-background='_images/zen-of-python-poster-a3.png' class='semi-opaque'>
+                    <h1>Python</h1>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>O que é Python?</h2>
+                    </section>
+
+                    <section>
+                        <ul>
+                            <li>Linguagem interpretada.</li>
+                            <li>Dinamicamente tipada.</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>O interpretador Python</h2>
+                    </section>
+
+                    <section>
+                        <p><pre><code data-trim>
+Python 2.7.5 (default, Jun 25 2014, 10:19:55) 
+[GCC 4.8.2 20131212 (Red Hat 4.8.2-7)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt;
+                        </code></pre></p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Tipos</h2>
+                    </section>
+                    
+                    <section>
+                        <h3>Tipos Mutáveis e Tipos Imutáveis</h3>
+
+                        <p>Em Python, o tipo da variável pode ser mutável ou imutável, mas
+                        a definição é data pelo tipo e não pelo usuário.</p>
+                    </section>
+
+                    <section>
+                        <p>Uma variável do tipo "imutável" não pode ser alterada depois de
+                        criada. Tentar modificar a variável vai criar uma nova instância.</p>
+
+                        <p>Uma variável do tipo "mutável" é o contrário: tentar alterar vai
+                        alterar o objeto, não criar um novo.</p>
+
+                        <p>A importância disto será visto mais pra frente, mas tenha isso
+                        em mente.</p>
+                    </section>
+
+                    <section>
+                        <p><code>bool</code>: Tipo booleano.</p>
+
+                        <p><pre><code data-trim>
+a = True
+b = False
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p><code>int</code>: Um inteiro.</p>
+
+                        <p><pre><code data-trim>
+a = 1
+                        </code></pre></p>
+
+                        <p><pre><code data-trim>
+&gt;&gt;&gt; 1 + 1
+2
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p><code>float</code>: Um número com ponto flutuante.</p>
+
+                        <p><pre><code data-trim>
+a = 1.1
+b = 1.0
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p><code>str</code>: Strings. É um objeto imutável.</p>
+
+                        <p><pre><code data-trim>
+a = 'Python'
+b = "Python"
+c = """Python
+    Rocks!"""
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p><code>unicode</code>: Strings em Unicode. É um objeto imutável.</p>
+
+                        <p><pre><code data-trim>
+a = u'Python'
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p><code>list</code>: Listas. É um objeto mutável.</p>
+
+                        <p><pre><code data-trim>
+a = [1, 2, 'Python', ['Outra lista']]
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p><code>dict</code>: Um dicionário/objeto/mapa. É um objeto mutável.</p>
+
+                        <p><pre><code data-trim>
+a = {'Python': 'Rocks',
+     1: 1.0}
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p><code>tuple</code>: Um conjunto de elementos. É um objeto imutável.</p>
+
+                        <p><pre><code data-trim>
+a = ('Python', 1)
+b = (2,)
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p>E ainda (mas menos importantes):</p>
+
+                        <ul>
+                            <li>None</li>
+                            <li>Long (<code>a = 1L</code>)</li>
+                            <li>Lambdas (<code> a = lambda a: a + 2</code>)</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Estruturas de Controle</h2>
+
+                        <p><small>(... que é o nome bonito para coisas tipo <code>if</code>, <code>for</code>...)</small></p>
+                    </section>
+
+                    <section>
+                        <p>Antes de mais nada...</p>
+
+                        <h3 class='fragment'>Blocos</h3>
+                    </section>
+
+                    <section>
+                        <p>Em Python, uma identação define um bloco.</p>
+
+                        <p class='fragment'>Não tem <code>{</code> / <code>}</code>, não tem <code>end</code>, nada. Só blocos.</p>
+
+                        <img class='fragment' src='_images/zuul.jpg'></img>
+                    </section>
+
+                    <section>
+                        <h3><code>if [condição]</code></h3>
+
+                        <p><pre><code data-trim>
+if a = 1:
+    b = 2
+c = 3
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <h3><code>while [condição]</code></h3>
+
+                        <p><pre><code data-trim>
+a = 1
+while True:
+    a += 1
+    if a &gt; 10:
+        break
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <h3><code>for [iterável]</code></h3>
+
+                        <p><pre><code data-trim>
+soma = 0
+for valor em [345, 123, 123, 34]:
+    soma += valor
+                        </code></pre></p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>The fuck "ITERÁVEL"?</h2>
+                    </section>
+
+                    <section>
+                        <p>Um objeto "iterável" é aquele que pode ter elementos
+                        acessados usando <code>[</code> e <code>]</code>.</p>
+
+						<p class='fragment'>(Na verdade, o objeto tem que ter um <i>generator</i>;
+						para acesar elementos diretamente, o objeto tem que implementar a função
+						<code>__getitem__</code>.)</p>
+                    </section>
+
+                    <section>
+                        <p>Tipos iteráveis:</p>
+
+                        <ul>
+                            <li class='fragment'>Listas (<code>a[2]</code>)</li>
+                            <li class='fragment'>Tuplas (<code>a[2]</code>)</li>
+                            <li class='fragment'>Dicionários (<code>a['Python']</code>)</li>
+                            <li class='fragment'>Strings/Unicodes (<code>a[2]</code>)</li>
+                        </u>
+                    </section>
+
+                    <section>
+                        <p>Strings como iteráveis:</p>
+
+                        <p><pre><code data-trim>
+for l in 'Python':
+    print l
+                        </code></pre></p>
+                    </section>
+
+					<section>
+						<p>Dicionários como iteráveis:</p>
+
+						<p><pre><code data-trim>
+for key in {'Python': 'Rocks', 'Parrot': 'Dead', 'Favorite Color': 'Blue'}:
+	print key
+						</code></pre></p>
+					</section>
+                </section>
+
+				<section>
+					<section>
+						<h2>Funções</h2>
+					</section>
+
+					<section>
+						<h3><code>def [nome_da_função]([parâmetro], [parâmetro]):</code></h3>
+
+						<p><pre><code data-trim>
+def funcao(a, b, c):
+    return (a + b) / c
+						</code></pre></p>
+					</section>
 				</section>
-			</div>
-		</div>
+            </div>
+        </div>
 
-		<script src="http://cdn.jsdelivr.net/reveal.js/2.6.2/lib/js/head.min.js"></script>
-		<script src="http://cdn.jsdelivr.net/reveal.js/2.6.2/js/reveal.min.js"></script>
+        <script src="_external/head.min.js"></script>
+        <script src="_external/reveal.min.js"></script>
 
-		<script>
+        <script>
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+                theme: 'night',
+                transition: 'linear',
 
-				theme: 'default',
-				transition: 'linear',
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: '_external/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: '_external/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '_external/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '_external/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: '_external/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: '_external/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'http://cdn.jsdelivr.net/reveal.js/2.6.2/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+        </script>
 
-		</script>
-
-	</body>
+    </body>
 </html>
