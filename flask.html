@@ -208,6 +208,42 @@ app = Flask(__name__)
                     </p>
                 </section>
 
+				<section>
+					<section>
+						<h2>Configurações</h2>
+					</section>
+
+					<section>
+						<p>Configurações podem vir de 3 lugares diferentes:</p>
+
+						<ul>
+							<li>De uma classe.</li>
+							<li>De um arquivo Python.</li>
+							<li>De um arquivo apontando por uma variável de ambiente.</li>
+						</ul>
+
+						<p>Todos os três podem ser executados em sequência, o último valor
+						encontrado é o que vale.</p>
+						</p>
+					</section>
+
+					<section>
+						<p><pre><code data-trim>
+class Settings(objects):
+	FILE_PATH = './here'
+	ORDER_FIELD = 'name'
+						</code></pre></p>
+
+						<p><pre><code data-trim>
+app = Flask(__name__)
+
+app.config.from_object(Settings)
+app.config.from_pyfile('/etc/meuaplicativo.cfg')
+app.config.from.envvar('MEUAPLICATIVO_CFG')
+						</code></pre></p>
+					</section>
+				</section>
+
                 <section>
                     <section>
                         <h2>Rotas</h2>
