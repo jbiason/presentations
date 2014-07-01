@@ -245,23 +245,6 @@ from flask import request
 						<p>Mais sobre <code>request</code> mais adiante.</p>
 					</section>
 				</section>
-					<section>
-						<p>Para acessar as configurações, usa-se a propriedade <code>config</code>
-						da aplicação quando esta está rodando.</p>
-
-						<p>(Contexto de aplicação, lembra?)</p>
-
-						<p><pre><code data-trim>
-from flask import current_app
-from flask import render_template
-
-@app.route('/')
-def index():
-	return render_template('template.html',
-	                       order=current_app.config.get('ORDER_FIELD'))
-						</code></pre></p>
-					</section>
-				</section>
 
                 <section>
                     <section>
@@ -627,6 +610,23 @@ app.config.from_pyfile('/etc/meuaplicativo.cfg')
 app.config.from.envvar('MEUAPLICATIVO_CFG')
 						</code></pre></p>
 					</section>
+
+					<section>
+						<p>Para acessar as configurações, usa-se a propriedade <code>config</code>
+						da aplicação quando esta está rodando.</p>
+
+						<p>(Contexto de aplicação, lembra?)</p>
+
+						<p><pre><code data-trim>
+from flask import current_app
+from flask import render_template
+
+@app.route('/')
+def index():
+	return render_template('template.html',
+	                       order=current_app.config.get('ORDER_FIELD'))
+						</code></pre></p>
+					</section>
 				</section>
 
                 <section>
@@ -731,7 +731,7 @@ if __name__ == '__main__':
                         <ul>
                             <li>Sintaxe simples <span class='fragment'>(a sintaxe foi uma brincadeira de 1o. de abril)</span></li>
                             <li class='fragment'>Controle centralizado de erros.</li>
-                            <li class='fragment'>Total controle sobre as respostas.</li>
+							<li class='fragment'>Total controle sobre as respostas. <span class='fragment'>"Explícito é melhor que implícito."</span></li>
                             <li class='fragment'>Acesso total ao request.</li>
                             <li class='fragment'>Módulos completamente isolados<span class='fragment'> mas ainda permite que esses sejam
                                 conectados por endpoints.</span></li>
