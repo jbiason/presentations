@@ -210,36 +210,55 @@ app = Flask(__name__)
 
 				<section>
 					<section>
-						<h2>Configurações</h2>
+						<h2>Contextos</h2>
 					</section>
 
 					<section>
-						<p>Configurações podem vir de 3 lugares diferentes:</p>
+						<p>Essa é a parte chata do Flask.</p>
 
-						<ul>
-							<li>De uma classe.</li>
-							<li>De um arquivo Python.</li>
-							<li>De um arquivo apontando por uma variável de ambiente.</li>
-						</ul>
-
-						<p>Todos os três podem ser executados em sequência, o último valor
-						encontrado é o que vale.</p>
-						</p>
+						<p>Existem dois contextos: Contexto de aplicação e Contexto que requisição.</p>
 					</section>
 
 					<section>
+						<p>Contexto de aplicação só existe quando o app está rodando.</p>
+
+						<p>Acessado com <code>current_app</code>.</p>
+
 						<p><pre><code data-trim>
-class Settings(objects):
-	FILE_PATH = './here'
-	ORDER_FIELD = 'name'
+from flask import current_app
 						</code></pre></p>
 
-						<p><pre><code data-trim>
-app = Flask(__name__)
+						<p>É a única forma de acessar dados da aplicação enquanto ela
+						está rodando.</p>
+					</section>
 
-app.config.from_object(Settings)
-app.config.from_pyfile('/etc/meuaplicativo.cfg')
-app.config.from.envvar('MEUAPLICATIVO_CFG')
+					<section>
+						<p>Contexto de requisição só existe quando o sistema está
+						atendendo uma requisção (recebeu uma URL).</p>
+
+						<p>Acessado com <code>request</code>.</p>
+
+						<p><pre><code data-trim>
+from flask import request
+						</code></pre></p>
+
+						<p>Mais sobre <code>request</code> mais adiante.</p>
+					</section>
+				</section>
+					<section>
+						<p>Para acessar as configurações, usa-se a propriedade <code>config</code>
+						da aplicação quando esta está rodando.</p>
+
+						<p>(Contexto de aplicação, lembra?)</p>
+
+						<p><pre><code data-trim>
+from flask import current_app
+from flask import render_template
+
+@app.route('/')
+def index():
+	return render_template('template.html',
+	                       order=current_app.config.get('ORDER_FIELD'))
 						</code></pre></p>
 					</section>
 				</section>
@@ -573,6 +592,42 @@ def not_found():
                         dentro dos blueprints.</p>
                     </section>
                 </section>
+
+				<section>
+					<section>
+						<h2>Configurações</h2>
+					</section>
+
+					<section>
+						<p>Configurações podem vir de 3 lugares diferentes:</p>
+
+						<ul>
+							<li>De uma classe.</li>
+							<li>De um arquivo Python.</li>
+							<li>De um arquivo apontando por uma variável de ambiente.</li>
+						</ul>
+
+						<p>Todos os três podem ser executados em sequência, o último valor
+						encontrado é o que vale.</p>
+						</p>
+					</section>
+
+					<section>
+						<p><pre><code data-trim>
+class Settings(objects):
+	FILE_PATH = './here'
+	ORDER_FIELD = 'name'
+						</code></pre></p>
+
+						<p><pre><code data-trim>
+app = Flask(__name__)
+
+app.config.from_object(Settings)
+app.config.from_pyfile('/etc/meuaplicativo.cfg')
+app.config.from.envvar('MEUAPLICATIVO_CFG')
+						</code></pre></p>
+					</section>
+				</section>
 
                 <section>
                     <section>
