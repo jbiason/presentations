@@ -49,7 +49,6 @@
     <body>
 
         <div class="reveal">
-            <!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
                 <section data-background='_images/zen-of-python-poster-a3.png' class='semi-opaque'>
                     <h1>Python</h1>
@@ -64,12 +63,17 @@
                         <ul>
                             <li>Linguagem interpretada.</li>
                             <li>Dinamicamente tipada.</li>
+							<li>Principais usos em pesquisas e web.</li>
                         </ul>
                     </section>
-                    
+				</section>
+
+				<section>
                     <section>
                         <h2>O Zen de Python</h2>
+					</section>
                         
+					<section>
                         <ul>
                             <li>Bonito é melhor que feio.</li>
                             <li>Explícito é melhor que implícito.</li>
@@ -83,20 +87,24 @@
                     
                     <section>
                         <ul>
-                            <li>Casos especiais não são especiais o suficiente para quebrar as regras.</li>
-                            <li>Embora praticabilidade ganhe de puridade.</li>
-                            <li>Erros nunca devem passam silenciosamente.</li>
-                            <li>A não ser que sejam explicitamente silenciados.</li>
+                            <li>Casos especiais não são especiais o suficiente para quebrar as regras.
+							<ul><li>Embora praticabilidade ganhe de puridade.</li></ul>
+							</li>
+                            <li>Erros nunca devem passam silenciosamente.
+							<ul><li>A não ser que sejam explicitamente silenciados.</li></ul>
+							</li>
                             <li>Em caso de ambiguidade, evite a tentação de adivinhar.</li>
-                            <li>Deve haver um -- e preferencialmente apenas um -- modo óbvio de fazer algo.</li>
-                            <li>Embora talvez não seja tão óbvio de primeira a não ser que você seja Holandês.</li>
+                            <li>Deve haver um -- e preferencialmente apenas um -- modo óbvio de fazer algo.
+							<ul><li>Embora talvez não seja tão óbvio de primeira a não ser que você seja Holandês.</li></ul>
+							</li>
                         </ul>
                     </section>
                     
                     <section>
                         <ul>
-                            <li>Agora é melhor do que nunca.</li>
-                            <li>Embora nunca seja melhor que <i>agora mesmo</i>.</li>
+                            <li>Agora é melhor do que nunca.
+							<ul><li>Embora nunca seja melhor que <i>agora mesmo</i>.</li></ul>
+							</li>
                             <li>Se a implementação é difícil de explicar, é uma péssima idéia.</li>
                             <li>Se a implementação é fácil de explicar, pode ser uma boa idéia.</li>
                             <li>Namespaces são uma grande idéia - vamos fazer mais desses!</li>
@@ -129,7 +137,7 @@ python meuscript.py
 
                 <section>
                     <section>
-                        <h2>Tipos</h2>
+                        <h2>Tipos de Variáveis</h2>
                     </section>
                     
                     <section>
@@ -446,6 +454,18 @@ iterável[start:end:step]
 &gt;&gt;&gt;     return (a + b) / c
 						</code></pre></p>
 					</section>
+
+					<section>
+						<p>Parâmetros podem ser nomeados.</p>
+
+						<p><pre><code data-trim>
+&gt;&gt;&gt; def funcao(a, b, c):
+&gt;&gt;&gt;     return (a + b) / c
+&gt;&gt;&gt;
+&gt;&gt;&gt; funcao(b=2, c=3, a=10)
+4
+						</code></pre></p>
+					</section>
 				</section>
 				
 				<section>
@@ -536,6 +556,227 @@ iterável[start:end:step]
 Julio
 				        </code></pre></p>
 				    </section>
+
+					<section>
+						<p>Herança</p>
+
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; class A(object):
+&gt;&gt;&gt;     def __init__(self):
+&gt;&gt;&gt;         self.value = 10
+&gt;&gt;&gt; class B(A):
+&gt;&gt;&gt;     def __init__(self):
+&gt;&gt;&gt;         super(B, self).__init__()
+&gt;&gt;&gt;         self.name = 'AAAA'
+				        </code></pre></p>
+					</section>
+
+					<section>
+						<p>Herança Múltipla</p>
+
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; class A(object):
+&gt;&gt;&gt;     def __init__(self):
+&gt;&gt;&gt;         self.value = 10
+&gt;&gt;&gt; class B(object):
+&gt;&gt;&gt;     def __init__(self):
+&gt;&gt;&gt;         self.name = 'AAAA'
+&gt;&gt;&gt; class C(A, B):
+&gt;&gt;&gt;     def __init__(self):
+&gt;&gt;&gt;         super(C, self).__init__()
+				        </code></pre></p>
+					</section>
+
+					<section>
+						<p>No Python 3, basta usar <code>super().__init__()</code>.
+					</section>
+				</section>
+
+				<section>
+					<h2>As Esquisitices de Python</h2>
+				</section>
+
+				<section>
+					<section>
+						<h3>Strings São Imutáveis</h3>
+					</section>
+
+					<section>
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; a = 'string 1'
+&gt;&gt;&gt; b = 'string 2'
+&gt;&gt;&gt; c = a + ' ' + b
+				        </code></pre></p>
+
+						<ul>
+							<li>Cria um objeto que é o conteúdo de "a" com um espaço.</li>
+							<li>Cria um novo objeto que é o novo objeto mais o conteúdo de "b".</li>
+							<li>Atribui o novo objeto à "c".</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>Forma correta de concatenar strings:</p>
+
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; a = 'string 1'
+&gt;&gt;&gt; b = 'string 2'
+&gt;&gt;&gt; c = ' '.join([a, b])
+				        </code></pre></p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Listas São Mutáveis</h3>
+					</section>
+
+					<section>
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; def a(l=[]):
+&gt;&gt;&gt;     l.append(1)
+&gt;&gt;&gt;     print l
+&gt;&gt;&gt;
+&gt;&gt;&gt; a()
+[1]
+&gt;&gt;&gt; a()
+[1, 1]
+				        </code></pre></p>
+					</section>
+
+					<section>
+						<p>Forma correta de lidar com parâmetros mutáveis:</p>
+
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; def a(l=None):
+&gt;&gt;&gt;     if not l:
+&gt;&gt;&gt;         l = []
+&gt;&gt;&gt;     l.append(1)
+&gt;&gt;&gt;
+&gt;&gt;&gt; a()
+[1]
+&gt;&gt;&gt; a()
+[1]
+				        </code></pre></p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Stars</h3>
+					</section>
+
+					<section>
+						<p>"Stars" servem para empacotar e desempacotar parâmetros indefinidos.</p>
+					</section>
+
+					<section>
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; def a(*args):
+&gt;&gt;&gt;     print args
+&gt;&gt;&gt;
+&gt;&gt;&gt; a(1)
+[1]
+&gt;&gt;&gt; a(1, 2, 3, 4, 5)
+[1, 2, 3, 4, 5]
+				        </code></pre></p>
+
+						<p><code>*</code> pega somente os parâmetros que não tem nome.</p>
+					</section>
+
+					<section>
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; def a(**kwargs):
+&gt;&gt;&gt;     print kwargs
+&gt;&gt;&gt;
+&gt;&gt;&gt; a(a=1)
+{a: 1}
+&gt;&gt;&gt; a(value1=10, a=2)
+{value1: 10, a: 2}
+				        </code></pre></p>
+
+						<p><code>**</code> pega somente os parâmetros que tem nome.</p>
+					</section>
+
+					<section>
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; def a(*args, **kwargs):
+&gt;&gt;&gt;     print args
+&gt;&gt;&gt;     print kwargs
+&gt;&gt;&gt;
+&gt;&gt;&gt; a(a=1)
+[]
+{a: 1}
+&gt;&gt;&gt; a(1, 2, 3, a=5)
+[1, 2, 3]
+{a: 5}
+				        </code></pre></p>
+					</section>
+
+					<section>
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; def a(a, b, *args, name=None, **kwargs):
+&gt;&gt;&gt;     print 'a =', a
+&gt;&gt;&gt;     print 'b =', b
+&gt;&gt;&gt;     print 'args =', args
+&gt;&gt;&gt;     print 'name = ', name
+&gt;&gt;&gt;     print 'kwargs =', kwargs
+				        </code></pre></p>
+					</section>
+
+					<section>
+						<img src='_images/boring.gif'>
+
+						<p>BORING!</p>
+					</section>
+
+					<section>
+						<p>A parte legal dos stars não é usar para criar funções que aceitam
+						qualquer parâmetro (embora isso seja legal em alguns casos).</p>
+
+						<p>A parte legal é fazer chamadas de funções com dicionários.</p>
+					</section>
+
+					<section>
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; def funcao(a, b, c):
+&gt;&gt;&gt;     return (a + b) / c
+&gt;&gt;&gt;
+&gt;&gt;&gt; params = {b: 2, c: 3, a:10}
+&gt;&gt;&gt; funcao(**params)
+				        </code></pre></p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>"Functions are First Class Citizens"</h3>
+					</section>
+
+					<section>
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; def funcao(a, b, c):
+&gt;&gt;&gt;     return (a + b) / c
+&gt;&gt;&gt;
+&gt;&gt;&gt; def check(a, b, c, condition, function):
+&gt;&gt;&gt;     if condition:
+&gt;&gt;&gt;         print function(a, b, c)
+&gt;&gt;&gt;
+&gt;&gt;&gt; check(1, 2, 3, True, funcao)
+1
+&gt;&gt;&gt; check(1, 2, 3, False, funcao)
+&gt;&gt;&gt;
+				        </code></pre></p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Decorators</h3>
+					</section>
+
+					<section>
+					</section>
 				</section>
             </div>
         </div>
