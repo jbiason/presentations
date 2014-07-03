@@ -776,8 +776,72 @@ Julio
 					</section>
 
 					<section>
+						<p>A idéia dos decorators é cria uma função que altera a funcionalidade
+						de uma função.</p>
+
+						<p>A forma mais simples de entender decorators é pensar neles como
+						funções que encapsulam callbacks.</p>
+					</section>
+
+					<section>
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; def retrieve(connection):
+&gt;&gt;&gt;     # faz algo com a conexão para recuperar dados.
+				        </code></pre></p>
+
+						<p>Problema: antes de sair executando algo na conexão, tem que ser
+						verificado se a conexão está ativa.</p>
+					</section>
+
+					<section>
+						<p>Solução menos óbvia: Criar uma função que verifica a conexão e,
+						se ela estiver ok, chama a função.</p>
+
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; def retrieve(connection):
+&gt;&gt;&gt;     # faz algo com a conexão para recuperar dados.
+&gt;&gt;&gt;
+&gt;&gt;&gt; def update(connection):
+&gt;&gt;&gt;     # atualiza algo usando a função
+&gt;&gt;&gt;
+&gt;&gt;&gt; def check(connection, call):
+&gt;&gt;&gt;     if not connection.is_connected:
+&gt;&gt;&gt;         connection.retry()
+&gt;&gt;&gt;     call(connection)
+				        </code></pre></p>
+
+						<p>Novo problema: Todo lugar onde antes era chamado <code>retrieve</code>
+						agora precisa ser alterado para <code>check(connection, retrieve)</code> e
+						todo lungar onde era chamado <code>update</code> precisa ser alterado para
+						<code>check(connection, update)</code>.</p>
+					</section>
+
+					<section>
+						<p>Solução mais simples: decorators.</p>
+
+						<p><pre><code data-trim>
+&gt;&gt;&gt; from functools import wrap
+&gt;&gt;&gt;
+&gt;&gt;&gt; def check(func):
+&gt;&gt;&gt;     def check_conn(*args, **kwargs):
+&gt;&gt;&gt;         # acha a conexão em args ou kwargs
+&gt;&gt;&gt;         if not connection.is_connected:
+&gt;&gt;&gt;             connection.retry()
+&gt;&gt;&gt;         return func(*args, **kwargs)
+&gt;&gt;&gt;     return check_conn
+&gt;&gt;&gt;
+&gt;&gt;&gt; @check
+&gt;&gt;&gt; def retrieve(connection):
+&gt;&gt;&gt;     # faz algo com a conexão para recuperar dados
+						</code></pre></p>
+
+						<p>Não precisa alterar nenhuma chamada de <code>retrieve</code>.</p>
 					</section>
 				</section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+                    <section></section>
+                </section>
             </div>
         </div>
 
