@@ -170,6 +170,14 @@ python meuscript.py
                         <p>Outros são tipos simples que não são objetos.</p>
                     </section>
 
+					<section>
+						<p><code>None</code>: O nada. Tipo simples.</p>
+
+                        <p><pre><code data-trim>
+&gt;&gt;&gt; a = None
+                        </code></pre></p>
+					</section>
+
                     <section>
                         <p><code>bool</code>: Tipo booleano. Tipo simples.</p>
 
@@ -184,11 +192,6 @@ python meuscript.py
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = 1
-                        </code></pre></p>
-
-                        <p><pre><code data-trim>
-&gt;&gt;&gt; 1 + 1
-2
                         </code></pre></p>
                     </section>
 
@@ -229,7 +232,7 @@ python meuscript.py
                     </section>
 
                     <section>
-                        <p><code>dict</code>: Um dicionário/objeto/mapa. Objeto mutável.</p>
+                        <p><code>dict</code>: Um dicionário/objeto/mapa/documento. Objeto mutável.</p>
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = {'Python': 'Rocks',
@@ -246,13 +249,27 @@ python meuscript.py
                         </code></pre></p>
                     </section>
 
+					<section>
+						<p><code>set</code>: Conjunto de elementos não repetíveis. Objeto mutável.</p>
+
+                        <p><pre><code data-trim>
+&gt;&gt;&gt; a = set()
+&gt;&gt;&gt; a.add('a')
+&gt;&gt;&gt; a
+set(['a'])
+&gt;&gt;&gt; a.add('a')
+&gt;&gt;&gt; a
+set(['a'])
+
+						</code></pre></p>
+					</section>
+
                     <section>
                         <p>E ainda (mas menos importantes):</p>
 
                         <ul>
-                            <li>None</li>
                             <li>Long (<code>a = 1L</code>)</li>
-                            <li>Lambdas (<code> a = lambda a: a + 2</code>)</li>
+                            <li>Lambdas (<code>a = lambda a: a + 2</code>)</li>
                         </ul>
                     </section>
                 </section>
@@ -299,6 +316,63 @@ python meuscript.py
 &gt;&gt;&gt;         break
                         </code></pre></p>
                     </section>
+
+					<section>
+						<img src='_images/intermission_3696.jpg'>
+					</section>
+
+					<section>
+						<h3>[condição]</h3>
+
+						<p>Comparação pode ter mais de um elemento:</p>
+
+                        <p><pre><code data-trim>
+&gt;&gt;&gt; a = 1; b = 5; c = 3; d = 1
+&gt;&gt;&gt; a == b == c == d
+False
+&gt;&gt;&gt; a &lt; b &gt; c
+True
+                        </code></pre></p>
+					</section>
+
+					<section>
+						<h3>[condição] (cont.)</h3>
+
+						<p>Valores "em branco" são considerados falsos:</p>
+
+						<ul>
+							<li><code>None</code> é falso.</li>
+							<li><code>""</code>, string vazia, é falso.</li>
+							<li><code>0</code> é falso em qualquer precisão.</li>
+							<li><code>[]</code>, lista vazia, é falso.</li>
+							<li><code>{}</code>, dicionário vazio, é falso.</li>
+							<li><code>set()</code>, set vazio, é falso.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>[condição] (cont.)</h3>
+
+						<p>Como valores em branco são falsos, para garantir <code>None</code>
+						usa-se <code>is</code>.</p>
+
+                        <p><pre><code data-trim>
+&gt;&gt;&gt; a = 0
+&gt;&gt;&gt; not a
+True
+&gt;&gt;&gt; a is None
+False
+&gt;&gt;&gt; a = None
+&gt;&gt;&gt; not a
+True
+&gt;&gt;&gt; a is None
+True
+                        </code></pre></p>
+					</section>
+
+					<section>
+						<img src='_images/tumblr_n6qbpoBDVX1rbyj0do1_500.jpg'>
+					</section>
 
                     <section>
                         <h3><code>for [iterável]</code></h3>
@@ -363,6 +437,8 @@ python meuscript.py
 &gt;&gt;&gt; for (key, value) in d.iteritems():
 &gt;&gt;&gt;     print key, value
 					    </code></pre></p>
+
+						<p class='fragment'>Forma considerada "correta" é a anterior.</p>
 					</section>
                 </section>
                 
@@ -441,6 +517,19 @@ iterável[start:end:step]
                         <p>Para fazer uma cópia de uma lista com outros
                         iteráveis internos, existe o módulo <code>deepcopy</code>.</p>
                     </section>
+
+					<section>
+						<p>Todos os iteráveis podem ser "medidos" com <code>len()</code>:</p>
+
+						<ul>
+							<li><code>len(list)</code> &#8667; Número de elementos na lista.</li>
+							<li><code>len(tuple)</code> &#8667; Número de elementos na tupla.</li>
+							<li><code>len(str)</code> &#8667; Número de caracteres na string.</li>
+							<li><code>len(dict)</code> &#8667; Número de chaves no dicionário.</li>
+							<li><code>len(set)</code> &#8667; Número de elementos no set.</li>
+						</ul>
+
+					</section>
                 </section>
 
 				<section>
