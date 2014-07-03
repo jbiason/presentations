@@ -15,9 +15,11 @@
 
         <link rel="stylesheet" href="_external/reveal.min.css">
         <link rel="stylesheet" href="_external/default.css" id="theme">
+		<link rel='stylesheet' href='_external/hightlight-default.min.css'>
 
         <!-- For syntax highlighting -->
-        <link rel="stylesheet" href="_external/zenburn.css">
+        <!-- <link rel="stylesheet" href="_external/zenburn.css"> -->
+		<link rel='stylesheet' href='_external/obsidian.css'>
 
         <!-- If the query includes 'print-pdf', include the PDF print sheet -->
         <script>
@@ -590,6 +592,17 @@ Julio
 					<section>
 						<p>No Python 3, basta usar <code>super().__init__()</code>.
 					</section>
+
+					<section>
+						<p>Propriedades podem ser injetadas a qualquer momento.</p>
+
+&gt;&gt;&gt; class A(object):
+&gt;&gt;&gt;     def __init__(self):
+&gt;&gt;&gt;         self.value = 10
+&gt;&gt;&gt;
+&gt;&gt;&gt; a = A()
+&gt;&gt;&gt; a.name = 'Julio'
+					</section>
 				</section>
 
 				<section>
@@ -690,9 +703,9 @@ Julio
 &gt;&gt;&gt;     print kwargs
 &gt;&gt;&gt;
 &gt;&gt;&gt; a(a=1)
-{a: 1}
+{'a': 1}
 &gt;&gt;&gt; a(value1=10, a=2)
-{value1: 10, a: 2}
+{'value1': 10, 'a': 2}
 				        </code></pre></p>
 
 						<p><code>**</code> pega somente os parâmetros que tem nome.</p>
@@ -706,10 +719,10 @@ Julio
 &gt;&gt;&gt;
 &gt;&gt;&gt; a(a=1)
 []
-{a: 1}
+{'a': 1}
 &gt;&gt;&gt; a(1, 2, 3, a=5)
 [1, 2, 3]
-{a: 5}
+{'a': 5}
 				        </code></pre></p>
 					</section>
 
@@ -722,6 +735,8 @@ Julio
 &gt;&gt;&gt;     print 'name = ', name
 &gt;&gt;&gt;     print 'kwargs =', kwargs
 				        </code></pre></p>
+
+						<p>Saída de uma chamada desta função fica a cargo do leitor.</p>
 					</section>
 
 					<section>
@@ -742,7 +757,7 @@ Julio
 &gt;&gt;&gt; def funcao(a, b, c):
 &gt;&gt;&gt;     return (a + b) / c
 &gt;&gt;&gt;
-&gt;&gt;&gt; params = {b: 2, c: 3, a:10}
+&gt;&gt;&gt; params = {'b': 2, 'c': 3, 'a':10}
 &gt;&gt;&gt; funcao(**params)
 				        </code></pre></p>
 					</section>
@@ -766,6 +781,25 @@ Julio
 1
 &gt;&gt;&gt; check(1, 2, 3, False, funcao)
 &gt;&gt;&gt;
+				        </code></pre></p>
+					</section>
+
+					<section>
+						<p>Como funções são cidadãos de primeira classe e classes podem
+						ter funções injetadas, pode-se extender uma classe em tempo
+						de execução.</p>
+
+				        <p><pre><code data-trim>
+&gt;&gt;&gt; class A(object):
+&gt;&gt;&gt;     def __init__(self):
+&gt;&gt;&gt;         self.value = 10
+&gt;&gt;&gt;
+&gt;&gt;&gt; def show_name(self):
+&gt;&gt;&gt;     print 'Julio'
+&gt;&gt;&gt;
+&gt;&gt;&gt; a = A()
+&gt;&gt;&gt; a.show = show_name
+&gt;&gt;&gt; a.show()
 				        </code></pre></p>
 					</section>
 				</section>
@@ -865,7 +899,7 @@ Julio
                     { src: '_external/classList.js', condition: function() { return !document.body.classList; } },
                     { src: '_external/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                     { src: '_external/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    { src: '_external/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: '_external/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
                     { src: '_external/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
                     { src: '_external/notes.js', async: true, condition: function() { return !!document.body.classList; } }
                 ]
