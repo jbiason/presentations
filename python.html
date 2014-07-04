@@ -65,7 +65,13 @@
                         <ul>
                             <li>Linguagem interpretada.</li>
                             <li>Dinamicamente tipada.</li>
-							<li>Principais usos em pesquisas e web.</li>
+							<li>Principais usos em pesquisas e web.
+								<ul>
+									<li>Assim como o Linux "vazou" dos servidores para os
+									Desktops, Python parece estar "vazando" do meio acadêmico/pesquisa
+									para os servidores.</li>
+								</ul>
+							</li>
                         </ul>
                     </section>
 				</section>
@@ -73,6 +79,10 @@
 				<section>
                     <section>
                         <h2>O Zen de Python</h2>
+
+						<p>Começou em uma brincadeira do Tim Peters (um dos desenvolvedores do Python),
+						mas acabou virando um PEP (PEP 20) e hoje faz parte da filosofia de desenvolvimento
+						do Python.</p>
 					</section>
                         
 					<section>
@@ -113,6 +123,129 @@
                         </ul>
                     </section>
                 </section>
+
+				<section>
+					<section>
+						<h2>As Esquisitices de Python</h2>
+					</section>
+
+					<section>
+						<h3>PEP8</h3>
+					</section>
+
+					<section>
+						<ol>
+							<li>PEPs (Python Enhancement Proposal) são as RFCs que os desenvolvedores
+							Python utilizam para comunicar novas funcionalidades.
+							<ul>
+								<li>Todos os PEPs podem ser encontados em 
+								<a href='http://legacy.python.org/dev/peps/'>http://legacy.python.org/dev/peps/</a>.</li>
+							</ul>
+							<li>Uma funcionalidade não é simplesmente "aceita": É preciso escrever
+							uma proposta de melhoria explicando o problema encontra e como corrigí-lo.
+							</li>
+							<li>PEP8 define a melhor forma de se programar em Python.</li>
+							<li>PEP8 não é forçado pelo compilador.</li>
+							<li>PEP8 garante que qualquer programador Python consiga facilmente
+							encontrar coisas em códigos criados por terceiros.</li>
+						</ol>
+					</section>
+
+					<section>
+						<h4>Um pouco do PEP8:</h4>
+					</section>
+
+					<section>
+						<h5>Variáveis e funções utilizam a notação separado_por_underscores; classes
+							usam CamelCase.</h5>
+
+						<p>Correto:</p>
+						<p><pre><code data-trim>
+						MinhaClasse
+
+						minha_funcao()
+						</code></pre></p>
+
+						<p>Errado:</p>
+						<p><pre><code data-trim>
+						minhaClasse
+
+						minhaFuncao()
+						</code></pre></p>
+					</section>
+
+					<section>
+						<h5>Blocos são marcados com 4 espaços e não tabulações.</h5>
+
+						<p>A maior parte dos editores de código hoje permitem configurar isso facilmente
+						e fazem com que os 4 espaços no começo sejam tratados como tabulação.</p>
+
+						<p>Isso garante que o código irá sempre aparecer da mesma forma em qualquer
+						editor, não importando a configuração do autor.</p>
+					</section>
+
+					<section>
+						<h5>Coluna máxima é 80.</h5>
+
+						<p>Nenhum código deve passar da coluna 80, não importa o tamanho do seu
+						monitor.</p>
+
+						<p>Facilita a leitura e a movimentação dentro do código.</p>
+					</section>
+
+					<section>
+						<h5>Duas linhas em branco antes de classes, 1 linha em branco antes de funções.</h5>
+					</section>
+
+					<section>
+						<h5>Espaços entre operadores (+, -, /, *), nada de espaços antes de parentêses, colchetes ou chaves.</h5>
+
+						<p>Correto:</p>
+
+						<p><pre><code data-trim>
+						(1 + 2)
+						array[1]
+						</code></pre></p>
+
+						<p>Errado:</p>
+						
+						<p><pre><code data-trim>
+						(1+2)
+						( 1 + 2 )
+						array [ 1 ]
+						</code></pre></p>
+					</section>
+
+					<section>
+						<h5>Nada de espaços entre parâmetros nomeados.</h5>
+
+						<p>Correto:</p>
+
+						<p><pre><code data-trim>
+						funcao(param=1)
+						</code></pre></p>
+
+						<p>Errado:</p>
+						<p><pre><code data-trim>
+						funcao(param = 1)
+						</code></pre></p>
+					</section>
+
+					<section>
+						<h3>Blocos</h3>
+					</section>
+
+                    <section>
+                        <p>Em Python, uma identação define um bloco.</p>
+
+                        <p class='fragment'>Não tem <code>{</code> / <code>}</code>, não tem <code>end</code>, nada. Só blocos.</p>
+
+                        <img class='fragment' src='_images/zuul.jpg'></img>
+                    </section>
+
+					<section>
+					</section>
+				</section>
 
                 <section>
                     <section>
@@ -285,14 +418,6 @@ set(['a'])
                         <p>Antes de mais nada...</p>
 
                         <h3 class='fragment'>Blocos</h3>
-                    </section>
-
-                    <section>
-                        <p>Em Python, uma identação define um bloco.</p>
-
-                        <p class='fragment'>Não tem <code>{</code> / <code>}</code>, não tem <code>end</code>, nada. Só blocos.</p>
-
-                        <img class='fragment' src='_images/zuul.jpg'></img>
                     </section>
 
                     <section>
