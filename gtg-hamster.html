@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Timetracking com Get Things GNOME + Hamster</title>
+
+		<meta name="author" content="Julio Biason">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="_external/reveal.min.css">
+		<link rel="stylesheet" href="_external/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="_external/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '_external/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style>
+.semi-opaque {
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+* {
+	hyphens: none !important;
+	-moz-hyphens: none !important;
+}
+
+img {
+	height: 400px;
+}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Timetracking com Get Things GNOME + Project Hamster</h1>
+				</section>
+
+				<section>
+					<h2>O que é o que?</h2>
+				</section>
+
+				<section>
+					<h3>Get Things GNOME</h3>
+
+					<img src='_images/gtg.png'>
+
+					<p>Controle de coisas pra fazer (TODO).</p>
+				</section>
+
+				<section>
+					<h3>Get Things GNOME</h3>
+
+					<img src='_images/gtg-plugins.png'>
+
+					<p>Plugin para ativar a opção de "Star Task on Hamster".</p>
+				</section>
+
+				<section>
+					<h3>Project Hamster</h3>
+
+					<img src='_images/hamster.png'>
+
+					<p>Controle de tempo de tarefas (qualquer tarefa).</p>
+				</section>
+
+				<section>
+					<h3>Project Hamster</h3>
+
+					<img src='_images/hamster-totals.png'>
+
+					<p>Tempo total dispendido por tarefa.</p>
+				</section>
+
+				<section>
+					<h3>Bônus para usuários GNOME 3:</h3>
+
+					<img src='_images/hamster-extension.png'>
+
+					<p>Extension para GNOME 3 em 
+					<a href="http://extensions.gnome.org">Extensions.GNOME.ORG</a>.</p>
+				</section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+                    <section></section>
+                </section>
+			</div>
+		</div>
+
+		<script src="_external/head.min.js"></script>
+		<script src="_external/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: 'default',
+				transition: 'linear',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '_external/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '_external/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '_external/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '_external/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '_external/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '_external/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
