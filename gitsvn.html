@@ -150,7 +150,12 @@ Stage this hunk [y,n,q,a,d,/,e,?]?
 					<h3><code>git log</code></h3>
 
 					<ul>
-						<li>Igual ao <code>svn log</code>, mas não precisa de less (e nada de "broken pipe" ao fechar o log).</li>
+						<li>Igual ao <code>svn log</code>, mas não precisa de less e faz stream do conteúdo.
+						<ul>
+							<li>Isso significa que não é preciso esperar o log inteiro
+							ser gerado para o less apresentar e não ocorrem
+							mais "broken pipes" ao fechar o less.</li>
+						</ul></li>
 						<li>Cores!</li>
 						<li><code>git log --raw</code>: mostra os arquivos alterados dentro da revisão.</li>
 						<li><code>git log -p</code>: mostra as alterações dentro da revisão.</li>
