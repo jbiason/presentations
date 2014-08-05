@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>AJAX/SOSP/CORS/CSRF</title>
+
+		<meta name="author" content="Julio Biason">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="_external/reveal.min.css">
+		<link rel="stylesheet" href="_external/night.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="_external/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '_external/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style>
+.semi-opaque {
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+* {
+	hyphens: none !important;
+	-moz-hyphens: none !important;
+}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background='_images/ajax-sosp-cors-csrf.png' class='semi-opaque'>
+					<h1>AJAX / SOSP / CORS / CSRF</h1>
+
+					<p class='fragment'><small>
+						(Ou 4 siglas, 16 letras e uma dor de cabeça)
+					</small></p>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+
+					<p>Mostrar como aplicações web ricas se comportam quando
+					o conteúdo está vindo de uma fonte que não a fonte original.</p>
+				</section>
+
+				<section>
+					<h2>A Idéia</h2>
+
+					<p>Gerar uma view com conteúdo que será inserido em outro site; 
+					o conteúdo deverá abrir um modal para pedir mais dados para o
+					usuário.</p>
+				</section>
+
+				<section>
+					<h2>Passo 1: O Conteúdo</h2>
+
+					<p>Carregado por AJAX, com jQuery. Fácil.</p>
+
+					<p><pre><code data-trim>
+$(function() {
+    $("#div-especial").load("http://outrosite.com/conteudo.html");
+});
+					</code></pre></p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Problema 1: SOSP (Same Origin Security Policy)</h2>
+					</section>
+
+					<section>
+						<p>Same Origin Security Policy é assegurado pelo browser, barrando
+						requisições vindas de lugares que não são o lugar original.</p>
+
+						<p class='fragment'>"Lugar original" = URL requisitada
+						tem mesmo esquema (http vs https), mesmo domínio
+						(subdomínios não contam), mesma porta (ou implício
+						80) da URL que está fazendo a requisição.</p>
+					</section>
+
+					<section>
+						<p>Página em <code>http://outrosite.com/conteudo.html</code> pede:</p>
+
+						<ul>
+							<li class='fragment'><code>http://outrosite.com/dados.json</code> &#8658; OK</li>
+							<li class='fragment'><code>http://outrosite.com/<strong>dir</strong>/dados.json</code> &#8658; OK</li>
+							<li class='fragment'><code>http://<strong>usuário:senha</strong>@outrosite.com/dir/dados.json</code> &#8658; OK</li>
+							<li class='fragment'><code>http://outrosite.com<strong>:8080</strong>/dados.json</code> &#8658; NOT!</li>
+							<li class='fragment'><code><strong>https</strong>://outrosite.com/dados.json</code> &#8658; NOT!</li>
+							<li class='fragment'><code>http://<strong>api.</strong>outrosite.com/dados.json</code> &#8658; NOT!</li>
+							<li class='fragment'><code>http://outrosite.com<strong>:80</strong>/dados.json</code> &#8658; talvez...</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>Apenas lembrando: isso é forçado pelo
+						<em>browser</em>, não pelo serviço.</p>
+
+						<p>Outras aplicações podem passar por cima do Same
+						Origin se quiserem.</p>
+					</section>
+
+					<section>
+						<p>Restrições de subdomínios podem ser relaxadas se
+						scripts forem carregados de subdomínios
+						diferentes:</p>
+
+						<p>Se a página em <code>http://outrosite.com/</code>
+						carregar um script de
+						<code>http://api.outrosite.com</code>, a restrição de
+						subdomínios pode ser removida para funções do
+						script.</p>
+					</section>
+
+					<section>
+						<p>Se não tiver como relaxar as restrições, utiliza-se
+						CORS.</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Problema 2: CORS (Cross-Origin Resource Sharing)</h2>
+					</section>
+
+					<section>
+						<p>CORS é implementado no servidor e diz se o serviço
+						pode ou não utilizar aquele recurso.</p>
+					</section>
+
+					<section>
+						<p>Browser rodando em <code>http://outrosite.com</code>
+						requisita serviço em
+						<code>http://api.outrosite.com/</code>.</p>
+
+						<p>Para isso, envia o header <code>Origin</code>.</p>
+
+						<p><pre><code data-trim>
+Origin: http://outrosite.com
+						</code></pre></p>
+					</section>
+
+					<section>
+						<p>Servidor olha o header, verifica se a URL tem permissão
+						para acessar os recursos, é retornado o header
+						<code>Access-Control-Allow-Origin</code>.</p>
+
+						<p><pre><code data-trim>
+Access-Control-Allow-Origin: http://outrosite.com
+						</code></pre></p>
+					</section>
+
+					<section>
+						<p>De novo, isso é controlado pelo <em>browser</em>; um
+						browser que não siga corretamente o controle de acesso ou um
+						aplicativo qualquer poderiam passar por cima dessa restrição
+						e continuar lendo o conteúdo.</p>
+					</section>
+
+					<section>
+						<h3>Django-CORS-Headers</h3>
+
+						<p>App para configurar CORS sozinho.</p>
+
+						<p><pre><code data-trim>
+CORS_ORIGIN_WHITELIST = (
+   'outrosite.com',
+)
+						</code></pre></p>
+
+						<p>ou</p>
+
+						<p><pre><code data-trim>
+CORS_ORIGIN_REGEX_WHITELIST = (
+    '^(https?://)?(\w+\.)?outrosite\.com$', 
+)
+						</code></pre></p>
+					</section>
+
+					<section>
+						<p>Agora o site externo consegue carregar o conteúdo das
+						views.</p>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="_external/head.min.js"></script>
+		<script src="_external/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: 'night',
+				transition: 'linear',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '_external/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '_external/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '_external/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '_external/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '_external/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '_external/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
