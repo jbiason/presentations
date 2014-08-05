@@ -205,6 +205,139 @@ CORS_ORIGIN_REGEX_WHITELIST = (
 						views.</p>
 					</section>
 				</section>
+
+				<section>
+					<section>
+						<h2>Problema 2.5: URLs reversas</h2>
+					</section>
+
+					<section>
+						<p>Para resolver URLs, usamos a tag <code>{% url vew_id %}</code>
+						para retornar a URL da view.</p>
+
+						<p>O problema é que é retornada a URL absoluta para a view,
+						sem considerar o domínio da view.</p>
+					</section>
+
+					<section>
+						<p><pre><code data-trim>
+&lt;a href='/view/'&gt;
+						</code></pre></p>
+
+						<p>em <code>http://outrosite.com</code> vira 
+						<code>http://outrosite.com/view/</code>.</p>
+
+						<p>Mas se a view estiver num domínio diferente, o mesmo
+						não é considerado.</p>
+					</section>
+
+					<section>
+						<ul>
+							<li>Se <code>http://outrosite.com</code> carregar o conteúdo
+							de <code>http://api.outrosite.com</code></li>
+							<li class='fragment'>... e <code>http://api.outrosite.com</code> tiver uma view
+							com URL absoluta <code>/view/</code></li>
+							<li class='fragment'>... o browser irá resolver como
+							<code>http://outrosite.com/view/</code></li>
+							<li class='fragment'>... quando deveria ser
+						   	<code>http://api.outrosite.com/view/</code>.</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>Solução: considerar que <code>SITE_URL</code> (do
+						<code>settings.py</code>) está correto e usar nas URLs.</p>
+
+						<p><pre><code data-trim>
+&lt;a href='{{ settings.SITE_URL }}{% url "view_id" %}'&gt;
+						</code></pre></p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Problema 3: CSRF</h2>
+					</section>
+
+					<section>
+						<p>Resumo:</p>
+
+						<ul>
+							<li>"csrftoken" é gerado na sessão do usuário.</li>
+							<li>Campo "csrftoken" é adicionado no form.</li>
+							<li>Quando o form retorna no POST, é verificado se é o
+							    mesmo indicado na sessão do usuário.</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>Problema: Informações do token é passada num cookie.</p>
+
+						<p><pre><code>
+Set-Cookie: "csrftoken=t5HBi8EbkPk340nnpkdb8qxQsy2n8LwY;
+            expires=Tue, 04-Aug-2015 16:40:38 GMT; Max-Age=31449600; Path=/"
+						</code></pre></p>
+
+						<p>Cookies não são processados durante requisições AJAX.</p>
+					</section>
+
+					<section>
+						<p>Solução correta:</p>
+
+						<p>Ao receber uma requisição AJAX, processar os headers também,
+						verificar a existência de "Set-Cookie", verificar se "csrftoken"
+						está na lista, guardar o valor e usar nas requisições seguintes.</p>
+					</section>
+
+					<section>
+						<p>Solução utilizada:</p>
+
+						<p><pre><code>
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
+def minha_view(request):
+    ....
+						</code></pre></p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Problema 3.5: CSRF em Class Based Views</h2>
+					</section>
+
+					<section>
+						<p><pre><code>
+class MinhaView(View):
+    @csrf_exempt
+    def post(self, request):
+        ....
+						</code></pre> </p>
+
+						<p>... não funciona.</p>
+					</section>
+
+					<section> 
+						<p>É preciso aplicar decorators no dispatch da view:</p>
+
+						<p><pre><code>
+    @csrf_exempt
+    def dispatch(self, *args, **kwargs):
+        u"""Altera o dispatch para dispensar CSRF (por cauxa do AJAX)."""
+        return super(MinhaView, self).dispatch(*args, **kwargs)
+						</code></pre></p>
+					</section>
+				</section>
+
+				<section data-background='_images/thats-all-folks.jpg'>
+					<p></p>
+				</section>
+
+				<section data-background='_images/thats-all-folks.jpg' class='semi-opaque'>
+					Dica: Evite ter objetos cortantes próximos quando estiver lidando
+					com AJAX/SOSP/CORS/CSRF.
+				</section>
 			</div>
 		</div>
 
