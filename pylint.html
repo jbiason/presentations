@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Pylint, Warnings e Correções</title>
+
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="_external/reveal.min.css">
+        <link rel="stylesheet" href="_external/night.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="_external/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = '_external/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="reveal.js/lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style>
+.semi-opaque {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+* {
+    hyphens: none !important;
+    -moz-hyphens: none !important;
+}
+
+div.code {
+    font-size: 150%
+}
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section data-background='_images/pylint.png' class='semi-opaque'>
+                    <h1>Pylint, Warnings e Correções</h1>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>missing-docstring</code></h2>
+                    </section>
+
+                    <section>
+                        <h2>O que é o erro</h2>
+                        <div class='code'>
+                            <p><pre><code data-trim class='python'>
+def funcao(valor):
+    return valor * 2
+                            </code></pre></p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Solução</h2>
+
+                        <p>Documente suas funções!</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>wildcard-import</code></h2>
+                    </section>
+
+                    <section>
+                        <h2>O que é o erro</h2>
+                        <div class='code'>
+                            <p><pre><code data-trim class='python'>
+from module import *
+                            </code></pre></p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Solução</h2>
+
+                        <p>Importe apenas as funções módulos que são usados.</p>
+                    </section>
+
+                    <section>
+                        <h2>Por que não usar "import *"</h2>
+
+                        <ul>
+                            <li>O módulo pode ter código não protegido por
+                                função, classe ou <code>if __name__ == '__main__'</code></li>
+                            <li>Poluíção do namespace.</li>
+                            <li>Módulo pode redefinir uma função presente no
+                                módulo atual.</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>unused-import</code></h2>
+                    </section>
+
+                    <section>
+                        <h2>O que é o erro</h2>
+
+                        <div class='code'>
+                            <p><pre><code data-trim class='python'>
+from module import function
+                            </code></pre></p>
+                        </div>
+
+                        <p>(E <code>function()</code> não é usado em lugar algum.)</p>
+                    </section>
+
+                    <section>
+                        <h2>Solução</h2>
+
+                        <p>Remova o import.</p>
+                    </section>
+
+                    <section>
+                        <h2>Dica!</h2>
+
+                        <p>Quebrar imports em várias linhas facilita correção desse
+                        tipo de problema.</p>
+
+                        <div class='code'>
+                            <p><pre><code data-trim class='python'>
+from module import func1
+from module import func2
+                            </pre></code></p>
+                        </div>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>unused-argument</code></h2>
+                    </section>
+
+                    <section>
+                        <h2>O que é o erro</h2>
+
+                        <div class='code'>
+                            <p><pre><code data-trim>
+def func(arg1, arg2):
+    return arg1 * 2
+                            </pre></code></p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Solução</h2>
+
+                        <ul>
+                            <li>Remova o parâmetro desnecessário</li>
+                            <li>Altere o parâmetro para "_"</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Corner case</h2>
+
+                        <div class='code'>
+                            <p><pre><code data-trim class='python'>
+def addSeven(foo): # "Unused argument 'foo'"
+    foo += [7]
+                            </code></pre></p>
+                        </div>
+
+                        <p>O problema é a questão de referência para objetos
+                        mutáveis. O código em si está errado.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>bare-except</code></h2>
+                    </section>
+
+                    <section>
+                        <h2>O que é o erro</h2>
+
+                        <div class='code'>
+                            <p><pre><code data-trim class='python'>
+try:
+   func()
+except Exception e:
+   pass
+                            </code></pre></p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Solução</h2>
+
+                        <p>Capture apenas as exceções que você sabe lidar.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>no-self-use</code></h2>
+                    </section>
+
+                    <section>
+                        <h2>O que é o erro</h2>
+
+                        <div class='code'>
+                            <p><pre><code data-trim class='python'>
+class A(object):
+    def func(self, a):
+        return a * 2
+                            </code></pre></p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Solução</h2>
+
+                        <p>A solução mais "correta" é tirar a função da classe e deixar
+                            fora do objeto.</p>
+
+                        <p class='fragment'>Não sendo possível, 
+                            <code># pylint:disable=no-self-use</code> antes da função.
+                        </p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>old-style-class</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>super-on-old-class</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>no-init</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>super-init-not-called</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>attribute-defined-outside-init</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>abstract-method</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>arguments-differ</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>no-member</code> e <code>maybe-no-member</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>no-value-for-parameter</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>protected-access</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>too-few-public-methods</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>too-many-ancestors</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>too-many-arguments</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>too-many-branches</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>too-many-instance-attributes</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>too-many-lines</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>too-many-locals</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>too-many-public-methods</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>too-many-statements</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>invalid-name</code></h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>star-args</code></h2>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="_external/head.min.js"></script>
+        <script src="_external/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: 'night',
+                transition: 'linear',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: '_external/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: '_external/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '_external/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '_external/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: '_external/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: '_external/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
+
+<!-- vim:set et ts=4 sts=4 st=4: >
