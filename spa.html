@@ -45,7 +45,7 @@
 	-moz-hyphens: none !important;
 }
 
-#traditional-1, #traditional-2 {
+#traditional-1, #traditional-2, #spa-1, #spa-2, #spa-3 {
 	background-color: white;
 }
 		</style>
@@ -71,14 +71,27 @@
 				<section>
 					<section>
 						<h2>Modelo Dinâmico "Tradicional"</h2>
-					</section>
-
-					<section>
 						<div id='traditional-1'></div>
 					</section>
 
 					<section>
+						<h2>Modelo Dinâmico "Tradicional"</h2>
 						<div id='traditional-2'></div>
+					</section>
+
+					<section>
+						<h2>Modelo SPA</h2>
+						<div id='spa-1'></div>
+					</section>
+
+					<section>
+						<h2>Modelo SPA</h2>
+						<div id='spa-2'></div>
+					</section>
+
+					<section>
+						<h2>Modelo SPA</h2>
+						<div id='spa-3'></div>
 					</section>
 				</section>
 			</div>
@@ -114,10 +127,13 @@
 			});
 		</script>
 
+		<script id='joint-global'>
+			var uml = joint.shapes.uml;
+		</script>
+
 		<script id='traditional-1-graph'>
 			$(function() {
 				var graph = new joint.dia.Graph;
-				var uml = joint.shapes.uml;
 
 				var paper = new joint.dia.Paper({
 					el: $('#traditional-1'),
@@ -153,7 +169,6 @@
 		<script id='traditional-2-graph'>
 			$(function() { 
 				var graph = new joint.dia.Graph;
-				var uml = joint.shapes.uml;
 				var paper = new joint.dia.Paper({
 					el: $('#traditional-2'),
 					width: 800,
@@ -196,6 +211,96 @@
 										 target: { id: elements.render.id } }),
 					new uml.Transition({ source: { id: elements.template3.id },
 										 target: { id: elements.render.id } })
+				];
+				graph.addCells(connectors);
+			});
+		</script>
+
+		<script id='spa-1-graph'>
+			$(function() { 
+				var graph = new joint.dia.Graph;
+				var paper = new joint.dia.Paper({
+					el: $('#spa-1'),
+					width: 800,
+					height: 600,
+					gridSize: 1,
+					model: graph
+				});
+
+				var elements = {
+					render: new uml.State({
+						position: { x: 550, y: 100 },
+						size: { width: 200, height: 400 },
+						name: "Página"
+					})
+				};
+				graph.addCells(elements);
+			});
+		</script>
+
+		<script id='spa-2-graph'>
+			$(function() { 
+				var graph = new joint.dia.Graph;
+				var paper = new joint.dia.Paper({
+					el: $('#spa-2'),
+					width: 800,
+					height: 600,
+					gridSize: 1,
+					model: graph
+				});
+
+				var elements = {
+					partial: new uml.State({
+						position: { x: 100, y: 150 },
+						size: { width: 150, height: 100 },
+						name: "Conteúdo"
+					}),
+
+					render: new uml.State({
+						position: { x: 550, y: 100 },
+						size: { width: 200, height: 400 },
+						name: "Página"
+					})
+				};
+				graph.addCells(elements);
+			});
+		</script>
+
+		<script id='spa-3-graph'>
+			$(function() { 
+				var graph = new joint.dia.Graph;
+				var paper = new joint.dia.Paper({
+					el: $('#spa-3'),
+					width: 800,
+					height: 600,
+					gridSize: 1,
+					model: graph
+				});
+
+				var elements = {
+					render: new uml.State({
+						position: { x: 550, y: 100 },
+						size: { width: 200, height: 400 },
+						name: "Página"
+					}),
+
+					partial: new uml.State({
+						position: { x: 100, y: 150 },
+						size: { width: 150, height: 100 },
+						name: "Conteúdo"
+					}),
+
+					insert: new uml.State({
+						position: { x: 575, y: 150 },
+						size: { width: 150, height: 100 },
+						name: "Conteúdo"
+					})
+				};
+				graph.addCells(elements);
+
+				var connectors = [
+					new uml.Transition({ source: { id: elements.partial.id },
+										 target: { id: elements.insert.id } })
 				];
 				graph.addCells(connectors);
 			});
