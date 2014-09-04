@@ -6,12 +6,26 @@
 
 from flask import Flask
 from flask import render_template
+from flask import request
 
 app = Flask(__name__)
 
 @app.route('/traditional')
 def traditional():
-    return render_template('traditional.html')
+    contador = request.values.get('contador', 0)
+    contador = int(contador) + 1
+    return render_template('traditional.html',
+                           contador=contador)
+
+@app.route('/spa')
+def spa():
+    return render_template('spa.html')
+
+@app.route('/spa/counter')
+def spa_counter():
+    contador = request.values.get('contador', 1)
+    contador = int(contador) + 1
+    return render_template('spa-counter.html', contador=contador)
 
 
 if __name__ == '__main__':
