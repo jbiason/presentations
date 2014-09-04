@@ -15,6 +15,7 @@
 
 		<link rel="stylesheet" href="_external/reveal.min.css">
 		<link rel="stylesheet" href="_external/default.css" id="theme">
+		<link rel="stylesheet" href="jointjs/joint.min.css">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="_external/zenburn.css">
@@ -43,6 +44,10 @@
 	hyphens: none !important;
 	-moz-hyphens: none !important;
 }
+
+#traditional-1, #traditional-2 {
+	background-color: white;
+}
 		</style>
 	</head>
 
@@ -65,7 +70,15 @@
 
 				<section>
 					<section>
-						<h2>Modelo "Tradicional"</h2>
+						<h2>Modelo Dinâmico "Tradicional"</h2>
+					</section>
+
+					<section>
+						<div id='traditional-1'></div>
+					</section>
+
+					<section>
+						<div id='traditional-2'></div>
 					</section>
 				</section>
 			</div>
@@ -74,8 +87,10 @@
 		<script src="_external/head.min.js"></script>
 		<script src="_external/reveal.min.js"></script>
 
-		<script>
+		<script src="jointjs/joint.min.js"></script>
+		<script src="jointjs/joint.shapes.uml.js"></script>
 
+		<script>
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
@@ -97,8 +112,93 @@
 					{ src: '_external/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
-
 		</script>
 
+		<script id='traditional-1-graph'>
+			$(function() {
+				var graph = new joint.dia.Graph;
+				var uml = joint.shapes.uml;
+
+				var paper = new joint.dia.Paper({
+					el: $('#traditional-1'),
+					width: 800,
+					height: 600,
+					gridSize: 1,
+					model: graph
+				});
+
+				var elements = {
+					template: new uml.State({
+						position: { x:10, y: 100 },
+						size: { width: 200, height: 400 },
+						name: "Template"
+					}),
+
+					render: new uml.State({
+						position: { x: 550, y: 100 },
+						size: { width: 200, height: 400 },
+						name: "Página"
+					})
+				};
+				graph.addCells(elements);
+
+				var connectors = [
+					new uml.Transition({ source: { id: elements.template.id },
+										 target: { id: elements.render.id } })
+				];
+				graph.addCells(connectors);
+			});
+		</script>
+
+		<script id='traditional-2-graph'>
+			$(function() { 
+				var graph = new joint.dia.Graph;
+				var uml = joint.shapes.uml;
+				var paper = new joint.dia.Paper({
+					el: $('#traditional-2'),
+					width: 800,
+					height: 600,
+					gridSize: 1,
+					model: graph
+				});
+
+				var elements = {
+					template1: new uml.State({
+						position: { x: 100, y: 100 },
+						size: { width: 200, height: 100 },
+						name: "Template 1"
+					}),
+
+					template2: new uml.State({
+						position: { x: 100, y: 250 },
+						size: { width: 200, height: 100 },
+						name: "Template 2"
+					}),
+
+					template3: new uml.State({
+						position: { x: 100, y: 400 },
+						size: { width: 200, height: 100 },
+						name: "Template 3"
+					}),
+
+					render: new uml.State({
+						position: { x: 550, y: 100 },
+						size: { width: 200, height: 400 },
+						name: "Página"
+					})
+				};
+				graph.addCells(elements);
+
+				var connectors = [
+					new uml.Transition({ source: { id: elements.template1.id },
+										 target: { id: elements.render.id } }),
+					new uml.Transition({ source: { id: elements.template2.id },
+										 target: { id: elements.render.id } }),
+					new uml.Transition({ source: { id: elements.template3.id },
+										 target: { id: elements.render.id } })
+				];
+				graph.addCells(connectors);
+			});
+		</script>
 	</body>
 </html>
