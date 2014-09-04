@@ -45,6 +45,10 @@
 	-moz-hyphens: none !important;
 }
 
+div.code {
+    font-size: 150%
+}
+
 #traditional-1, #traditional-2, #spa-1, #spa-2, #spa-3 {
 	background-color: white;
 }
@@ -92,6 +96,138 @@
 					<section>
 						<h2>Modelo SPA</h2>
 						<div id='spa-3'></div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<p>Bacana, mas...</p>
+
+						<h2>Como Faiz?</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>O estranho caso de onde estou</h2>
+					</section>
+
+					<section>
+						<p>No modelo tradicional, a URL indica onde o usuário
+							se encontra.</p>
+
+						<p>O usuario pode salvar a URL e retornar a mesma
+							posição depois.</p>
+
+						<p>Se o conteúdo é lido por partes, perde-se a
+							informação de posição.</p>
+					</section>
+
+					<section>
+						<h2>Você sabia que...</h2>
+
+						<p>É possível criar um link que pula pro meio da página?</p>
+					</section>
+
+					<section>
+						<div class='code'>
+							<pre><code data-trim class='html'>
+<a href='#meio-da-pagina'>Pular para o meio da página</a>
+							</code></pre>
+						</div>
+
+						<p>...e mais adiante...</p>
+
+						<div class='code'>
+							<pre><code data-trim class='html'>
+<a name='meio-da-pagina'></a>
+							</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<p>Ou HTML5:</p>
+
+						<div class='code'>
+							<pre><code data-trim class='html'>
+<a href='#meio-da-pagina'>Pular para o meio da página</a>
+							</code></pre>
+						</div>
+
+						<div class='code'>
+							<pre><code data-trim class='html'>
+<a id='meio-da-pagina'></a>
+							</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<p>Ou <strong>TUDO</strong>:</p>
+
+						<div class='code'>
+							<pre><code data-trim class='html'>
+<a href='#meio-da-pagina'>Pular para o meio da página</a>
+							</code></pre>
+						</div>
+
+						<div class='code'>
+							<pre><code data-trim class='html'>
+<a id='meio-da-pagina' name='meio-da-pagina'></a>
+							</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<p>Mas o que acontece se fizer</p>
+
+						<div class='code'>
+							<pre><code data-trim class='html'>
+<a href='#meio-da-pagina'>Pular para o meio da página</a>
+							</code></pre>
+						</div>
+
+						<p>... mas não tiver um <code>id</code> ou
+							<code>name</code> "meio-da-pagina"?</p>
+					</section>
+
+					<section>
+						<img src='_images/absolutely_nothing.jpg'>
+					</section>
+
+					<section>
+						<div class='code'>
+							<pre><code data-trim class='html'>
+<a href='#usuario-1040'>Informações do usuário</a>
+							</code></pre>
+						</div>
+
+						<p>... ao clicar, a URL fica</p>
+						<div class='code'>
+							<pre><code data-trim class='html'>
+http://meuservidor/servico#usuario-1040
+							</code></pre>
+						</div>
+
+						<p>E quando a página carrega, a primeira coisa que se faz
+						é verifica a URL inteira e fazer o parse do conteúdo.</p>
+
+						<p class='fragment'>Chato, né?</p>
+					</section>
+
+					<section>
+						<p>É por isso que para esses caso se usa um framework
+							que já faça todo esse controle.</p>
+
+						<p>Angular.JS, por exemplo, tem todo um controle de 
+						rotas do lado do cliente (!!) que gera URLs do tipo</p>
+
+						<div class='code'>
+							<pre><code data-trim class='html'>
+http://meuservidor/servico#/usuario/1040
+							</code></pre>
+						</div>
+
+						<p class='fragment'>BEEEM melhor, não?</p>
 					</section>
 				</section>
 			</div>
