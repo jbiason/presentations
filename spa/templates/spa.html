@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div id='contador-part'>
+		{% include "spa-counter.html" ignore missing with context %}
+	</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+	$(function() {
+		$('#contador-part').on('click', '#contador', function (ev) {
+			ev.preventDefault();
+			ev.stopPropagation();
+
+			console.log('click');
+			$.ajax({
+				url: $(this).attr('href'),
+				success: function (response) {
+					console.log(response);
+					$('#contador-part').html(response);
+					$('#contador')[0].click();
+				}
+			})
+		});
+	});
+</script>
+{% endblock scripts %}

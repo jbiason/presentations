@@ -1,0 +1,15 @@
+<div class='row'>
+	<div class='small-12 columns'>
+		<p class='text-center'>
+			Contador: {{ contador }}
+		</p>
+	</div>
+
+	<div class='row'>
+		<div class='small-12 columns'>
+			<p class='text-center'>
+				<a id='contador' href='{{ url_for('spa_counter', contador=contador) }}' class='button radius small'>Incrementar</a>
+			</p>
+		</div>
+	</div>
+</div>

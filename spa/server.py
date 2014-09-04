@@ -10,18 +10,18 @@ from flask import request
 
 app = Flask(__name__)
 
-@app.route('/traditional')
+@app.route('/traditional/')
 def traditional():
     contador = request.values.get('contador', 0)
     contador = int(contador) + 1
     return render_template('traditional.html',
                            contador=contador)
 
-@app.route('/spa')
+@app.route('/spa/')
 def spa():
-    return render_template('spa.html')
+    return render_template('spa.html', contador=1)
 
-@app.route('/spa/counter')
+@app.route('/spa/counter/')
 def spa_counter():
     contador = request.values.get('contador', 1)
     contador = int(contador) + 1
