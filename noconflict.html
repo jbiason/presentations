@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>$.noConflict</title>
+
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="_external/reveal.min.css">
+        <link rel="stylesheet" href="_external/default.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="_external/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = '_external/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="reveal.js/lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style>
+.semi-opaque {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+* {
+    hyphens: none !important;
+    -moz-hyphens: none !important;
+}
+
+p.first {
+    background-color: #007700;
+}
+
+p.second {
+    background-color: #0000ff;
+}
+
+p.third {
+    background-color: #770000;
+}
+        </style>
+
+        <script>
+            function getVersion(variable) {
+                try {
+                    return variable.fn.jquery;
+                } catch (e) {
+                    return e.toString();
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section data-background='_images/jquery_noconflict.jpg'>
+                </section>
+
+                <section>
+                    <h2>O que é $.noConflict</h2>
+
+                    <p class='fragment'>
+                        Uma função do jQuery para evitar
+                        conflitos com outras bibliotecas que
+                        usem "<code>$</code>" como variável.
+                    </p>
+
+                    <p class='fragment'>
+                        ... incluindo o próprio jQuery.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Como funciona?</h2>
+
+                    <p class='fragment'>
+                        Quando o jQuery é carregado, ele verifica se
+                        "<code>$</code>" já está definido e guarda internamente.
+                    </p>
+
+                    <p class='fragment'>
+                        Chamando <code>$.noConflict()</code> restaura o
+                        "<code>$</code>" original. "<code>$</code>" deixa
+                        de ser um alías para "<code>jQuery</code>".
+                    </p>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Como Usar?</h2>
+                    </section>
+
+                    <section>
+                        <h2>... mas antes...</h2>
+                        <pre><code class='javascript'>
+function getVersion(variable) {
+    try {
+        return variable.fn.jquery;
+    } catch (e) {
+        return e.toString();
+    }
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <div style='font-size:150%'>
+                            <pre><code class='javascript' data-trim>
+<script src='jquery.min.js'></script>
+<script>
+    $.noConflict();
+</script>
+                            </code></pre>
+                        </div>
+
+                        <ul>
+                            <li>Se havia alguma biblioteca usando "<code>$</code>", ela volta
+                                a ser usada com "<code>$</code>".</li>
+                            <li>jQuery deixa de ser "<code>$</code>".</li>
+                            <li>jQuery ainda está disponível como "<code>jQuery</code>".</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <p class='first'>
+                            $.fn.jquery: <span id='ex-1-1'></span>
+                        </p>
+
+                        <p class='second'>
+                            jQuery.fn.jquery: <span id='ex-1-2'></span>
+                        </p>
+
+                        <script src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
+                        <script>$.noConflict();</script>
+                        <script>
+                            document.getElementById('ex-1-1').innerHTML = getVersion($);
+                            document.getElementById('ex-1-2').innerHTML = getVersion(jQuery);
+                        </script>
+
+                        <pre><code class='javascript' data-trim>
+<p class='first'>
+    $.fn.jquery: <span id='ex-1-1'></span>
+</p>
+
+<p class='second'>
+    jQuery.fn.jquery: <span id='ex-1-2'></span>
+</p>
+
+<script src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
+<script>$.noConflict();</script>
+<script>
+    document.getElementById('ex-1-1').innerHTML = getVersion($);
+    document.getElementById('ex-1-2').innerHTML = getVersion(jQuery);
+</script>
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <div style='font-size:150%'>
+                            <pre><code class='javascript' data-trim>
+<script src='jquery.min.js'></script>
+<script>
+   var $novojQuery = $.noConflict();
+</script>
+                            </code></pre>
+                        </div>
+
+                        <ul>
+                            <li>Se havia alguma biblioteca usando "<code>$</code>", ela volta
+                                a ser usada com "<code>$</code>".</li>
+                            <li>jQuery deixa de ser "<code>$</code>".</li>
+                            <li>jQuery ainda está disponível como "<code>jQuery</code>" e
+                                "<code>$novojQuery</code>".</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <p class='first'>
+                            $.fn.jquery: <span id='ex-2-1'></span>
+                        </p>
+
+                        <p class='second'>
+                            jquery.fn.jquery: <span id='ex-2-2'></span>
+                        </p>
+
+                        <p class='third'>
+                            novojQuery.fn.jquery: <span id='ex-2-3'></span>
+                        </p>
+
+                        <script src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
+                        <script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
+                        <script>
+                            var novojQuery = $.noConflict();
+                            document.getElementById('ex-2-1').innerHTML = getVersion($);
+                            document.getElementById('ex-2-2').innerHTML = getVersion(jQuery);
+                            document.getElementById('ex-2-3').innerHTML = getVersion(novojQuery);
+                        </script>
+
+                        <pre><code class='html' data-trim>
+<p class='first'>$.fn.jquery: <span id='ex-2-1'></span></p>
+<p class='second'>jquery.fn.jquery: <span id='ex-2-2'></span></p>
+<p class='third'>novojQuery.fn.jquery: <span id='ex-2-3'></span></p>
+
+<script src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
+<script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
+<script>
+    var novojQuery = $.noConflict();
+    document.getElementById('ex-2-1').innerHTML = getVersion($);
+    document.getElementById('ex-2-2').innerHTML = getVersion(jQuery);
+    document.getElementById('ex-2-3').innerHTML = getVersion(novojQuery);
+</script>
+                        </code></pre>
+
+                    </section>
+
+                    <section>
+                        <div style='font-size:150%'>
+                            <pre><code class='javascript' data-trim>
+<script src='jquery.min.js'></script>
+<script>
+   $.noConflict();
+   jQuery(document).ready(function ($) {
+      // jQuery está disponível aqui como "$";
+   });
+   // outra biblioteca disponível como "$" aqui.
+</script>
+                            </code></pre>
+                        </div>
+
+                        <ul> 
+                            <li>jQuery aparece como "<code>$</code>" apenas
+                                dentro da função.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <script src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
+                        <script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
+
+                        <p class='first'>
+                            $.fn.jquery: <script>document.write($.fn.jquery);</script>
+                        </p>
+
+                        <p class='second'>
+                        </p>
+
+                        <pre><code class='javascript' data-trim>
+                        </code></pre>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="_external/head.min.js"></script>
+        <script src="_external/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: 'default',
+                transition: 'linear',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: '_external/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: '_external/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '_external/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '_external/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: '_external/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: '_external/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
