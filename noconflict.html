@@ -126,10 +126,7 @@ function getVersion(variable) {
                     <section>
                         <div style='font-size:150%'>
                             <pre><code class='javascript' data-trim>
-<script src='jquery.min.js'></script>
-<script>
-    $.noConflict();
-</script>
+$.noConflict();
                             </code></pre>
                         </div>
 
@@ -158,20 +155,20 @@ function getVersion(variable) {
                         </script>
 
                         <pre><code class='javascript' data-trim>
-<p class='first'>
-    $.fn.jquery: <span id='ex-1-1'></span>
-</p>
+&lt;p class='first'&gt;
+    $.fn.jquery: &lt;span id='ex-1-1'&gt;&lt;/span&gt;
+&lt;/p&gt;
 
-<p class='second'>
-    jQuery.fn.jquery: <span id='ex-1-2'></span>
-</p>
+&lt;p class='second'&gt;
+    jQuery.fn.jquery: &lt;span id='ex-1-2'&gt;&lt;/span&gt;
+&lt;/p&gt;
 
-<script src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
-<script>$.noConflict();</script>
-<script>
+&lt;script src='http://code.jquery.com/jquery-1.11.1.min.js'&gt;&lt;/script&gt;
+&lt;script&gt;$.noConflict();&lt;/script&gt;
+&lt;script&gt;
     document.getElementById('ex-1-1').innerHTML = getVersion($);
     document.getElementById('ex-1-2').innerHTML = getVersion(jQuery);
-</script>
+&lt;/script&gt;
                         </code></pre>
                     </section>
 
@@ -217,18 +214,18 @@ function getVersion(variable) {
                         </script>
 
                         <pre><code class='html' data-trim>
-<p class='first'>$.fn.jquery: <span id='ex-2-1'></span></p>
-<p class='second'>jquery.fn.jquery: <span id='ex-2-2'></span></p>
-<p class='third'>novojQuery.fn.jquery: <span id='ex-2-3'></span></p>
+&lt;p class='first'&gt;$.fn.jquery: &lt;span id='ex-2-1'&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p class='second'&gt;jquery.fn.jquery: &lt;span id='ex-2-2'&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p class='third'&gt;novojQuery.fn.jquery: &lt;span id='ex-2-3'&gt;&lt;/span&gt;&lt;/p&gt;
 
-<script src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
-<script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
-<script>
+&lt;script src='http://code.jquery.com/jquery-1.11.1.min.js'&gt;&lt;/script&gt;
+&lt;script src='http://code.jquery.com/jquery-2.1.1.min.js'&gt;&lt;/script&gt;
+&lt;script&gt;
     var novojQuery = $.noConflict();
     document.getElementById('ex-2-1').innerHTML = getVersion($);
     document.getElementById('ex-2-2').innerHTML = getVersion(jQuery);
     document.getElementById('ex-2-3').innerHTML = getVersion(novojQuery);
-</script>
+&lt;/script&gt;
                         </code></pre>
 
                     </section>
@@ -236,14 +233,68 @@ function getVersion(variable) {
                     <section>
                         <div style='font-size:150%'>
                             <pre><code class='javascript' data-trim>
-<script src='jquery.min.js'></script>
+<script src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
+<script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
 <script>
+    $.noConflict();
+    (function ($) {
+        // jQuery está disponível como "$"
+    })(jQuery));
+</script>
+                            </code></pre>
+                        </div>
+
+                        <ul>
+                            <li>Na verdade, cria uma função anônima que recebe
+                                o parâmetro "<code>$</code>" e chama esta função
+                                passando o jQuery.</li>
+                            <li>O resultado é que, dentro da função, o jQuery parece
+                                ser o mesmo velho jQuery de sempre.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <p class='first'>$.fn.jquery: <span id='ex-3-1'></span></p>
+                        <p class='second'>function ($): <span id='ex-3-2'></span></p>
+
+                        <script src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
+                        <script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
+                        <script>
+                            $.noConflict();
+                            (function ($) {
+                                document.getElementById('ex-3-2').innerHTML = getVersion($);
+                            })(jQuery);
+                            document.getElementById('ex-3-1').innerHTML = getVersion($);
+                        </script>
+
+                        <pre><code class='html' data-trim>
+&lt;p class='first'&gt;$.fn.jquery: &lt;span id='ex-3-1'&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p class='second'&gt;function ($): &lt;span id='ex-3-2'&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;script src='http://code.jquery.com/jquery-1.11.1.min.js'&gt;&lt;/script&gt;
+&lt;script src='http://code.jquery.com/jquery-2.1.1.min.js'&gt;&lt;/script&gt;
+&lt;script&gt;
+    $.noConflict();
+    (function ($) {
+        document.getElementById('ex-3-2').innerHTML = getVersion($);
+    })(jQuery);
+    document.getElementById('ex-3-1').innerHTML = getVersion($);
+&lt;/script&gt;
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <div style='font-size:150%'>
+                            <pre><code class='javascript' data-trim>
+&lt;script src='http://code.jquery.com/jquery-1.11.1.min.js'&gt;&lt;/script&gt;
+&lt;script src='http://code.jquery.com/jquery-2.1.1.min.js'&gt;&lt;/script&gt;
+&lt;script&gt;
    $.noConflict();
    jQuery(document).ready(function ($) {
       // jQuery está disponível aqui como "$";
    });
    // outra biblioteca disponível como "$" aqui.
-</script>
+&lt;/script&gt;
                             </code></pre>
                         </div>
 
@@ -252,21 +303,10 @@ function getVersion(variable) {
                                 dentro da função.</li>
                         </ul>
                     </section>
+                </section>
 
-                    <section>
-                        <script src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
-                        <script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
-
-                        <p class='first'>
-                            $.fn.jquery: <script>document.write($.fn.jquery);</script>
-                        </p>
-
-                        <p class='second'>
-                        </p>
-
-                        <pre><code class='javascript' data-trim>
-                        </code></pre>
-                    </section>
+                <section data-background='_images/thats-all-folks.jpg'>
+                    <section></section>
                 </section>
             </div>
         </div>
