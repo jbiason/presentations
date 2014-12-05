@@ -43,6 +43,10 @@
 	hyphens: none !important;
 	-moz-hyphens: none !important;
 }
+
+img {
+	height: 400px;
+}
 		</style>
 	</head>
 
@@ -108,6 +112,135 @@
 							<code>j</code>, <code>k</code> e <code>l</code>".</p>
 
 						<img src="_images/credit-card-lies.jpg" alt="" class='fragment'/>
+					</section>
+
+					<section>
+						<ul>
+							<li><code>f[letra]</code>: Move o cursor para a próxima ocorrência de
+								[letra] na linha atual.</li>
+							<li><code>t[letra]</code>: Move o cursor para uma posição antes da 
+								próxima ocorrência de [letra] na linha atual.</li>
+							<li><code>F[letra]</code>: Move o cursor para a ocorrência anterior
+								de [letra] na linha atual.</li>
+							<li><code>T[letra]</code>: Move o cursor para uma posição antes da
+								ocorrência anterior de letra na linha atual.</li>
+						</ul>
+					</section>
+
+					<section>
+						<ul>
+							<li><code>w</code>: Move o cursor para o começo da próxima palavra.</li>
+							<li><code>e</code>: Move o cursor para o fim da próxima palavra. </li>
+							<li><code>b</code>: Move o cursor para o começo a palavra anterior.</li>
+							<li><code>ge</code>: Move o cursor o fim da palavra anterior.</li>
+						</ul>
+					</section>
+
+					<section>
+						<img src='_images/break-time-coffee.jpg'>
+					</section>
+
+					<section>
+						<p>Todos os comandos em modo normal aceitam uma quantidade de
+							repetições do mesmo.</p>
+
+						<p><code>3w</code> irá pular 3 palavras.</p>
+
+						<p><code>3f.</code> irá pular para a terceira ocorrência do ponto
+						na mesma linha.</p>
+					</section>
+
+					<section>
+						<img src="_images/snorefest.jpg" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/Back-to-our-regular-scheduled-programing-copy1.jpg" alt=""/>
+					</section>
+
+					<section>
+						<ul>
+							<li><code>0</code>: Move o cursor para a coluna 0.</li>
+							<li><code>_</code>: Move o cursor para o primeiro caracter
+								que não seja espaço ou tabulação.</li>
+							<li><code>$</code>: Move o cursor para o último caractere
+								da linha.</li>
+							<li><code>%</code>: Mover o cursor para o par do elemento sob
+								o cursor (por exemplo, se estiver sobre um "(", move o cursor
+								para o respectivo ")").</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>O cursor</h2>
+					</section>
+
+					<section>
+						<img src="_images/Screenshot-from-2013-10-22-085035.png" alt=""/>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Removendo texto</h2>
+					</section>
+
+					<section>
+						<ul>
+							<li><code>x</code>: Remove o caractere sob o cursor.</li>
+							<li><code>dd</code>: Remove a linha do cursor.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Contar funciona</h3>
+
+						<p><code>10x</code> apaga 10 caracteres.</p>
+
+						<p><code>20dd</code> apaga 20 linhas.</p>
+
+						<img class='fragment' src="_images/enhanced-buzz-5697-1327086181-19.jpg" alt=""/>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Modo de inserção</h2>
+					</section>
+
+					<section>
+						<p>No modo de inserção é quando finalmente o que você digita
+						aparece no texto.</p>
+					</section>
+
+					<section>
+						<ul>
+							<li><code>i</code>: Entra em modo de inserção.</li>
+							<li><code>a</code>: Avança o cursor uma posição e entra em modo
+								de inserção (ou <code>li</code>).</li>
+							<li><code>A</code>: Move o cursor para o fim da linha e entra
+								em modo de inserção (ou quase <code>$a</code>).</li>
+							<li><code>o</code>: Insere uma linha em branco depois do cursor
+								e entra em modo de inserção.</li>
+							<li><code>O</code>: Insere uma linha em branco acima do cursor
+								e entra em modo de inserção.</li>
+							<li><code>R</code>: Entra em modo de inserção mas substitui os
+								caracteres ao invés de adicionar mais.</li>
+						</dl>
+					</section>
+
+					<section>
+						<h3>r</h3>
+
+						<p><code>r</code> faz parte dos comandos de inserção mas não
+							entra em modo de inserção.</p>
+
+						<p>
+							<code>r[letra]</code> substitui o caractere sob o cursor e volta
+							para o modo normal (basicamente <code>xa[letra]{Esc}</code>).
+						</p>
 					</section>
 				</section>
 			</div>
