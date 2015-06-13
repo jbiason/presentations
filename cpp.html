@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Introdução ao C++</title>
+
+		<meta name="author" content="Julio Biason">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="_external/reveal.min.css">
+		<link rel="stylesheet" href="_external/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="_external/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '_external/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style>
+.semi-opaque {
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+* {
+	hyphens: none !important;
+	-moz-hyphens: none !important;
+}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background='_images/C++-unofficial.sh-600x600.png'>
+				</section>
+
+				<section>
+					<h1>Agenda</h1>
+
+					<ul>
+						<li>Orientação à objetos e Classes em C++</li>
+						<li>Visibilidade de variáveis e funções</li>
+						<li>Exceptions</li>
+						<li>Namespaces</li>
+						<li>STL</li>
+						<li>Templates</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h2>Orientação à objetos</h2>
+					</section>
+
+					<section>
+						<img src='_images/Ryu_TvC.png' class='fragment'>
+
+						<aside class="notes">
+							Vamos começar fazendo um jogo.
+						</aside>
+					</section>
+
+					<section>
+						<p>Um personagem de um jogo:</p>
+
+						<ul>
+							<li>Pula</li>
+							<li>Chuta</li>
+							<li>Soca</li>
+						</ul>
+
+						<p class='fragment'>A questão é: alguns personagens
+							chutam e socam de forma diferente.</p>
+
+                        <aside class="notes">
+                            Exitem coisas comuns em objetos. Essas coisas
+                            comuns geram classes base.
+                        </aside>
+					</section>
+
+					<section>
+						<p><pre><code data-trim>
+class Personagem {
+	void pular();
+	void chutar();
+	void socar();
+}
+						</code></pre></p>
+
+                        <aside class="notes">
+                            Aqui vemos algumas coisas comuns entre os objetos
+                            do jogo: como Peronsagens, eles pulam, chutam e
+                            socam. Como isso vai ser feito para cada personagem
+                            vai ser definido para cada um deles.
+
+                            Existe um pequeno erro (proposital) aqui, mas isso
+                            vai ser mostrado mais pra frente.
+                        </aside>
+					</section>
+
+					<section>
+						<p><pre><code data-trim>
+class Ruy : public Personagem {
+    void pular() {
+        this.altura_max = 10;
+    }
+}
+						</code></pre></p>
+
+						<p><pre><code data-trim>
+class Chunli : public Personagem {
+    void pular() {
+        this.altura_max = 15;
+    }
+}
+						</code></pre></p>
+
+                        <aside class="notes">
+                            Aqui, temos as especilizações.
+                        </aside>
+					</section>
+
+                    <section>
+                        <p><pre><code data-trim>
+Personagem player1 = new Ruy();
+Peronsagem player2 = new Chunli();
+                        </code></pre></p>
+
+                        <aside class="notes">
+                            E como instanciamos cada um dos objetos. Como eles
+                            tem a mesma classe base, é possível inicializar
+                            classes filhas a partir da classe pai.
+
+                            Note apenas que somente funções definidas no pai
+                            podem ser chamadas assim. Se a classe Ruy tivesse
+                            um método "ataque_tartaruga()",
+                            "player1.ataque_tartaruga()" não vai funcionar.
+                        </aside>
+                    </section>
+				</section>
+
+                <section>
+                    <section>
+                        <h1>Visibilidade de variáveis e funções</h1>
+                    </section>
+                </section>
+			</div>
+		</div>
+
+		<script src="_external/head.min.js"></script>
+		<script src="_external/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: 'default',
+				transition: 'linear',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '_external/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '_external/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '_external/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '_external/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '_external/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '_external/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
