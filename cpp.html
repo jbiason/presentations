@@ -163,6 +163,68 @@ Peronsagem player2 = new Chunli();
                     <section>
                         <h1>Visibilidade de variáveis e funções</h1>
                     </section>
+
+					<section>
+						<h2>public</h2>
+
+						<p>
+							Função/variável que está visível para classes
+							filhas e nas instâncias.
+						</p>
+
+						<p>
+							Padrão quando não há uma visibilidade definida.
+						</p>
+
+						<p><pre><code data-trim>
+class PublicExample {
+	public:
+	int a_number;
+	void set_a_number(int number_to_set);
+	int get_a_number();
+}
+						</code></pre></p>
+					</section>
+
+					<section>
+						<h2>private</h2>
+
+						<p>
+							Função/variável que está visível apenas para
+							classes filhas.
+						</p>
+
+						<p><pre><code data-trim>
+class PrivateExample {
+	private:
+	int a_number;
+
+	public:
+	void set_a_number(int number_to_set);
+	int get_a_number();
+}
+						</code></pre></p>
+					</section>
+
+					<section>
+						<h2>protected</h2>
+
+						<p>
+							Função/variável é visível apenas dentro da própria
+							classe.
+						</p>
+
+						<p><pre><code data-trim>
+class ProtectedExample {
+	protected:
+	int a_number;
+
+	public:
+	void set_a_number(int number_to_set);
+	int get_a_number();
+}
+						</code></pre></p>
+					</section>
                 </section>
 			</div>
 		</div>
