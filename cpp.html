@@ -61,6 +61,7 @@
 						<li>Orientação à objetos e Classes em C++</li>
 						<li>Visibilidade de variáveis e funções</li>
                         <li>Sobrecarga de funções</li>
+                        <li>Ponteiros vs Referências</li>
 						<li>Exceptions</li>
 						<li>Namespaces</li>
 						<li>STL</li>
@@ -149,6 +150,11 @@ class Chunli : public Personagem {
                         <p><pre><code data-trim>
 Personagem player1 = new Ruy();
 Peronsagem player2 = new Chunli();
+                        </code></pre></p>
+
+                        <p><pre><code data-trim>
+delete player1;
+delete player2;
                         </code></pre></p>
 
                         <aside class="notes">
@@ -274,6 +280,22 @@ class Example {
     float get_a_number();
     string get_a_number();
 }
+                        </code></pre></p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Ponteiros vs Referências vs Cópias</h2>
+                    </section>
+
+                    <section>
+                        <h2>Cópia</h2>
+
+                        <p><pre><code data-trim>
+Ryu player();
+
+Arena arena.add_player(player);
                         </code></pre></p>
                     </section>
                 </section>
