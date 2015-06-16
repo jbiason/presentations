@@ -60,6 +60,7 @@
 					<ul>
 						<li>Orientação à objetos e Classes em C++</li>
 						<li>Visibilidade de variáveis e funções</li>
+                        <li>Sobrecarga de funções</li>
 						<li>Exceptions</li>
 						<li>Namespaces</li>
 						<li>STL</li>
@@ -81,6 +82,8 @@
 					</section>
 
 					<section>
+                        <h3>Coisas comuns vão em um classe base</h3>
+
 						<p>Um personagem de um jogo:</p>
 
 						<ul>
@@ -119,6 +122,8 @@ class Personagem {
 					</section>
 
 					<section>
+                        <h3>Herança/Especialização</h3>
+
 						<p><pre><code data-trim>
 class Ruy : public Personagem {
     void pular() {
@@ -156,6 +161,24 @@ Peronsagem player2 = new Chunli();
                             um método "ataque_tartaruga()",
                             "player1.ataque_tartaruga()" não vai funcionar.
                         </aside>
+                    </section>
+
+                    <section>
+                        <p>
+                            E como fazer caso eu queria executar algo que havia na classe base?
+                        </p>
+
+                        <p class='fragment'><pre><code data-trim>
+class Chunli : public Personagem {
+    void pular() {
+        this.altura_max = 15;
+        Personagem::pular();
+    }
+}
+                        </code></pre></p>
+
+                        <p class="fragment">E não, mesmo sendo irmãos, a classe <code>Chunli</code>
+                        não pode fazer <code>Ryu::pular()</code>.</p>
                     </section>
 				</section>
 
@@ -225,6 +248,40 @@ class ProtectedExample {
 }
 						</code></pre></p>
 					</section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Sobrecarga de funções</h2>
+                    </section>
+
+                    <section>
+                        <p><pre><code data-trim>
+class Example {
+    public:
+    void set_a_number(int number_to_set);
+    void set_a_number(float number_to_set);
+    void set_a_number(string number_to_set);
+}
+                        </code></pre></p>
+                    </section>
+
+                    <section>
+                        <p><pre><code data-trim>
+class Example {
+    public:
+    int get_a_number();
+    float get_a_number();
+    string get_a_number();
+}
+                        </code></pre></p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Exceptions</h2>
+                    </section>
                 </section>
 			</div>
 		</div>
