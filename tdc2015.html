@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>TDC 2015 - Agile</title>
+
+		<meta name="author" content="Julio Biason">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="_external/reveal.min.css">
+		<link rel="stylesheet" href="_external/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="_external/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '_external/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style>
+.semi-opaque {
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+* {
+	hyphens: none !important;
+	-moz-hyphens: none !important;
+}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background='_images/tdc-logo-post.png'>
+					<h1 class='semi-opaque'>TDC 2015, Trilha Agile</h1>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+
+					<ul>
+						<li>Quem?</li>
+						<li>O Que É/Foi a TDC?</li>
+						<li>Palestras:</li>
+						<ul>
+							<li>AGCO + BDD</li>
+							<li>Feedback wall</li>
+							<li>Débito Técnico vs MVP</li>
+							<li>Código feito não é resultado</li>
+							<li>Agile: Escalar ou disseminar?</li>
+							<li>Agile Coaching Game</li>
+							<li>Cerimônias Sem Cerimônias</li>
+							<li>Controlefobia = Anarquia</li>
+							<li>Agile Coaching</li>
+						</ul>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Avisos Importantes!</h2>
+
+					<p>Não sou especialista em agile.</p>
+					<p>Não conheco 100%  do que foi apresentado.</p>
+					<p>Não fui eu quem apresentou.</p>
+					<p>Experiência pessoal das apresentações.</p>
+				</section>
+
+				<section>
+					<section>
+						<h3>Quem?</h3>
+					</section>
+
+					<section>
+						<img src='_images/AYV1X0yv.png'>
+						<p>Júlio Biason</p>
+						<p>Na CWI desde 09/2012.</p>
+						<p>UCS, Datacom.</p>
+					</section>
+
+					<section>
+						<img src="_images/meetings.png" alt="" height='600px'/>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>O que É/Foi a TDC?</h3>
+						<img src="_images/tdc-logo-post.png" alt=""/ width='90%'>
+					</section>
+
+					<section>
+						<ul>
+							<li>Aconteceu em Porto Alegre nos dias 24 a 26 de Outubro na Uniritter.</li>
+							<li>Acontece em São Paulo, Florianópolis e Porto Alegre.</li>
+							<li>23 trilhas (tópicos) diferentes.</li>
+							<li>Participei de 2 trilhas (2 dias): Agile UX/Design.</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>Apresentações</h2>
+				</section>
+
+				<section>
+					<h3>“Desenvolvendo produtos e projetos de forma enxuta
+						e eficiente” - Paulo Caroli</h3>
+
+					<ul>
+						<li>Esqueci de fazer notas.</li>
+						<li>Descreve processo de inception de uma semana.</li>
+						<ul>
+							<li>Organização dos ciclos.</li>
+							<li>Organização dos MVP.</li>
+						</ul>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h3>“A experiência da AGCO ao adotar o BDD em seus
+							projetos: uma experiência excitante com o Cucumber
+							como um framework para a especificação e execução
+							de testes” - Rodrigo de Morais / Diogo Lucas</h3>
+
+						<ul>
+							<li>Os testes foram evoluindo até serem E2E.</li>
+							<li>BDD se tornou natural.</li>
+							<li>“Definition of Ready”.</li>
+							<li>Formato do Cucumber/Gherkin super fácil de ler.</li>
+						</ul>
+					</section>
+
+					<section>
+						<img src="_images/cucumber.png" alt=""/>
+					</section>
+				</section>
+
+				<section>
+					<h3>“Feedback wall: acelerando melhoria continua no nivel
+						organizacional” - Cristiano Silveira Basso</h3>
+
+					<ul>
+						<li>Kanban na parede para coisas fora do projeto (melhorar café, etc).</li>
+						<li>Outros andares (equipes) começaram a pedir.</li>
+						<li>Pessoas do andar começaram a se envolver para resolver os problemas.</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h3>“Gerenciamento da Dívida Técnica em projetos de
+							software utilizando Scrum: uma pesquisa-ação” -
+							Frederico Oliveira</h3>
+
+						<ul>
+							<li>Como justificar débito técnico quando não é um MVP?</li>
+							<li>Quando algo passa a ser um débito técnico?</li>
+							<li>Quatro tipos de débitos técnicos: documentação, bug, testes, projeto.</li>
+							<li>Quando tratar o débito técnico:</li>
+							<ul>
+								<li>Pontuar o peso/esforço da tarefa.</li>
+								<li>Definir um “juro” do débito técnico.</li>
+								<li>Quando o acumulado do juro ultrapassa o
+									esforço, é hora de tratar o débito
+									técnico.</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<img src="_images/dc-ticket.png" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/dc-planilha.png" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/dc-grafico.png" alt=""/>
+					</section>
+				</section>
+
+				<section>
+					<h3>“Código feito não é resultado.” - Robson de Almeida</h3>
+
+					<ul>
+						<li>Experiência do SuperPlayer.</li>
+						<li>Preocupação do que é MMP (minimal marketable product).</li>
+						<ul>
+							<li>Produto fica pronto para o mercado em 2 anos.</li>
+							<li>96 ciclos/semanas.</li>
+						</ul>
+						<li>OKR - Objective and Key Results, Intel.</li>
+						<ul>
+							<li>Objective: subjetivo/qualitativo (“Fazer a tela ficar mais bonita”)</li>
+							<li>Key: concreto (“Contratar equipe de UI, aplicar novo estilo”)</li>
+						</ul>
+						<li>Usado por Google, LinkedIn, Twitter e Zynga.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>“Escalar ou disseminar Agile?” - Sérgio Giraldo</h3>
+
+					<ul>
+						<li>Aplicação de Agile em grandes corporações</li>
+						<li>Inicia em uma pequena equipe. Como faz para disseminar?</li>
+						<li>Frameworks ágeis em grande escala:</li>
+						<ul>
+							<li>SAFe: Scaled Agile Framework</li>
+							<li>DAD: Disciplined Agile Development</li>
+							<li>LeSS: Large Scale Scrum</li>
+							<li>Nexus</li>
+						</ul>
+					</ul>
+				</section>
+
+				<section>
+					<h3>“Agile Coaching Game” - Guilherme Silva de Lacerda / Dionatan Moura</h3>
+
+					<ul>
+						<li>Dinamica para coletar perguntas da platéia.)ra coletar perguntas da platéia.</li>
+						<li>Pontos interessantes das perguntas:</li>
+						<ul>
+							<li>Equipes não aceitam métodos ágeis por não
+								entender. “Não se vê valor no que não se
+								conhece”</li>
+							<li>Se há rejeição, não usar nomes de metodologias
+								ágeis (“Então, o que vocês veem de
+								problemas?”)</li>
+							<li>Código sem teste é código legado, mesmo escrito
+								um mês atrás.</li>
+							<li>“O cliente não sabe o que quer”, mas o cliente
+								tem obrigação de saber?</li>
+						</ul>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h3>“Como deixar o planning, a daily, a review e a
+							retrospectiva mais objetivas” - Joyce Bastos /
+							Cristina Otto</h3>
+
+						<ul>
+							<li>“Retornar ao básico”</li>
+							<li>Planning:</li>
+							<ul>
+								<li>PO diz o que, dev diz como.</li>
+								<li>Scrum master faz a ponte.</li>
+								<li>Pré-game</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<img src="_images/cerim1.png" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/cerim2.png" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/cerim3.png" alt=""/>
+					</section>
+
+					<section>
+						<ul>
+							<li>Daily:</li>
+							<ul>
+								<li>“O que eu fiz ontem, o que eu vou fazer hoje, quais os impedimentos”</li>
+								<li>Fica chato depois de um tempo.</li>
+								<li>“Walk to the wall”</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<ul>
+							<li>Review:</li>
+							<ul>
+								<li>Apresentação pro cliente.</li>
+								<li>Não ter medo de mostrar os problemas.</li>
+								<li>Mostrar os objetos do sprint.</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<ul>
+							<li>Retrospectiva</li>
+							<ul>
+								<li>O que tem acontecido que podemos melhorar</li>
+								<li>Melhoria contínua</li>
+								<li>Métricas</li>
+								<li>Votar nos piores problemas, devem ser atacados.</li>
+							</ul>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>“Controlefobia = Anarquia!” - Juliano Ribeiro</h3>
+
+						<ul>
+							<li>Precisamos de controles.</li>
+							<li>Fobias surgem de traumas.</li>
+							<li>“No broken window”: se já tem um problema, o
+								pessoal não dá bola (se tem um teste não
+								passando, não passar 2 não é problema).</li>
+						</ul>
+					</section>
+
+					<section>
+						<ul>
+							<li>Kanban tem slots; número de slots é menor que o
+								número de pessoas</li>
+							<ul>
+								<li>Se não tem slot, alguém vai ter que fazer
+									pair</li>
+								<li>Empresa quer 70% de pair programming</li>
+							</ul>
+							<li>Revisão global tem número de slots; se alguém
+								quer que seu código seja revisado, tem que
+								revisar dos outros</li>
+							<li>“Escadas” no burnout indicam erro de
+								granularidade.</li>
+						</ul>
+					</section>
+
+					<section>
+						<img src="_images/controle1.png" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/controle2.png" alt=""/>
+					</section>
+				</section>
+
+				<section>
+					<h3>“Você sabe qual a função de um Agile Coach?” - Annelise Gripp</h3>
+
+					<ul>
+						<li>O que faz um agile coach</li>
+						<li>Agile = processo = mentoring</li>
+						<li>Coaching = pessoa = coaching</li>
+						<li>Procurar qualidades nas pessoas para achar o melhor
+							lugar delas dentro do projeto.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Mais informações:</h4>
+
+					<p><a
+							href="http://www.thedevelopersconference.com.br/tdc/2015/portoalegre/trilha-agile"
+							target="_blank">http://www.thedevelopersconference.com.br/tdc/2015/portoalegre/trilha-agile</a></p>
+				</section>
+			</div>
+		</div>
+
+		<script src="_external/head.min.js"></script>
+		<script src="_external/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: 'default',
+				transition: 'linear',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '_external/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '_external/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '_external/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '_external/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '_external/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '_external/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
