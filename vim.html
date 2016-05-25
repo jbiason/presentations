@@ -62,6 +62,24 @@ img {
 				</section>
 
 				<section>
+					<h2>O que vamos ver:</h2>
+
+					<ul>
+						<li>Modalidade</li>
+						<li>Componibilidade</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>O que NÃO vamos ver:</h2>
+
+					<ul>
+						<li>Plugins a fundo</li>
+						<li>Todos os comandos disponíveis</li>
+					</ul>
+				</section>
+
+				<section>
 					<p>Existem duas coisas que o VIM tem que outros editores não tem:</p>
 
 					<ul>
@@ -80,7 +98,7 @@ img {
 
 						<p>
 							Significa que o VIM tem "modos" de edição.
-							<span class="fragment small">duh</span>
+							<span class="fragment small"><i>duh</i></span>
 						</p>
 					</section>
 
@@ -135,6 +153,103 @@ img {
 
 						<p>Iniciado com <code>v</code>, <code>Shift+v</code> ou
 							<code>Ctrl+v</code>.</p>
+					</section>
+
+					<section>
+						<h3>Resumo</h3>
+
+						<ul>
+							<li>O VIM trabalha com modos;</li>
+							<li>O modo padrão é o "normal";</li>
+							<li><code>[Esc]</code> sempre volta pro modo normal;</li>
+							<li>Para começar a inserir texto, é preciso entrar em modo de inserção;</li>
+							<li>Existe uma seleção como <code>Shift+Setas</code> (que outros editores tem).</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Componibilidade</h2>
+
+						<p class="fragment">("Componibilidade" de "composição")</p>
+
+						<p class="fragment">A "gramática" do VIM.</p>
+					</section>
+
+					<section>
+						<h3>Verbos</h3>
+
+						<ul>
+							<li><code>y</code>: "yank", copiar.</li>
+							<li><code>d</code>: "delete", excluir.</li>
+							<li><code>c</code>: "change", alterar.</li>
+							<li><code>f</code>: "find", encontrar.</li>
+							<li><code>t</code>: "til", até.</li>
+							<li><code>g</code>: "go", ir.</li>
+							<li>...</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Substantivos</h3>
+
+						<ul>
+							<li><code>l</code>: posição à direita.</li>
+							<li><code>w</code>: "word", palavra.</li>
+							<li><code>0</code>: coluna 0.</li>
+							<li><code>_</code>: primeira posição não vazia da linha.</li>
+							<li><code>$</code>: fim da linha.</li>
+							<li><code>n</code>: próxima ocorrência da pesquisa.</li>
+							<li><code>j</code>: mesma coluna mas na linha de baixo.</li>
+							<li>...</li>
+						</ul>
+
+						<p class="fragment">
+							(Também funcionam como movimentação; sem um verbo
+							específico, é considerado "vá até".) 
+						</p>
+					</section>
+
+					<section>
+						<h3>Interlúdio - Combinando</h3>
+
+						<ul>
+							<li>
+								<code>dw</code>
+								<span class="fragment">- "Delete" "word": apaga a próxima palavra.</span>
+							</li>
+
+							<li class="fragment">
+								<code>y$</code>
+								<span class="fragment">- "Yank" (copie) até o fim da linha.</span>
+							</li>
+
+							<li class="fragment">
+								<code>cn</code>
+								<span class="fragment">- Alterar (change) o conteúdo até a próxima ocorrência da pesquisa.</span>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Modificadores</h3>
+
+						<ul>
+							<li>
+								<code>w</code> - Palavra
+							</li>
+
+							<li>
+								<code>2w</code>
+								<span class="fragment">- 2 palavras</span>
+							</li>
+
+							<li class="fragment">
+								<code>d2w</code>
+								<span class="fragment">- Delete as duas próximas palavras.</span>
+							</li>
+						</ul>
 					</section>
 				</section>
 			</div>
