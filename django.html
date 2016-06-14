@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Entendendo DJANGO</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- personal styles -->
+        <style>
+            .semi-opaque {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-background='_images/django-allauth.png'>
+                    <h1 class='semi-opaque'>Entendendo Django</h1>
+                </section>
+
+                <section>
+                    <h2>Agenda</h2>
+
+                    <ul>
+                        <li>Entendendo Projeto</li>
+                        <li>Entendendo Apps</li>
+                        <li>Adicionando Apps no Projeto</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Projeto</h2>
+
+                    <p>"Projeto" é como Django chama a base do sistema.</p>
+
+                    <p>Criado com <code>django-admin startproject [PROJECT]</code>.</p>
+                </section>
+
+                <section>
+                    <h2>Projeto: startproject</h2>
+
+                    <pre><code class="hljs">
+.
+├── exemplo
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── manage.py
+                    </code></pre>
+
+                    <p>
+                        <code>manage.py</code> vira o gerenciador do projeto.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>
+                        <small>Projeto &gt;</small>
+                        App
+                    </h2>
+
+                    <p>
+                        Dentro do projeto, para criar um app:
+                    </p>
+
+                    <p>
+                        <code>python manage.py startapp [app]</code>
+                    </p>
+                </section>
+
+                <section>
+                    <h2>
+                        <small>Projeto &gt;</small>
+                        App
+                    </h2>
+
+                    <pre><code class="hljs">
+.
+├── exemplo
+│   ├── __init__.py
+│   ├── __init__.pyc
+│   ├── settings.py
+│   ├── settings.pyc
+│   ├── urls.py
+│   └── wsgi.py
+├── manage.py
+└── products
+    ├── admin.py
+    ├── __init__.py
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py
+    ├── tests.py
+    └── views.py
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>
+                        <small>Projeto &gt; App &gt;</small>
+                        models.py
+                    </h2>
+
+                    <p>Definição do banco de dados para o app.</p>
+
+                    <pre><code class="hljs">
+class Product(models.Model):
+
+    """Product information"""
+
+    name = models.CharField(max_length=40)
+                    </code></pre>
+
+                </section>
+
+                <section>
+                    <h2>
+                        <small>Projeto &gt; App &gt;</small>
+                        admin.py
+                    </h2>
+
+                    <p>Definição do admin (ou não) dos models.</p>
+
+                    <pre><code class="hljs">
+class ProductAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Product, ProductAdmin)
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>
+                        <small>Projeto &gt; App &gt;</small>
+                        forms.py
+                    </h2>
+
+                    <p>Definição de formulários/formulários baseados em models.</p>
+
+                    <pre><code class='hljs'>
+class ProductForm(forms.Form):
+    name = forms.CharField(label='Your name', max_length=40)
+                    </code></pre>
+
+                    <pre><code class="hljs py">
+class ProductForm(ModelForm):
+    class Meta:
+        model = Product
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>
+                        <small>Projeto &gt; App &gt;</small>
+                        views.py
+                    </h2>
+
+                    <p>Views do app.</p>
+
+                    <pre><code class="hljs">
+def get_product(request, product_id):
+    if request.method == 'GET':
+        product = get_object_or_404(Product, pk=product_id)
+        return render(request, 
+                      'product_info.html',
+                      {'product': product})
+    else:
+        return render(request, 
+                      'invalid.html',
+                      {'reason': 'Can\'t create products yet'})
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>
+                        <small>Projeto &gt; App &gt;</small>
+                        templates/product_info.html
+                    </h2>
+
+                    <p>Na verdade, todos os templates <i>da app</i> ficam em
+                        <code>templates</code>.</p>
+
+                    <pre><code class="hljs">
+{% extends 'base.html' %}
+<ul>
+    <li>Product name: {{ product.name }}</li>
+</ul>
+                    </code></pre>
+
+                        <p>O <code>base.html</code> pode estar no <code>templates</code>
+                        do projeto.</p>
+                </section>
+
+                <section>
+                    <h2>
+                        <small>Projeto &gt; App &gt;</small>
+                        urls.py
+                    </h2>
+
+                    <p>URLs internas do app.</p>
+
+                    <pre><code class="hljs">
+from . import views
+
+urlpatterns = [
+    url(r'^(?P&lt;product_id&gt;[0-9]+)/$', views.get_product, name='get'),
+
+]
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>App completa!</h2>
+
+                    <p>... só que o Django ainda não sabe que ela existe.</p>
+                </section>
+
+                <section>
+                    <h2>
+                        <small>Projeto &gt;</small>
+                        settings.py
+                    </h2>
+
+                    <pre><code class="hljs">
+[...]
+INSTALLED_APPS = (
+    [...]
+    'products',
+    [...]
+)
+                    </code></pre>
+
+                    <p>Agora o Django sabe que a App existe!</p>
+
+                    <p class="fragment">Só não sabe como chegar lá porque faltam as URLs.</p>
+                </section>
+
+                <section>
+                    <h2>
+                        <small>Projeto &gt;</small>
+                        urls.py
+                    </h2>
+
+                    <pre><code class="hljs">
+[...]
+urlpatterns = [
+    [...]
+    url(r'/products', include('products')),
+    [...]
+]
+                    </code></pre>
+                </section>
+
+                <section>
+                    <p>Agora funciona como esperado:</p>
+
+                    <ul>
+                        <li>Request de um browser chega no Django;</li>
+                        <li>Consulta o urls.py base do projeto para encontrar o
+                            que será executado;</li>
+                        <li>Consulta o urls.py da app (no caso) para encontrar
+                            a view que será executada;</li>
+                        <li>Encontra a view dentro da app, que busca as informações no model;</li>
+                        <li>Renderiza o template;</li>
+                        <li>Retorna o template renderizado para o usuário.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <img src="_images/goodgood-but-we-must-go-deeper.jpg" alt="Go deeper"/>
+                </section>
+
+                <section>
+                    <h2>Relationships</h2>
+
+                    <p>Projeto &gt; App &gt; models.py</p>
+
+                    <pre><code class="hljs">
+class Product(models.Model):
+
+    """Product information"""
+
+    name = models.CharField(max_length=40)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+
+
+class Order(models.Model):
+
+    """An order."""
+
+    products = models.ManyToManyField(Product)
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Inserts</h2>
+
+                    <pre><code class="hljs">
+product = Product(name='fruit')
+order = Order()
+order.products.add(product)
+product.save()
+order.save()
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Queries</h2>
+
+                    <pre><code class="hljs">
+all_products = Product.objects.all()
+                    </code></pre>
+
+                    <pre><code class="hljs">
+fruit = Product.objects.get(pk=1)
+fruit = Product.objects.get(name='fruit')
+                    </code></pre>
+
+                    <pre><code class="hljs">
+all_fruits = Order.objects.filter(products__name__like='fruit')
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Queries</h2>
+                    <p><code>get</code> só pode retornar <strong>um</strong> elemento.</p>
+
+                    <p><code>pk</code> é uma variável mágica que aponta para o campo marcado
+                        como <code>primary_key=True</code>; se não houver um <code>primary_key</code>,
+                        o Django cria um <code>IntegerField(auto_increment=True)</code>.</p>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.configure({languages: ['python']}); hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
