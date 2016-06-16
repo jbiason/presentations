@@ -126,6 +126,25 @@
         └── views.py
                         </code></pre>
                     </section>
+
+					<section>
+						<h3>Outras coisas do manage.py</h3>
+
+						<ul>
+							<li><code>python manage.py syncdb</code>: Cria as
+								tabelas necessárias e adiciona os dados
+								necessários.</li>
+							<li><code>python manage.py makemigrations</code>:
+								Verifica alterações em modelos e gera regras
+								para conversão do banco.</li>
+							<li><code>python manage.py shell</code>: Shell de
+								acesso ao Django (na verdade, abre um
+								interpretador Python com um monte de coisas já
+								carregadas/configuradas)</li>
+							<li><code>python manage.py runserver</code>: Roda
+								um server de desenvolvimento.</li>
+						</ul>
+					</section>
                 </section>
 
                 <section>
@@ -387,6 +406,110 @@ print Products.order_set.all()
 
                         <p>O nome da relacionamento reverso pode ser alterado com
                             <code>related_name</code>.</p>
+                    </section>
+
+					<section>
+						<h2>Queries com AND</h2>
+
+						<p>Queries onde todas as condições devem ser
+							satisfeitas podem ser feitas passando mais
+							parametros em <code>filter</code>.</p>
+
+						<pre><code class="hljs">
+all_expensive_fruits = Order.objects.filter(
+    products__name__like='fruit',
+    price__gt=1000)
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Queryes com OR</h2>
+
+						<p>Para queries com OR, deve-ser usar o objeto <code>Q</code>.</p>
+
+						<pre><code class="hljs">
+all_fruits_or_expensive = Order.objects.filter(
+    Q(products__name__like='fruit') |
+    Q(price__gt=1000))
+						</code></pre>
+					</section>
+
+                    <section>
+                        <h2>Q</h2>
+
+                        <p><code>Q</code> também pode ser usado para AND e queries mais
+                        complexas.</p>
+
+                        <pre><code class="hljs">
+fruit_salad = Order.objects.filter(
+    Q(products__name__like='fruit') &amp;
+    (Q(price__gt=1000) | Q(price=0))
+                        </code></pre>
+
+                        <p class="fragment">É possível misturar <code>Q</code>
+                            com filter normal, mas existe uma questão de
+                            prioridades e é melhor nem pensar em misturar os
+                            dois.</p> 
+                    </section> 
+                </section>
+
+                <section>
+                    <section>
+                        <h2>CHOICES</h2>
+
+                        <p>É possível definir valores fixos para campos com
+                            <code>choices</code>.  </p>
+
+                        <pre><code class="hljs">
+class Order(models.Model):
+
+    """An order."""
+
+    CHOICES = (
+        ('M', 'Money'),
+        ('C', 'Credit card')
+    )
+
+    products = models.ManyToManyField(Product)
+    payment_type = models.CharField(max_length=1, choices=CHOICES)
+                        </code></pre>
+
+                        <p class="fragment">O primeiro valor é o valor que será
+                            registrado no banco; o segundo, apresentado num
+                            ModelForm.</p>
+                    </section>
+
+                    <section>
+                        <h2>CHOICES</h2>
+
+                        <p>Para as queries, é preciso pedir o valor do campo, não do display.</p>
+
+                        <pre><code class="hljs">
+credit_card_orders = Order.objects.filter(payment_type='C')
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>CHOICES</h2>
+
+                        <p>Para facilitar a vida, usar contantes.</p>
+
+                        <pre><code class="hljs">
+class Order(models.Model):
+
+    """An order."""
+
+    MONEY = 'M'
+    CREDIT_CARD = 'C'
+
+    CHOICES = (
+        (MONEY, 'Money'),
+        (CREDIT_CARD, 'Credit card')
+    )
+
+credit_card_orders = Order.objects.filter(
+    payment_type=Order.CREDIT_CARD)
+                        </code></pre>
                     </section>
                 </section>
 
