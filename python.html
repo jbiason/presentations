@@ -1093,6 +1093,103 @@ Julio
                     </section>
                 </section>
 
+				<section>
+					<section>
+						<h3>Comprehensions e Generators</h3>
+
+						<p>Python permite criar listas processando listas sem
+							<code>for</code> com <i>list
+								comprehensions</i>.</p>
+
+						<pre><code class="hljs">
+&gt;&gt;&gt; a = [1, 2, 3]
+&gt;&gt;&gt; [item * 2 for item in a]
+&gt;&gt;&gt; [2, 4, 6]
+						</code></pre>
+
+						<p>Pra quem gosta de coisas "funcionais", é o mesmo que
+							<code>map</code>.</p>
+
+						<pre><code class="hljs">
+&gt;&gt;&gt; a = [1, 2, 3]
+&gt;&gt;&gt; map(lamba f: f * 2, a)
+&gt;&gt;&gt; [2, 4, 6]
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Comprehensions (contd.)</h4>
+						<p>É possível filtrar elementos com list comprehensions.</p>
+
+						<pre><code class="hljs">
+&gt;&gt;&gt; a = [1, 2, 3]
+&gt;&gt;&gt; [item for item in a if item > 2]
+&gt;&gt;&gt; [3]
+						</code></pre>
+
+						<p>Funcionalmente, é o mesmo que <code>filter</code>.</p>
+
+						<pre><code class="hljs">
+&gt;&gt;&gt; a = [1, 2, 3]
+&gt;&gt;&gt; filter(lambda f: f > 2, a)
+&gt;&gt;&gt; [3]
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Generators</h4>
+
+						<p>Enquanto que comprehensions criam novas listas, generators
+						geram elementos sob demanda.</p>
+
+						<pre><code class="hljs">
+&gt;&gt;&gt; a = [1, 2, 3]
+&gt;&gt;&gt; (item * 2 for item in a)
+&lt;generator object &lt;genexpr&gt; at 0x7f8673dfc050&gt;
+						</code></pre>
+					</section>
+
+					<section>
+						<h5>Generators (contd.)</h5>
+
+						<pre><code class="hljs">
+&gt;&gt;&gt; [item for item in range(5000000)]
+						</code></pre>
+
+						<p>vs</p>
+
+						<pre><code class="hljs">
+&gt;&gt;&gt; (item for item in xrange(5000000))
+						</code></pre>
+					</section>
+
+					<section>
+						<h5>Generators (contd.)</h5>
+
+						<pre><code class="hljs">
+&gt;&gt;&gt; [item for item in range(5000000)][:5]
+						</code></pre>
+
+						<p>vs</p>
+
+						<pre><code class="hljs">
+&gt;&gt;&gt; (item for item in xrange(5000000))[:5]
+						</code></pre>
+					</section>
+
+					<section>
+						<h5>Generators (contd.)</h5>
+
+						<pre><code class="hljs">
+&gt;&gt;&gt; def gen(max_value):
+&gt;&gt;&gt; 	for value in xrange(max_value):
+&gt;&gt;&gt; 		yield value * 2
+						</code></pre>
+
+						<p>Generator functions não podem ter <code>return</code>!</p>
+					</section>
+				</section>
+
                 <section data-background='_images/thats-all-folks.jpg'>
                     <section></section>
                 </section>
