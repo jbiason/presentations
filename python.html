@@ -6,36 +6,34 @@
 
         <title>Python</title>
 
-        <meta name="author" content="Julio Biason">
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
 
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-        <link rel="stylesheet" href="_external/reveal.min.css">
-        <link rel="stylesheet" href="_external/default.css" id="theme">
-		<link rel='stylesheet' href='_external/hightlight-default.min.css'>
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
 
-        <!-- For syntax highlighting -->
-        <!-- <link rel="stylesheet" href="_external/zenburn.css"> -->
-		<link rel='stylesheet' href='_external/obsidian.css'>
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <!-- Printing and PDF exports -->
         <script>
-            if( window.location.search.match( /print-pdf/gi ) ) {
-                var link = document.createElement( 'link' );
-                link.rel = 'stylesheet';
-                link.type = 'text/css';
-                link.href = '_external/pdf.css';
-                document.getElementsByTagName( 'head' )[0].appendChild( link );
-            }
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
         </script>
 
         <!--[if lt IE 9]>
-        <script src="reveal.js/lib/js/html5shiv.js"></script>
+        <script src="lib/js/html5shiv.js"></script>
         <![endif]-->
 
+        <!-- personal styles -->
         <style>
 .semi-opaque {
     background-color: rgba(0, 0, 0, 0.7);
@@ -49,7 +47,6 @@
     </head>
 
     <body>
-
         <div class="reveal">
             <div class="slides">
                 <section data-background='_images/zen-of-python-poster-a3.png' class='semi-opaque'>
@@ -65,27 +62,27 @@
                         <ul>
                             <li>Linguagem interpretada.</li>
                             <li>Dinamicamente tipada.</li>
-							<li>Principais usos em pesquisas e web.
-								<ul>
-									<li>Assim como o Linux "vazou" dos servidores para os
-									Desktops, Python parece estar "vazando" do meio acadêmico/pesquisa
-									para os servidores.</li>
-								</ul>
-							</li>
+                            <li>Principais usos em pesquisas e web.
+                                <ul>
+                                    <li>Assim como o Linux "vazou" dos servidores para os
+                                    Desktops, Python parece estar "vazando" do meio acadêmico/pesquisa
+                                    para os servidores.</li>
+                                </ul>
+                            </li>
                         </ul>
                     </section>
-				</section>
+                </section>
 
-				<section>
+                <section>
                     <section>
                         <h2>O Zen de Python</h2>
 
-						<p>Começou em uma brincadeira do Tim Peters (um dos desenvolvedores do Python),
-						mas acabou virando um PEP (PEP 20) e hoje faz parte da filosofia de desenvolvimento
-						do Python.</p>
-					</section>
+                        <p>Começou em uma brincadeira do Tim Peters (um dos desenvolvedores do Python),
+                        mas acabou virando um PEP (PEP 20) e hoje faz parte da filosofia de desenvolvimento
+                        do Python.</p>
+                    </section>
                         
-					<section>
+                    <section>
                         <ul>
                             <li>Bonito é melhor que feio.</li>
                             <li>Explícito é melhor que implícito.</li>
@@ -100,23 +97,23 @@
                     <section>
                         <ul>
                             <li>Casos especiais não são especiais o suficiente para quebrar as regras.
-							<ul><li>Embora praticabilidade ganhe de puridade.</li></ul>
-							</li>
+                            <ul><li>Embora praticabilidade ganhe de puridade.</li></ul>
+                            </li>
                             <li>Erros nunca devem passam silenciosamente.
-							<ul><li>A não ser que sejam explicitamente silenciados.</li></ul>
-							</li>
+                            <ul><li>A não ser que sejam explicitamente silenciados.</li></ul>
+                            </li>
                             <li>Em caso de ambiguidade, evite a tentação de adivinhar.</li>
                             <li>Deve haver um -- e preferencialmente apenas um -- modo óbvio de fazer algo.
-							<ul><li>Embora talvez não seja tão óbvio de primeira a não ser que você seja Holandês.</li></ul>
-							</li>
+                            <ul><li>Embora talvez não seja tão óbvio de primeira a não ser que você seja Holandês.</li></ul>
+                            </li>
                         </ul>
                     </section>
                     
                     <section>
                         <ul>
                             <li>Agora é melhor do que nunca.
-							<ul><li>Embora nunca seja melhor que <i>agora mesmo</i>.</li></ul>
-							</li>
+                            <ul><li>Embora nunca seja melhor que <i>agora mesmo</i>.</li></ul>
+                            </li>
                             <li>Se a implementação é difícil de explicar, é uma péssima idéia.</li>
                             <li>Se a implementação é fácil de explicar, pode ser uma boa idéia.</li>
                             <li>Namespaces são uma grande idéia - vamos fazer mais desses!</li>
@@ -124,116 +121,123 @@
                     </section>
                 </section>
 
-				<section>
-					<section>
-						<h2>As Esquisitices de Python</h2>
-					</section>
+                <section>
+                    <section>
+                        <h2>As Esquisitices de Python</h2>
+                    </section>
 
-					<section>
-						<h3>PEP8</h3>
-					</section>
+                    <section>
+                        <h3>PEP8</h3>
+                    </section>
 
-					<section>
-						<ol>
-							<li>PEPs (Python Enhancement Proposal) são as RFCs que os desenvolvedores
-							Python utilizam para comunicar novas funcionalidades.
-							<ul>
-								<li>Todos os PEPs podem ser encontados em 
-								<a href='http://legacy.python.org/dev/peps/'>http://legacy.python.org/dev/peps/</a>.</li>
-							</ul>
-							<li>Uma funcionalidade não é simplesmente "aceita": É preciso escrever
-							uma proposta de melhoria explicando o problema encontra e como corrigí-lo.
-							</li>
-							<li>PEP8 define a melhor forma de se programar em Python.</li>
-							<li>PEP8 não é forçado pelo compilador.</li>
-							<li>PEP8 garante que qualquer programador Python consiga facilmente
-							encontrar coisas em códigos criados por terceiros.</li>
-						</ol>
-					</section>
+                    <section>
+                        <ol>
+                            <li>PEPs (Python Enhancement Proposal) são as RFCs que os desenvolvedores
+                            Python utilizam para comunicar novas funcionalidades.
+                            <ul>
+                                <li>Todos os PEPs podem ser encontados em 
+                                <a href='http://legacy.python.org/dev/peps/'>http://legacy.python.org/dev/peps/</a>.</li>
+                            </ul>
+                            <li>Uma funcionalidade não é simplesmente "aceita": É preciso escrever
+                            uma proposta de melhoria explicando o problema encontra e como corrigí-lo.
+                            </li>
+                            <li>PEP8 define a melhor forma de se programar em Python.</li>
+                            <li>PEP8 não é forçado pelo compilador.</li>
+                            <li>PEP8 garante que qualquer programador Python consiga facilmente
+                            encontrar coisas em códigos criados por terceiros.</li>
+                        </ol>
+                    </section>
 
-					<section>
-						<h4>Um pouco do PEP8:</h4>
-					</section>
+                    <section>
+                        <h4>Um pouco do PEP8:</h4>
+                    </section>
 
-					<section>
-						<h5>Variáveis e funções utilizam a notação separado_por_underscores; classes
-							usam CamelCase.</h5>
+                    <section>
+                        <h5>Variáveis e funções utilizam a notação separado_por_underscores; classes
+                            usam CamelCase.</h5>
 
-						<p>Correto:</p>
-						<p><pre><code data-trim>
-						MinhaClasse
+                        <p>Correto:</p>
 
-						minha_funcao()
-						</code></pre></p>
+                        <pre><code class="hljs">
+MinhaClasse
 
-						<p>Errado:</p>
-						<p><pre><code data-trim>
-						minhaClasse
+minha_funcao()
+                        </code></pre>
 
-						minhaFuncao()
-						</code></pre></p>
-					</section>
+                        <p>Errado:</p>
 
-					<section>
-						<h5>Blocos são marcados com 4 espaços e não tabulações.</h5>
+                        <pre><code class="hljs">
+minhaClasse
 
-						<p>A maior parte dos editores de código hoje permitem configurar isso facilmente
-						e fazem com que os 4 espaços no começo sejam tratados como tabulação.</p>
+minhaFuncao()
+                        </code></pre>
 
-						<p>Isso garante que o código irá sempre aparecer da mesma forma em qualquer
-						editor, não importando a configuração do autor.</p>
-					</section>
+                        <pre><code class="hljs fragment">
+CONSTANTES
+                        </code></pre>
+                    </section>
 
-					<section>
-						<h5>Coluna máxima é 80.</h5>
+                    <section>
+                        <h5>Blocos são marcados com 4 espaços e não tabulações.</h5>
 
-						<p>Nenhum código deve passar da coluna 80, não importa o tamanho do seu
-						monitor.</p>
+                        <p>A maior parte dos editores de código hoje permitem configurar isso facilmente
+                        e fazem com que os 4 espaços no começo sejam tratados como tabulação.</p>
 
-						<p>Facilita a leitura e a movimentação dentro do código.</p>
-					</section>
+                        <p>Isso garante que o código irá sempre aparecer da mesma forma em qualquer
+                        editor, não importando a configuração do autor.</p>
+                    </section>
 
-					<section>
-						<h5>Duas linhas em branco antes de classes, 1 linha em branco antes de funções.</h5>
-					</section>
+                    <section>
+                        <h5>Coluna máxima é 80.</h5>
 
-					<section>
-						<h5>Espaços entre operadores (+, -, /, *), nada de espaços antes de parentêses, colchetes ou chaves.</h5>
+                        <p>Nenhum código deve passar da coluna 80, não importa o tamanho do seu
+                        monitor.</p>
 
-						<p>Correto:</p>
+                        <p>Facilita a leitura e a movimentação dentro do código.</p>
+                    </section>
 
-						<p><pre><code data-trim>
-						(1 + 2)
-						array[1]
-						</code></pre></p>
+                    <section>
+                        <h5>Duas linhas em branco antes de classes, 1 linha em branco antes de funções.</h5>
+                    </section>
 
-						<p>Errado:</p>
-						
-						<p><pre><code data-trim>
-						(1+2)
-						( 1 + 2 )
-						array [ 1 ]
-						</code></pre></p>
-					</section>
+                    <section>
+                        <h5>Espaços entre operadores (+, -, /, *), nada de espaços antes de parentêses, colchetes ou chaves.</h5>
 
-					<section>
-						<h5>Nada de espaços entre parâmetros nomeados.</h5>
+                        <p>Correto:</p>
 
-						<p>Correto:</p>
+                        <pre><code class="hljs">
+(1 + 2)
+array[1]
+                        </code></pre>
 
-						<p><pre><code data-trim>
-						funcao(param=1)
-						</code></pre></p>
+                        <p>Errado:</p>
+                        
+                        <pre><code class="hljs">
+(1+2)
+( 1 + 2 )
+array [ 1 ]
+                        </code></pre>
+                    </section>
 
-						<p>Errado:</p>
-						<p><pre><code data-trim>
-						funcao(param = 1)
-						</code></pre></p>
-					</section>
+                    <section>
+                        <h5>Nada de espaços entre parâmetros nomeados.</h5>
 
-					<section>
-						<h3>Blocos</h3>
-					</section>
+                        <p>Correto:</p>
+
+                        <pre><code class="hljs">
+funcao(param=1)
+                        </code></pre>
+
+                        <p>Errado:</p>
+
+                        <pre><code class="hljs">
+funcao(param = 1)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Blocos</h3>
+                    </section>
 
                     <section>
                         <p>Em Python, uma identação define um bloco.</p>
@@ -242,7 +246,7 @@
 
                         <img class='fragment' src='_images/zuul.jpg'></img>
                     </section>
-				</section>
+                </section>
 
                 <section>
                     <section>
@@ -250,7 +254,7 @@
                     </section>
 
                     <section>
-                        <p><pre><code data-trim>
+                        <pre><code data-trim class='hljs'>
 $ python
 
 Python 2.7.5 (default, Jun 25 2014, 10:19:55) 
@@ -302,13 +306,13 @@ python meuscript.py
                         <p>Outros são tipos simples que não são objetos.</p>
                     </section>
 
-					<section>
-						<p><code>None</code>: O nada. Tipo simples.</p>
+                    <section>
+                        <p><code>None</code>: O nada. Tipo simples.</p>
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = None
                         </code></pre></p>
-					</section>
+                    </section>
 
                     <section>
                         <p><code>bool</code>: Tipo booleano. Tipo simples.</p>
@@ -368,7 +372,7 @@ python meuscript.py
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = {'Python': 'Rocks',
-&gt;&gt;&gt; 1: 1.0}
+&gt;&gt;&gt;      1: 1.0}
                         </code></pre></p>
                     </section>
 
@@ -381,8 +385,8 @@ python meuscript.py
                         </code></pre></p>
                     </section>
 
-					<section>
-						<p><code>set</code>: Conjunto de elementos não repetíveis. Objeto mutável.</p>
+                    <section>
+                        <p><code>set</code>: Conjunto de elementos não repetíveis. Objeto mutável.</p>
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = set()
@@ -393,8 +397,8 @@ set(['a'])
 &gt;&gt;&gt; a
 set(['a'])
 
-						</code></pre></p>
-					</section>
+                        </code></pre></p>
+                    </section>
 
                     <section>
                         <p>E ainda (mas menos importantes):</p>
@@ -441,14 +445,14 @@ set(['a'])
                         </code></pre></p>
                     </section>
 
-					<section>
-						<img src='_images/intermission_3696.jpg'>
-					</section>
+                    <section>
+                        <img src='_images/intermission_3696.jpg'>
+                    </section>
 
-					<section>
-						<h3>[condição]</h3>
+                    <section>
+                        <h3>[condição]</h3>
 
-						<p>Comparação pode ter mais de um elemento:</p>
+                        <p>Comparação pode ter mais de um elemento:</p>
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = 1; b = 5; c = 3; d = 1
@@ -457,28 +461,28 @@ False
 &gt;&gt;&gt; a &lt; b &gt; c
 True
                         </code></pre></p>
-					</section>
+                    </section>
 
-					<section>
-						<h3>[condição] (cont.)</h3>
+                    <section>
+                        <h3>[condição] (cont.)</h3>
 
-						<p>Valores "em branco" são considerados falsos:</p>
+                        <p>Valores "em branco" são considerados falsos:</p>
 
-						<ul>
-							<li><code>None</code> é falso.</li>
-							<li><code>""</code>, string vazia, é falso.</li>
-							<li><code>0</code> é falso em qualquer precisão.</li>
-							<li><code>[]</code>, lista vazia, é falso.</li>
-							<li><code>{}</code>, dicionário vazio, é falso.</li>
-							<li><code>set()</code>, set vazio, é falso.</li>
-						</ul>
-					</section>
+                        <ul>
+                            <li><code>None</code> é falso.</li>
+                            <li><code>""</code>, string vazia, é falso.</li>
+                            <li><code>0</code> é falso em qualquer precisão.</li>
+                            <li><code>[]</code>, lista vazia, é falso.</li>
+                            <li><code>{}</code>, dicionário vazio, é falso.</li>
+                            <li><code>set()</code>, set vazio, é falso.</li>
+                        </ul>
+                    </section>
 
-					<section>
-						<h3>[condição] (cont.)</h3>
+                    <section>
+                        <h3>[condição] (cont.)</h3>
 
-						<p>Como valores em branco são falsos, para garantir <code>None</code>
-						usa-se <code>is</code>.</p>
+                        <p>Como valores em branco são falsos, para garantir <code>None</code>
+                        usa-se <code>is</code>.</p>
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = 0
@@ -492,11 +496,11 @@ True
 &gt;&gt;&gt; a is None
 True
                         </code></pre></p>
-					</section>
+                    </section>
 
-					<section>
-						<img src='_images/tumblr_n6qbpoBDVX1rbyj0do1_500.jpg'>
-					</section>
+                    <section>
+                        <img src='_images/tumblr_n6qbpoBDVX1rbyj0do1_500.jpg'>
+                    </section>
 
                     <section>
                         <h3><code>for [iterável]</code></h3>
@@ -517,10 +521,6 @@ True
                     <section>
                         <p>Um objeto "iterável" é aquele que pode ter elementos
                         acessados usando <code>[</code> e <code>]</code>.</p>
-
-						<p class='fragment'>(Na verdade, o objeto tem que ter um <i>generator</i>;
-						para acesar elementos diretamente, o objeto tem que implementar a função
-						<code>__getitem__</code>.)</p>
                     </section>
 
                     <section>
@@ -543,27 +543,27 @@ True
                         </code></pre></p>
                     </section>
 
-					<section>
-						<p>Dicionários como iteráveis:</p>
+                    <section>
+                        <p>Dicionários como iteráveis:</p>
 
-						<p><pre><code data-trim>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; d =  {'Python': 'Rocks', 'Parrot': 'Dead', 'Favorite Color': 'Blue'}
 &gt;&gt;&gt; for key in d:
-&gt;&gt;&gt; 	print key, d[key]
-						</code></pre></p>
-					</section>
-					
-					<section>
-					    <p>Ou ainda:</p>
-					    
-					    <p><pre><code data-trim>
+&gt;&gt;&gt;    print key, d[key]
+                        </code></pre></p>
+                    </section>
+                    
+                    <section>
+                        <p>Ou ainda:</p>
+                        
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; d =  {'Python': 'Rocks', 'Parrot': 'Dead', 'Favorite Color': 'Blue'}
 &gt;&gt;&gt; for (key, value) in d.iteritems():
 &gt;&gt;&gt;     print key, value
-					    </code></pre></p>
+                        </code></pre></p>
 
-						<p class='fragment'>Forma considerada "correta" é a anterior.</p>
-					</section>
+                        <p class='fragment'>Forma considerada "correta" é a anterior.</p>
+                    </section>
                 </section>
                 
                 <section>
@@ -642,124 +642,123 @@ iterável[start:end:step]
                         iteráveis internos, existe o módulo <code>deepcopy</code>.</p>
                     </section>
 
-					<section>
-						<p>Todos os iteráveis podem ser "medidos" com <code>len()</code>:</p>
+                    <section>
+                        <p>Todos os iteráveis podem ser "medidos" com <code>len()</code>:</p>
 
-						<ul>
-							<li><code>len(list)</code> &#8667; Número de elementos na lista.</li>
-							<li><code>len(tuple)</code> &#8667; Número de elementos na tupla.</li>
-							<li><code>len(str)</code> &#8667; Número de caracteres na string.</li>
-							<li><code>len(dict)</code> &#8667; Número de chaves no dicionário.</li>
-							<li><code>len(set)</code> &#8667; Número de elementos no set.</li>
-						</ul>
+                        <ul>
+                            <li><code>len(list)</code> &#8667; Número de elementos na lista.</li>
+                            <li><code>len(tuple)</code> &#8667; Número de elementos na tupla.</li>
+                            <li><code>len(str)</code> &#8667; Número de caracteres na string.</li>
+                            <li><code>len(dict)</code> &#8667; Número de chaves no dicionário.</li>
+                            <li><code>len(set)</code> &#8667; Número de elementos no set.</li>
+                        </ul>
 
-					</section>
+                    </section>
                 </section>
 
-				<section>
-					<section>
-						<h2>Funções</h2>
-					</section>
+                <section>
+                    <section>
+                        <h2>Funções</h2>
+                    </section>
 
-					<section>
-						<h3><code>def [nome_da_função]([parâmetro], [parâmetro], ...):</code></h3>
+                    <section>
+                        <h3><code>def [nome_da_função]([parâmetro], [parâmetro], ...):</code></h3>
 
-						<p><pre><code data-trim>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; def funcao(a, b, c):
 &gt;&gt;&gt;     return (a + b) / c
-						</code></pre></p>
-					</section>
+                        </code></pre></p>
+                    </section>
 
-					<section>
-						<p>Parâmetros podem ser nomeados.</p>
+                    <section>
+                        <p>Parâmetros podem ser nomeados.</p>
 
-						<p><pre><code data-trim>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; def funcao(a, b, c):
 &gt;&gt;&gt;     return (a + b) / c
 &gt;&gt;&gt;
 &gt;&gt;&gt; funcao(b=2, c=3, a=10)
 4
-						</code></pre></p>
-					</section>
-				</section>
-				
-				<section>
-				    <section>
-				        <h2>Classes</h2>
-				    </section>
-				    
-				    <section>
-				        <p>Ok, algumas coisas a serem vistas antes de entrar em
-				        classes:</p>
-				    </section>
-				    
-				    <section>
-				        <p>Existem dois tipos de classes: old-style e new-style.</p>
-				        
-				        <p>A diferença é que classes "new-style" sempre extendem da
-				        classe <code>object</code>, enquanto que "old-style" não
-				        extendem ninguém.</p>
-				        
-				        <p>Por baixo dos panos, "new-style" e "old-style" funcionam
-				        de forma diferente, mas isso não é visível para o
-				        programador.</p>
-				    </section>
-				    
-				    <section>
-				        <p>Para todos os casos e efeitos, "old-style" não deve
-				        mais ser usado.</p>
-				        
-				        <p class='fragment'>No Python 3, não existem mais
-				        classes "old-style", mas a sintaxe removeu a necessidade
-				        de extender <code>object</code>.</p>
-				        
-				        <p class='fragment'>(Ou seja, no Python 3 uma classe
-				        se parece com o "old-style" do Python 2.)</p>
-				    </section>
-				    
-				    <section>
-				        <p><code>this</code>/<code>self</code> não é uma variável
-				        implícita da classe: Ela tem que constar <i>sempre</i>
-				        na definiçào do método.</p>
-				    </section>
-				    
-				    <section>
-				        <p>O construtor da classe é chamado <code>__init__</code>.</p>
-				        
-				        <p>Não existe função para o destrutor.</p>
-				        
-				        <p class='fragment'>Existem ainda outras funções (como o
-				        <code>__getitem__</code> comentado anteriormente), mas
-				        não vamos falar sobre elas nesse momento.</p>
-				    </section>
-				    
-				    <section>
-	    			    <p><pre><code data-trim>
+                        </code></pre></p>
+                    </section>
+                </section>
+                
+                <section>
+                    <section>
+                        <h2>Classes</h2>
+                    </section>
+                    
+                    <section>
+                        <p>Ok, algumas coisas a serem vistas antes de entrar em
+                        classes:</p>
+                    </section>
+                    
+                    <section>
+                        <p>Existem dois tipos de classes: old-style e new-style.</p>
+                        
+                        <p>A diferença é que classes "new-style" sempre extendem da
+                        classe <code>object</code>, enquanto que "old-style" não
+                        extendem ninguém.</p>
+                        
+                        <p>Por baixo dos panos, "new-style" e "old-style" funcionam
+                        de forma diferente, mas isso não é visível para o
+                        programador.</p>
+                    </section>
+                    
+                    <section>
+                        <p>Para todos os casos e efeitos, "old-style" não deve
+                        mais ser usado.</p>
+                        
+                        <p class='fragment'>No Python 3, não existem mais
+                        classes "old-style", mas a sintaxe removeu a necessidade
+                        de extender <code>object</code>.</p>
+                        
+                        <p class='fragment'>(Ou seja, no Python 3 uma classe
+                        se parece com o "old-style" do Python 2.)</p>
+                    </section>
+                    
+                    <section>
+                        <p><code>this</code>/<code>self</code> não é uma variável
+                        implícita da classe: Ela tem que constar <i>sempre</i>
+                        na definição do método.</p>
+                    </section>
+                    
+                    <section>
+                        <p>O construtor da classe é chamado <code>__init__</code>.</p>
+                        
+                        <p>Não existe função para o destrutor.</p>
+                        
+                        <p class='fragment'>Existem ainda outras funções
+                            <i>mágicas</i>, mas não vamos falar sobre elas
+                            nesse momento.</p> </section>
+                    
+                    <section>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; class MyClasse(object):
 &gt;&gt;&gt;     def __init__(self):
 &gt;&gt;&gt;         self.valor = 0
 &gt;&gt;&gt;     def show(self):
 &gt;&gt;&gt;         print self.valor
-    				    </code></pre></p>
-				    </section>
-				    
-				    <section>
-				        <p>Para instanciar uma classe, basta chamar a classe
-				        como se fosse uma função.</p>
-				        
-				        <p><pre><code data-trim>
+                        </code></pre></p>
+                    </section>
+                    
+                    <section>
+                        <p>Para instanciar uma classe, basta chamar a classe
+                        como se fosse uma função.</p>
+                        
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; my = MyClasse()
 &gt;&gt;&gt; my.show()
 0
-				        </code></pre></p>
-				    </section>
-				    
-				    <section>
-				        <p>Se o construtor tiver parâmetros, estes devem ser
-				        passados durante a instanciação, como se a "função"
-				        classe tivesse parâmetros.</p>
-				        
-				        <p><pre><code data-trim>
+                        </code></pre></p>
+                    </section>
+                    
+                    <section>
+                        <p>Se o construtor tiver parâmetros, estes devem ser
+                        passados durante a instanciação, como se a "função"
+                        classe tivesse parâmetros.</p>
+                        
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; class MyClasse(object):
 &gt;&gt;&gt;     def __init__(self, name):
 &gt;&gt;&gt;         self.name = name        
@@ -769,13 +768,13 @@ iterável[start:end:step]
 &gt;&gt;&gt; my = MyClasse('Julio')
 &gt;&gt;&gt; my.show()
 Julio
-				        </code></pre></p>
-				    </section>
+                        </code></pre></p>
+                    </section>
 
-					<section>
-						<p>Herança</p>
+                    <section>
+                        <p>Herança</p>
 
-				        <p><pre><code data-trim>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; class A(object):
 &gt;&gt;&gt;     def __init__(self):
 &gt;&gt;&gt;         self.value = 10
@@ -783,13 +782,13 @@ Julio
 &gt;&gt;&gt;     def __init__(self):
 &gt;&gt;&gt;         super(B, self).__init__()
 &gt;&gt;&gt;         self.name = 'AAAA'
-				        </code></pre></p>
-					</section>
+                        </code></pre></p>
+                    </section>
 
-					<section>
-						<p>Herança Múltipla</p>
+                    <section>
+                        <p>Herança Múltipla</p>
 
-				        <p><pre><code data-trim>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; class A(object):
 &gt;&gt;&gt;     def __init__(self):
 &gt;&gt;&gt;         self.value = 10
@@ -799,66 +798,68 @@ Julio
 &gt;&gt;&gt; class C(A, B):
 &gt;&gt;&gt;     def __init__(self):
 &gt;&gt;&gt;         super(C, self).__init__()
-				        </code></pre></p>
-					</section>
+                        </code></pre></p>
+                    </section>
 
-					<section>
-						<p>No Python 3, basta usar <code>super().__init__()</code>.
-					</section>
+                    <section>
+                        <p>No Python 3, basta usar <code>super().__init__()</code>.
+                    </section>
 
-					<section>
-						<p>Propriedades podem ser injetadas a qualquer momento.</p>
+                    <section>
+                        <p>Propriedades podem ser injetadas a qualquer momento.</p>
 
+                        <pre><code class="hljs">
 &gt;&gt;&gt; class A(object):
 &gt;&gt;&gt;     def __init__(self):
 &gt;&gt;&gt;         self.value = 10
 &gt;&gt;&gt;
 &gt;&gt;&gt; a = A()
 &gt;&gt;&gt; a.name = 'Julio'
-					</section>
-				</section>
+                        </code></pre>
+                    </section>
+                </section>
 
-				<section>
-					<h2>As Esquisitices de Python</h2>
-				</section>
+                <section>
+                    <h2>As Esquisitices de Python</h2>
+                </section>
 
-				<section>
-					<section>
-						<h3>Strings São Imutáveis</h3>
-					</section>
+                <section>
+                    <section>
+                        <h3>Strings São Imutáveis</h3>
+                    </section>
 
-					<section>
-				        <p><pre><code data-trim>
+                    <section>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; a = 'string 1'
 &gt;&gt;&gt; b = 'string 2'
 &gt;&gt;&gt; c = a + ' ' + b
-				        </code></pre></p>
+                        </code></pre></p>
 
-						<ul>
-							<li>Cria um objeto que é o conteúdo de "a" com um espaço.</li>
-							<li>Cria um novo objeto que é o novo objeto mais o conteúdo de "b".</li>
-							<li>Atribui o novo objeto à "c".</li>
-						</ul>
-					</section>
+                        <ul>
+                            <li>Cria um objeto que é o conteúdo de "a" com um espaço.</li>
+                            <li>Cria um novo objeto que é o novo objeto mais o conteúdo de "b".</li>
+                            <li>Atribui o novo objeto à "c".</li>
+                        </ul>
+                    </section>
 
-					<section>
-						<p>Forma correta de concatenar strings:</p>
+                    <section>
+                        <p>Forma correta de concatenar strings:</p>
 
-				        <p><pre><code data-trim>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; a = 'string 1'
 &gt;&gt;&gt; b = 'string 2'
 &gt;&gt;&gt; c = ' '.join([a, b])
-				        </code></pre></p>
-					</section>
-				</section>
+                        </code></pre></p>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h3>Listas São Mutáveis</h3>
-					</section>
+                <section>
+                    <section>
+                        <h3>Listas São Mutáveis</h3>
+                    </section>
 
-					<section>
-				        <p><pre><code data-trim>
+                    <section>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; def a(l=[]):
 &gt;&gt;&gt;     l.append(1)
 &gt;&gt;&gt;     print l
@@ -867,13 +868,13 @@ Julio
 [1]
 &gt;&gt;&gt; a()
 [1, 1]
-				        </code></pre></p>
-					</section>
+                        </code></pre></p>
+                    </section>
 
-					<section>
-						<p>Forma correta de lidar com parâmetros mutáveis:</p>
+                    <section>
+                        <p>Forma correta de lidar com parâmetros mutáveis:</p>
 
-				        <p><pre><code data-trim>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; def a(l=None):
 &gt;&gt;&gt;     if not l:
 &gt;&gt;&gt;         l = []
@@ -883,21 +884,21 @@ Julio
 [1]
 &gt;&gt;&gt; a()
 [1]
-				        </code></pre></p>
-					</section>
-				</section>
+                        </code></pre></p>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h3>Stars</h3>
-					</section>
+                <section>
+                    <section>
+                        <h3>Stars</h3>
+                    </section>
 
-					<section>
-						<p>"Stars" servem para empacotar e desempacotar parâmetros indefinidos.</p>
-					</section>
+                    <section>
+                        <p>"Stars" servem para empacotar e desempacotar parâmetros indefinidos.</p>
+                    </section>
 
-					<section>
-				        <p><pre><code data-trim>
+                    <section>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; def a(*args):
 &gt;&gt;&gt;     print args
 &gt;&gt;&gt;
@@ -905,13 +906,13 @@ Julio
 [1]
 &gt;&gt;&gt; a(1, 2, 3, 4, 5)
 [1, 2, 3, 4, 5]
-				        </code></pre></p>
+                        </code></pre></p>
 
-						<p><code>*</code> pega somente os parâmetros que não tem nome.</p>
-					</section>
+                        <p><code>*</code> pega somente os parâmetros que não tem nome.</p>
+                    </section>
 
-					<section>
-				        <p><pre><code data-trim>
+                    <section>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; def a(**kwargs):
 &gt;&gt;&gt;     print kwargs
 &gt;&gt;&gt;
@@ -919,13 +920,13 @@ Julio
 {'a': 1}
 &gt;&gt;&gt; a(value1=10, a=2)
 {'value1': 10, 'a': 2}
-				        </code></pre></p>
+                        </code></pre></p>
 
-						<p><code>**</code> pega somente os parâmetros que tem nome.</p>
-					</section>
+                        <p><code>**</code> pega somente os parâmetros que tem nome.</p>
+                    </section>
 
-					<section>
-				        <p><pre><code data-trim>
+                    <section>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; def a(*args, **kwargs):
 &gt;&gt;&gt;     print args
 &gt;&gt;&gt;     print kwargs
@@ -936,53 +937,30 @@ Julio
 &gt;&gt;&gt; a(1, 2, 3, a=5)
 [1, 2, 3]
 {'a': 5}
-				        </code></pre></p>
-					</section>
+                        </code></pre></p>
+                    </section>
 
-					<section>
-				        <p><pre><code data-trim>
+                    <section>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; def a(a, b, *args, name=None, **kwargs):
 &gt;&gt;&gt;     print 'a =', a
 &gt;&gt;&gt;     print 'b =', b
 &gt;&gt;&gt;     print 'args =', args
 &gt;&gt;&gt;     print 'name = ', name
 &gt;&gt;&gt;     print 'kwargs =', kwargs
-				        </code></pre></p>
+                        </code></pre></p>
 
-						<p>Saída de uma chamada desta função fica a cargo do leitor.</p>
-					</section>
+                        <p>Saída de uma chamada desta função fica a cargo do leitor.</p>
+                    </section>
+                </section>
 
-					<section>
-						<img src='_images/boring.gif'>
+                <section>
+                    <section>
+                        <h3>"Functions are First Class Citizens"</h3>
+                    </section>
 
-						<p>BORING!</p>
-					</section>
-
-					<section>
-						<p>A parte legal dos stars não é usar para criar funções que aceitam
-						qualquer parâmetro (embora isso seja legal em alguns casos).</p>
-
-						<p>A parte legal é fazer chamadas de funções com dicionários.</p>
-					</section>
-
-					<section>
-				        <p><pre><code data-trim>
-&gt;&gt;&gt; def funcao(a, b, c):
-&gt;&gt;&gt;     return (a + b) / c
-&gt;&gt;&gt;
-&gt;&gt;&gt; params = {'b': 2, 'c': 3, 'a':10}
-&gt;&gt;&gt; funcao(**params)
-				        </code></pre></p>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>"Functions are First Class Citizens"</h3>
-					</section>
-
-					<section>
-				        <p><pre><code data-trim>
+                    <section>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; def funcao(a, b, c):
 &gt;&gt;&gt;     return (a + b) / c
 &gt;&gt;&gt;
@@ -994,15 +972,15 @@ Julio
 1
 &gt;&gt;&gt; check(1, 2, 3, False, funcao)
 &gt;&gt;&gt;
-				        </code></pre></p>
-					</section>
+                        </code></pre></p>
+                    </section>
 
-					<section>
-						<p>Como funções são cidadãos de primeira classe e classes podem
-						ter funções injetadas, pode-se extender uma classe em tempo
-						de execução.</p>
+                    <section>
+                        <p>Como funções são cidadãos de primeira classe e classes podem
+                        ter funções injetadas, pode-se extender uma classe em tempo
+                        de execução.</p>
 
-				        <p><pre><code data-trim>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; class A(object):
 &gt;&gt;&gt;     def __init__(self):
 &gt;&gt;&gt;         self.value = 10
@@ -1013,38 +991,38 @@ Julio
 &gt;&gt;&gt; a = A()
 &gt;&gt;&gt; a.show = show_name
 &gt;&gt;&gt; a.show()
-				        </code></pre></p>
-					</section>
-				</section>
+                        </code></pre></p>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h3>Decorators</h3>
-					</section>
+                <section>
+                    <section>
+                        <h3>Decorators</h3>
+                    </section>
 
-					<section>
-						<p>A idéia dos decorators é cria uma função que altera a funcionalidade
-						de uma função.</p>
+                    <section>
+                        <p>A idéia dos decorators é cria uma função que altera a funcionalidade
+                        de uma função.</p>
 
-						<p>A forma mais simples de entender decorators é pensar neles como
-						funções que encapsulam callbacks.</p>
-					</section>
+                        <p>A forma mais simples de entender decorators é pensar neles como
+                        funções que encapsulam callbacks.</p>
+                    </section>
 
-					<section>
-				        <p><pre><code data-trim>
+                    <section>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; def retrieve(connection):
 &gt;&gt;&gt;     # faz algo com a conexão para recuperar dados.
-				        </code></pre></p>
+                        </code></pre></p>
 
-						<p>Problema: antes de sair executando algo na conexão, tem que ser
-						verificado se a conexão está ativa.</p>
-					</section>
+                        <p>Problema: antes de sair executando algo na conexão, tem que ser
+                        verificado se a conexão está ativa.</p>
+                    </section>
 
-					<section>
-						<p>Solução menos óbvia: Criar uma função que verifica a conexão e,
-						se ela estiver ok, chama a função.</p>
+                    <section>
+                        <p>Solução menos óbvia: Criar uma função que verifica a conexão e,
+                        se ela estiver ok, chama a função.</p>
 
-				        <p><pre><code data-trim>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; def retrieve(connection):
 &gt;&gt;&gt;     # faz algo com a conexão para recuperar dados.
 &gt;&gt;&gt;
@@ -1055,18 +1033,18 @@ Julio
 &gt;&gt;&gt;     if not connection.is_connected:
 &gt;&gt;&gt;         connection.retry()
 &gt;&gt;&gt;     call(connection)
-				        </code></pre></p>
+                        </code></pre></p>
 
-						<p>Novo problema: Todo lugar onde antes era chamado <code>retrieve</code>
-						agora precisa ser alterado para <code>check(connection, retrieve)</code> e
-						todo lungar onde era chamado <code>update</code> precisa ser alterado para
-						<code>check(connection, update)</code>.</p>
-					</section>
+                        <p>Novo problema: Todo lugar onde antes era chamado <code>retrieve</code>
+                        agora precisa ser alterado para <code>check(connection, retrieve)</code> e
+                        todo lungar onde era chamado <code>update</code> precisa ser alterado para
+                        <code>check(connection, update)</code>.</p>
+                    </section>
 
-					<section>
-						<p>Solução mais simples: decorators.</p>
+                    <section>
+                        <p>Solução mais simples: decorators.</p>
 
-						<p><pre><code data-trim>
+                        <p><pre><code data-trim>
 &gt;&gt;&gt; from functools import wrap
 &gt;&gt;&gt;
 &gt;&gt;&gt; def check(func):
@@ -1080,11 +1058,39 @@ Julio
 &gt;&gt;&gt; @check
 &gt;&gt;&gt; def retrieve(connection):
 &gt;&gt;&gt;     # faz algo com a conexão para recuperar dados
-						</code></pre></p>
+                        </code></pre></p>
 
-						<p>Não precisa alterar nenhuma chamada de <code>retrieve</code>.</p>
-					</section>
-				</section>
+                        <p>Não precisa alterar nenhuma chamada de <code>retrieve</code>.</p>
+                    </section>
+
+                    <section>
+                        <p>Lembre-se: O resultado de uma função decorator é uma função.</p>
+                    </section>
+
+                    <section>
+                        <h5>Decorators com classes</h5>
+
+                        <pre><code class="hljs">
+&gt;&gt;&gt; class CheckConn(object):
+&gt;&gt;&gt;    def __init__(self, func):
+&gt;&gt;&gt;        self.func = func
+&gt;&gt;&gt; 
+&gt;&gt;&gt;     def __call__(self, *args, **kwargs):
+&gt;&gt;&gt;         if 'connection' in kwargs:
+&gt;&gt;&gt;             connection = kwargs['connection']
+&gt;&gt;&gt;         else:
+&gt;&gt;&gt;             connection = args[0]
+&gt;&gt;&gt; 
+&gt;&gt;&gt;         if not connection.is_connected:
+&gt;&gt;&gt;             connection.retry()
+&gt;&gt;&gt;         self.func(*args, **kwargs)
+
+&gt;&gt;&gt; @CheckCon
+&gt;&gt;&gt; def retrieve(connection):
+&gt;&gt;&gt;     # retrieve
+                        </code></pre>
+                    </section>
+                </section>
 
                 <section data-background='_images/thats-all-folks.jpg'>
                     <section></section>
@@ -1092,11 +1098,11 @@ Julio
             </div>
         </div>
 
-        <script src="_external/head.min.js"></script>
-        <script src="_external/reveal.min.js"></script>
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
 
         <script>
-            // Full list of configuration options available here:
+            // Full list of configuration options available at:
             // https://github.com/hakimel/reveal.js#configuration
             Reveal.initialize({
                 controls: true,
@@ -1104,21 +1110,19 @@ Julio
                 history: true,
                 center: true,
 
-                theme: 'night',
-                transition: 'linear',
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-                // Optional libraries used to extend on reveal.js
+                // Optional reveal.js plugins
                 dependencies: [
-                    { src: '_external/classList.js', condition: function() { return !document.body.classList; } },
-                    { src: '_external/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    { src: '_external/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    { src: '_external/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                    { src: '_external/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-                    { src: '_external/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.configure({languages: ['python']}); hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
                 ]
             });
 
         </script>
-
     </body>
 </html>

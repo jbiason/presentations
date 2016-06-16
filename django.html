@@ -59,136 +59,139 @@
                 </section>
 
                 <section>
-                    <h2>Projeto</h2>
+                    <section>
+                        <h2>Projeto</h2>
 
-                    <p>"Projeto" é como Django chama a base do sistema.</p>
+                        <p>"Projeto" é como Django chama a base do sistema.</p>
 
-                    <p>Criado com <code>django-admin startproject [PROJECT]</code>.</p>
+                        <p>Criado com <code>django-admin startproject [PROJECT]</code>.</p>
+                    </section>
+
+                    <section>
+                        <h2>Projeto: startproject</h2>
+
+                        <pre><code class="hljs">
+    .
+    ├── exemplo
+    │   ├── __init__.py
+    │   ├── settings.py
+    │   ├── urls.py
+    │   └── wsgi.py
+    └── manage.py
+                        </code></pre>
+
+                        <p>
+                            <code>manage.py</code> vira o gerenciador do projeto.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>
+                            <small>Projeto &gt;</small>
+                            App
+                        </h2>
+
+                        <p>
+                            Dentro do projeto, para criar um app:
+                        </p>
+
+                        <p>
+                            <code>python manage.py startapp [app]</code>
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>
+                            <small>Projeto &gt;</small>
+                            App
+                        </h2>
+
+                        <pre><code class="hljs">
+    .
+    ├── exemplo
+    │   ├── __init__.py
+    │   ├── __init__.pyc
+    │   ├── settings.py
+    │   ├── settings.pyc
+    │   ├── urls.py
+    │   └── wsgi.py
+    ├── manage.py
+    └── products
+        ├── admin.py
+        ├── __init__.py
+        ├── migrations
+        │   └── __init__.py
+        ├── models.py
+        ├── tests.py
+        └── views.py
+                        </code></pre>
+                    </section>
                 </section>
 
                 <section>
-                    <h2>Projeto: startproject</h2>
+                    <section>
+                        <h2>
+                            <small>Projeto &gt; App &gt;</small>
+                            models.py
+                        </h2>
 
-                    <pre><code class="hljs">
-.
-├── exemplo
-│   ├── __init__.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-└── manage.py
-                    </code></pre>
+                        <p>Definição do banco de dados para o app.</p>
 
-                    <p>
-                        <code>manage.py</code> vira o gerenciador do projeto.
-                    </p>
-                </section>
-
-                <section>
-                    <h2>
-                        <small>Projeto &gt;</small>
-                        App
-                    </h2>
-
-                    <p>
-                        Dentro do projeto, para criar um app:
-                    </p>
-
-                    <p>
-                        <code>python manage.py startapp [app]</code>
-                    </p>
-                </section>
-
-                <section>
-                    <h2>
-                        <small>Projeto &gt;</small>
-                        App
-                    </h2>
-
-                    <pre><code class="hljs">
-.
-├── exemplo
-│   ├── __init__.py
-│   ├── __init__.pyc
-│   ├── settings.py
-│   ├── settings.pyc
-│   ├── urls.py
-│   └── wsgi.py
-├── manage.py
-└── products
-    ├── admin.py
-    ├── __init__.py
-    ├── migrations
-    │   └── __init__.py
-    ├── models.py
-    ├── tests.py
-    └── views.py
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h2>
-                        <small>Projeto &gt; App &gt;</small>
-                        models.py
-                    </h2>
-
-                    <p>Definição do banco de dados para o app.</p>
-
-                    <pre><code class="hljs">
+                        <pre><code class="hljs">
 class Product(models.Model):
 
     """Product information"""
 
     name = models.CharField(max_length=40)
-                    </code></pre>
+                        </code></pre>
 
-                </section>
+                    </section>
 
-                <section>
-                    <h2>
-                        <small>Projeto &gt; App &gt;</small>
-                        admin.py
-                    </h2>
+                    <section>
+                        <h2>
+                            <small>Projeto &gt; App &gt;</small>
+                            admin.py
+                        </h2>
 
-                    <p>Definição do admin (ou não) dos models.</p>
+                        <p>Definição do admin (ou não) dos models.</p>
 
-                    <pre><code class="hljs">
+                        <pre><code class="hljs">
 class ProductAdmin(admin.ModelAdmin):
     pass
 
 admin.site.register(Product, ProductAdmin)
-                    </code></pre>
-                </section>
+                        </code></pre>
+                    </section>
 
-                <section>
-                    <h2>
-                        <small>Projeto &gt; App &gt;</small>
-                        forms.py
-                    </h2>
+                    <section>
+                        <h2>
+                            <small>Projeto &gt; App &gt;</small>
+                            forms.py
+                        </h2>
 
-                    <p>Definição de formulários/formulários baseados em models.</p>
+                        <p>Definição de formulários/formulários baseados em models.</p>
 
-                    <pre><code class='hljs'>
+                        <pre><code class='hljs'>
 class ProductForm(forms.Form):
     name = forms.CharField(label='Your name', max_length=40)
-                    </code></pre>
+                        </code></pre>
 
-                    <pre><code class="hljs py">
+                        <pre><code class="hljs py">
 class ProductForm(ModelForm):
     class Meta:
         model = Product
-                    </code></pre>
-                </section>
+                        </code></pre>
+                    </section>
 
-                <section>
-                    <h2>
-                        <small>Projeto &gt; App &gt;</small>
-                        views.py
-                    </h2>
+                    <section>
+                        <h2>
+                            <small>Projeto &gt; App &gt;</small>
+                            views.py
+                        </h2>
 
-                    <p>Views do app.</p>
+                        <p>Views do app.</p>
 
-                    <pre><code class="hljs">
+                        <pre><code class="hljs">
 def get_product(request, product_id):
     if request.method == 'GET':
         product = get_object_or_404(Product, pk=product_id)
@@ -199,102 +202,105 @@ def get_product(request, product_id):
         return render(request, 
                       'invalid.html',
                       {'reason': 'Can\'t create products yet'})
-                    </code></pre>
-                </section>
+                        </code></pre>
+                    </section>
 
-                <section>
-                    <h2>
-                        <small>Projeto &gt; App &gt;</small>
-                        templates/product_info.html
-                    </h2>
+                    <section>
+                        <h2>
+                            <small>Projeto &gt; App &gt;</small>
+                            templates/product_info.html
+                        </h2>
 
-                    <p>Na verdade, todos os templates <i>da app</i> ficam em
-                        <code>templates</code>.</p>
+                        <p>Na verdade, todos os templates <i>da app</i> ficam em
+                            <code>templates</code>.</p>
 
-                    <pre><code class="hljs">
+                        <pre><code class="hljs">
 {% extends 'base.html' %}
 <ul>
     <li>Product name: {{ product.name }}</li>
 </ul>
-                    </code></pre>
+                        </code></pre>
 
-                        <p>O <code>base.html</code> pode estar no <code>templates</code>
-                        do projeto.</p>
-                </section>
+                            <p>O <code>base.html</code> pode estar no <code>templates</code>
+                            do projeto.</p>
+                    </section>
 
-                <section>
-                    <h2>
-                        <small>Projeto &gt; App &gt;</small>
-                        urls.py
-                    </h2>
+                    <section>
+                        <h2>
+                            <small>Projeto &gt; App &gt;</small>
+                            urls.py
+                        </h2>
 
-                    <p>URLs internas do app.</p>
+                        <p>URLs internas do app.</p>
 
-                    <pre><code class="hljs">
+                        <pre><code class="hljs">
 from . import views
 
 urlpatterns = [
     url(r'^(?P&lt;product_id&gt;[0-9]+)/$', views.get_product, name='get'),
 
 ]
-                    </code></pre>
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>App completa!</h2>
+
+                        <p>... só que o Django ainda não sabe que ela existe.</p>
+                    </section>
                 </section>
 
                 <section>
-                    <h2>App completa!</h2>
+                    <section>
+                        <h2>
+                            <small>Projeto &gt;</small>
+                            settings.py
+                        </h2>
 
-                    <p>... só que o Django ainda não sabe que ela existe.</p>
-                </section>
-
-                <section>
-                    <h2>
-                        <small>Projeto &gt;</small>
-                        settings.py
-                    </h2>
-
-                    <pre><code class="hljs">
+                        <pre><code class="hljs">
 [...]
 INSTALLED_APPS = (
     [...]
     'products',
     [...]
 )
-                    </code></pre>
+                        </code></pre>
 
-                    <p>Agora o Django sabe que a App existe!</p>
+                        <p>Agora o Django sabe que a App existe!</p>
 
-                    <p class="fragment">Só não sabe como chegar lá porque faltam as URLs.</p>
-                </section>
+                        <p class="fragment">Só não sabe como chegar lá porque faltam as URLs.</p>
+                    </section>
 
-                <section>
-                    <h2>
-                        <small>Projeto &gt;</small>
-                        urls.py
-                    </h2>
+                    <section>
+                        <h2>
+                            <small>Projeto &gt;</small>
+                            urls.py
+                        </h2>
 
-                    <pre><code class="hljs">
+                        <pre><code class="hljs">
 [...]
 urlpatterns = [
     [...]
     url(r'/products', include('products')),
     [...]
 ]
-                    </code></pre>
-                </section>
+                        </code></pre>
+                    </section>
 
-                <section>
-                    <p>Agora funciona como esperado:</p>
+                    <section>
+                        <p>Agora funciona como esperado:</p>
 
-                    <ul>
-                        <li>Request de um browser chega no Django;</li>
-                        <li>Consulta o urls.py base do projeto para encontrar o
-                            que será executado;</li>
-                        <li>Consulta o urls.py da app (no caso) para encontrar
-                            a view que será executada;</li>
-                        <li>Encontra a view dentro da app, que busca as informações no model;</li>
-                        <li>Renderiza o template;</li>
-                        <li>Retorna o template renderizado para o usuário.</li>
-                    </ul>
+                        <ul>
+                            <li>Request de um browser chega no Django;</li>
+                            <li>Consulta o urls.py base do projeto para encontrar o
+                                que será executado;</li>
+                            <li>Consulta o urls.py da app (no caso) para encontrar
+                                a view que será executada;</li>
+                            <li>Encontra a view dentro da app, que busca as informações no model;</li>
+                            <li>Renderiza o template;</li>
+                            <li>Retorna o template renderizado para o usuário.</li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section>
@@ -336,29 +342,178 @@ order.save()
                 </section>
 
                 <section>
-                    <h2>Queries</h2>
+                    <section>
+                        <h2>Queries</h2>
 
-                    <pre><code class="hljs">
+                        <pre><code class="hljs">
 all_products = Product.objects.all()
-                    </code></pre>
+                        </code></pre>
 
-                    <pre><code class="hljs">
+                        <pre><code class="hljs">
 fruit = Product.objects.get(pk=1)
 fruit = Product.objects.get(name='fruit')
-                    </code></pre>
+                        </code></pre>
 
-                    <pre><code class="hljs">
+                        <pre><code class="hljs">
 all_fruits = Order.objects.filter(products__name__like='fruit')
-                    </code></pre>
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Queries</h2>
+                        <p><code>get</code> só pode retornar <strong>um</strong> elemento.</p>
+
+                        <p><code>pk</code> é uma variável mágica que aponta
+                            para o campo marcado como
+                            <code>primary_key=True</code>; se não houver um
+                            <code>primary_key</code>, o Django cria um
+                            <code>IntegerField(auto_increment=True)</code>.</p>
+                    </section>
+
+                    <section>
+                        <h2>Reverse Queries</h2>
+
+                        <p>Quando é criada uma relação, o Django cria também uma
+                            relação reversa entre os models.</p>
+
+                        <pre><code class="hljs">
+order = Order.objects.get(pk=1)
+print order.products.all()
+                        </code></pre>
+
+                            <pre><code class="hljs">
+print Products.order_set.all()
+                        </code></pre>
+
+                        <p>O nome da relacionamento reverso pode ser alterado com
+                            <code>related_name</code>.</p>
+                    </section>
                 </section>
 
                 <section>
-                    <h2>Queries</h2>
-                    <p><code>get</code> só pode retornar <strong>um</strong> elemento.</p>
+                    <section>
+                        <h2>Fixtures</h2>
 
-                    <p><code>pk</code> é uma variável mágica que aponta para o campo marcado
-                        como <code>primary_key=True</code>; se não houver um <code>primary_key</code>,
-                        o Django cria um <code>IntegerField(auto_increment=True)</code>.</p>
+                        <p>Fixtures são arquivos JSON que o Django consegue usar
+                            para preencher o banco de dados.</p>
+
+                        <pre><code class="hljs">
+[
+    {
+        "pk": 1,
+        "model": "Products",
+        "fields": {
+            "name": "fruit"
+        }
+    }
+]
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Fixtures em Testes</h2>
+
+                        <p>Fixtures em testes se aplicam a suíte inteira.</p>
+
+                        <p>Para definir que um teste usa fixtures, é usada a
+                            variável <code>fixtures</code> da classe.</p>
+
+                        <pre><code class="hljs">
+class ProductTest(StaticLiveServerTestCase):
+fixtures = ['products.json']
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Fixtures em Produção</h2>
+
+                        <p>Para criação das tabelas de banco de dados, usa-se
+                            <code>python manage.py syncdb</code>.</p>
+
+                        <p>Se houverem fixtures a serem carregadas, essas serão
+                            injetadas no banco de dados durante o
+                            <code>syncdb</code>.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Signals</h2>
+
+                        <p>Signals (sinais) são eventos gerados dentro do Django
+                            para chamar funções de usuário em algumas
+                            condições (normalmente relacionadas com models).</p>
+
+                        <pre><code class="hljs">
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
+from models import Product
+
+@receiver(post_save, sender=Product)
+def after_saving_product(sender, instance, created, raw, using, update_fields):
+    # ...
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Signals</h2>
+
+                        <ul>
+                            <li>sender = o model sendo afetado.</li>
+                            <li>instance = registro sendo alterado.</li>
+                            <li>created = se é um novo registro ou não.</li>
+                            <li>raw = registro salvo exatamente como indicado (fixtures).</li>
+                            <li>using = alías do database sendo usado.</li>
+                            <li>update_fields = campos sendo salvos no
+                                <code>save()</code> (None se forem todos).</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Templatetags</h2>
+
+                        <p>Funções especiais para templates para apresentação de valores.</p>
+                    </section>
+
+                    <section>
+                        <h2>
+                            <small>Projeto &gt; App &gt;</small>
+                            templatetags/
+                        </h2>
+
+                        <p>Dentro do diretório <code>templatetags</code> do App
+                            ficam os módulos com os tags.</p>
+
+                        <p>(Lembrar de colocar o arquivo <code>__init__.py</code> para que
+                            o Python detecte o diretório como um módulo).</p>
+                    </section>
+
+                    <section>
+                        <h2>
+                            <small>Projeto &gt; App &gt; templatetags/</small>
+                            filters.py
+                        </h2>
+
+                        <pre><code class="hljs">
+def free(value):
+    if value == 0:
+        return _('Free')
+    return value
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>
+                            <small>Projeto &gt; App &gt; templates/</small>
+                            product_info.html
+                        </h2>
+
+                        <pre><code class="hljs">
+{{ product.price|free }}
+                        </code></pre>
+                    </section>
                 </section>
             </div>
         </div>
