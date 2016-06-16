@@ -246,6 +246,11 @@ funcao(param = 1)
 
                         <img class='fragment' src='_images/zuul.jpg'></img>
                     </section>
+
+                    <section>
+                        <p>Um bloco sem nada dentro (por algum motivo), deve ser preenchido com,
+                        pelo menos, <code>pass</code>.</p>
+                    </section>
                 </section>
 
                 <section>
@@ -1189,6 +1194,115 @@ Julio
 						<p>Generator functions não podem ter <code>return</code>!</p>
 					</section>
 				</section>
+
+				<section>
+                    <section>
+                        <h3>Docstrings</h3>
+
+                        <p>Documentação de funções/classes é feita com uma string
+                            logo abaixo da declaração da mesma.</p>
+
+                        <pre><code class="hljs">
+&gt;&gt;&gt; def func(a):
+&gt;&gt;&gt;     """Função mágica"""
+&gt;&gt;&gt;     return a
+
+&gt;&gt;&gt; print func.__doc__
+Função mágica
+
+&gt;&gt;&gt; help(func)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4>Sphinx</h4>
+
+                        <p>Sphinx é o sistema de geração de documentação do Python.</p>
+
+                        <img src="_images/sphinx.png" alt=""/>
+                    </section>
+
+                    <section>
+                        <h4>PEP 257</h4>
+
+                        <p>PEP 257 fala sobre formato de documentação de funções.</p>
+                    </section>
+
+                    <section>
+                        <h5>PEP 257</h5>
+
+                        <ul>
+                            <li>Docstrings devem ter três aspas duplas.</li>
+                            <li>Para classes, uma linha em branco antes e uma depois.</li>
+                            <li>Para funções, sempre logo depois.</li>
+                            <li>Se a documentação passar da coluna 80, as três
+                                aspas que fecham a docstring devem ficar em uma
+                                linha em separado.</li>
+                        </ul>
+
+                        <pre><code class="hljs">
+class MyClass(object):
+
+    """This is my class. It is very long and I should break it
+    into several lines.
+    """
+
+    def __init__(self):
+        """Initialization."""
+        self.value = None
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4>Sphinx Format</h4>
+
+                        <p>O Sphinx tem um formato específico para documentação.</p>
+
+                        <ul>
+                            <li>Parametros são documentados com <code>:param [nome]:</code></li>
+                            <li>Tipo do parametro é documetnado com <code>:type [tipo]:</code></li>
+                            <li>Retorno é marcado como <code>:return:</code></li>
+                            <li>Tipo de retorno é definido em <code>:rtype:</code></li>
+                            <li>Exceções podem ser descritas em <code>:raises [exceção]:</code></li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h4>Sphinx Format (contd.)</h4>
+
+                        <pre><code class="hljs">
+def send(sender, recipient, message_body, priority):
+   """Send a message to a recipient
+
+   :param str sender: The person sending the message
+   :param str recipient: The recipient of the message
+   :param str message_body: The body of the message
+   :param priority: The priority of the message, can be a number 1-5
+   :type priority: integer or None
+   :return: the message id
+   :rtype: int
+   :raises ValueError: if the message_body exceeds 160 characters
+   :raises TypeError: if the message_body is not a basestring
+   """
+   pass
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>(como gerar documentação Sphinx não será apresentado por
+                            questões de espaço.)</p>
+
+                        <p class="fragment">(mas é simples: um arquivo conf com os
+                            diretórios a serem pesquisados e um makefile com a opção
+                            html para geração de arquivos HTML.)</p>
+                    </section>
+				</section>
+
+                <section>
+                    <section>
+                        <h3>VirtualEnv</h3>
+                    </section>
+                </section>
 
                 <section data-background='_images/thats-all-folks.jpg'>
                     <section></section>
