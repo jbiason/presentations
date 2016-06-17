@@ -48,9 +48,9 @@
                     <h1 class='semi-opaque'>Entendendo Django REST Framework</h1>
                 </section>
 
-				<section>
-					<section>
-						<h2>Review Django</h2>
+                <section>
+                    <section>
+                        <h2>Review Django</h2>
 
                         <ul>
                             <li>Request de um browser chega no Django;</li>
@@ -62,50 +62,50 @@
                             <li>Renderiza o template;</li>
                             <li>Retorna o template renderizado para o usuário.</li>
                         </ul>
-					</section>
-				</section>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>Interlúdio: REST</h2>
+                <section>
+                    <section>
+                        <h2>Interlúdio: REST</h2>
 
                         <img src="_images/intermission_3696.jpg" alt=""/>
-					</section>
+                    </section>
 
-					<section>
-						<h3>REST: Recursos</h3>
+                    <section>
+                        <h3>REST: Recursos</h3>
 
-						<p>Elementos são chamados "recursos" e fazem parte da URL.</p>
+                        <p>Elementos são chamados "recursos" e fazem parte da URL.</p>
 
-						<ul>
-							<li>Recurso <i>usuários</i>: <code>/user</code>;</li>
-							<li>Recurso <i>orders</i>: <code>/order</code>;</li>
-							<li>Recurso <i>produtos</i>: <code>/product</code></li>
-						</ul>
-					</section>
+                        <ul>
+                            <li>Recurso <i>usuários</i>: <code>/user</code>;</li>
+                            <li>Recurso <i>orders</i>: <code>/order</code>;</li>
+                            <li>Recurso <i>produtos</i>: <code>/product</code></li>
+                        </ul>
+                    </section>
 
-					<section>
-						<h3>REST: Recursos</h3>
+                    <section>
+                        <h3>REST: Recursos</h3>
 
-						<p>Recursos específicos são indicados também na URL depois 
-						da URL base do recurso, apontados por sua chave principal.</p>
+                        <p>Recursos específicos são indicados também na URL depois 
+                        da URL base do recurso, apontados por sua chave principal.</p>
 
-						<ul>
-							<li><i>Usuário</i> <strong>1</strong>: <code>/user/1/</code></li>
-							<li><i>Produto</i> <strong>ws-1243</strong>: <code>/product/ws-1243/</code></li>
-						</ul>
-					</section>
+                        <ul>
+                            <li><i>Usuário</i> <strong>1</strong>: <code>/user/1/</code></li>
+                            <li><i>Produto</i> <strong>ws-1243</strong>: <code>/product/ws-1243/</code></li>
+                        </ul>
+                    </section>
 
-					<section>
-						<h3>REST: Recursos</h3>
+                    <section>
+                        <h3>REST: Recursos</h3>
 
-						<p>Recursos podem estar aninhados.</p>
+                        <p>Recursos podem estar aninhados.</p>
 
-						<ul>
-							<li><code>/user/1/order</code>: Todos os pedidos do usuário <strong>1</strong>.</li>
+                        <ul>
+                            <li><code>/user/1/order</code>: Todos os pedidos do usuário <strong>1</strong>.</li>
                             <li><code>/user/1/order/2</code>: Pedido <strong>2</strong> do usuário <strong>1</strong>.</li>
-						</ul>
-					</section>
+                        </ul>
+                    </section>
 
                     <section>
                         <h3>REST: Verbos/Ações</h3>
@@ -219,7 +219,7 @@
                             <li><code>DELETE /user/1/order/2</code>: Apaga o pedido 2 do usuário 1.</li>
                         </ul>
                     </section>
-				</section>
+                </section>
 
                 <section>
                     <section>
@@ -228,133 +228,138 @@
                         <img src="_images/tumblr_n6qbpoBDVX1rbyj0do1_500.jpg" alt=""/>
                     </section>
 
-					<section>
-						<ul>
+                    <section>
+                        <ul>
                             <li>Request de um browser chega no Django;</li>
                             <li>Consulta o urls.py base do projeto para encontrar o
                                 que será executado;</li>
-							<li>Consulta o urls.py da app (no caso) <del>para encontrar
-									a view que será executada</del>;</li>
-							<li class="fragment">Continua acessando o urls.py do app, mas
-							esse é complementado com Routers.</li>
-						</ul>
-					</section>
+                            <li>Consulta o urls.py da app (no caso) <del>para encontrar
+                                    a view que será executada</del>;</li>
+                            <li class="fragment">Continua acessando o urls.py do app, mas
+                            esse é complementado com Routers.</li>
+                        </ul>
+                    </section>
 
-					<section>
-						<h2>Routes</h2>
-						<pre><code class="hljs">
+                    <section>
+                        <h2>Routes</h2>
+                        <pre><code class="hljs">
 router = DefaultRouter()
 router.register(r'base_resource', ModelViewSet)
 urlpatterns = router.urls
-						</code></pre>
+                        </code></pre>
 
-						<p>Onde:</p>
+                        <p>Onde:</p>
 
-						<ul>
-							<li><code>base_resource</code>: é a URL base de acesso ao recurso;</li>
-							<li><code>ModelViewSet</code>: é um <i>ViewSet</i> criado em cima do modelo.</li>
-						</ul>
-					</section>
+                        <ul>
+                            <li><code>base_resource</code>: é a URL base de acesso ao recurso;</li>
+                            <li><code>ModelViewSet</code>: é um <i>ViewSet</i> criado em cima do modelo.</li>
+                        </ul>
+                    </section>
 
-					<section>
-						<h2>Por que "Routes"?</h2>
+                    <section>
+                        <h2>Por que "Routes"?</h2>
 
-						<p>Para não precisar criar dois GETS, um POST, um PUT,
-							um PATCH e um DELETE.</p>
-					</section>
+                        <p>Para não precisar criar dois GETS, um POST, um PUT,
+                            um PATCH e um DELETE.</p>
+                    </section>
 
-					<section>
-						<h2>E o que diabos é um ViewSet?</h2>
+                    <section>
+                        <h2>E o que diabos é um ViewSet?</h2>
 
-						<p><i>ViewSet</i> define as funções para cada um dos verbos dentro do resource:</p>
+                        <p><i>ViewSet</i> define as funções para cada um dos verbos dentro do resource:</p>
 
-						<ul>
-							<li><code>list(self, request)</code></li>
-							<li><code>create(self, request)</code></li>
-							<li><code>retrieve(self, request, pk=None)</code></li>
-							<li><code>update(self, request, pk=None)</code></li>
-							<li><code>partial_update(self, request, pk=None)</code></li>
-							<li><code>destroy(self, request, pk=None)</code></li>
-						</ul>
-					</section>
+                        <ul>
+                            <li><code>list(self, request)</code></li>
+                            <li><code>create(self, request)</code></li>
+                            <li><code>retrieve(self, request, pk=None)</code></li>
+                            <li><code>update(self, request, pk=None)</code></li>
+                            <li><code>partial_update(self, request, pk=None)</code></li>
+                            <li><code>destroy(self, request, pk=None)</code></li>
+                        </ul>
+                    </section>
 
-					<section>
-						<h2>ModelViewSet</h2>
+                    <section>
+                        <h2>ModelViewSet</h2>
 
-						<p>Um <i>ModelViewSet</i> aplica as funções acima sobre um Model.</p>
+                        <p>Um <i>ModelViewSet</i> aplica as funções acima sobre um Model.</p>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-						</code></pre>
+                        </code></pre>
 
-						<p>Existe ainda <i>ReadOnlyModelViewSet</i> que só define as funções
-						<code>list()</code> e <code>retrieve()</code>.</p>
-					</section>
+                        <p>Existe ainda <i>ReadOnlyModelViewSet</i> que só define as funções
+                        <code>list()</code> e <code>retrieve()</code>.</p>
+                    </section>
 
-					<section>
-						<h2>Pera, pera... Serializer?</h2>
+                    <section>
+                        <h2>Pera, pera... Serializer?</h2>
 
-						<p><i>Serializers</i> definem campos de resultados e sua validação,
-							caso estejam sendo usados como entradas (assim como <i>Forms</i>
-							são usados para validar entradas de dados por forms).</p>
+                        <p><i>Serializers</i> definem campos de resultados e sua validação,
+                            caso estejam sendo usados como entradas (assim como <i>Forms</i>
+                            são usados para validar entradas de dados por forms).</p>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
         fields = ('name', 'price')
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
                 </section>
 
-				<section>
-					<section>
-						<h2>Fluxo REST Framework</h2>
+                <section>
+                    <section>
+                        <h2>Fluxo REST Framework</h2>
 
-						<ul>
-							<li>Request de um browser chega no Django;</li>
-							<li>Consulta o urls.py base do projeto para encontrar o
-								que será executado;</li>
-							<li>Consulta o urls.py da app (no caso) <del>para encontrar
-									a view que será executada</del>;</li>
-							<li>Continua acessando o urls.py do app, mas
-								esse é complementado com Routers;</li>
-						</ul>
-					</section>
+                        <ul>
+                            <li>Request de um browser chega no Django;</li>
+                            <li>Consulta o urls.py base do projeto para encontrar o
+                                que será executado;</li>
+                            <li>Consulta o urls.py da app (no caso) <del>para encontrar
+                                    a view que será executada</del>;</li>
+                            <li>Continua acessando o urls.py do app, mas
+                                esse é complementado com Routers;</li>
+                        </ul>
+                    </section>
 
-					<section>
-						<h2>Fluxo REST Framework (contd.)</h2>
+                    <section>
+                        <h2>Fluxo REST Framework (contd.)</h2>
 
-						<ul>
-							<li>Acerta o Serializer para validar a entrada (se houver);</li>
-							<li>Vai ou ViewModelSet para definr a execução;</li>
-							<li>Faz os requests necessários para o model;</li>
-							<li>Passa o resultado de novo pelo Serializer para converter para
-								o formato de saída;</li>
-							<li>Retorna o request.</li>
-						</ul>
-					</section>
-				</section>
+                        <ul>
+                            <li>Acerta o Serializer para validar a entrada (se houver);</li>
+                            <li>Vai ou ViewModelSet para definr a execução;</li>
+                            <li>Faz os requests necessários para o model;</li>
+                            <li>Passa o resultado de novo pelo Serializer para converter para
+                                o formato de saída;</li>
+                            <li>Retorna o request.</li>
+                        </ul>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>PS: Outras coisas legais</h2>
+                <section>
+                    <section>
+                        <h2>PS: Outras coisas legais</h2>
 
-						<p>Vem com um serializador JSON como padrão, mas existem outros:</p>
+                        <p>Vem com um serializador JSON como padrão, mas existem outros:</p>
 
-						<ul>
-							<li><code>djangorestframework-yaml</code>: Serializador/desserializador para YAML.</li>
-							<li><code>djangorestframework-xml</code>: Serializador/desserializador para XML.</li>
-						</ul>
-					</section>
+                        <ul>
+                            <li><code>djangorestframework-yaml</code>: Serializador/desserializador para YAML.</li>
+                            <li><code>djangorestframework-xml</code>: Serializador/desserializador para XML.</li>
+                        </ul>
+                    </section>
 
-					<section>
-						<h2>JSON</h2>
+                    <section>
+                        <h2>JSON</h2>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
+curl -H 'Accept: application/json; indent=4' \
+    -u  admin:admin123 http://127.0.0.1:8000/users/
+                        </code></pre>
+
+                        <pre><code class="hljs">
 {
     "count": 1,
     "next": null,
@@ -362,18 +367,23 @@ class UserSerializer(serializers.ModelSerializer):
     "results": [
         {
             "url": "http://127.0.0.1:8000/users/1/",
-            "username": "jbiason",
+            "username": "admin",
             "email": "",
             "groups": []
         }
     ]
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<h2>YAML</h2>
+                    <section>
+                        <h2>YAML</h2>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
+curl -H 'Accept: application/yaml' \
+    -u  admin:admin123 http://127.0.0.1:8000/users/
+                        </code></pre>
+
+                        <pre><code class="hljs">
 count: 1
 next: null
 previous: null
@@ -381,25 +391,42 @@ results:
 - email: ''
   groups: []
   url: http://127.0.0.1:8000/users/1/
-  username: jbiason
-						</code></pre>
-					</section>
+  username: admin
+                        </code></pre>
+                    </section>
 
-					<section>
-						<h2>XML</h2>
+                    <section>
+                        <h2>XML</h2>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
+curl -H 'Accept: application/xml' \
+    -u  jbiason:slowdown http://127.0.0.1:8000/users/
+                        </code></pre>
+
+                        <pre><code class="hljs">
 <?xml version="1.0" encoding="utf-8"?>
-<root><count>1</count><next></next><previous></previous><results><list-item><url>http://127.0.0.1:8000/users/1/</url><username>jbiason</username><email></email><groups></groups></list-item></results></root>
-						</code></pre>
-					</section>
+<root>
+    <count>1</count>
+    <next></next>
+    <previous></previous>
+    <results>
+        <list-item>
+            <url>http://127.0.0.1:8000/users/1/</url>
+            <username>admin</username>
+            <email></email>
+            <groups></groups>
+        </list-item>
+    </results>
+</root>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<p>(Todos os casos, só foi alterado o header "Accept" no request; nenhuma
-							alteração de código -- com exceção do settings.py para ativar os 
-							serializers.)</p>
-					</section>
-				</section>
+                    <section>
+                        <p>(Todos os casos, só foi alterado o header "Accept" no request; nenhuma
+                            alteração de código -- com exceção do settings.py para ativar os 
+                            serializers.)</p>
+                    </section>
+                </section>
             </div>
         </div>
 
