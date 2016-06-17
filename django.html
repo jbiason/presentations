@@ -54,7 +54,7 @@
 
                         <p>"Projeto" é como Django chama a base do sistema.</p>
 
-                        <p>Criado com <code>django-admin startproject [PROJECT]</code>.</p>
+                        <p>Criado com <code>django-admin startproject [PROJECTNAME] .</code>.</p>
                     </section>
 
                     <section>
@@ -69,10 +69,6 @@
     │   └── wsgi.py
     └── manage.py
                         </code></pre>
-
-                        <p>
-                            <code>manage.py</code> vira o gerenciador do projeto.
-                        </p>
                     </section>
 
                     <section>
@@ -83,11 +79,12 @@
 
                         <p>
                             Dentro do projeto, para criar um app:
-                        </p>
+						</p>
 
-                        <p>
-                            <code>python manage.py startapp [app]</code>
-                        </p>
+						<pre><code class="hljs">
+cd exemplo
+django-admin startapp [app]
+						</code></pre>
                     </section>
 
                     <section>
@@ -97,23 +94,23 @@
                         </h2>
 
                         <pre><code class="hljs">
-    .
-    ├── exemplo
-    │   ├── __init__.py
-    │   ├── __init__.pyc
-    │   ├── settings.py
-    │   ├── settings.pyc
-    │   ├── urls.py
-    │   └── wsgi.py
-    ├── manage.py
-    └── products
-        ├── admin.py
-        ├── __init__.py
-        ├── migrations
-        │   └── __init__.py
-        ├── models.py
-        ├── tests.py
-        └── views.py
+
+.
+├── manage.py
+└── exemplo
+    ├── __init__.py
+    ├── products
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── __init__.py
+    │   ├── migrations
+    │   │   └── __init__.py
+    │   ├── models.py
+    │   ├── tests.py
+    │   └── views.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
                         </code></pre>
                     </section>
 

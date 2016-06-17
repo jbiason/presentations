@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Entendendo DJANGO</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- personal styles -->
+        <style>
+            .semi-opaque {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-background='_images/django-rest.png'>
+                    <h1 class='semi-opaque'>Entendendo Django REST Framework</h1>
+                </section>
+
+				<section>
+					<section>
+						<h2>Review Django</h2>
+
+                        <ul>
+                            <li>Request de um browser chega no Django;</li>
+                            <li>Consulta o urls.py base do projeto para encontrar o
+                                que será executado;</li>
+                            <li>Consulta o urls.py da app (no caso) para encontrar
+                                a view que será executada;</li>
+                            <li>Encontra a view dentro da app, que busca as informações no model;</li>
+                            <li>Renderiza o template;</li>
+                            <li>Retorna o template renderizado para o usuário.</li>
+                        </ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Interlúdio: REST</h2>
+
+                        <img src="_images/intermission_3696.jpg" alt=""/>
+					</section>
+
+					<section>
+						<h3>REST: Recursos</h3>
+
+						<p>Elementos são chamados "recursos" e fazem parte da URL.</p>
+
+						<ul>
+							<li>Recurso <i>usuários</i>: <code>/user</code>;</li>
+							<li>Recurso <i>orders</i>: <code>/order</code>;</li>
+							<li>Recurso <i>produtos</i>: <code>/product</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>REST: Recursos</h3>
+
+						<p>Recursos específicos são indicados também na URL depois 
+						da URL base do recurso, apontados por sua chave principal.</p>
+
+						<ul>
+							<li><i>Usuário</i> <strong>1</strong>: <code>/user/1/</code></li>
+							<li><i>Produto</i> <strong>ws-1243</strong>: <code>/product/ws-1243/</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>REST: Recursos</h3>
+
+						<p>Recursos podem estar aninhados.</p>
+
+						<ul>
+							<li><code>/user/1/order</code>: Todos os pedidos do usuário <strong>1</strong>.</li>
+                            <li><code>/user/1/order/2</code>: Pedido <strong>2</strong> do usuário <strong>1</strong>.</li>
+						</ul>
+					</section>
+
+                    <section>
+                        <h3>REST: Verbos/Ações</h3>
+
+                        <p>Ações sobre os recursos são indicadas pelo <i>verbo HTTP</i>:</p>
+
+                        <ul>
+                            <li><code>GET</code>: Recupera recursos;</li>
+                            <li><code>POST</code>: Cria recursos;</li>
+                            <li><code>PUT</code>: Altera (update) recursos;</li>
+                            <li><code>DELETE</code>: Apaga recursos;</li>
+                            <li><code>PATCH</code>: Altera recursos.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>REST: Verbos</h3>
+
+                        <table border="0">
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>Base recurso</th>
+                                <th>Recurso específico</th>
+                            </tr>
+
+                            <tr>
+                                <td><strong><code>GET</code></strong></td>
+                                <td>Todos os elementos do recurso</td>
+                                <td>Dados do recurso específico</td>
+                            </tr>
+                        </table>
+                    </section>
+
+                    <section>
+                        <h3>REST: Verbos</h3>
+
+                        <table border="0">
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>Base recurso</th>
+                                <th>Recurso específico</th>
+                            </tr>
+
+                            <tr>
+                                <td><strong><code>POST</code></strong></td>
+                                <td>Cria um recurso novo</td>
+                                <td>Não usado, mas poderia criar um recurso com a cahve indicada</td>
+                            </tr>
+                        </table>
+                    </section>
+
+                    <section>
+                        <h3>REST: Verbos</h3>
+
+                        <table border="0">
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>Base recurso</th>
+                                <th>Recurso específico</th>
+                            </tr>
+                            <tr>
+                                <td><strong><code>PUT</code></strong></td>
+                                <td>Não usado</td>
+                                <td>Ataliza o registro inteiro do recurso</td>
+                            </tr>
+                        </table>
+                    </section>
+
+                    <section>
+                        <h3>REST: Verbos</h3>
+
+                        <table border="0">
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>Base recurso</th>
+                                <th>Recurso específico</th>
+                            </tr>
+
+                            <tr>
+                                <td><strong><code>DELETE</code></strong></td>
+                                <td>Não usado, mas poderia apagar todos os recursos</td>
+                                <td>Apaga o recurso</td>
+                            </tr>
+                        </table>
+                    </section>
+
+                    <section>
+                        <h3>REST: Verbos</h3>
+
+                        <table border="0">
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>Base recurso</th>
+                                <th>Recurso específico</th>
+                            </tr>
+
+                            <tr>
+                                <td><strong><code>PATCH</code></strong></td>
+                                <td>Não usado</td>
+                                <td>Atualiza campos específicos do recurso</td>
+                            </tr>
+                        </table>
+                    </section>
+
+                    <section>
+                        <h3>REST: Exemplos</h3>
+
+                        <ul>
+                            <li><code>GET /user</code>: Retorna todos os usuários do sistema.</li>
+                            <li><code>POST /order</code>: Cria um novo pedido.</li>
+                            <li><code>DELETE /user/1/order/2</code>: Apaga o pedido 2 do usuário 1.</li>
+                        </ul>
+                    </section>
+				</section>
+
+                <section>
+                    <section>
+                        <h2>De volta ao REST Framework</h2>
+
+                        <img src="_images/tumblr_n6qbpoBDVX1rbyj0do1_500.jpg" alt=""/>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.configure({languages: ['python']}); hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
