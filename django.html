@@ -49,16 +49,6 @@
                 </section>
 
                 <section>
-                    <h2>Agenda</h2>
-
-                    <ul>
-                        <li>Entendendo Projeto</li>
-                        <li>Entendendo Apps</li>
-                        <li>Adicionando Apps no Projeto</li>
-                    </ul>
-                </section>
-
-                <section>
                     <section>
                         <h2>Projeto</h2>
 
@@ -127,24 +117,24 @@
                         </code></pre>
                     </section>
 
-					<section>
-						<h3>Outras coisas do manage.py</h3>
+                    <section>
+                        <h3>Outras coisas do manage.py</h3>
 
-						<ul>
-							<li><code>python manage.py syncdb</code>: Cria as
-								tabelas necessárias e adiciona os dados
-								necessários.</li>
-							<li><code>python manage.py makemigrations</code>:
-								Verifica alterações em modelos e gera regras
-								para conversão do banco.</li>
-							<li><code>python manage.py shell</code>: Shell de
-								acesso ao Django (na verdade, abre um
-								interpretador Python com um monte de coisas já
-								carregadas/configuradas)</li>
-							<li><code>python manage.py runserver</code>: Roda
-								um server de desenvolvimento.</li>
-						</ul>
-					</section>
+                        <ul>
+                            <li><code>python manage.py syncdb</code>: Cria as
+                                tabelas necessárias e adiciona os dados
+                                necessários.</li>
+                            <li><code>python manage.py makemigrations</code>:
+                                Verifica alterações em modelos e gera regras
+                                para conversão do banco.</li>
+                            <li><code>python manage.py shell</code>: Shell de
+                                acesso ao Django (na verdade, abre um
+                                interpretador Python com um monte de coisas já
+                                carregadas/configuradas)</li>
+                            <li><code>python manage.py runserver</code>: Roda
+                                um server de desenvolvimento.</li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section>
@@ -374,7 +364,9 @@ fruit = Product.objects.get(name='fruit')
                         </code></pre>
 
                         <pre><code class="hljs">
-all_fruits = Order.objects.filter(products__name__like='fruit')
+all_fruits_in_orders = Order.objects \
+                       .filter(products__name__like='fruit') \
+                       .distinct()
                         </code></pre>
                     </section>
 
@@ -408,31 +400,31 @@ print Products.order_set.all()
                             <code>related_name</code>.</p>
                     </section>
 
-					<section>
-						<h2>Queries com AND</h2>
+                    <section>
+                        <h2>Queries com AND</h2>
 
-						<p>Queries onde todas as condições devem ser
-							satisfeitas podem ser feitas passando mais
-							parametros em <code>filter</code>.</p>
+                        <p>Queries onde todas as condições devem ser
+                            satisfeitas podem ser feitas passando mais
+                            parametros em <code>filter</code>.</p>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 all_expensive_fruits = Order.objects.filter(
     products__name__like='fruit',
     price__gt=1000)
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<h2>Queryes com OR</h2>
+                    <section>
+                        <h2>Queries com OR</h2>
 
-						<p>Para queries com OR, deve-ser usar o objeto <code>Q</code>.</p>
+                        <p>Para queries com OR, deve-ser usar o objeto <code>Q</code>.</p>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 all_fruits_or_expensive = Order.objects.filter(
     Q(products__name__like='fruit') |
     Q(price__gt=1000))
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
                     <section>
                         <h2>Q</h2>
@@ -635,6 +627,75 @@ def free(value):
 
                         <pre><code class="hljs">
 {{ product.price|free }}
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>URLs/Redirects</h2>
+
+                        <p>Redirects servem para indicar que o browser deve se
+                        direcionar à outra URL.</p>
+
+                        <p>Para referenciar URLs de outras apps (ou mesmo da
+                            mesma app), deve-ser usar o método
+                            <code>reverse</code>.</p>
+
+                        <pre><code class="hljs">
+from django.core.urlresolvers import reverse
+from django.shortcuts import redirect
+
+def view(request):
+    # do stuff
+    return redirect(reverse('app:func'))
+
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Testes</h2>
+
+                        <p>Bem parecido com o módulo <code>unittest</code> do Python
+                        padrão.</p>
+
+                        <pre><code class="hljs">
+import random
+
+from django.test import TestCase
+
+class RandomTest(TestCase):
+    def test_random(self):
+        """Check if random numbers return random numbers."""
+        self.assertTrue(random.randint(255) != 0)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Testes podem acessar qualquer coisa (desde que importados):</p>
+
+                        <ul>
+                            <li>Modelos;</li>
+                            <li>Views;</li>
+                            <li>Requisições inteiras.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs">
+from django.test import Client
+from django.test import TestCase
+
+class RequestTest(TestCase):
+    def test_retrieve_page(self):
+        client = Client()
+        response = client.get('/')
+        self.assertTrue('success!' in response.content)
+        self.assertEquals(response.status_code, 200)
+        self.assertTrue('variable' in response.context)
+        self.assertEqual(response.context['variable'], 'success')
                         </code></pre>
                     </section>
                 </section>
