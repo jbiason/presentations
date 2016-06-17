@@ -79,12 +79,12 @@
 
                         <p>
                             Dentro do projeto, para criar um app:
-						</p>
+                        </p>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 cd exemplo
 django-admin startapp [app]
-						</code></pre>
+                        </code></pre>
                     </section>
 
                     <section>
@@ -205,9 +205,13 @@ def get_product(request, product_id):
                       'product_info.html',
                       {'product': product})
     else:
+        form = ProductForm(request)
+        if form.is_valid():
+            form.save()
+
         return render(request, 
-                      'invalid.html',
-                      {'reason': 'Can\'t create products yet'})
+                      'product_info.html',
+                      {'form': form})
                         </code></pre>
                     </section>
 
@@ -223,7 +227,13 @@ def get_product(request, product_id):
                         <pre><code class="hljs">
 {% extends 'base.html' %}
 <ul>
-    <li>Product name: {{ product.name }}</li>
+    {% if product %}
+        <li>Product name: {{ product.name }}</li>
+    {% endif %}
+
+    {% if form %}
+        {{ form }}
+    {% endif %}
 </ul>
                         </code></pre>
 
