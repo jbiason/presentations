@@ -81,7 +81,7 @@
                         mas acabou virando um PEP (PEP 20) e hoje faz parte da filosofia de desenvolvimento
                         do Python.</p>
                     </section>
-                        
+
                     <section>
                         <ul>
                             <li>Bonito é melhor que feio.</li>
@@ -93,7 +93,7 @@
                             <li>Legibilidade conta.</li>
                         </ul>
                     </section>
-                    
+
                     <section>
                         <ul>
                             <li>Casos especiais não são especiais o suficiente para quebrar as regras.
@@ -108,7 +108,7 @@
                             </li>
                         </ul>
                     </section>
-                    
+
                     <section>
                         <ul>
                             <li>Agora é melhor do que nunca.
@@ -135,7 +135,7 @@
                             <li>PEPs (Python Enhancement Proposal) são as RFCs que os desenvolvedores
                             Python utilizam para comunicar novas funcionalidades.
                             <ul>
-                                <li>Todos os PEPs podem ser encontados em 
+                                <li>Todos os PEPs podem ser encontados em
                                 <a href='http://legacy.python.org/dev/peps/'>http://legacy.python.org/dev/peps/</a>.</li>
                             </ul>
                             <li>Uma funcionalidade não é simplesmente "aceita": É preciso escrever
@@ -211,7 +211,7 @@ array[1]
                         </code></pre>
 
                         <p>Errado:</p>
-                        
+
                         <pre><code class="hljs">
 (1+2)
 ( 1 + 2 )
@@ -262,16 +262,16 @@ funcao(param = 1)
                         <pre><code data-trim class='hljs'>
 $ python
 
-Python 2.7.5 (default, Jun 25 2014, 10:19:55) 
+Python 2.7.5 (default, Jun 25 2014, 10:19:55)
 [GCC 4.8.2 20131212 (Red Hat 4.8.2-7)] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
 &gt;&gt;&gt;
                         </code></pre></p>
                     </section>
-                    
+
                     <section>
                         <p>Executando scripts Python:</p>
-                        
+
                         <p><pre><code data-trim>
 python meuscript.py
                         </code></pre></p>
@@ -282,7 +282,7 @@ python meuscript.py
                     <section>
                         <h2>Tipos de Variáveis</h2>
                     </section>
-                    
+
                     <section>
                         <h3>Tipos Mutáveis e Tipos Imutáveis</h3>
 
@@ -301,13 +301,13 @@ python meuscript.py
                         <p>A importância disto será visto mais pra frente, mas tenha isso
                         em mente.</p>
                     </section>
-                    
+
                     <section>
                         <p>... ainda...</p>
-                        
+
                         <p>Existem tipos que são, na verdade, objetos e tem toda uma gama
                         de funções para alterar/manipular/editar o conteúdo de uma variável.</p>
-                        
+
                         <p>Outros são tipos simples que não são objetos.</p>
                     </section>
 
@@ -558,10 +558,10 @@ True
 &gt;&gt;&gt;    print key, d[key]
                         </code></pre></p>
                     </section>
-                    
+
                     <section>
                         <p>Ou ainda:</p>
-                        
+
                         <p><pre><code data-trim>
 &gt;&gt;&gt; d =  {'Python': 'Rocks', 'Parrot': 'Dead', 'Favorite Color': 'Blue'}
 &gt;&gt;&gt; for (key, value) in d.iteritems():
@@ -571,27 +571,27 @@ True
                         <p class='fragment'>Forma considerada "correta" é a anterior.</p>
                     </section>
                 </section>
-                
+
                 <section>
                     <section>
                         <h2>Slices</h2>
                     </section>
-                    
+
                     <section>
                         <p>Slice é uma "extensão" de indíces de acesso.</p>
-                        
+
                         <p>Com slices, é possível "cortar" iteráveis, retornando
                         um novo iterável.</p>
                     </section>
-                    
+
                     <section>
                         <p><pre><code data-trim>
 iterável[start:end:step]
                         </code></pre></p>
-                        
+
                         <p>(<code>end</code> é exclusívo.)</p>
                     </section>
-                    
+
                     <section>
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = [1, 2, 3, 4]
@@ -599,43 +599,43 @@ iterável[start:end:step]
 [2]
                         </code></pre></p>
                     </section>
-                    
+
                     <section>
                         <p>Deixar um índice em branco indica que:</p>
-                        
+
                         <ul>
                             <li><code>start</code> = 0</li>
                             <li><code>end</code> = len(iterável)</li>
                             <li><code>step</code> = 1</li>
                         </ul>
-                        
+
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = [1, 2, 3, 4]
 &gt;&gt;&gt; print a[:2]
 [1, 2]
                         </code></pre></p>
                     </section>
-                    
+
                     <section>
                         <p>Índices negativos começam do final do iterável.</p>
-                        
+
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = [1, 2, 3, 4]
 &gt;&gt;&gt; print a[1:-1]
 [2, 3]
                         </code></pre></p>
                     </section>
-                    
+
                     <section>
                         <p>Lembre-se que strings também são iteráveis.</p>
-                        
+
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = 'Python Rocks'
 &gt;&gt;&gt; print a[7:-1]
 'Rock'
                         </code></pre></p>
                     </section>
-                    
+
                     <section>
                         <p>Deixar os dois índices em branco cria uma cópia "flat".</p>
                         <p><pre><code data-trim>
@@ -643,7 +643,7 @@ iterável[start:end:step]
 &gt;&gt;&gt; print a[:]
 [1, 2, 3, 4]
                         </code></pre></p>
-                        
+
                         <p>Para fazer uma cópia de uma lista com outros
                         iteráveis internos, existe o módulo <code>deepcopy</code>.</p>
                     </section>
@@ -688,56 +688,56 @@ iterável[start:end:step]
                         </code></pre></p>
                     </section>
                 </section>
-                
+
                 <section>
                     <section>
                         <h2>Classes</h2>
                     </section>
-                    
+
                     <section>
                         <p>Ok, algumas coisas a serem vistas antes de entrar em
                         classes:</p>
                     </section>
-                    
+
                     <section>
                         <p>Existem dois tipos de classes: old-style e new-style.</p>
-                        
+
                         <p>A diferença é que classes "new-style" sempre extendem da
                         classe <code>object</code>, enquanto que "old-style" não
                         extendem ninguém.</p>
-                        
+
                         <p>Por baixo dos panos, "new-style" e "old-style" funcionam
                         de forma diferente, mas isso não é visível para o
                         programador.</p>
                     </section>
-                    
+
                     <section>
                         <p>Para todos os casos e efeitos, "old-style" não deve
                         mais ser usado.</p>
-                        
+
                         <p class='fragment'>No Python 3, não existem mais
                         classes "old-style", mas a sintaxe removeu a necessidade
                         de extender <code>object</code>.</p>
-                        
+
                         <p class='fragment'>(Ou seja, no Python 3 uma classe
                         se parece com o "old-style" do Python 2.)</p>
                     </section>
-                    
+
                     <section>
                         <p><code>this</code>/<code>self</code> não é uma variável
                         implícita da classe: Ela tem que constar <i>sempre</i>
                         na definição do método.</p>
                     </section>
-                    
+
                     <section>
                         <p>O construtor da classe é chamado <code>__init__</code>.</p>
-                        
+
                         <p>Não existe função para o destrutor.</p>
-                        
+
                         <p class='fragment'>Existem ainda outras funções
                             <i>mágicas</i>, mas não vamos falar sobre elas
                             nesse momento.</p> </section>
-                    
+
                     <section>
                         <p><pre><code data-trim>
 &gt;&gt;&gt; class MyClasse(object):
@@ -747,30 +747,30 @@ iterável[start:end:step]
 &gt;&gt;&gt;         print self.valor
                         </code></pre></p>
                     </section>
-                    
+
                     <section>
                         <p>Para instanciar uma classe, basta chamar a classe
                         como se fosse uma função.</p>
-                        
+
                         <p><pre><code data-trim>
 &gt;&gt;&gt; my = MyClasse()
 &gt;&gt;&gt; my.show()
 0
                         </code></pre></p>
                     </section>
-                    
+
                     <section>
                         <p>Se o construtor tiver parâmetros, estes devem ser
                         passados durante a instanciação, como se a "função"
                         classe tivesse parâmetros.</p>
-                        
+
                         <p><pre><code data-trim>
 &gt;&gt;&gt; class MyClasse(object):
 &gt;&gt;&gt;     def __init__(self, name):
-&gt;&gt;&gt;         self.name = name        
+&gt;&gt;&gt;         self.name = name
 &gt;&gt;&gt;     def show(self):
 &gt;&gt;&gt;         print self.name
-        
+
 &gt;&gt;&gt; my = MyClasse('Julio')
 &gt;&gt;&gt; my.show()
 Julio
@@ -1080,13 +1080,13 @@ Julio
 &gt;&gt;&gt; class CheckConn(object):
 &gt;&gt;&gt;    def __init__(self, func):
 &gt;&gt;&gt;        self.func = func
-&gt;&gt;&gt; 
+&gt;&gt;&gt;
 &gt;&gt;&gt;     def __call__(self, *args, **kwargs):
 &gt;&gt;&gt;         if 'connection' in kwargs:
 &gt;&gt;&gt;             connection = kwargs['connection']
 &gt;&gt;&gt;         else:
 &gt;&gt;&gt;             connection = args[0]
-&gt;&gt;&gt; 
+&gt;&gt;&gt;
 &gt;&gt;&gt;         if not connection.is_connected:
 &gt;&gt;&gt;             connection.retry()
 &gt;&gt;&gt;         self.func(*args, **kwargs)
@@ -1094,6 +1094,47 @@ Julio
 &gt;&gt;&gt; @CheckCon
 &gt;&gt;&gt; def retrieve(connection):
 &gt;&gt;&gt;     # retrieve
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h5>Decorators mais comuns:</h5>
+
+                        <ul>
+                            <li><code>@property</code></li>
+                            <li><code>@staticmethod</code></li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h5><code>@property</code></h5>
+
+                        <pre><code class='hljs'>
+&gt;&gt;&gt; class CheckConn(object):
+&gt;&gt;&gt;    def __init__(self, func):
+&gt;&gt;&gt;        self._func = func
+&gt;&gt;&gt;
+&gt;&gt;&gt;    @property
+&gt;&gt;&gt;    def func(self):
+&gt;&gt;&gt;        return self._func
+&gt;&gt;&gt;
+&gt;&gt;&gt;    @func.setter
+&gt;&gt;&gt;    def func(self, value):
+&gt;&gt;&gt;        self._func = func
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h5><code>@staticmethod</code></h5>
+
+                        <pre><code class='hljs'>
+&gt;&gt;&gt; class CheckConn(object):
+&gt;&gt;&gt;    def __init__(self, func):
+&gt;&gt;&gt;        self._func = func
+&gt;&gt;&gt;
+&gt;&gt;&gt;    @staticmethod
+&gt;&gt;&gt;    def from_text(self, text):
+&gt;&gt;&gt;        return CheckConn(getattr(self, text))
                         </code></pre>
                     </section>
                 </section>
@@ -1194,6 +1235,57 @@ Julio
 						<p>Generator functions não podem ter <code>return</code>!</p>
 					</section>
 				</section>
+
+                <section>
+                    <section>
+                        <h3>Context Managers</h3>
+
+                        <p>
+                            <i>Context Managers</i> são usados como "marcadores"
+                            para entrada e saída de pontos específicos.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Context Managers</h3>
+
+						<pre><code class="hljs">
+&gt;&gt;&gt; class Connection(object):
+&gt;&gt;&gt;    def __init__(self):
+&gt;&gt;&gt;        self._conn = None
+&gt;&gt;&gt;
+&gt;&gt;&gt;    def __enter__(self):
+&gt;&gt;&gt;        self._conn = self._make_connection()
+&gt;&gt;&gt;        return self._conn
+&gt;&gt;&gt;
+&gt;&gt;&gt;    def __exit__(self, exc_type, exc_value, traceback):
+&gt;&gt;&gt;        self._conn.close()
+&gt;&gt;&gt;        if exc_type:    # then exc_value and traceback
+&gt;&gt;&gt;            print "Exception!", exc_type, exc_value
+&gt;&gt;&gt;            print traceback
+						</code></pre>
+
+						<pre><code class="hljs">
+&gt;&gt;&gt; with Connection() as connection:
+&gt;&gt;&gt;     connection.request('Value')
+						</code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Context Managers vs Exceptions</h3>
+
+						<pre><code class="hljs">
+&gt;&gt;&gt; try:
+&gt;&gt;&gt;     conn = self._make_connection()
+&gt;&gt;&gt;     conn.request('value')
+&gt;&gt;&gt; finally:
+&gt;&gt;&gt;     conn.close()
+&gt;&gt;&gt; except Exception as exc:  # Bare exceptions are BAAAADDD!
+&gt;&gt;&gt;     print 'Exception!', exc
+						</code></pre>
+                    </section>
+
+                </section>
 
 				<section>
                     <section>
