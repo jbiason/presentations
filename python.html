@@ -352,7 +352,7 @@ python meuscript.py
 &gt;&gt;&gt; a = 'Python'
 &gt;&gt;&gt; b = "Python"
 &gt;&gt;&gt; c = """Python
-&gt;&gt;&gt; Rocks!"""
+... Rocks!"""
                         </code></pre></p>
                     </section>
 
@@ -377,7 +377,7 @@ python meuscript.py
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = {'Python': 'Rocks',
-&gt;&gt;&gt;      1: 1.0}
+...      1: 1.0}
                         </code></pre></p>
                     </section>
 
@@ -411,7 +411,7 @@ set(['a'])
                         <ul>
                             <li>Long (<code>a = 1L</code>)</li>
                             <li>Lambdas (<code>a = lambda a: a + 2</code>)</li>
-							<li>Raw strings (<code>r'string\s'</code>, usadas para regex)</li>
+                            <li>Raw strings (<code>r'string\s'</code>, usadas para regex)</li>
                         </ul>
                     </section>
                 </section>
@@ -434,7 +434,7 @@ set(['a'])
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; if a == 1:
-&gt;&gt;&gt;     b = 2
+...     b = 2
 &gt;&gt;&gt; c = 3
                         </code></pre></p>
                     </section>
@@ -445,9 +445,9 @@ set(['a'])
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = 1
 &gt;&gt;&gt; while True:
-&gt;&gt;&gt;     a += 1
-&gt;&gt;&gt;     if a &gt; 10:
-&gt;&gt;&gt;         break
+...     a += 1
+...     if a &gt; 10:
+...         break
                         </code></pre></p>
                     </section>
 
@@ -514,7 +514,7 @@ True
                         <p><pre><code data-trim>
 &gt;&gt;&gt; soma = 0
 &gt;&gt;&gt; for valor em [345, 123, 123, 34]:
-&gt;&gt;&gt;     soma += valor
+...     soma += valor
                         </code></pre></p>
                     </section>
                 </section>
@@ -545,7 +545,7 @@ True
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; for l in 'Python':
-&gt;&gt;&gt;     print l
+...     print l
                         </code></pre></p>
                     </section>
 
@@ -555,7 +555,7 @@ True
                         <p><pre><code data-trim>
 &gt;&gt;&gt; d =  {'Python': 'Rocks', 'Parrot': 'Dead', 'Favorite Color': 'Blue'}
 &gt;&gt;&gt; for key in d:
-&gt;&gt;&gt;    print key, d[key]
+...    print key, d[key]
                         </code></pre></p>
                     </section>
 
@@ -565,7 +565,7 @@ True
                         <p><pre><code data-trim>
 &gt;&gt;&gt; d =  {'Python': 'Rocks', 'Parrot': 'Dead', 'Favorite Color': 'Blue'}
 &gt;&gt;&gt; for (key, value) in d.iteritems():
-&gt;&gt;&gt;     print key, value
+...     print key, value
                         </code></pre></p>
 
                         <p class='fragment'>Forma considerada "correta" é a anterior.</p>
@@ -595,7 +595,7 @@ iterável[start:end:step]
                     <section>
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = [1, 2, 3, 4]
-&gt;&gt;&gt; print a[1:2]
+... print a[1:2]
 [2]
                         </code></pre></p>
                     </section>
@@ -611,7 +611,7 @@ iterável[start:end:step]
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = [1, 2, 3, 4]
-&gt;&gt;&gt; print a[:2]
+... print a[:2]
 [1, 2]
                         </code></pre></p>
                     </section>
@@ -621,7 +621,7 @@ iterável[start:end:step]
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = [1, 2, 3, 4]
-&gt;&gt;&gt; print a[1:-1]
+... print a[1:-1]
 [2, 3]
                         </code></pre></p>
                     </section>
@@ -631,7 +631,7 @@ iterável[start:end:step]
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = 'Python Rocks'
-&gt;&gt;&gt; print a[7:-1]
+... print a[7:-1]
 'Rock'
                         </code></pre></p>
                     </section>
@@ -640,7 +640,7 @@ iterável[start:end:step]
                         <p>Deixar os dois índices em branco cria uma cópia "flat".</p>
                         <p><pre><code data-trim>
 &gt;&gt;&gt; a = [1, 2, 3, 4]
-&gt;&gt;&gt; print a[:]
+... print a[:]
 [1, 2, 3, 4]
                         </code></pre></p>
 
@@ -672,7 +672,7 @@ iterável[start:end:step]
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; def funcao(a, b, c):
-&gt;&gt;&gt;     return (a + b) / c
+...     return (a + b) / c
                         </code></pre></p>
                     </section>
 
@@ -681,7 +681,7 @@ iterável[start:end:step]
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; def funcao(a, b, c):
-&gt;&gt;&gt;     return (a + b) / c
+...     return (a + b) / c
 &gt;&gt;&gt;
 &gt;&gt;&gt; funcao(b=2, c=3, a=10)
 4
@@ -734,6 +734,8 @@ iterável[start:end:step]
 
                         <p>Não existe função para o destrutor.</p>
 
+                        <p class="fragment">(Existe, mas ninguém usa.)</p>
+
                         <p class='fragment'>Existem ainda outras funções
                             <i>mágicas</i>, mas não vamos falar sobre elas
                             nesse momento.</p> </section>
@@ -741,10 +743,10 @@ iterável[start:end:step]
                     <section>
                         <p><pre><code data-trim>
 &gt;&gt;&gt; class MyClasse(object):
-&gt;&gt;&gt;     def __init__(self):
-&gt;&gt;&gt;         self.valor = 0
-&gt;&gt;&gt;     def show(self):
-&gt;&gt;&gt;         print self.valor
+...     def __init__(self):
+...         self.valor = 0
+...     def show(self):
+...         print self.valor
                         </code></pre></p>
                     </section>
 
@@ -766,10 +768,10 @@ iterável[start:end:step]
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; class MyClasse(object):
-&gt;&gt;&gt;     def __init__(self, name):
-&gt;&gt;&gt;         self.name = name
-&gt;&gt;&gt;     def show(self):
-&gt;&gt;&gt;         print self.name
+...     def __init__(self, name):
+...         self.name = name
+...     def show(self):
+...         print self.name
 
 &gt;&gt;&gt; my = MyClasse('Julio')
 &gt;&gt;&gt; my.show()
@@ -778,16 +780,33 @@ Julio
                     </section>
 
                     <section>
+                        <p>Propriedades podem ser injetadas a qualquer momento.</p>
+
+                        <pre><code class="hljs">
+&gt;&gt;&gt; class A(object):
+...     def __init__(self):
+...         self.value = 10
+&gt;&gt;&gt;
+&gt;&gt;&gt; a = A()
+&gt;&gt;&gt; a.name = 'Julio'
+                        </code></pre>
+
+                        <p class="fragment">Inserção de propriedades pode ser
+                            barrada com o uso da variável mágica
+                            <code>__slots__</code>, mas raramente é usado.</p>
+                    </section>
+
+                    <section>
                         <p>Herança</p>
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; class A(object):
-&gt;&gt;&gt;     def __init__(self):
-&gt;&gt;&gt;         self.value = 10
+...     def __init__(self):
+...         self.value = 10
 &gt;&gt;&gt; class B(A):
-&gt;&gt;&gt;     def __init__(self):
-&gt;&gt;&gt;         super(B, self).__init__()
-&gt;&gt;&gt;         self.name = 'AAAA'
+...     def __init__(self):
+...         super(B, self).__init__()
+...         self.name = 'AAAA'
                         </code></pre></p>
                     </section>
 
@@ -796,14 +815,14 @@ Julio
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; class A(object):
-&gt;&gt;&gt;     def __init__(self):
-&gt;&gt;&gt;         self.value = 10
+...     def __init__(self):
+...         self.value = 10
 &gt;&gt;&gt; class B(object):
-&gt;&gt;&gt;     def __init__(self):
-&gt;&gt;&gt;         self.name = 'AAAA'
+...     def __init__(self):
+...         self.name = 'AAAA'
 &gt;&gt;&gt; class C(A, B):
-&gt;&gt;&gt;     def __init__(self):
-&gt;&gt;&gt;         super(C, self).__init__()
+...     def __init__(self):
+...         super(C, self).__init__()
                         </code></pre></p>
                     </section>
 
@@ -812,16 +831,123 @@ Julio
                     </section>
 
                     <section>
-                        <p>Propriedades podem ser injetadas a qualquer momento.</p>
+                        <p><code>super()</code> é mais usado para resolução
+                            hierárquia com herança múltipla.</p>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs">
+&gt;&gt;&gt; class Adao(object): pass
+&gt;&gt;&gt; class Eva(object): pass
+&gt;&gt;&gt; class AvoPaterno(Adao, Eva): pass
+&gt;&gt;&gt; class AvohPaterna(Adao, Eva): pass
+&gt;&gt;&gt; class AvoMaterno(Adao, Eva): pass
+&gt;&gt;&gt; class AvohMaterna(Adao, Eva): pass
+&gt;&gt;&gt; class Pai(AvoPaterno, AvohPaterna): pass
+&gt;&gt;&gt; class Mae(AvoMaterno, AvohMaterna): pass
+&gt;&gt;&gt; class Filho(Pai, Mae): pass
+                        </code></pre>
 
                         <pre><code class="hljs">
-&gt;&gt;&gt; class A(object):
-&gt;&gt;&gt;     def __init__(self):
-&gt;&gt;&gt;         self.value = 10
-&gt;&gt;&gt;
-&gt;&gt;&gt; a = A()
-&gt;&gt;&gt; a.name = 'Julio'
+&gt;&gt;&gt; help(Filho)
                         </code></pre>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs">
+Help on class Filho in module __main__:
+
+class Filho(Pai, Mae)
+ |  Method resolution order:
+ |      Filho
+ |      Pai
+ |      AvoPaterno
+ |      AvohPaterna
+ |      Mae
+ |      AvoMaterno
+ |      AvohMaterna
+ |      Adao
+ |      Eva
+ |      __builtin__.object
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>A ordem de resolução pode ser usada para inserir
+                            mocks sem o uso de mocks.</p>
+
+                        <p class="fragment">... embora só sirva para mockar
+                            objetos "é um" e não "contém um".</p>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs">
+&gt;&gt;&gt; class Robo(object):
+...    def pegar(self, ferramenta):
+...        print 'Pegando', ferramenta
+...    def pra_frente(self):
+...        print 'Movendo pra frente'
+...    def pra_tras(self):
+...        print 'Voltando'
+...    def largar(self):
+...        print 'Largando ferramenta'
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs">
+&gt;&gt;&gt; class RoboDeLimpeza(Robo):
+...    def clean(self, repeticoes=10):
+...        super(Robo, self).pegar('vassoura')
+...        for _ in xrange(repeticoes):
+...            super(Robo, self).pra_frente()
+...            super(Robo, self).pra_tras()
+...        super(Robo, self).largar()
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs">
+&gt;&gt;&gt; class MockRobo(Robo):
+...     def __init__(self):
+...         self.acoes = []
+...     def pegar(self, ferramenta):
+...         self.acoes.append('Pegar {}'.format(ferramenta))
+...     def pra_frente(self):
+...         self.acoes.append('frente')
+...     def pra_tras(self):
+...         self.acoes.append('tras')
+...     def largar(self):
+...         self.acoes.append('largar')
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs">
+&gt;&gt;&gt; class MockRoboDeLimpeza(RoboDeLimpeza, MockRobo):
+...     pass
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs">
+Help on class MockRoboDeLimpeza in module __main__:
+
+class MockRoboDeLimpeza(RoboDeLimpeza, MockRobo)
+ |  Method resolution order:
+ |      MockRoboDeLimpeza
+ |      RoboDeLimpeza
+ |      MockRobo
+ |      Robo
+ |      __builtin__.object
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>
+                            Mais informações no vídeo de Raymond Hettinger:
+                            <a href='https://www.youtube.com/watch?v=EiOglTERPEo'>Super Considered super!</a>
+                        </p>
                     </section>
                 </section>
 
@@ -867,9 +993,8 @@ Julio
                     <section>
                         <p><pre><code data-trim>
 &gt;&gt;&gt; def a(l=[]):
-&gt;&gt;&gt;     l.append(1)
-&gt;&gt;&gt;     print l
-&gt;&gt;&gt;
+...     l.append(1)
+...     print l
 &gt;&gt;&gt; a()
 [1]
 &gt;&gt;&gt; a()
@@ -882,10 +1007,9 @@ Julio
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; def a(l=None):
-&gt;&gt;&gt;     if not l:
-&gt;&gt;&gt;         l = []
-&gt;&gt;&gt;     l.append(1)
-&gt;&gt;&gt;
+...     if not l:
+...         l = []
+...     l.append(1)
 &gt;&gt;&gt; a()
 [1]
 &gt;&gt;&gt; a()
@@ -906,8 +1030,7 @@ Julio
                     <section>
                         <p><pre><code data-trim>
 &gt;&gt;&gt; def a(*args):
-&gt;&gt;&gt;     print args
-&gt;&gt;&gt;
+...     print args
 &gt;&gt;&gt; a(1)
 [1]
 &gt;&gt;&gt; a(1, 2, 3, 4, 5)
@@ -920,8 +1043,7 @@ Julio
                     <section>
                         <p><pre><code data-trim>
 &gt;&gt;&gt; def a(**kwargs):
-&gt;&gt;&gt;     print kwargs
-&gt;&gt;&gt;
+...     print kwargs
 &gt;&gt;&gt; a(a=1)
 {'a': 1}
 &gt;&gt;&gt; a(value1=10, a=2)
@@ -934,9 +1056,8 @@ Julio
                     <section>
                         <p><pre><code data-trim>
 &gt;&gt;&gt; def a(*args, **kwargs):
-&gt;&gt;&gt;     print args
-&gt;&gt;&gt;     print kwargs
-&gt;&gt;&gt;
+...     print args
+...     print kwargs
 &gt;&gt;&gt; a(a=1)
 []
 {'a': 1}
@@ -949,14 +1070,69 @@ Julio
                     <section>
                         <p><pre><code data-trim>
 &gt;&gt;&gt; def a(a, b, *args, name=None, **kwargs):
-&gt;&gt;&gt;     print 'a =', a
-&gt;&gt;&gt;     print 'b =', b
-&gt;&gt;&gt;     print 'args =', args
-&gt;&gt;&gt;     print 'name = ', name
-&gt;&gt;&gt;     print 'kwargs =', kwargs
+...     print 'a =', a
+...     print 'b =', b
+...     print 'args =', args
+...     print 'name = ', name
+...     print 'kwargs =', kwargs
                         </code></pre></p>
 
                         <p>Saída de uma chamada desta função fica a cargo do leitor.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3><code>for</code> tem <code>else</code></h3>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs">
+&gt;&gt;&gt; for i in xrange(10):
+...     if i == 1:
+...         break
+... else:
+...     print 'Oh no'
+                        </code></pre>
+
+                        <p class="fragment">WAT</p>
+                    </section>
+
+                    <section>
+                        <h3><code>for</code> tem <code>else</code></h3>
+
+                        <p><code>else</code> é chamado se a execução do loop
+                            chegar ao final.</p>
+
+                        <pre><code class="hljs">
+&gt;&gt;&gt; for record in all_content:
+...     if record.name = search:
+...         found = record
+...         break
+... else:
+...     found = None
+                        </code></pre>
+                    </section>
+                </section>
+
+                </section>
+                    <section>
+                        <h3><code>try</code> tem <code>else</code></h3>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs">
+&gt;&gt;&gt; try:
+...    func_that_raises_exception()
+... else:
+...     print 'Yay!'
+                        </code></pre>
+
+                        <p class="fragment"><code>else</code> é chamado quando
+                            exceções não ocorrerem.</p>
+
+                        <p class="fragment"><code>finally</code>
+                            <strong>SEMPRE</strong> é chamado.</p>
                     </section>
                 </section>
 
@@ -968,12 +1144,10 @@ Julio
                     <section>
                         <p><pre><code data-trim>
 &gt;&gt;&gt; def funcao(a, b, c):
-&gt;&gt;&gt;     return (a + b) / c
-&gt;&gt;&gt;
+...     return (a + b) / c
 &gt;&gt;&gt; def check(a, b, c, condition, function):
-&gt;&gt;&gt;     if condition:
-&gt;&gt;&gt;         print function(a, b, c)
-&gt;&gt;&gt;
+...     if condition:
+...         print function(a, b, c)
 &gt;&gt;&gt; check(1, 2, 3, True, funcao)
 1
 &gt;&gt;&gt; check(1, 2, 3, False, funcao)
@@ -988,12 +1162,10 @@ Julio
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; class A(object):
-&gt;&gt;&gt;     def __init__(self):
-&gt;&gt;&gt;         self.value = 10
-&gt;&gt;&gt;
-&gt;&gt;&gt; def show_name(self):
-&gt;&gt;&gt;     print 'Julio'
-&gt;&gt;&gt;
+...     def __init__(self):
+...         self.value = 10
+... def show_name(self):
+...     print 'Julio'
 &gt;&gt;&gt; a = A()
 &gt;&gt;&gt; a.show = show_name
 &gt;&gt;&gt; a.show()
@@ -1017,7 +1189,7 @@ Julio
                     <section>
                         <p><pre><code data-trim>
 &gt;&gt;&gt; def retrieve(connection):
-&gt;&gt;&gt;     # faz algo com a conexão para recuperar dados.
+...     # faz algo com a conexão para recuperar dados.
                         </code></pre></p>
 
                         <p>Problema: antes de sair executando algo na conexão, tem que ser
@@ -1030,15 +1202,15 @@ Julio
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; def retrieve(connection):
-&gt;&gt;&gt;     # faz algo com a conexão para recuperar dados.
-&gt;&gt;&gt;
+...     # faz algo com a conexão para recuperar dados.
+
 &gt;&gt;&gt; def update(connection):
-&gt;&gt;&gt;     # atualiza algo usando a função
-&gt;&gt;&gt;
+...     # atualiza algo usando a função
+
 &gt;&gt;&gt; def check(connection, call):
-&gt;&gt;&gt;     if not connection.is_connected:
-&gt;&gt;&gt;         connection.retry()
-&gt;&gt;&gt;     call(connection)
+...     if not connection.is_connected:
+...         connection.retry()
+...     call(connection)
                         </code></pre></p>
 
                         <p>Novo problema: Todo lugar onde antes era chamado <code>retrieve</code>
@@ -1052,18 +1224,17 @@ Julio
 
                         <p><pre><code data-trim>
 &gt;&gt;&gt; from functools import wrap
-&gt;&gt;&gt;
 &gt;&gt;&gt; def check(func):
-&gt;&gt;&gt;     def check_conn(*args, **kwargs):
-&gt;&gt;&gt;         # acha a conexão em args ou kwargs
-&gt;&gt;&gt;         if not connection.is_connected:
-&gt;&gt;&gt;             connection.retry()
-&gt;&gt;&gt;         return func(*args, **kwargs)
-&gt;&gt;&gt;     return check_conn
-&gt;&gt;&gt;
+...     def check_conn(*args, **kwargs):
+...         # acha a conexão em args ou kwargs
+...         if not connection.is_connected:
+...             connection.retry()
+...         return func(*args, **kwargs)
+...     return check_conn
+
 &gt;&gt;&gt; @check
 &gt;&gt;&gt; def retrieve(connection):
-&gt;&gt;&gt;     # faz algo com a conexão para recuperar dados
+...     # faz algo com a conexão para recuperar dados
                         </code></pre></p>
 
                         <p>Não precisa alterar nenhuma chamada de <code>retrieve</code>.</p>
@@ -1078,22 +1249,22 @@ Julio
 
                         <pre><code class="hljs">
 &gt;&gt;&gt; class CheckConn(object):
-&gt;&gt;&gt;    def __init__(self, func):
-&gt;&gt;&gt;        self.func = func
-&gt;&gt;&gt;
-&gt;&gt;&gt;     def __call__(self, *args, **kwargs):
-&gt;&gt;&gt;         if 'connection' in kwargs:
-&gt;&gt;&gt;             connection = kwargs['connection']
-&gt;&gt;&gt;         else:
-&gt;&gt;&gt;             connection = args[0]
-&gt;&gt;&gt;
-&gt;&gt;&gt;         if not connection.is_connected:
-&gt;&gt;&gt;             connection.retry()
-&gt;&gt;&gt;         self.func(*args, **kwargs)
+...    def __init__(self, func):
+...        self.func = func
+...
+...     def __call__(self, *args, **kwargs):
+...         if 'connection' in kwargs:
+...             connection = kwargs['connection']
+...         else:
+...             connection = args[0]
+...
+...         if not connection.is_connected:
+...             connection.retry()
+...         self.func(*args, **kwargs)
 
 &gt;&gt;&gt; @CheckCon
 &gt;&gt;&gt; def retrieve(connection):
-&gt;&gt;&gt;     # retrieve
+...     # retrieve
                         </code></pre>
                     </section>
 
@@ -1111,16 +1282,16 @@ Julio
 
                         <pre><code class='hljs'>
 &gt;&gt;&gt; class CheckConn(object):
-&gt;&gt;&gt;    def __init__(self, func):
-&gt;&gt;&gt;        self._func = func
-&gt;&gt;&gt;
-&gt;&gt;&gt;    @property
-&gt;&gt;&gt;    def func(self):
-&gt;&gt;&gt;        return self._func
-&gt;&gt;&gt;
-&gt;&gt;&gt;    @func.setter
-&gt;&gt;&gt;    def func(self, value):
-&gt;&gt;&gt;        self._func = func
+...    def __init__(self, func):
+...        self._func = func
+...
+...    @property
+...    def func(self):
+...        return self._func
+...
+...    @func.setter
+...    def func(self, value):
+...        self._func = func
                         </code></pre>
                     </section>
 
@@ -1129,112 +1300,112 @@ Julio
 
                         <pre><code class='hljs'>
 &gt;&gt;&gt; class CheckConn(object):
-&gt;&gt;&gt;    def __init__(self, func):
-&gt;&gt;&gt;        self._func = func
-&gt;&gt;&gt;
-&gt;&gt;&gt;    @staticmethod
-&gt;&gt;&gt;    def from_text(self, text):
-&gt;&gt;&gt;        return CheckConn(getattr(self, text))
+...    def __init__(self, func):
+...        self._func = func
+...
+...    @staticmethod
+...    def from_text(self, text):
+...        return CheckConn(getattr(self, text))
                         </code></pre>
                     </section>
                 </section>
 
-				<section>
-					<section>
-						<h3>Comprehensions e Generators</h3>
+                <section>
+                    <section>
+                        <h3>Comprehensions e Generators</h3>
 
-						<p>Python permite criar listas processando listas sem
-							<code>for</code> com <i>list
-								comprehensions</i>.</p>
+                        <p>Python permite criar listas processando listas sem
+                            <code>for</code> com <i>list
+                                comprehensions</i>.</p>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 &gt;&gt;&gt; a = [1, 2, 3]
 &gt;&gt;&gt; [item * 2 for item in a]
 &gt;&gt;&gt; [2, 4, 6]
-						</code></pre>
+                        </code></pre>
 
-						<p>Pra quem gosta de coisas "funcionais", é o mesmo que
-							<code>map</code>.</p>
+                        <p>Pra quem gosta de coisas "funcionais", é o mesmo que
+                            <code>map</code>.</p>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 &gt;&gt;&gt; a = [1, 2, 3]
 &gt;&gt;&gt; map(lamba f: f * 2, a)
 &gt;&gt;&gt; [2, 4, 6]
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<h4>Comprehensions (contd.)</h4>
-						<p>É possível filtrar elementos com list comprehensions.</p>
+                    <section>
+                        <h4>Comprehensions (contd.)</h4>
+                        <p>É possível filtrar elementos com list comprehensions.</p>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 &gt;&gt;&gt; a = [1, 2, 3]
 &gt;&gt;&gt; [item for item in a if item > 2]
 &gt;&gt;&gt; [3]
-						</code></pre>
+                        </code></pre>
 
-						<p>Funcionalmente, é o mesmo que <code>filter</code>.</p>
+                        <p>Funcionalmente, é o mesmo que <code>filter</code>.</p>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 &gt;&gt;&gt; a = [1, 2, 3]
 &gt;&gt;&gt; filter(lambda f: f > 2, a)
 &gt;&gt;&gt; [3]
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<h4>Generators</h4>
+                    <section>
+                        <h4>Generators</h4>
 
-						<p>Enquanto que comprehensions criam novas listas, generators
-						geram elementos sob demanda.</p>
+                        <p>Enquanto que comprehensions criam novas listas, generators
+                        geram elementos sob demanda.</p>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 &gt;&gt;&gt; a = [1, 2, 3]
 &gt;&gt;&gt; (item * 2 for item in a)
 &lt;generator object &lt;genexpr&gt; at 0x7f8673dfc050&gt;
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<h5>Generators (contd.)</h5>
+                    <section>
+                        <h5>Generators (contd.)</h5>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 &gt;&gt;&gt; [item for item in range(5000000)]
-						</code></pre>
+                        </code></pre>
 
-						<p>vs</p>
+                        <p>vs</p>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 &gt;&gt;&gt; (item for item in xrange(5000000))
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<h5>Generators (contd.)</h5>
+                    <section>
+                        <h5>Generators (contd.)</h5>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 &gt;&gt;&gt; [item for item in range(5000000)][:5]
-						</code></pre>
+                        </code></pre>
 
-						<p>vs</p>
+                        <p>vs</p>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 &gt;&gt;&gt; (item for item in xrange(5000000))[:5]
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<h5>Generators (contd.)</h5>
+                    <section>
+                        <h5>Generators (contd.)</h5>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 &gt;&gt;&gt; def gen(max_value):
-&gt;&gt;&gt; 	for value in xrange(max_value):
-&gt;&gt;&gt; 		yield value * 2
-						</code></pre>
+...    for value in xrange(max_value):
+...        yield value * 2
+                        </code></pre>
 
-						<p>Generator functions não podem ter <code>return</code>!</p>
-					</section>
-				</section>
+                        <p>Generator functions não podem ter <code>return</code>!</p>
+                    </section>
+                </section>
 
                 <section>
                     <section>
@@ -1249,45 +1420,45 @@ Julio
                     <section>
                         <h3>Context Managers</h3>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 &gt;&gt;&gt; class Connection(object):
-&gt;&gt;&gt;    def __init__(self):
-&gt;&gt;&gt;        self._conn = None
-&gt;&gt;&gt;
-&gt;&gt;&gt;    def __enter__(self):
-&gt;&gt;&gt;        self._conn = self._make_connection()
-&gt;&gt;&gt;        return self._conn
-&gt;&gt;&gt;
-&gt;&gt;&gt;    def __exit__(self, exc_type, exc_value, traceback):
-&gt;&gt;&gt;        self._conn.close()
-&gt;&gt;&gt;        if exc_type:    # then exc_value and traceback
-&gt;&gt;&gt;            print "Exception!", exc_type, exc_value
-&gt;&gt;&gt;            print traceback
-						</code></pre>
+...    def __init__(self):
+...        self._conn = None
+...
+...    def __enter__(self):
+...        self._conn = self._make_connection()
+...        return self._conn
+...
+...    def __exit__(self, exc_type, exc_value, traceback):
+...        self._conn.close()
+...        if exc_type:    # then exc_value and traceback
+...            print "Exception!", exc_type, exc_value
+...            print traceback
+                        </code></pre>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 &gt;&gt;&gt; with Connection() as connection:
-&gt;&gt;&gt;     connection.request('Value')
-						</code></pre>
+...     connection.request('Value')
+                        </code></pre>
                     </section>
 
                     <section>
                         <h3>Context Managers vs Exceptions</h3>
 
-						<pre><code class="hljs">
+                        <pre><code class="hljs">
 &gt;&gt;&gt; try:
-&gt;&gt;&gt;     conn = self._make_connection()
-&gt;&gt;&gt;     conn.request('value')
-&gt;&gt;&gt; finally:
-&gt;&gt;&gt;     conn.close()
-&gt;&gt;&gt; except Exception as exc:  # Bare exceptions are BAAAADDD!
-&gt;&gt;&gt;     print 'Exception!', exc
-						</code></pre>
+...     conn = self._make_connection()
+...     conn.request('value')
+... finally:
+...     conn.close()
+... except Exception as exc:  # Bare exceptions are BAAAADDD!
+...     print 'Exception!', exc
+                        </code></pre>
                     </section>
 
                 </section>
 
-				<section>
+                <section>
                     <section>
                         <h3>Docstrings</h3>
 
@@ -1296,8 +1467,8 @@ Julio
 
                         <pre><code class="hljs">
 &gt;&gt;&gt; def func(a):
-&gt;&gt;&gt;     """Função mágica"""
-&gt;&gt;&gt;     return a
+...     """Função mágica"""
+...     return a
 
 &gt;&gt;&gt; print func.__doc__
 Função mágica
@@ -1388,7 +1559,7 @@ def send(sender, recipient, message_body, priority):
                             diretórios a serem pesquisados e um makefile com a opção
                             html para geração de arquivos HTML.)</p>
                     </section>
-				</section>
+                </section>
 
                 <section>
                     <section>
