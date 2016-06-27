@@ -594,6 +594,62 @@ def after_saving_product(sender, instance, created, raw, using, update_fields):
 
                 <section>
                     <section>
+                        <h2>Mais forms</h2>
+
+                        <pre><code class="hljs">
+class ProductForm(forms.Form):
+    name = forms.CharField(label='Your name', max_length=40)
+                        </code></pre>
+
+                        <p>Para usar o name:</p>
+
+                        <pre><code class="hljs">
+def get_product(request, product_id):
+    if request.method == 'POST':
+        form = ProductForm(request)
+        if form.is_valid():
+            record = Product(name=form.cleaned_data['name'])
+            record.save()
+
+        return render(request, 
+                      'product_info.html',
+                      {'form': form})
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Mais forms</h2>
+
+                        <p><code>cleaned_data</code> é usado porque os campos podem ser alterados
+                            para evitar problemas dentro do sistema.</p>
+
+                        <p>Regras de "limpeza" estão definidas dentro dos FormFields.</p>
+
+                        <pre><code class="hljs">
+f = forms.CharField()
+f.clean(True)
+'True'
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Mais forms</h2>
+
+                        <p>Em caso de erro, isso é indicado no form, para cada
+                            campo e um dicionario global com essa
+                            informação:</p>
+
+                        <pre><code class="hljs">
+form = ProductForm({'name': 'nome muito grande, com mais de 40 caracteres, o que é inválido'})
+f['name'].errors        # [u'Too many characters']
+
+f.errors                # {'name': [u'Too many characters']}
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
                         <h2>Templatetags</h2>
 
                         <p>Funções especiais para templates para apresentação de valores.</p>
