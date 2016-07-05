@@ -11,7 +11,7 @@ import datetime
 import json
 
 DATA_BACKGROUND = re.compile(r"data-background='(.*?)'")
-PRES_TITLE = re.compile(r"<h1>(.*?)</h1>")
+PRES_TITLE = re.compile(r"<h1.*?>(.*?)</h1>")
 
 
 def retrieve_presentation_info(filename):
@@ -30,6 +30,12 @@ def retrieve_presentation_info(filename):
         logging.debug('Image for %s = %s', filename, image.group(1))
         logging.debug('Title for %s = %s', filename, title.group(1))
         result = (image.group(1), title.group(1))
+    elif not content:
+        logging.debug('%s has no content', filename)
+    elif not image:
+        logging.debug('%s has no image', filename)
+    else:
+        logging.debug('%s has no title', filename)
     return result
 
 
@@ -37,8 +43,10 @@ def check_presentations(file_list):
     """Check if the any of the files in the file list are presentations."""
     result = []
     for filename in file_list:
+        logging.debug('-->')
         if not filename.endswith('.html'):
             # presentations are HTML only
+            logging.debug('%s ignored, not an HTML file', filename)
             continue
 
         (image, title) = retrieve_presentation_info(filename)
@@ -47,9 +55,12 @@ def check_presentations(file_list):
             date = datetime.datetime.fromtimestamp(stat_info.st_mtime)
             logging.debug('Modified date = %s', date)
 
-            result.append({'title': title,
+            result.append({'presentation': filename,
+                           'title': title,
                            'image': image,
                            'changed': date.strftime('%Y-%m-%d %H:%M:%S')})
+        else:
+            logging.debug('Missing information on %s', filename)
     return result
 
 
@@ -75,6 +86,8 @@ def main():
             continue
 
         content = check_presentations(files)
+        # holy shit, talk about abusing Python internals
+        content.sort(cmp=lambda x, y: -1 if x['title'] < y['title'] else 1)
         with open('index.json', 'w') as output:
             output.write(json.dumps(content))
 

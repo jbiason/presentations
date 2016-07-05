@@ -25,6 +25,10 @@ div.thumb {
 ul.inline-list li {
 	text-align: center;
 }
+
+div.record {
+	height: 110px;
+}
 			</style>
 	</head>
 
@@ -37,85 +41,54 @@ ul.inline-list li {
 			</ul>
 		</nav>
 
+		<!--
 		<div class='row'>
-			<div class='small-12 columns'>
-				<ul class='inline-list'>
-					<li><a href='pypoa.html'>
-						<div class='thumb' style='background-image:url("_images/poa.jpg")'></div>
-						PyPoa
-					</a></li>
-
-					<li><a href='rest.html'>
-						<div class='thumb' style='background-image:url("_images/Seascapeshd.png")'></div>
-						ReST
-					</a></li>
-
-					<li><a href='gitsvn.html'>
-						<div class='thumb' style='background-image:url("_images/Sketch27014711.png")'></div>
-						GIT-SVN
-					</a></li>
-
-					<li><a href='gitflow.html'>
-						<div class='thumb' style='background-image:url("_images/git-workflow-gitflow.png")'></div>
-						GIT Flow
-					</a></li>
-					
-					<li><a href='python.html'>
-					    <div class='thumb' style='background-image:url("_images/zen-of-python-poster-a3.png")'></div>
-					    Python
-					</li>
-
-					<li><a href='flask.html'>
-						<div class='thumb' style='background-image:url("_images/flask.png")'></div>
-						Flask
-					</a></li>
-
-					<li><a href='gtg-hamster.html'>
-						<div class='thumb'></div>
-						GTG + Hamster
-					</a></li>
-
-					<li><a href='ajax-sosp-cors-csrf.html'>
-						<div class='thumb' style='background-image:url("_images/ajax-sosp-cors-csrf.png")'></div>
-						SOSP/CORS
-					</a></li>
-
-					<li><a href='pylint.html'>
-						<div class='thumb' style='background-image:url("_images/pylint.png")'></div>
-						Pylint
-					</a></li>
-
-					<li><a href='spa.html'>
-						<div class='thumb' style='background-image:url("_images/Eau_Rouge_1997.jpg")'></div>
-						SPA
-					</a></li>
-
-					<li><a href='noconflict.html'>
-						<div class='thumb' style='background-image:url("_images/jquery_noconflict.jpg")'></div>
-						$.noConflict()
-					</a></li>
-
-					<li><a href='tdc2015.html'>
-						<div class='thumb' style='background-image:url("_images/tdc-logo-post.png")'></div>
-						TDC Agile
-					</a></li>
-
-                    <li><a href="django.html">
-                        <div class="thumb" style='background-image:url("_images/django-allauth.png")'></div>
-                        Ententendo Django
-                    </a></li>
-
-					<li><a href="django-rest.html">
-						<div class="thumb" style='background-image:url("_images/django-rest.png")'></div>
-						Django REST Framework
-					</a></li>
-				</ul>
-			</div>
+			<div class="small-8 columns text-center">Title</div>
+			<div class="small-4 columns">Last Updated</div>
 		</div>
+		-->
+
+		<div id='presentations'></div>
 
 		<script src="_external/jquery.js"></script>
 		<script src="_external/foundation.min.js"></script>
 
 		<script>$(document).foundation();</script>
+
+		<div id='record' class='hide row record'>
+			<a href=''>
+				<div class="small-2 columns">
+					<div class="thumb"></div>
+				</div>
+				<div class="small-6 columns title"></div>
+				<div class="small-4 columns updated"></div>
+			</a>
+		</div>
+
+		<script type="text/javascript">
+			$(function() {
+				$.ajax({
+					url: 'index.json',
+					dataType: 'json',
+				}).done(function (data) {
+					var record;
+					for (var pos in data) {
+						record = data[pos];
+						console.log(record);
+
+						var template = $('#record').clone();
+						template.removeClass('hide');
+						template.removeAttr('id');
+
+						template.find('a').attr('href', record.presentation);
+						template.find('.thumb').css('background-image', 'url("' + record.image + '")');
+						template.find('.title').append(record.title);
+						template.find('.updated').append(record.changed);
+
+						$('#presentations').append(template);
+					}
+				})
+			})
+		</script>
 	</body>
 </html>
