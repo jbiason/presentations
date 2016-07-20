@@ -148,7 +148,7 @@ class Product(models.Model):
 
     """Product information"""
 
-    name = models.CharField(max_length=40)
+    name = models.CharField('Name', max_length=40)
                         </code></pre>
 
                     </section>
@@ -187,6 +187,9 @@ class ProductForm(ModelForm):
     class Meta:
         model = Product
                         </code></pre>
+
+                        <p>O "label" do campo ficará com o valor do primeiro parâmetro
+                        usado no field em ModelForms.</p>
                     </section>
 
                     <section>
@@ -324,11 +327,48 @@ urlpatterns = [
                 </section>
 
                 <section>
-                    <h2>Relationships</h2>
+                    <section>
+                        <h2>Índices</h2>
 
-                    <p>Projeto &gt; App &gt; models.py</p>
+                        <p>Cada campo pode ser indexado usando a propriedade
+                            <code>db_index</code>.</p>
 
-                    <pre><code class="hljs">
+                        <pre><code class="hljs">
+class Order(models.Model):
+
+    """An order."""
+
+    costumer.models.ForeignKey(User, db_index=True)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Meta</h2>
+
+                        <p>Models podem ter uma classe de "Meta" com informações adicionais:</p>
+
+                        <pre><code class="hljs">
+class Order(models.Model):
+    
+    """An order."""
+
+    costumer = models.ForeignKey(User, db_index=True)
+    date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'my_orders'
+        index_together = [
+            ('costumer', 'date')
+        ]
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Relationships</h2>
+
+                        <p>Projeto &gt; App &gt; models.py</p>
+
+                        <pre><code class="hljs">
 class Product(models.Model):
 
     """Product information"""
@@ -342,7 +382,36 @@ class Order(models.Model):
     """An order."""
 
     products = models.ManyToManyField(Product)
-                    </code></pre>
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>"OneToMany"</h2>
+
+                        <p>
+                            Não existe relacionamento "one to many" (p.ex., um
+                            pedido tem vários ítens de pedido). Para isso,
+                            usa-se o <code>ForeignKey</code> na parte "many".
+                        </p>
+
+                        <pre><code class="hljs">
+class Order(models.Model):
+
+    """An order."""
+
+    costumer = models.ForeignKey(Users)
+
+
+class OrderItem(models.Model):
+
+    """An item of an order."""
+
+    order = models.ForeignKey(Order))metro
+    product = models.ForeignKey(Product)
+    quantity = models.PositiveIntegerField()
+                        </code></pre>
+
+                    </section>
                 </section>
 
                 <section>
