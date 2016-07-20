@@ -975,6 +975,134 @@ class MockRoboDeLimpeza(RoboDeLimpeza, MockRobo)
                 </section>
 
                 <section>
+                    <section>
+                        <h2>Módulos, imports e Namespaces</h2>
+
+                        <p>Existem dois tipos de módulos:</p>
+
+                        <ul>
+                            <li>Arquivos com funções;</li>
+                            <li>Diretórios com arquivos Python.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Arquivos com funções</h3>
+
+                        <p><code>modulo.py</code></p>
+
+                        <pre><code class="hljs">
+def funcao(a, b):
+    return a * b
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Arquivos com funções</h3>
+
+                        <pre><code class="hljs">
+&gt;&gt;&gt; import modulo
+&gt;&gt;&gt; modulo.funcao(1, 2)
+                        </code></pre>
+
+                        <p>
+                            No caso, o "namespace" do módulo (modulo) foi
+                            importando para o namespace atual; as funções
+                            permanecem dentro do namespace original.  
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Arquivos com funções</h3>
+
+                        <pre><code class="hljs">
+&gt;&gt;&gt; from modulo import funcao
+&gt;&gt;&gt; funcao(1, 2)
+                        </code></pre>
+
+                        <p>
+                            Importado apenas uma função do módulo <code>modulo</code>;
+                            a função é adicionada no namespace atual.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Diretórios com arquivos</h3>
+
+                        <p>
+                            Para um diretório ser reconhecido como módulo, é preciso
+                            que exista um arquivo <code>__init__.py</code> dentro dele.
+                        </p>
+
+                        <p class="fragment">
+                            ... apenas para Python 2; Python 3 removeu
+                            esse requisito.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Diretórios com arquivos</h3>
+
+                        <p><code>utils/modulo.py</code></p>
+
+                        <pre><code class="hljs">
+def funcao(a, b):
+    return a * b
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Diretórios com arquivos</h3>
+
+                        <p>
+                            Sem o arquivo <code>__init__.py</code>, o import falha
+                            (no Python 2)
+                        </p>
+
+                        <pre><code class="hljs">
+&gt;&gt;&gt; import utils.module
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: No module named utils.module
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Diretórios com arquivos</h3>
+
+                        <p>
+                            Com o arquivo <code>__init__.py</code>, o import funciona.
+                        </p>
+
+                        <pre><code class="hljs">
+&gt;&gt;&gt; import utils.module
+&gt;&gt;&gt; utils.module.funcao(1, 2)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Diretórios com arquivos</h3>
+
+                        <p>
+                            Importando o módulo sem o nome do arquivo, é importado o conteúdo
+                            do próprio <code>__init__.py</code>:
+                        </p>
+
+                        <p><code>__init__.py</code></p>
+
+                        <pre><code class="hljs">
+def mult(a, b):
+    return a * b
+                        </code></pre>
+
+                        <pre><code class="hljs">
+&gt;&gt;&gt; import utils
+&gt;&gt;&gt; utils.mult(1, 2)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
                     <h2>Mais Esquisitices de Python</h2>
                 </section>
 
@@ -1363,7 +1491,7 @@ class MockRoboDeLimpeza(RoboDeLimpeza, MockRobo)
 
                         <pre><code class="hljs">
 &gt;&gt;&gt; a = [1, 2, 3]
-&gt;&gt;&gt; [item for item in a if item > 2]
+&gt;&gt;&gt; [item for item in a if item &gt; 2]
 &gt;&gt;&gt; [3]
                         </code></pre>
 
@@ -1371,7 +1499,7 @@ class MockRoboDeLimpeza(RoboDeLimpeza, MockRobo)
 
                         <pre><code class="hljs">
 &gt;&gt;&gt; a = [1, 2, 3]
-&gt;&gt;&gt; filter(lambda f: f > 2, a)
+&gt;&gt;&gt; filter(lambda f: f &gt; 2, a)
 &gt;&gt;&gt; [3]
                         </code></pre>
                     </section>
