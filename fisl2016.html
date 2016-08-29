@@ -93,6 +93,234 @@ img {
 						</aside>
 					</section>
 				</section>
+
+				<section>
+					<section>
+						<h2 class="semi-opaque">
+							BeavOps : Como o Python e Docker construíram um ambiente DevOps
+						</h2>
+
+						<aside class="notes">
+							- Ferramenta de orquestração de geração de ambientes
+							- 4Linux
+							- Integração com o CRM de venda de cursos
+							- Pyramid vs flask
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="semi-opaque">
+							Shell Script Moderno
+						</h2>
+
+						<aside class="notes">
+							- @oreio
+							- Bash -exu
+							- E - abort on errors
+							- X - debug
+							- Criar funções
+							- Praticar posix
+							- Usar echo e "-v"
+							- Usar variáveis de ambiente ao invés de parmetros para o script
+							- Strict: set -euo pipefail
+							- Shellcheck
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="semi-opaque">
+							Puppet, Ansible, Salt: Maturidade, Simplicidade e Flexibilidade
+						</h2>
+
+						<aside class="notes">
+							- @dgmorales
+							- Mcollective - orquestração puppet
+							- Puppet explorer, puppetboard
+							- Rundeck - Dashboard ansible
+							- Salt: tem clients como puppet e agora tem ssh como ansible
+							- Saltpad: Dashboard do salt
+							- Telegram.me/ansiblebr
+							- Telegram.me/puppetbr
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="semi-opaque">
+							Ansible: Infraestrutura como Código
+						</h2>
+
+						<aside class="notes">
+							- Jonatas Baldwin
+							- @vuashhhh
+							- Powershell remoting para Windows vs ssh unix
+							- Idempotente
+							- Inventory: grupos indicam o tipo do servidor; da pra definir as chaves privadas no inventário para não precisar de senhas
+							- Módulos = ferramentas, playbook = design da infraestrutura
+							- Ansible-playbook -i inventory playbook.yml
+							- Notify: executa a "task" apenas se houver alteração do estado da task
+							- "Ansible for DevOps"
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="semi-opaque">
+							Antes e depois de Python: minhas linguagens favoritas
+						</h2>
+
+						<aside class="notes">
+							- @ramalhoorg
+							- Estética de linguagens de programação
+							- "Fonte 3270"
+							- "Bauhaus chess"
+							- Palavras reservadas = peças de um jogo de xadrez
+							- Número de palavras != sofisticação
+							- Scheme tem macros sintáticas
+							- Quem fez o turbo Pascal fez C#
+							- "Iniciação à estética" - suassuna
+							- "Beauty"
+							- Baungarten
+							- Machine Beauty
+							- Go (concorrencia CSP), Clojure, Elixir
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="semi-opaque">
+							Business Intelligence com dados abertos
+						</h2>
+
+						<aside class="notes">
+							- Coleta de dados, organização, análise, compartilhamento e monitoramento de informações
+							    - Selecionar base de dados
+								- Mapeamento e limpeza (ETL)
+								- Definindo-se dos cubos - construção e desenvolvimento
+								- Interface com usuário
+							- Pentaho Business Analytics
+							- Portal braisleiro de dados abertos
+							- Portal de transparência
+							- Pentaho Day
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="semi-opaque">
+							Explorando xPaaS
+						</h2>
+
+						<aside class="notes">
+							- Ricardo martinelli de oliveira
+							- Openshift
+							- Kubernetes
+							- Xip.io para resolver nomes - coloca o IP de resultando dentro do próprio name.
+							- Developers.redhat.com
+							- Cdk tem um openshift inteiro dentro de um vagrants
+							- @rimolive
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="semi-opaque">
+							MongoDB - Tudo o que você precisa saber
+						</h2>
+
+						<aside class="notes">
+							- Propus.science - parceiro do MongoDB
+							- Consultoria MongoDB e Hadoop
+							- @dump
+							- Christiano.me
+							- Joins - versão 3.2
+							- Validação de documentos - versão 3.2
+							- Teorema de capi
+							- Sharding precisa de replicação - se um shard cai fora, o mongo para de responder.
+							- Sharding precisa de um config server, para manter os indicies gerais. Normalmente 3.
+							- Mongos fica normalmente na máquina da aplicação.
+							- Documento "ID 0" - mantém todos os valores possíveis de todos os campos.
+							- $lookup - join
+							- CreateCollection().validator()
+							- Robomongo.org
+							- 3t.io/mongochef/
+							- Com lookup, como fica dbref?
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="semi-opaque">
+							Tudo que você sempre quis saber sobre licenças de software e nunca pode perguntar
+						</h2>
+
+						<aside class="notes">
+							- @kemelzaidan
+							- Convenção de Berna e Paris + leis nacionais (direito autoral)
+							- Direito autoral != patente , mas são propriedade autoral
+							- Patente tem uma parte de conhecimento público
+							- As 4 liberdades forçam o código a ficar disponível.
+							- Direito de autor vs direito de cópia (copyright)
+							- Sem licença = copyright = o autor que decide como o produto será distribuído (ou se será)
+							- Livros do Ronaldo Lemos
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="semi-opaque">
+							Docker Para Programadores Preguiçosos
+						</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="semi-opaque">
+							Modelos de integração de UX e Engenharia de Software
+						</h2>
+
+						<aside class="notes">
+							- Erik Guimarães
+							- Quadrilátero UX: apresentação, controle, comunicação, essencialidade.
+							- Apresentação = aparência, estética.
+							- Controle = liberdade na iteração, navegação concisa e flexível
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="semi-opaque">
+							Desenvolvimento mobile do jeito certo: Apache Cordova, Zepto e Handlebars
+						</h2>
+
+						<aside class="notes">
+							- http://slides.com/kemelzaidan/mobile-fail
+							- @kemelzaidan
+							- Eventos.locaweb.com.br
+							- Loopback.io - criação de apis
+							- Plugin do MoMa para converter posts para WordPress.
+							- Phonegap = cordova
+							- Plugins de acesso ao hardware não fucnionam em emuladores
+							- Intel XDK = distribuição da Intel para Cordova
+							    - Também tem build na cloud
+								- Intel app preview - envia a aplicação para o dispositivo, sem fazer build
+							- Para push, tem plugin (inotifier?)
+						</aside>
+					</section>
+				</section>
 			</div>
 
 		</div>
