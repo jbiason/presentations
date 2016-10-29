@@ -38,6 +38,10 @@
             .semi-opaque {
                 background-color: rgba(0, 0, 0, 0.7);
             }
+
+            img {
+                height: 400px;
+            }
         </style>
     </head>
 
@@ -49,6 +53,25 @@
 						<h1>Django</h1>
 						<h2>Uma Introdução</h2>
 					</p>
+                </section>
+
+                <section>
+                    <section>
+                        <img src="_images/AYV1X0yv.png" alt="Me" style="float:left;">
+
+                        <div>
+                            <ul>
+                                <li>Júlio Biason</li>
+                                <li>CWI Software</li>
+                                <li>@juliobiason</li>
+                                <li>julio.biason@gmail.com</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <img src="_images/meetings.png" alt="Eu consigo detonar com reuniões" styl>
+                    </section>
                 </section>
 
                 <section>
@@ -131,8 +154,205 @@ Running migrations:
   Applying auth.0008_alter_user_username_max_length... OK
   Applying sessions.0001_initial... OK
 						</code></pre>
+
+                        <aside class="notes">
+                            fazendo o migrate resolve tudo.
+                        </aside>
 					</section>
 				</section>
+
+                <section>
+                    <section>
+                        <h2>App</h2>
+
+                        <p>
+                            App é como o Django chama as pequenas partes que
+                            compõem o sistema.
+                        </p>
+
+                        <p>
+                            Uma app pode ser entendida como uma tabela, ou um
+                            conjunto de tabelas que trabalham em conjunto ou
+                            conjunto de funções auxiliares.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>App: startapp</h2>
+
+                        <pre><code class="hljs" data-trim>
+django-admin startapp customers
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs">
+project/
+├── customers
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── db.sqlite3
+├── manage.py
+└── project
+    ├── __init__.py
+    ├── __init__.pyc
+    ├── settings.py
+    ├── settings.pyc
+    ├── urls.py
+    ├── urls.pyc
+    └── wsgi.py
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>App: models.py</h2>
+
+                        <pre><code class="hljs">
+from __future__ import unicode_literals
+
+from django.db import models
+
+
+class Customer(models.Model):
+
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs">
+$ python manage.py runserver
+Performing system checks...
+
+System check identified no issues (0 silenced).
+October 25, 2016 - 21:01:40
+Django version 1.10.2, using settings 'project.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+                        </code></pre>
+
+                        <aside class="notes">
+                            Cade os migrations?
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>App: Adicionando ao projeto</h2>
+
+                        <pre><code class="hljs">
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'customers'
+]
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs">
+$ python manage.py makemigrations
+Migrations for 'customers':
+  customers/migrations/0001_initial.py:
+    - Create model Customer
+                        </code></pre>
+
+                        <pre><code class="hljs">
+$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, customers, sessions
+Running migrations:
+  Applying customers.0001_initial... OK
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>App: Admin</h2>
+
+                        <pre><code class="hljs">
+from django.contrib import admin
+
+from customers.models import Customer
+
+
+class CustomerAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Customer, CustomerAdmin)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Outro App</h2>
+
+                        <pre><code class="hljs">
+from __future__ import unicode_literals
+
+from django.db import models
+
+from customers.models import Customer
+
+
+class Order(models.Model):
+
+    customer = models.ForeignKey(Customer)
+    date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return '{name} - {items} item'.format(
+            name=self.customer.name,
+            items=self.item_set.count())
+
+
+class Item(models.Model):
+    order = models.ForeignKey(Order)
+    item = models.CharField(max_length=30)
+    qtd = models.PositiveIntegerField()
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+
+    @property
+    def total(self):
+        return self.qtd * self.price
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Admin</h2>
+
+                        <pre><code class="hljs">
+from django.contrib import admin
+
+from orders.models import Order
+from orders.models import Item
+
+
+class Itemadmin(admin.TabularInline):
+    model = Item
+
+
+class OrderAdmin(admin.ModelAdmin):
+    inlines = [Itemadmin]
+
+
+admin.site.register(Order, OrderAdmin)
+                        </code></pre>
+                    </section>
+                </section>
 			</div>
         </div>
 
@@ -160,8 +380,6 @@ Running migrations:
                     { src: 'reveal.js/plugin/notes/notes.js', async: true }
                 ]
             });
-
         </script>
-
     </body>
 </html>
