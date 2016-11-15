@@ -58,25 +58,132 @@
 				</section>
 
 				<section>
-					<h2>Por que Python 3?</h2>
+					<section>
+						<h2>Por que Python 3?</h2>
 
-					<img src="_images/bigstock-decorated-christmas-tree-close-76005554-1.jpg"
-					   style='float:left;'
-					   class="fragment",
-					   width="20%">
-				    <img src='_images/carna-index-04.jpg'
-					   class="fragment"
-					   width="20%">
-					<img src="_images/2020.jpg"
-					   style='float:right;'
-					   class="fragment",
-					   width="20%">
-				    </p>
+						<ul>
+							<li>Unicode por padrão <span class="frament">(adeus UnicodeDecodeError)</span></li>
+							<li class="fragment">AsyncIO</li>
+							<li class="fragment">SUPORTE AO PYTHON 2 TERMINA EM 2020!</li>
+						</ul>
+					</section>
+
+					<section>
+						<img src="_images/bigstock-decorated-christmas-tree-close-76005554-1.jpg" style='float:left;' width="20%">
+						<img src='_images/carna-index-04.jpg' class="fragment" width="20%">
+						<img src="_images/2020.jpg" style='float:right;' class="fragment", width="20%">
+					</section>
 				</section>
 
+				<section>
+					<section>
+						<h2>Caminho para o Python 3</h2>
 
+						<ul>
+							<li><code>python -3 [script]</code></li>
+							<li><code>2to3</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>O que <code>2to3</code> arruma</h2>
+
+						<ul>
+							<li><code>print</code> não vai funcionar (é função)</li>
+							<li><code>iter*</code> não vai funcionar</li>
+							<li><code>urlib</code> mudou tudo</li>
+							<li><code>urlparse</code> mudou tudo</li>
+						</ul>
+
+						<p class="fragment">(<code>%</code> para formatar strings
+						retornou, <code>2to3</code> não muda para <code>format()</code>)</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>"Mais minha infra usa Centos 4 e não tem Python 3 pra Centos!"</h3>
+						<img src="_images/boycrying.jpg" alt=""/>
+					</section>
+
+					<section>
+						<h1>Six ao resgate!</h1>
+
+						<h2 class="fragment">e seu fiel companheiro <code>__future__</code>!</h2>
+					</section>
+
+					<section>
+						<h2>Exemplo <span class="fragment">(estúpido)</span></h2>
+						<pre><code class="hljs python">import collections
+
+class Model(object):
+    def __init__(self, word):
+        self._count = None
+        self.word = word
+        return
+
+    @property
+    def word(self):
+        return self._word
+
+    @word.setter
+    def word(self, word):
+        self._word = word
+        self._count = collections.Counter(word)</code></pre>
+					</section>
+
+					<section>
+						<pre><code class="hljs python">
+    @property
+    def letters(self):
+        return self._count
+
+    def __getitem__(self, pos):
+        return self._count[pos]
+						</code></pre>
+					</section>
+
+					<section>
+						<pre><code class="hljs python">
+if __name__ == "__main__":
+    word = Model('This is an ex-parrot')
+    for letter, count in word.letters.iteritems():
+        print letter, count
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>E Python 3?</h2>
+
+						<p><code>class Model(object):</code></p>
+						
+						<p>Todas as classes são new style, mas Python 3 não
+							reclama disso.</p>
+					</section>
+
+					<section>
+						<h2>E Python 3?</h2>
+
+						<p><code>for letter, count in word.letters.iteritems():</code></p>
+						<p><code>iteritems()</code> não existe mais no Python 3.</p>
+						<p class="fragment">Python 3 tem apenas <code>items()</code>,
+							que funciona de forma diferente no Python 2.</p>
+						<p class="fragment"><code>items()</code> no Python 2 gera uma
+						lista inteira nova ao invés de ser um iterador.</p>
+					</section>
+
+					<section>
+						<h2>E Python 3?</h2>
+
+						<p><code>print letter, count</code></p>
+
+						<p><code>print</code> agora é uma função.</p>
+
+						<p>Algumas funcionalidades mudaram (por exemplo, não há
+							mais espaço entre itens).</p>
+					</section>
+				</section>
 			</div>
-
 		</div>
 
 		<script src="reveal.js/lib/js/head.min.js"></script>
@@ -85,25 +192,25 @@
 		<script>
 
 			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		history: true,
+		center: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+		transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+		// Optional reveal.js plugins
+		dependencies: [
+			{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+			{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+			{ src: 'plugin/zoom-js/zoom.js', async: true },
+			{ src: 'plugin/notes/notes.js', async: true }
+		]
+	});
 
 		</script>
 
