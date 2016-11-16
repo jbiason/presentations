@@ -31,6 +31,12 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
+
+		<style type="text/css" media="screen">
+			.happy {
+				color: yellow;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -66,12 +72,22 @@
 							<li class="fragment">AsyncIO</li>
 							<li class="fragment">SUPORTE AO PYTHON 2 TERMINA EM 2020!</li>
 						</ul>
+
+						<aside class="notes">
+							Segundo especialistas, python asyncio com pyuv consegue ser mais
+							performático que NodeJS.
+						</aside>
 					</section>
 
 					<section>
 						<img src="_images/bigstock-decorated-christmas-tree-close-76005554-1.jpg" style='float:left;' width="20%">
 						<img src='_images/carna-index-04.jpg' class="fragment" width="20%">
 						<img src="_images/2020.jpg" style='float:right;' class="fragment", width="20%">
+
+						<aside class="notes">
+							Gente, natal tá chegando aí, logo depois vem o carnaval e,
+							quando tu vê, já é 2020.
+						</aside>
 					</section>
 				</section>
 
@@ -98,6 +114,13 @@
 						<p class="fragment">(<code>%</code> para formatar strings
 						retornou, <code>2to3</code> não muda para <code>format()</code>)</p>
 					</section>
+
+					<section>
+						<p>
+							... mas agora o código pode ter ficado incompatível com
+							Python 2...
+						</p>
+					</section>
 				</section>
 
 				<section>
@@ -114,7 +137,7 @@
 
 					<section>
 						<h2>Exemplo <span class="fragment">(estúpido)</span></h2>
-						<pre><code class="hljs python">import collections
+						<pre><code>import collections
 
 class Model(object):
     def __init__(self, word):
@@ -133,7 +156,7 @@ class Model(object):
 					</section>
 
 					<section>
-						<pre><code class="hljs python">
+						<pre><code>
     @property
     def letters(self):
         return self._count
@@ -144,7 +167,7 @@ class Model(object):
 					</section>
 
 					<section>
-						<pre><code class="hljs python">
+						<pre><code>
 if __name__ == "__main__":
     word = Model('This is an ex-parrot')
     for letter, count in word.letters.iteritems():
@@ -183,6 +206,94 @@ if __name__ == "__main__":
 							mais espaço entre itens).</p>
 					</section>
 				</section>
+
+				<section>
+					<section>
+						<h2>Compatível entre 2 e 3</h2>
+
+						<pre><code>
+class Model(object):
+						</code></pre>
+
+						<p class="fragment">Não precisa fazer nada.</p>
+					</section>
+
+					<section>
+						<h2>Compatível entre 2 e 3</h2>
+
+						<pre><code>
+print letter, count
+						</code></pre>
+
+						<pre class="fragment"><code>
+from __future__ import print_function
+
+[...]
+
+print('{} {}'.format(letter, count))
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Compatível entre 2 e 3</h2>
+						<h3>(sugestão)</h3>
+
+						<pre><code>
+print('{letter} {count}'.format(letter=letter, 
+                                count=count))
+						</code></pre>
+
+						<aside class="notes">
+							Use os nomes das variáveis no print para
+							evitar confusões sem contar que agora a
+							ordem dos parâmetros não precisa mais
+							seguir a ordem do print.
+						</aside>
+					</section>
+
+					<section>
+						<h2>Compatível entre 2 e 3</h2>
+						<h3>(sugestão mais melhor ainda)</h3>
+
+						<pre><code>
+import six
+
+[...]
+
+six.print_('{letter} {count}'.format(letter=letter, 
+                                     count=count))
+						</code></pre>
+
+						<aside class="notes">
+							six.print_ é recomendado se tu não pode sequer rodar
+							Python 2.7 (mas por favor, né?)
+						</aside>
+					</section>
+
+					<section>
+						<h2>Compatível entre 2 e 3</h2>
+
+						<pre><code>
+for letter, count in word.letters.iteritems():
+						</code></pre>
+
+						<pre class="fragment"><code>
+import six
+
+[...]
+
+for letter, count in six.iteritems(word.letters):
+						</code></pre>
+					</section>
+
+					<section>
+						<h2><span class="happy">&#x1F389;</span> Parabéns! <span class="happy">&#x1F389;</span></h2>
+
+						<h3>Seu código roda em Python 2 <i>E</i> Python 3!</h3>
+
+						<p class="fragment">... o código era estúpido mesmo...</p>
+					</section>
+				</section>
 			</div>
 		</div>
 
@@ -190,28 +301,27 @@ if __name__ == "__main__":
 		<script src="reveal.js/js/reveal.js"></script>
 
 		<script>
-
 			// Full list of configuration options available at:
-	// https://github.com/hakimel/reveal.js#configuration
-	Reveal.initialize({
-		controls: true,
-		progress: true,
-		history: true,
-		center: true,
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				// showNotes: true,
 
-		transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-		// Optional reveal.js plugins
-		dependencies: [
-			{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-			{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-			{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-			{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-			{ src: 'plugin/zoom-js/zoom.js', async: true },
-			{ src: 'plugin/notes/notes.js', async: true }
-		]
-	});
-
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true }
+				]
+			});
 		</script>
 
 	</body>
