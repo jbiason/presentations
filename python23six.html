@@ -1,145 +1,162 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
 
-		<title>Python 2 + 3 = Six</title>
+        <title>Python 2 + 3 = Six</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
 
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="reveal.js/css/reveal.css">
-		<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
 
-		<style type="text/css" media="screen">
-			.happy {
-				color: yellow;
-			}
-		</style>
-	</head>
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
 
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-					<section>
-						<h1>Python 2 + 3 = Six</h1>
-					</section>
-				</section>
+            .semi-opaque {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+
+            .reveal section img {
+                border: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="_images/snake-six.jpg">
+                        <h1 class="semi-opaque">Python 2 + 3 = Six</h1>
+                    </section>
+                </section>
 
                 <section>
                     <section>
-                        <img src="_images/AYV1X0yv.png" alt="Me" style="float:left;">
+                        <img src="_images/AYV1X0yv.png" alt="Me" style="float:left;" class="no-border">
 
                         <div>
                             <ul>
                                 <li>Júlio Biason</li>
-                                <li>CWI Software</li>
+                                <li><img src="_images/logo-horizontal-claro.png" alt="CWI Software" class='no-border'>
                                 <li>@juliobiason</li>
                                 <li>julio.biason@gmail.com</li>
                             </ul>
                         </div>
                     </section>
-				</section>
+                </section>
 
-				<section>
-					<section>
-						<h2>Por que Python 3?</h2>
+                <section>
+                    <section>
+                        <h2>Por que Python 3?</h2>
 
-						<ul>
-							<li>Unicode por padrão <span class="frament">(adeus UnicodeDecodeError)</span></li>
-							<li class="fragment">AsyncIO</li>
-							<li class="fragment">SUPORTE AO PYTHON 2 TERMINA EM 2020!</li>
-						</ul>
+                        <ul>
+                            <li>Unicode por padrão <span class="frament">(adeus UnicodeDecodeError)</span></li>
+                            <li class="fragment">Mock é uma classe padrão</li>
+                            <li class="fragment">Enum é uma classe padrão</li>
+                            <li class="fragment">AsyncIO</li>
+                            <li class="fragment">SUPORTE AO PYTHON 2 TERMINA EM 2020!</li>
+                        </ul>
 
-						<aside class="notes">
-							Segundo especialistas, python asyncio com pyuv consegue ser mais
-							performático que NodeJS.
-						</aside>
-					</section>
+                        <aside class="notes">
+                            Segundo especialistas, python asyncio com pyuv consegue ser mais
+                            performático que NodeJS.
+                        </aside>
+                    </section>
 
-					<section>
-						<img src="_images/bigstock-decorated-christmas-tree-close-76005554-1.jpg" style='float:left;' width="20%">
-						<img src='_images/carna-index-04.jpg' class="fragment" width="20%">
-						<img src="_images/2020.jpg" style='float:right;' class="fragment", width="20%">
+                    <section>
+                        <img src="_images/bigstock-decorated-christmas-tree-close-76005554-1.jpg" style='float:left;' width="20%">
+                        <img src='_images/carna-index-04.jpg' class="fragment" width="20%">
+                        <img src="_images/2020.jpg" style='float:right;' class="fragment", width="20%">
 
-						<aside class="notes">
-							Gente, natal tá chegando aí, logo depois vem o carnaval e,
-							quando tu vê, já é 2020.
-						</aside>
-					</section>
-				</section>
+                        <aside class="notes">
+                            Gente, natal tá chegando aí, logo depois vem o carnaval e,
+                            quando tu vê, já é 2020.
+                        </aside>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>Caminho para o Python 3</h2>
+                <section>
+                    <section>
+                        <h2>Caminho para o Python 3</h2>
 
-						<ul>
-							<li><code>python -3 [script]</code></li>
-							<li><code>2to3</code></li>
-						</ul>
-					</section>
+                        <ul>
+                            <li><code>python -3 [script]</code></li>
+                            <li><code>2to3</code></li>
+                        </ul>
+                    </section>
 
-					<section>
-						<h2>O que <code>2to3</code> arruma</h2>
+                    <section>
+                        <h2>O que <code>2to3</code> arruma</h2>
 
-						<ul>
-							<li><code>print</code> não vai funcionar (é função)</li>
-							<li><code>iter*</code> não vai funcionar</li>
-							<li><code>urlib</code> mudou tudo</li>
-							<li><code>urlparse</code> mudou tudo</li>
-							<li><code>xrange</code> agora é <code>range</code> e o velho <code>range</code> não existe mais.</li>
-							<li><code>raw_input</code> mudou</li>
-						</ul>
+                        <ul>
+                            <li><code>print</code> não vai funcionar (é função)</li>
+                            <li><code>iter*</code> não vai funcionar</li>
+                            <li><code>urlib</code> mudou tudo</li>
+                            <li><code>urlparse</code> mudou tudo</li>
+                            <li><code>xrange</code> agora é <code>range</code> e o velho <code>range</code> não existe mais.</li>
+                            <li><code>raw_input</code> mudou</li>
+                        </ul>
 
-						<p class="fragment">(<code>%</code> para formatar strings
-						retornou, <code>2to3</code> não muda para <code>format()</code>)</p>
-					</section>
+                        <p class="fragment">(<code>%</code> para formatar strings
+                        retornou, <code>2to3</code> não muda para <code>format()</code>)</p>
+                    </section>
 
-					<section>
-						<p>
-							... mas agora o código pode ter ficado incompatível com
-							Python 2...
-						</p>
-					</section>
-				</section>
+                    <section>
+                        <p>
+                            ... mas agora o código pode ter ficado incompatível com
+                            Python 2...
+                        </p>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h3>"Mais minha infra usa Centos 4 e não tem Python 3 pra Centos!"</h3>
-						<img src="_images/boycrying.jpg" alt=""/>
-					</section>
+                <section>
+                    <section>
+                        <h3>"Minha infra usa Centos 4 e não tem Python 3 pra Centos!"</h3>
+                        <img src="_images/boycrying.jpg" alt=""/>
+                    </section>
 
-					<section>
-						<h1>Six ao resgate!</h1>
+                    <section>
+                        <h3>"Eu mantenho uma aplicação Python 2.6!"</h3>
+                        <img src="_images/crying-on-sofa1.gif" alt=""/>
+                    </section>
 
-						<h2 class="fragment">e seu fiel companheiro <code>__future__</code>!</h2>
-					</section>
+                    <section>
+                        <h1>Six ao resgate!</h1>
 
-					<section>
-						<h2>Exemplo <span class="fragment">(estúpido)</span></h2>
-						<pre><code>import collections
+                        <h2 class="fragment">e seu fiel companheiro <code>__future__</code>!</h2>
+
+                        <h3 class="fragment">...mas apenas para aqueles com Python 2.7.</h3>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo <span class="fragment">(estúpido)</span></h2>
+                        <pre><code class='python'>import collections
 
 class Model(object):
     def __init__(self, word):
@@ -155,177 +172,234 @@ class Model(object):
     def word(self, word):
         self._word = word
         self._count = collections.Counter(word)</code></pre>
-					</section>
+                    </section>
 
-					<section>
-						<pre><code>
+                    <section>
+                        <pre><code class='python'>
     @property
     def letters(self):
         return self._count
 
     def __getitem__(self, pos):
         return self._count[pos]
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<pre><code>
+                    <section>
+                        <pre><code class='python'>
 if __name__ == "__main__":
     word = Model('This is an ex-parrot')
     for letter, count in word.letters.iteritems():
         print letter, count
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<h2>E Python 3?</h2>
+                    <section>
+                        <h2>E Python 3?</h2>
 
-						<p><code>class Model(object):</code></p>
-						
-						<p>Todas as classes são new style, mas Python 3 não
-							reclama disso.</p>
-					</section>
+                        <p><code>class Model(object):</code></p>
+                        
+                        <p>Todas as classes são new style, mas Python 3 não
+                            reclama disso.</p>
+                    </section>
 
-					<section>
-						<h2>E Python 3?</h2>
+                    <section>
+                        <h2>E Python 3?</h2>
 
-						<p><code>for letter, count in word.letters.iteritems():</code></p>
-						<p><code>iteritems()</code> não existe mais no Python 3.</p>
-						<p class="fragment">Python 3 tem apenas <code>items()</code>,
-							que funciona de forma diferente no Python 2.</p>
-						<p class="fragment"><code>items()</code> no Python 2 gera uma
-						lista inteira nova ao invés de ser um iterador.</p>
-					</section>
+                        <p><code>for letter, count in word.letters.iteritems():</code></p>
+                        <p><code>iteritems()</code> não existe mais no Python 3.</p>
+                        <p class="fragment">Python 3 tem apenas <code>items()</code>,
+                            que funciona de forma diferente no Python 2.</p>
+                        <p class="fragment"><code>items()</code> no Python 2 gera uma
+                        lista inteira nova ao invés de ser um iterador.</p>
+                    </section>
 
-					<section>
-						<h2>E Python 3?</h2>
+                    <section>
+                        <h2>E Python 3?</h2>
 
-						<p><code>print letter, count</code></p>
+                        <p><code>print letter, count</code></p>
 
-						<p><code>print</code> agora é uma função.</p>
+                        <p><code>print</code> agora é uma função.</p>
 
-						<p>Algumas funcionalidades mudaram (por exemplo, não há
-							mais espaço entre itens).</p>
-					</section>
-				</section>
+                        <p>Algumas funcionalidades mudaram (por exemplo, não há
+                            mais espaço entre itens).</p>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>Compatível entre 2 e 3</h2>
+                <section>
+                    <section>
+                        <h2>Compatível entre 2 e 3</h2>
 
-						<pre><code>
+                        <pre><code>
 class Model(object):
-						</code></pre>
+                        </code></pre>
 
-						<p class="fragment">Não precisa fazer nada.</p>
-					</section>
+                        <p class="fragment">Não precisa fazer nada.</p>
+                    </section>
 
-					<section>
-						<h2>Compatível entre 2 e 3</h2>
+                    <section>
+                        <h2>Compatível entre 2 e 3</h2>
 
-						<pre><code>
+                        <pre><code>
 print letter, count
-						</code></pre>
+                        </code></pre>
 
-						<pre class="fragment"><code>
+                        <pre class="fragment"><code>
 from __future__ import print_function
 
 [...]
 
 print('{} {}'.format(letter, count))
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<h2>Compatível entre 2 e 3</h2>
-						<h3>(sugestão)</h3>
+                    <section>
+                        <h2>Compatível entre 2 e 3</h2>
+                        <h3>(sugestão)</h3>
 
-						<pre><code>
+                        <pre><code class='python'>
 print('{letter} {count}'.format(letter=letter, 
                                 count=count))
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							Use os nomes das variáveis no print para
-							evitar confusões sem contar que agora a
-							ordem dos parâmetros não precisa mais
-							seguir a ordem do print.
-						</aside>
-					</section>
+                        <aside class="notes">
+                            Use os nomes das variáveis no print para
+                            evitar confusões sem contar que agora a
+                            ordem dos parâmetros não precisa mais
+                            seguir a ordem do print.
+                        </aside>
+                    </section>
 
-					<section>
-						<h2>Compatível entre 2 e 3</h2>
-						<h3>(sugestão mais melhor ainda)</h3>
+                    <section>
+                        <h2>Compatível entre 2 e 3</h2>
+                        <h3>(sugestão mais melhor ainda)</h3>
 
-						<pre><code>
+                        <pre><code class='python'>
 import six
 
 [...]
 
 six.print_('{letter} {count}'.format(letter=letter, 
                                      count=count))
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							six.print_ é recomendado se tu não pode sequer rodar
-							Python 2.7 (mas por favor, né?)
-						</aside>
-					</section>
+                        <aside class="notes">
+                            six.print_ é recomendado se tu não pode sequer rodar
+                            Python 2.7 (mas por favor, né?)
+                        </aside>
+                    </section>
 
-					<section>
-						<h2>Compatível entre 2 e 3</h2>
+                    <section>
+                        <h2>Compatível entre 2 e 3</h2>
 
-						<pre><code>
+                        <pre><code class='python'>
 for letter, count in word.letters.iteritems():
-						</code></pre>
+                        </code></pre>
 
-						<pre class="fragment"><code>
+                        <pre class="fragment"><code>
 import six
 
 [...]
 
 for letter, count in six.iteritems(word.letters):
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<h2><span class="happy">&#x1F389;</span> Parabéns! <span class="happy">&#x1F389;</span></h2>
+                    <section>
+                        <h2><span class="happy">&#x1F389;</span> Parabéns! <span class="happy">&#x1F389;</span></h2>
 
-						<h3>Seu código roda em Python 2 <i>E</i> Python 3!</h3>
+                        <h3>Seu código roda em Python 2 <i>E</i> Python 3!</h3>
 
-						<p class="fragment">... o código era estúpido mesmo...</p>
-					</section>
+                        <p class="fragment">... o código era estúpido mesmo...</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Exemplo 2<span class="fragment"> (real)</span></h2>
+
+                        <pre><code class="python">import urllib
+import urlparse
+
+def add_querystring(url, querystring, value):
+    frags = list(urlparse.urlsplit(url))
+    query = frags[3]
+    query_frags = urlparse.parse_qsl(query)
+    query_frags.append((querystring, value))
+    frags[3] = urllib.urlencode(query_frags)
+    return urlparse.urlunsplit(frags)
+
+if __name__ == "__main__":
+    print add_querystring('http://python.org', 'doc', 'urllib')
+    print add_querystring('http://python.org?doc=urllib', 
+                          'page', '2')</code></pre>
+                    </section>
+
+                    <section>
+                        <h2>E Python 3?</h2>
+
+                        <p><code>urlparse</code> foi "juntada" com <code>urllib</code>.</p>
+
+                        <p>Coisas da <code>urllib</code> mudaram de lugar.</p>
+                    </section>
+
+                    <section>
+                        <h2>Compatível entre 2 e 3</h2>
+
+                        <pre><code class="python">import six
+
+def add_querystring(url, querystring, value):
+    frags = list(six.moves.urllib.parse.urlsplit(url))
+    query = frags[3]
+    query_frags = six.moves.urllib.parse.parse_qsl(query)
+    query_frags.append((querystring, value))
+    frags[3] = six.moves.urllib.parse.urlencode(query_frags)
+    return six.moves.urllib.parse.urlunsplit(frags)
+
+if __name__ == "__main__":
+    six.print_(add_querystring('http://python.org', 'doc', 'urllib'))
+    six.print_(add_querystring('http://python.org?doc=urllib', 
+                               'page', '2'))</code></pre>
+                    </section>
+                </section>
+
+				<section data-background='_images/thats-all-folks.jpg'>
+                    <section>
+                        <h1 class="fragment semi-opaque">Perguntas?</h1>
+                        <p class="fragment semi-opaque">E antes que alguém pergunte, 
+                            é 2 <strong>*</strong>3, não 2 <strong>+</strong>3.</p>
+                    </section>
 				</section>
-			</div>
-		</div>
+            </div>
+        </div>
 
-		<script src="reveal.js/lib/js/head.min.js"></script>
-		<script src="reveal.js/js/reveal.js"></script>
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
 
-		<script>
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
-				// showNotes: true,
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-					{ src: 'reveal.js/plugin/notes/notes.js', async: true }
-				]
-			});
-		</script>
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
 
-	</body>
+    </body>
 </html>
 
