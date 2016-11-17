@@ -70,53 +70,307 @@
                         </div>
                     </section>
 
-					<section>
-						<img src="_images/start-a-fight.jpg" alt="Eu faço perguntas em reuniões que eu não sei nada e reunião explode; não é de propósito" class='stretch'/>
-					</section>
+                    <section>
+                        <img src="_images/start-a-fight.jpg" alt="Eu faço perguntas em reuniões que eu não sei nada e reunião explode; não é de propósito" class='stretch'/>
+                    </section>
 
-					<section>
-						<img src="_images/filho-do-capeta.jpg" alt="... mas hoje eu vim botar os filho dos outro no go horse." class='stretch'/>
-					</section>
+                    <section>
+                        <img src="_images/filho-do-capeta.jpg" alt="... mas hoje eu vim botar os filho dos outro no go horse." class='stretch'/>
+                    </section>
                 </section>
 
-				<section>
-					<section>
-						<img src="_images/tdd-where-it-went-wrong.png" alt="TDD: Where it went wrong" class="stretch"/>
-						<p>Ian Cooper: <a href="https://vimeo.com/68375232">"TDD, where did it all go wrong"</a></p>
-					</section>
+                <section>
+                    <section>
+                        <img src="_images/tdd-where-it-went-wrong.png" alt="TDD: Where it went wrong" class="stretch"/>
+                        <p>Ian Cooper: <a href="https://vimeo.com/68375232">"TDD, where did it all go wrong"</a></p>
+                    </section>
 
-					<section>
-						<p>Apresentação de Ian Cooper ressoou muito com experiências
-						feitas com TDD puro e "testes de ponta-a-ponta".</p>
-					</section>
-				</section>
+                    <section>
+                        <p>Apresentação de Ian Cooper ressoou muito com experiências
+                        feitas com TDD puro e "testes de ponta-a-ponta".</p>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<p>Mas antes...</p>
-					</section>
+                <section>
+                    <section>
+                        <p>Mas antes...</p>
+                    </section>
 
-					<section>
-						<p>Quem já</p>
-						<p class="fragment">falou de "testes de unidade"?</p>
-						<p class="fragment">discutiu a "unidade" dos testes de unidade?</p>
-					</section>
+                    <section>
+                        <p>Quem já</p>
+                        <p class="fragment">falou de "testes de unidade"?</p>
+                        <p class="fragment">discutiu a "unidade" dos testes de unidade?</p>
+                    </section>
 
-					<section>
-						<img src="_images/faustao-arrow.png" alt="Errow" class="stretch"/>
-					</section>
+                    <section>
+                        <img src="_images/faustao-arrow.png" alt="Errow" class="stretch"/>
+                    </section>
 
-					<section>
-						<img src="_images/errou-rude.png" alt="Errou rude" class="stretch"/>
-					</section>
-				</section>
+                    <section>
+                        <img src="_images/errou-rude.png" alt="Errou rude" class="stretch"/>
+                    </section>
+                </section>
 
+                <section>
+                    <section>
+                        <h2>Exemplo</h2>
 
-				<section data-background='_images/thats-all-folks.jpg'>
+                        <pre><code class="python">
+class Client:
+    def __init__(self, name):
+        self.name = name
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <p>Novo requisito: "somente aceitar nomes válidos, que tem 2
+                            palavras ou mais."</p>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <p>SOLID principles:</p>
+                        <ul>
+                            <li><strong>SRP - Single Responsability Principle</strong></li>
+                            <li>OCP - Open/closed principle</li>
+                            <li>LSP - Liskov substitution principle (design by contract)</li>
+                            <li>ISP - Interface Segreation Principle</li>
+                            <li>DIP - Dependency Inversion Principle</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code class="python">
+def _multiple_names(name):
+    split_names = name.split(' ')
+    return len(split_names) > 1
+
+def _validate_name(name):
+    if not _multiple_names(name):
+        raise Exception("Invalid name")
+    return name
+
+class Client:
+    def __init__(self, name):
+        self.name = _validate_name(name)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code class="python">
+import pytest
+
+def test_single_name():
+    assert not _multiple_names('Cher')
+
+def test_multiple_name():
+    assert _multiple_names('Julio Biason')
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code class="python">
+def test_valid_name():
+    _validate_name('Julio Biason')
+
+def test_invalid_name():
+    with pytest.raises(Exception):
+        _validate_name('Cher')
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code class="python">
+def test_client_error():
+    with pytest.raises(Exception):
+        Client(name='Cher')
+
+def test_client():
+    Client(name='Julio Biason')
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code>
+$ pytest client.py
+==== test session starts ====
+rootdir: /home/jbiason/unitt, inifile:
+collected 6 items
+
+client.py ......
+
+==== 6 passed in 0.03 seconds ====
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code>
+$ pytest --cov=client client.py
+==== test session starts ====
+plugins: cov-2.4.0
+collected 6 items
+
+client.py ......
+
+---- coverage: platform linux, python 3.4.3-final-0 ----
+Name        Stmts   Miss  Cover
+-------------------------------
+client.py      25      0   100%
+
+==== 6 passed in 0.11 seconds ====
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <p>"Não podemos perder a Cher, a Xuxa, a Madonna, a Björk e o String como clientes!"</p>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code class="python">
+class Client:
+    def __init__(self, name):
+        self.name = name
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code>
+==== FAILURES ====
+____ test_client_error ____
+
+    def test_client_error():
+        with pytest.raises(Exception):
+&gt;           Client(name='Cher')
+E           Failed: DID NOT RAISE &lt;class 'Exception'>
+
+client.py:37: Failed
+==== 1 failed, 5 passed in 0.63 seconds ====
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code>
+$ pytest  client.py
+==== test session starts ====
+rootdir: /home/jbiason/unitt, inifile:
+plugins: cov-2.4.0
+collected 6 items
+
+client.py ......
+
+==== 6 passed in 0.03 seconds ====
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code>
+$ pytest --cov=client  client.py
+==== test session starts ====
+rootdir: /home/jbiason/unitt, inifile:
+plugins: cov-2.4.0
+collected 6 items
+
+client.py ......
+
+---- coverage: platform linux, python 3.4.3-final-0 ----
+Name        Stmts   Miss  Cover
+-------------------------------
+client.py      24      0   100%
+
+==== 6 passed in 0.12 seconds ====
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <p>Encontre o erro.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>TDD</h2>
+
+                        <p>Kent Beck:</p>
+
+                        <ul>
+                            <li>"Run in isolation", nothing more, nothing less.</li>
+                            <li>"Avoid testing implementation details, test behaviours"</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>TDD</h2>
+
+                        <p>Discussões como "qual a unidade a ser testada" é que geraram
+                        coisas como BDD e ATDD (Acceptance Test-Driven Development).</p>
+                    </section>
+
+                    <section>
+                        <h2>TDD</h2>
+
+                        <p>Reddit: <a href="https://www.reddit.com/r/django/comments/5bearg/should_i_write_unit_tests_for_djangos_built_in/" target="_blank">Devo escrever testes para a validação interna do Django?</a></p>
+
+                        <h1 class="fragment">SIM!</h1>
+                    </section>
+
+                    <section>
+                        <h2>TDD</h2>
+
+                        <p>Nossos testes End-to-End.</p>
+
+                        <aside class="notes">
+                            Explicação do que aconteceu com os testes do gerenciador de alertas.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>TDD</h2>
+
+                        <p>SOLID principles:</p>
+                        <ul>
+                            <li>SRP - Single Responsability Principle</li>
+                            <li>OCP - Open/closed principle</li>
+                            <li><strong>LSP - Liskov substitution principle (design by contract)</strong></li>
+                            <li>ISP - Interface Segreation Principle</li>
+                            <li>DIP - Dependency Inversion Principle</li>
+                        </ul>
+
+                        <p>Funciona para aplicações inteiras; veja VIM vs NeoVim.</p>
+                    </section>
+                </section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
                     <section>
                         <h1 class="fragment semi-opaque">Perguntas?</h1>
                     </section>
-				</section>
+                </section>
             </div>
         </div>
 
