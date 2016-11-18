@@ -44,6 +44,10 @@
             .reveal section img {
                 border: none;
             }
+
+            .reveal ul.empty {
+                list-style: none outside;
+            }
         </style>
     </head>
 
@@ -58,14 +62,15 @@
 
                 <section>
                     <section>
-                        <img src="_images/AYV1X0yv.png" alt="Me" style="float:left;" class="no-border">
+                        <img src="_images/AYV1X0yv.png" alt="Me" style="float:left;width:300px;" class="no-border">
 
                         <div>
-                            <ul>
+                            <ul class="empty">
                                 <li>Júlio Biason</li>
                                 <li><img src="_images/logo-horizontal-claro.png" alt="CWI Software" class='no-border'>
                                 <li>@juliobiason</li>
                                 <li>julio.biason@gmail.com</li>
+                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
                             </ul>
                         </div>
                     </section>
@@ -97,9 +102,11 @@
                     </section>
 
                     <section>
-                        <p>Quem já</p>
-                        <p class="fragment">falou de "testes de unidade"?</p>
-                        <p class="fragment">discutiu a "unidade" dos testes de unidade?</p>
+                        <p>Quem já...</p>
+                        <ul class="empty">
+                            <li class="fragment">... falou de "testes de unidade"?</li>
+                            <li class="fragment">... discutiu a "unidade" dos testes de unidade?</li>
+                        </ul>
                     </section>
 
                     <section>
@@ -348,6 +355,12 @@ client.py      24      0   100%
                         <aside class="notes">
                             Explicação do que aconteceu com os testes do gerenciador de alertas.
                         </aside>
+                    </section>
+
+                    <section>
+                        <h2>TDD</h2>
+
+                        <img src="_images/tdd-lifecycle.png" alt="The TDD lifecycle" class="stretch">
                     </section>
 
                     <section>
