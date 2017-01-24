@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Python 3.6 - Novidades da Versão</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .semi-opaque {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+
+            .reveal section img {
+                border: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section>
+                        <div class="semi-opaque">
+                            <h1>Python 3.6</h1>
+                            <h2>Novidades da versão</h2>
+                        </div>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <img src="_images/AYV1X0yv.png" alt="Me" style="float:left;width:300px;" class="no-border">
+
+                        <div>
+                            <ul>
+                                <li>Júlio Biason</li>
+                                <li><img src="_images/logo-horizontal-claro.png" alt="CWI Software" class='no-border'>
+                                <li>@juliobiason</li>
+                                <li>julio.biason@gmail.com</li>
+                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Underscores em números</h2>
+
+                        <pre><code class="python">&gt;&gt;&gt; 1_000_000_000 == 1000000000
+True</code></pre>
+
+                        <pre class="fragment"><code class="python">&gt;&gt;&gt; 1_00_00_00_00_0</code></pre>
+
+                        <pre class="fragment"><code class="python">&gt;&gt;&gt; '{:_}'.format(1000000)
+'1_000_000'</code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>String literals</h2>
+
+                        <pre><code class="python">&gt;&gt;&gt; name = 'Julio'
+&gt;&gt;&gt; f'My name is {name}'
+My name is Julio</code></pre>
+
+                        <pre class="fragment"><code class="python">&gt;&gt;&gt; def f():
+...     name = 'Julio'
+...     print('My name is {name}'.format(**locals()))</code></pre>
+                    </section>
+
+                    <section>
+                        <pre><code class="python">
+all(list(print(f'{i} bottle{"s" if i != 1 else ""} of '
+f'beer on the wall, {str(i).lower()} '
+f'bottle{"s" if i != 1 else ""} of beer.\n{"Take one '
+f'down pass it around" if str(i).lower() == str(i) '
+f'else "Go to the store and buy some more"}, '
+f'{i-1 if i not in [1, "No more"] else "no more" '
+f'if i == 1 else 99} bottles of beer on the wall.\n') \
+for i in list(range(99, 0, -1))+['No more'])) \
+or ""
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Type annotations</h2>
+
+                        <p>Só pra lembrar...</p>
+
+                        <pre><code class="python">&gt;&gt;&gt; def(name: str) -&gt; str:
+...     return 'Hello ' + name</code></pre>
+
+                        <p class="fragment">
+                            Não signfica que o CPython valida o parâmetro ou o retorno.
+                        </p>
+                    </section>
+
+                    <section>
+                        <pre><code class="python">&gt;&gt;&gt; captain: str    # None</code></pre>
+                        <pre><code class="python">&gt;&gt;&gt; values: List[int] = [1, 2, 4]</code></pre>
+
+                        <p class="fragment">Essas informações podem ser extraídas de <code>__annotations__</code>
+                            (assim como docstrings podem ser extraídas de <code>__doc__</code>).</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>secrets</h2>
+
+                        <p>Nova biblioteca para geração de números randômicos "fortes", utilizados 
+                        para criptografia.</p>
+
+                        <pre><code class="python">&gt;&gt;&gt; token_hex(16)  
+'f9bf78b9a18ce6d46a0cd2b0b86df9da'</code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Pathlib</h2>
+
+                        <p>Representação de um caminho qualquer no sistema de arquivos.</p>
+
+                        <pre><code class="python"&gt;&gt;&gt;> import pathlib
+&gt;&gt;&gt; with open(pathlib.Path("README")) as f:
+...     contents = f.read()
+...
+&gt;&gt;&gt; import os.path
+&gt;&gt;&gt; os.path.splitext(pat)
+('some_file', '.txt')</code></pre>
+                    </section>
+
+                    <section>
+                        <p>Nova função para tornar objetos Path-like: <code>__fspath()__</code></p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Novos "dicionários"</h2>
+
+                        <p><code>dict</code> agora é mais compacto.</p>
+                        <p class="fragment">Efeito colateral: agora são ordenados em CPython,
+                        mas não no spec da linguagem Python.</p>
+                    </section>
+
+                    <section>
+                        <ul>
+                            <li><code>**kwargs</code> agora são ordenados.</li>
+                            <li><code>__dict__</code> agora é ordenado.</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Async the world!</h2>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
