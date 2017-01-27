@@ -44,6 +44,10 @@
             .reveal section img {
                 border: none;
             }
+
+			ul.empty {
+				list-style: none;
+			}
         </style>
     </head>
 
@@ -51,7 +55,7 @@
         <div class="reveal">
             <div class="slides">
                 <section>
-                    <section>
+                    <section data-background='_images/python.jpg'>
                         <div class="semi-opaque">
                             <h1>Python 3.6</h1>
                             <h2>Novidades da versão</h2>
@@ -61,10 +65,10 @@
 
                 <section>
                     <section>
-                        <img src="_images/AYV1X0yv.png" alt="Me" style="float:left;width:300px;" class="no-border">
+                        <img src="_images/AYV1X0yv.png" alt="Me" style="float:left;height:200px;" class="no-border">
 
                         <div>
-                            <ul>
+                            <ul class='empty'>
                                 <li>Júlio Biason</li>
                                 <li><img src="_images/logo-horizontal-claro.png" alt="CWI Software" class='no-border'>
                                 <li>@juliobiason</li>
@@ -74,6 +78,24 @@
                         </div>
                     </section>
                 </section>
+
+				<section>
+					<section>
+						<img src="_images/python36-new.png" alt="A full screenshot of the changes in Python 3.6" height="300px"/>
+					</section>
+
+					<section>
+						<img src="_images/london-ripper.jpg" alt="Vamos por partes"/>
+					</section>
+
+					<section>
+						<img src="_images/neat.jpg" alt="Neat."/>
+					</section>
+
+					<section>
+						<img src="_images/my_opinion.jpg" alt="My opinion"/>
+					</section>
+				</section>
 
                 <section>
                     <section>
@@ -132,7 +154,7 @@ or ""
                     </section>
 
                     <section>
-                        <pre><code class="python">&gt;&gt;&gt; captain: str    # None</code></pre>
+                        <pre><code class="python">&gt;&gt;&gt; captain: str    # mas continua como undefined</code></pre>
                         <pre><code class="python">&gt;&gt;&gt; values: List[int] = [1, 2, 4]</code></pre>
 
                         <p class="fragment">Essas informações podem ser extraídas de <code>__annotations__</code>
@@ -154,14 +176,42 @@ or ""
 
                 <section>
                     <section>
+                        <h2>enum</h2>
+
+                        <p>Novo tipo <code>auto</code> para gerar número automaticamente.
+                        </p>
+
+						<pre><code class="python">&gt;&gt;&gt; from enum import Enum, auto
+&gt;&gt;&gt; class Color(Enum):
+...     red = auto()
+...     blue = auto()
+...     green = auto()
+...
+&gt;&gt;&gt; list(Color)
+[<&lt;Color.red: 1>, &lt;Color.blue: 2>, &lt;Color.green: 3>]</code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>importlib</h2>
+
+                        <p>Ao tentar importar um módulo que não existe, será gerado
+                            <code>ModuleNotFoundError</code> ao invés de
+                            <code>ImportError</code>.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
                         <h2>Pathlib</h2>
 
                         <p>Representação de um caminho qualquer no sistema de arquivos.</p>
 
-                        <pre><code class="python"&gt;&gt;&gt;> import pathlib
+						<pre><code class="python">&gt;&gt;&gt; import pathlib
 &gt;&gt;&gt; with open(pathlib.Path("README")) as f:
 ...     contents = f.read()
-...
+...      
 &gt;&gt;&gt; import os.path
 &gt;&gt;&gt; os.path.splitext(pat)
 ('some_file', '.txt')</code></pre>
@@ -192,8 +242,55 @@ or ""
                 <section>
                     <section>
                         <h2>Async the world!</h2>
+
+						<p><code>asyncio</code> agora é oficial.</p>
+                    </section>
+
+					<section>
+						<h3>Async generators</h3>
+
+						<pre><code class="python">async def ticker(delay, to):
+	"""Yield numbers from 0 to *to* every *delay* seconds."""
+	for i in range(to):
+		yield i
+		await asyncio.sleep(delay)</code></pre>
+					</section>
+
+                    <section>
+                        <h3>Async comprehensions</h3>
+
+                        <pre><code class="python">result = [i async for i in aiter() if i % 2]</code></pre>
+
+                        <pre><code class="python">result = [await fun() for fun in funcs if await condition()]</code></pre>
                     </section>
                 </section>
+
+				<section>
+					<section>
+						<h2>Last but not least</h2>
+
+						<ul>
+							<li>Customização de classes com <code>__init_subclass__()</code>;</li>
+							<li>Suporte a DTrace e SystemTrap;</li>
+							<li>Variável de ambiente para mudar a forma de alocação de memória e mudanças
+								no módulo <code>tracemalloc</code>;</li>
+							<li>Desambiguação de datas com entrada do horário de verão;</li>
+							<li><code>typing</code> com novidades;</li>
+						</ul>
+					</section>
+
+					<section>
+						<ul>
+							<li><code>os.urandom()</code> vai bloquear até que haja entropia suficiente
+								para gerar um número;</li>
+							<li>Suporte a OpenSSL 1.1.0;</li>
+							<li>Novos métodos criptográficos em <code>hashlib</code>;</li>
+							<li>Sistema de arquivos do Windows agora é considerado UTF-8;</li>
+							<li>Facilidades para definir o PATH das bibliotecas com arquivos
+							._pth.</li>
+						</ul>
+					</section>
+				</section>
             </div>
         </div>
 
