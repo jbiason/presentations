@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Por que e Como Participar de Projetos Open Source</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="theme/azion.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none outside;
+            }
+
+			li {
+				display: block;
+			}
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="_images/osi_keyhole_300x300_90ppi_0.png">
+                        <h1 class="semi-opaque">Por que e Como Participar de Projetos Open Source</h1>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
+
+                        <div>
+                            <ul class="empty">
+                                <li>Júlio Biason</li>
+								<li><img src="_images/azion-logo.png" alt="Azion logo" class='company-logo'>Azion Technologies</li>
+                                <li>@juliobiason</li>
+                                <li>julio.biason@gmail.com</li>
+                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                </section>
+
+                <section>
+					<section>
+						<h1>Motivação</h1>
+
+						<aside class="notes">
+							O que me levou a fazer essa apresentação foi justamente a participação
+							em eventos passados do TcheLinux. Apesar de estar no meio do open source
+							desde 2000 e sempre estar usando (e ganhando dinheiro) com projetos
+							open source, eu sempre senti que não contribui o suficiente.
+
+							Mas existem coisas simples que qualquer um pode fazer e se eu não
+							consigo ajudar, pelo menos eu posso incentivar mais pessoas a participar.
+							E pode ser que alguém que eu incentive resolva justamente um
+							dos meus problemas.
+						</aside>
+					</section>
+                </section>
+
+				<section>
+					<section>
+						<h1>Por Que Participar?</h1>
+
+						<ul>
+							<li class="fragment">
+								Para retornar à comunidade
+
+								<aside class="notes">
+									Essa deve ser o "por que" mais citado: O software está
+									disponível para quem quiser usar e seria interessante
+									que quem utilize retorne algo ao desenvolvimento.
+								</aside>
+							</li>
+
+							<li class="fragment">
+								"Code rot"
+
+								<aside class="notes">
+									Software, com o tempo, se "deteriora". Se não tiver alguém
+									olhando, ele pára de funcionar.
+								</aside>
+							</li>
+
+							<li class="fragment">
+								"Scratch an itch"
+
+								<aside class="notes">
+									Se tem algo lhe incomodando no software, ele pode ser alterado.
+									E se você não se sentir capaz de fazer, ainda é possível pedir
+									pra alguém resolver isso pra você (e talvez você queria pagar
+									essa pessoa...)
+								</aside>
+							</li>
+
+							<li class="fragment">
+								Fator abandono.
+
+								<aside class="notes">
+									Software estável recebe poucas atualizações, mas as pessoas
+									tendem a ver software com poucas atualizações como "abandonado".
+									Alguém olhando, comentando, discutindo features, explicando
+									como fazer as coisas deixa o projeto "vivo".
+								</aside>
+							</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Como Participar</h1>
+
+						<p>Enviar código com novas features é a forma mais direta <span class="fragment">mas não a mais fácil.</span></p>
+					</section>
+
+					<section>
+						<h2>Enviar Código</h2>
+
+						<ul>
+							<li>Aclimate-se ao ambiente do projeto <span class="fragment">(IRC, Maillist, Slack, etc)</span></li>
+							<li class="fragment">Seguir os padrões de codificação do projeto <span class="fragment">(HACKING.md)</span></li>
+							<li class="fragment">Entender os objetivos do projeto <span class="fragment">(isso está na cabeça dos mantenedores)</span></li>
+						</ul>
+
+						<p class="fragment"><small>Anedota: Mitter.</small></p>
+
+						<aside class="notes">
+							Mitter foi meu projeto pessoal de um cliente Twitter. Meu plano
+							era ter a funcionalidade básica e o mínimo possível de 
+							dependências.
+
+							Mitter tinha suporte apenas ao retweet nativo do sistema (aquele
+							que aparece como um link para outro tweet hoje), mas algumas
+							pessoas ainda usavam o "RT" pra indicar retweet.
+
+							Um usuário pediu pra criar a feature de retweet antigo. Eu tive
+							que explicar que suportar duas formas diferentes seria mais
+							complexo do que esperado e desejado para o projeto. Felizmente,
+							ele entendeu.
+						</aside>
+					</section>
+
+					<section>
+						<h2>Enviar Código</h2>
+
+						<p>Lembre-se: para alguém, o projeto é seu filho.</p>
+
+						<p class="frament"><small>Anedota: IceWM.</small></p>
+
+						<aside class="notes">
+							IceWM é um gerenciador de janelas com uso mínimo de memória, mas altamente
+							configurável. Depois de abandonado pelo desenvolvedor original, ele foi
+							mantido por outra pessoa. Eu comecei a portar os temas do Enlightment
+							(o gerenciador com os temas mais bonitos que havia), mas havia um
+							problema: Sombras nos títulos. Como o IceWM não tinha suporte às
+							sombras, alguns temas ficavam completamente ilegíveis. Eu corri
+							atrás do código onde mostrava o título (dica: eu procurei dentro
+							do código pela variável do arquivo de tema que definia a cor do
+							título) e adicionei a nova funcionalidade.
+
+							Como o meu patch gerou mais burburinho na lista de discussão e
+							IRC do que o que o mantenedor estava fazendo, ele portou meu
+							patch, trocando os nomes das variáveis. No final, eu fiquei como
+							"co-autor" da feature e não como contribuidor.
+
+							Mas eu ganhei a feature que eu queria.
+
+							(Dica: o que eu usei pra achar onde estava a função foi
+							`grep`.)
+						</aside>
+					</section>
+
+					<section>
+						<h2>Enviar Código</h2>
+
+						<p>Algumas vezes, o projeto já está abandonado pelo autor
+						original, mas a comunidade ainda mantém indiretamente.</p>
+
+						<p><small>Anedota: Blackbox.</small></p>
+
+						<aside class="notes">
+							Antes da explosão de gerenciadores *box (Fluxbox, OpenBox),
+							havia o Blackbox. Eu achei um problema com a margem que era
+							possível configurar entre janelas, que era passado inclusive
+							para as bordas da tela. Eu fiz o patch e mandei para a lista
+							de discussão do projeto, mas fui informado que o mantenedor
+							e autor original havia deixado o projeto pra trás, mas o patch
+							iria para um site de patchs para o projeto.
+						</aside>
+					</section>
+
+					<section>
+						<h2>Enviar Código</h2>
+
+						<p>
+							Muito raramente, o desenvolvedor simplesmente não tem tempo
+							para pesquisar como corrigir uma feature que ele mesmo quer
+							colocar.
+						</p>
+
+						<p><small>Anedota: Htop.</small></p>
+
+						<aside class="notes">
+							Uma noite, quando eu estava trabalhando até mais tarde, o
+							Hisham, autor do Htop, veio conversar comigo no IM da época
+							(que eu não lembro exatamente qual era), como era costume
+							quando ele tava perdido e querendo desopilar um pouco.
+
+							Ele me explicou que tava com um problema no top dele, para
+							mostrar o usuário correto em aplicativos que estavam em
+							unidades NFS, mas o `ps` mostrava corretamente.
+
+							"Olha o fonte do psutils, oras. É pra isso que é open source",
+							eu disse.
+
+							"Ah, não tô com vontade."
+
+							Por pura irritação, eu baixei o fonte do psutils e olhei o
+							nome da função que encontrava o usuário e passei pra ele.
+							Meu nome está no "Thanks" do Htop 1 até hoje simplesmente
+							por isso.
+
+							(Dica: o que eu sei pra encontrar a função foi `ctags` pra
+							mapear o conteúdo do projeto e fui correndo de função em
+							função)
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Como Participar</h1>
+
+						<p>Bug reports</p>
+					</section>
+
+					<section>
+						<h2>Bug Reports</h2>
+
+						<p>
+							Quando encontrar um problema, tente repetir; tente isolar
+							o que causa o problema (uma configuração, o nome do arquivo);
+							se conseguir, envie para o desenvolvedor.
+						</p>
+
+						<p><small>Anedota: Skyrim.</small></p>
+
+						<aside class="notes">
+							Não relacionado com open source, mas eu consigo, até hoje,
+							fazer o Skyrim crashear numa missão. E eu sei exatamente
+							como fazer o jogo explodir. 
+
+							Infelizmente, como Skyrim não é um projeto open source,
+							eu não tenho um bug tracker pra reportar o erro.
+						</aside>
+					</section>
+
+					<section>
+						<h2>Bug Reports</h2>
+
+						<p>
+							Se possível, crie um teste que mostre como o
+							problema se repete (o que é mais fácil para bibliotecas
+							e frameworks do que projetos).
+						</p>
+
+						<p><small>Anedota: MongoEngine.</small></p>
+
+						<aside class="notes">
+							MongoEngine é uma biblioteca para acessar o banco de
+							dados MongoDB como se fosse um ORM, com schemas e tudo
+							mais (com a facilidade que, na mudança do schema, não
+							é preciso fazer migrações).
+
+							Como nós mantinhamos sempre a última versão, aconteceu
+							mais de uma vez que a última versão alterou um comportamento
+							completamente. Nesses casos, nós abrimos issues no Github
+							do autor, com o teste incluso, para mostrar o que estávamos
+							querendo fazer e o que estava acontecendo.
+
+							Em todos os casos, nós deixávamos a solução em aberto:
+							"se esse é o comportamento esperado da biblioteca, como
+							podemos obter o resultado esperado do teste?"
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Como Participar</h1>
+
+						<p>Traduções</p>
+					</section>
+
+					<section>
+						<h2>Traduções</h2>
+
+						<p>Se você não entende de código, pode ajudar traduzindo
+						a aplicação para a sua língua.</p>
+
+						<p><small>Anedota: Mitter e Fábio Beneditto</small></p>
+
+						<aside class="notes">
+							Ainda no meu projeto do Mitter, eu tive pedidos de
+							traduzir o aplicativo para a língua deles. Infelizmente
+							Mitter não tinha suporte a traduções e tive que negar
+							a ajuda.
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Como Participar</h1>
+
+						<p>Artwork</p>
+					</section>
+
+					<section>
+						<h2>Artwork</h2>
+
+						<p>
+							Muitos projetos precisam de um site bonito e até
+							mesmo um logotipo interessante. Ajudar o desenvolvedor
+							mantendo um site que consiga comunicar o objetivo
+							do projeto sempre ajuda.
+						</p>
+
+						<p><small>Anedota: Alguma-Coisa-Dog.</small></p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Como Participar</h1>
+
+						<p>Documentação</p>
+					</section>
+
+					<section>
+						<h2>Documentação</h2>
+
+						<p>
+							Desde "como instalar esse projeto" ao "o que ele faz",
+							ainda falta documentação de muita coisa. Nem é preciso
+							saber programar, pegando algumas dicas com o autor do
+							projeto.
+						</p>
+
+						<p class="fragment">
+							Dica: Embora alguns desenvolvedores reclamem da falta
+							de man pages, é possível fazer coisas bem legíveis
+							usando projetos como <a href="https://readthedocs.org/">ReadTheDocs</a>
+							e <a href="http://gitbook.com/">Gitbook</a>.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Como Participar</h1>
+
+						<p>Evangelização</p>
+					</section>
+
+					<section>
+						<h2>Evangelização</h2>
+
+						<p>
+							Você pode ajudar um projeto a crescer divulgando o mesmo
+							em palestas ou até mesmo comentando com seus colegas.
+						</p>
+
+						<p class="fragment">
+							Dica: Evite guerras santas do tipo "meu projeto vs seu projeto".
+						</p>
+
+						<p class="fragment"><small>Anedota: Eu ;).</small></p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Como Participar</h1>
+
+						<p>"Obrigado"</p>
+					</section>
+
+					<section>
+						<h2>"Obrigado"</h2>
+
+						<p>Poucas coisas conseguem ser tão poderosas como um 
+						simples "obrigado por ter feito esse projeto".</p>
+
+						<p class="fragment">
+							Dica: Cerveja e Pizza também contam como obrigados.
+						</p>
+
+						<p class="fragment"><small>Anedota: Htop.</small></p>
+					</section>
+				</section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+                    <section>
+                        <h1 class="fragment semi-opaque">Perguntas?</h1>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
