@@ -48,6 +48,11 @@
 			li {
 				display: block;
 			}
+
+			.cursor {
+				background-color: #666;
+				color: white;
+			}
         </style>
     </head>
 
@@ -128,9 +133,7 @@
 					<section>
 						<h2>Por que entender VIM?</h2>
 
-						<ul>
-							<li>Ubiquidade</li>
-						</ul>
+						<h1 class="fragment">Ubiquidade</h1>
 
 						<aside class="notes">
 							VIM está em todo lugar. E mesmo que não seja usado
@@ -215,6 +218,14 @@
 							O modo de inserção é o modo em que as coisas que tu
 							digita realmente aparecem no texto.
 						</aside>
+					</section>
+
+					<section>
+						<h2>Modos: Visual</h2>
+
+						<h2>Modos: Comando</h2>
+
+						<h2>Modos: Pesquisa</h2>
 					</section>
 				</section>
 
@@ -363,8 +374,95 @@
 					</section>
 
 					<section>
-						<h2>Lista de </h2>
+						<h2>Lista de artigos mais usados:</h2>
+
+						<ul>
+							<li>Números</li>
+							<li>"Inside" (dentro) (<code>i</code>)</li>
+							<li>"Around" (ao redor) (<code>a</code>)</li>
+						</ul>
 					</section>
+				</section>
+
+				<section>
+					<img src="_images/snorefest.jpg" alt="">
+				</section>
+
+				<section>
+					<section>
+						<p>
+							<code>palavra1 <span class="cursor">p</span>alavra2 palavra3</code>
+						</p>
+
+						<p>
+							<code>dw</code>
+						</p>
+
+						<p class="fragment">
+							<code>palavra1 palavra3</code>
+						</p>
+					</section>
+
+					<section>
+						<p>
+							<code>palavra1 <span class="cursor">p</span>alavra2 palavra3</code>
+						</p>
+
+						<p>
+							<code>d2w</code> 
+							<span>(apague duas palavras)</span>
+						</p>
+
+						<p class="fragment">
+							<code>palavra1</code>
+						</p>
+					</section>
+
+					<section>
+						<p>
+							<code>palavra1 pal<span class="cursor">a</span>vra2 palavra3</code>
+						</p>
+
+						<p>
+							<code>d2w</code> 
+							<span class="fragment">(apague duas palavras)</span>
+						</p>
+
+						<p class="fragment">
+							<code>palavra1 palpalavra3</code>
+						</p>
+					</section>
+
+					<section>
+						<p>
+							<code>def func(param1, <span class="cursor">p</span>aram2, param3):</code>
+						</p>
+
+						<p>
+							<code>cf)</code>
+							<span class="fragment">Altere até encontrar um ")"</span>
+						</p>
+
+						<p class="fragment">
+							<code>def func(param1, <span class="cursor">:</span></code>
+
+							<p class="fragment">E já está em modo de inserção.</p>
+						</p>
+					</section>
+
+					<section>
+						<p>
+							<code>def func(param1, <span class="cursor">p</span>aram2, param3):</code>
+						</p>
+
+						<p>
+							<code>ct)</code>
+							<span class="fragment">Altere até antes de encontrar um ")"</span>
+						</p>
+
+						<p class="fragment">
+							<code>def func(param1, <span class="cursor">)</span>:</code>
+						</p>
 				</section>
             </div>
         </div>
