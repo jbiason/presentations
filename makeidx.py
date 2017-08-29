@@ -10,7 +10,7 @@ import argparse
 import datetime
 import json
 
-DATA_BACKGROUND = re.compile(r"data-background='(.*?)'")
+DATA_BACKGROUND = re.compile(r"data-background=['\"](.*?)['\"]")
 PRES_TITLE = re.compile(r"<h1.*?>(.*?)</h1>")
 
 
