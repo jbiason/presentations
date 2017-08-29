@@ -12,6 +12,9 @@ import json
 
 DATA_BACKGROUND = re.compile(r"data-background=['\"](.*?)['\"]")
 PRES_TITLE = re.compile(r"<h1.*?>(.*?)</h1>")
+HEADER = re.compile(r"section.*data-background=['\"]"
+                    r"(?P<image>.*?)['\"].*data-header"
+                    r"(?P<content>.*?)section", re.M | re.S)
 
 
 def retrieve_presentation_info(filename):
@@ -23,13 +26,19 @@ def retrieve_presentation_info(filename):
     with open(filename) as data:
         content = data.read()
 
-    image = DATA_BACKGROUND.search(content)
-    title = PRES_TITLE.search(content)
+    header = HEADER.search(content)
+    if not header:
+        logging.debug('%s has no header', filename)
+        return result
+
+    logging.debug('Header: %r', header.groupdict())
+    image = header.groupdict()['image']
+    title = PRES_TITLE.search(header.groupdict()['content'])
 
     if content and image and title:
-        logging.debug('Image for %s = %s', filename, image.group(1))
+        logging.debug('Image for %s = %s', filename, image)
         logging.debug('Title for %s = %s', filename, title.group(1))
-        result = (image.group(1), title.group(1))
+        result = (image, title.group(1))
     elif not content:
         logging.debug('%s has no content', filename)
     elif not image:
