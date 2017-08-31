@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Fujindo para as Colinas com Python</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="theme/azion.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none outside;
+            }
+
+			li {
+				display: block;
+			}
+
+			.cursor {
+				background-color: #666;
+				color: white;
+			}
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="_images/python.jpg">
+                        <h1 class="semi-opaque">Fujindo para as Colinas Com Python</h1>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
+
+                        <div>
+                            <ul class="empty">
+                                <li>Júlio Biason</li>
+								<li>Azion Technologies<img src="_images/azion-logo.png" alt="Azion logo" class='company-logo'></li>
+                                <li>@juliobiason</li>
+                                <li>julio.biason@gmail.com</li>
+                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <img src="_images/start-a-fight.jpg" alt="Eu faço perguntas em reuniões que eu não sei nada e reunião explode; não é de propósito" class='stretch'/>
+
+						<aside class="notes">
+							Eu sou famoso (ou era) por entrar eu reuniões, fazer uma
+							pergunta e a reunião explodir em discussões (úteis, diga-se
+							de passagem). Mas eu não fazia isso de propósito.
+						</aside>
+                    </section>
+
+					<section>
+						<img src="_images/fast-speaker.jpg" alt="Eu falo rárpido">
+
+						<aside class="notes">
+							Eu também tenho costume de falar rápido.
+							Essa apresentação talvez termine em menos de
+							20 minutos, mas eu deixo mais tempo para as
+							perguntas dessa forma.
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>O "Hello World"</h2>
+
+						<pre><code>print("Hello world")</code></pre>
+
+						<aside class="notes">
+							Hello world não explica muita coisa sobre
+							uma linguagem, então eu resolvi falar
+							de outro problema.
+						</aside>
+					</section>
+
+					<section>
+						<h2>O "Fujam para as Colinas"</h2>
+
+						<pre><code>print("Fujam para as colinas")</code></pre>
+
+						<p class="fragment">
+							Fulam Para As Cojinas
+						</p>
+
+						<p class="fragment">
+							Julam Para As Conifas
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Passo 1: Marcar onde entram os valores</h2>
+
+						<pre><code>
+frase = 'Fujam para as colinas'
+print(frase)
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Passo 1: Marcar onde entram os valores</h2>
+
+						<pre><code>
+consoantes = ['f', 'j', 'c', 'l', 'n']
+frase = 'Fujam para as colinas'
+print(frase)
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Passo 1: Marcar onde entram os valores</h2>
+
+						<pre><code>
+$ python
+Python 3.6.2 (default, Aug 11 2017, 11:59:59) 
+[GCC 7.1.1 20170622 (Red Hat 7.1.1-3)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> help(str)
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Passo 1: Marcar onde entram os valores</h2>
+
+						<pre><code>
+| format(...)
+|     S.format(*args, **kwargs) -> string
+|     
+|     Return a formatted version of S, using substitutions from args and kwargs.
+|     The substitutions are identified by braces ('{' and '}').
+
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Pausa: <code>format</code></h2>
+
+						<pre><code>
+>>> '{} {}.'.format('Hello', 'world')
+Hello world.
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Pausa: <code>format</code></h2>
+
+						<pre><code>
+>>> '{1} {0}.'.format('Hello', 'world')
+world Hello.
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Pausa: <code>format</code></h2>
+
+						<pre><code>
+>>> '{primeiro} {segundo}.'.format(primeiro='Hello',
+                                   segundo='world')
+Hello world.
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Pausa da Pausa: <code>*args</code> e <code>**kwargs</code></h2>
+
+						<pre><code>
+>>> def soma(primeiro, segundo):
+...    return primeiro + segundo
+>>>
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Pausa da Pausa: <code>*args</code> e <code>**kwargs</code></h2>
+
+						<pre><code>
+>>> soma(1, 2)
+3
+
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Pausa da Pausa: <code>*args</code> e <code>**kwargs</code></h2>
+
+						<pre><code>
+>>> soma(primeiro=3, segundo=4)
+7
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Pausa da Pausa: <code>*args</code> e <code>**kwargs</code></h2>
+
+						<pre><code>
+>>> soma(segundo=5, primeiro=6)
+11
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Pausa da Pausa: <code>*args</code> e <code>**kwargs</code></h2>
+
+						<pre><code>
+>>> def varargs(*args):
+...    print(args)
+>>>
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Pausa da Pausa: <code>*args</code> e <code>**kwargs</code></h2>
+
+						<pre><code>
+>>> varargs('f', 'j', 'c', 'l', 'm')
+['f', 'j', 'c', 'l', 'm']
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Pausa da Pausa: <code>*args</code> e <code>**kwargs</code></h2>
+
+						<pre><code>
+>>> def varargs(**kwargs):
+...     print(kwargs)
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Pausa da Pausa: <code>*args</code> e <code>**kwargs</code></h2>
+
+						<pre><code>
+>>> varargs(primeiro=2, segundo=4)
+{'primeiro': 2, 'segundo': 4}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Pausa da Pausa: <code>*args</code> e <code>**kwargs</code></h2>
+
+						<pre><code>
+>>> def varargs(*args, **kwargs):
+...     print(args)
+...     print(kwargs)
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Pausa da Pausa: <code>*args</code> e <code>**kwargs</code></h2>
+
+						<pre><code>
+>>> varargs('f', 'j', 'c', primeiro=2, segundo=4)
+['f', 'j', 'c']
+{'primeiro': 2, 'segundo': 4}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Pausa da Pausa: <code>*args</code> e <code>**kwargs</code></h2>
+
+						<pre><code>
+>>> valores = [3, 4]
+>>> soma(*valores)
+7
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Pausa da Pausa: <code>*args</code> e <code>**kwargs</code></h2>
+
+						<pre><code>
+>>> valores = {'segundo': 12, 'primeiro': 7}
+>>> soma(**valores)
+19
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Passo 1: Marcar onde entram os valores</h2>
+
+						<pre><code>
+consoantes = ['f', 'j', 'c', 'l', 'n']
+frase = 'Fujam para as colinas'
+print(frase)
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Passo 1: Marcar onde entram os valores</h2>
+
+						<pre><code>
+consoantes = ['f', 'j', 'c', 'l', 'n']
+frase = '{}u{}am para as {}o{}i{}as'
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Passo 1: Marcar onde entram os valores</h2>
+
+						<pre><code>
+consoantes = ['f', 'j', 'c', 'l', 'n']
+frase = '{}u{}am para as {}o{}i{}as'
+print(frase.format(*consoantes))
+						</code></pre>
+					</section>
+				</section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
