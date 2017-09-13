@@ -353,6 +353,39 @@ print(frase.format(*consoantes))
 						</code></pre>
 					</section>
 				</section>
+
+				<section>
+					<section>
+						<h2>Passo 2: Randomizar a lista</h2>
+
+						<pre><code>
+import random
+
+consoantes = ['f', 'j', 'c', 'l', 'n']
+random.shuffle(consoantes)
+frase = '{}u{}am para as {}o{}i{}as'
+print(frase.format(*consoantes))
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Pausa: shuffle e "in place"</h2>
+
+						<pre><code>
+>>> import random
+>>> help(random.shuffle)
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Pausa: shuffle e "in place"</h2>
+
+						<pre><code>
+shuffle(self, x, random=None) method of random.Random instance
+    x, random=random.random -> shuffle list x in place; return None.
+						</code></pre>
+					</section>
+				</section>
             </div>
         </div>
 
