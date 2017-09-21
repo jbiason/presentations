@@ -175,6 +175,106 @@ if __name__ == "__main__":
         print('Dude, option!')</code></pre>
 					</section>
 				</section>
+
+				<section>
+					<section>
+						<h2>Docstrings</h2>
+
+						<pre><code>
+"""Randomize a "Run to the hills" phrase."""	
+						</code></pre>
+
+						<aside class="notes">
+							Docstrings são utilizadas para documentar coisas
+							em Python: módulos, funções, classes.
+
+							Essas docstrings depois são utilizadas para o `help`
+							e para extração de documentação, com aplicativos tipo
+							o Sphinx.
+
+							Outra coisa: Strings. Docstrings são strings normais,
+							só que ficam logo abaixo do módulo/classe/função. E
+							como strings normais, elas podem ser geradas com
+							aspas simples ou duplas; as três aspas significam que
+							a string pode ter quebra de linhas.
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Módulos e imports</h2>
+
+						<pre><code>
+import random
+from argparse import ArgumentParser
+						</code></pre>
+
+						<aside class="notes">
+							Para importar módulos no Python, se usa `import` ou
+							`from X import Y`.
+						</aside>
+					</section>
+
+					<section>
+						<h2>Módulos e imports</h2>
+
+						<img src="_images/modules.png" alt="Visão de módulos"/>
+
+						<aside class="notes">
+							Imagine dois módulos: `mod1` e `mod2`.
+
+							`mod1` tem uma função `func1` e `mod2` tem uma
+							funcão `func2`.
+
+							Como ambos estão em espaços separados, de `mod1` eu
+							não consigo chamar `func2` (e nem o contrário).
+						</aside>
+					</section>
+
+					<section>
+						<h2>Módulos e imports</h2>
+
+						<img src="_images/modules-import.png" alt="import"/>
+
+						<aside class="notes">
+							Se eu fizer `import mod2`, tudo que tiver dentro
+							de `mod2` vai vir para o "namespace" atual (assim
+							como quando tu cria um objeto a partir de uma classe
+							ele vira uma "instância", ao importar um módulo,
+							ele vira um namespace).
+
+							Agora, usando o nome do módulo/namespace, eu consigo
+							chamar `func2`, por exemplo.
+
+							Como fazer a chamada usando o namespace é visto a seguir.
+						</aside>
+					</section>
+
+					<section>
+						<h2>Módulos e imports</h2>
+
+						<img src="_images/modules-from-import.png" alt="from X import Y"/>
+
+						<aside class="notes">
+							Se eu fizer `from mod2 import func2`, a única coisa
+							que eu vou trazer para o namespace atual é `func2`; 
+							se houvessem outras funções ou outros módulos ou classes,
+							essas não estariam disponíveis para uso.
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Variáveis e tipos</h2>
+
+						<pre><code>
+CONSONANTS = ['f', 'j', 'c', 'l', 'n']
+PASSPHRASE = '{}u{}am para as {}o{}i{}as'
+						</code></pre>
+					</section>
+				</section>
             </div>
         </div>
 
