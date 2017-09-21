@@ -45,18 +45,18 @@
                 list-style: none outside;
             }
 
-			li {
-				display: block;
-			}
+            li {
+                display: block;
+            }
 
-			.cursor {
-				background-color: #666;
-				color: white;
-			}
-			
-			img {
-				max-height: 90%;
-			}
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+            }
         </style>
     </head>
 
@@ -76,7 +76,7 @@
                         <div>
                             <ul class="empty">
                                 <li>Júlio Biason</li>
-								<li>Azion Technologies<img src="_images/azion-logo.png" alt="Azion logo" class='company-logo'></li>
+                                <li>Azion Technologies<img src="_images/azion-logo.png" alt="Azion logo" class='company-logo'></li>
                                 <li>@juliobiason</li>
                                 <li>julio.biason@gmail.com</li>
                                 <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
@@ -87,40 +87,40 @@
                     <section>
                         <img src="_images/start-a-fight.jpg" alt="Eu faço perguntas em reuniões que eu não sei nada e reunião explode; não é de propósito" class='stretch'/>
 
-						<aside class="notes">
-							Eu sou famoso (ou era) por entrar eu reuniões, fazer uma
-							pergunta e a reunião explodir em discussões (úteis, diga-se
-							de passagem). Mas eu não fazia isso de propósito.
-						</aside>
+                        <aside class="notes">
+                            Eu sou famoso (ou era) por entrar eu reuniões, fazer uma
+                            pergunta e a reunião explodir em discussões (úteis, diga-se
+                            de passagem). Mas eu não fazia isso de propósito.
+                        </aside>
                     </section>
 
-					<section>
-						<img src="_images/fast-speaker.jpg" alt="Eu falo rárpido">
+                    <section>
+                        <img src="_images/fast-speaker.jpg" alt="Eu falo rárpido">
 
-						<aside class="notes">
-							Eu também tenho costume de falar rápido.
-						</aside>
-					</section>
-				</section>
+                        <aside class="notes">
+                            Eu também tenho costume de falar rápido.
+                        </aside>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>O Problema</h2>
+                <section>
+                    <section>
+                        <h2>O Problema</h2>
 
-						<ul>
-							<li class="fragment">"Hello world" não é muito didático</li>
-							<li class="fragment">Escrever "Fujam para as colinas"</li>
-							<li class="fragment">... com randomização de alguns elementos.</li>
-							<li class="fragment">Ex: "Cujam para as folinas", "Lujam para as cofinas" e "Nujam para as folicas"</li>
-						</ul>
-					</section>
-				</section>
+                        <ul>
+                            <li class="fragment">"Hello world" não é muito didático</li>
+                            <li class="fragment">Escrever "Fujam para as colinas"</li>
+                            <li class="fragment">... com randomização de alguns elementos.</li>
+                            <li class="fragment">Ex: "Cujam para as folinas", "Lujam para as cofinas" e "Nujam para as folicas"</li>
+                        </ul>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>Solução</h2>
+                <section>
+                    <section>
+                        <h2>Solução</h2>
 
-						<pre><code>"""Randomize a "Run to the hills" phrase."""
+                        <pre><code>"""Randomize a "Run to the hills" phrase."""
 
 from __future__ import print_function
 
@@ -173,246 +173,494 @@ if __name__ == "__main__":
         switch_two()
     else:
         print('Dude, option!')</code></pre>
-					</section>
-				</section>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>Docstrings</h2>
+                <section>
+                    <section>
+                        <h2>Docstrings</h2>
 
-						<pre><code>
-"""Randomize a "Run to the hills" phrase."""	
-						</code></pre>
+                        <pre><code>
+"""Randomize a "Run to the hills" phrase."""    
+                        </code></pre>
 
-						<aside class="notes">
-							Docstrings são utilizadas para documentar coisas
-							em Python: módulos, funções, classes.
+                        <aside class="notes">
+                            Docstrings são utilizadas para documentar coisas
+                            em Python: módulos, funções, classes.
 
-							Essas docstrings depois são utilizadas para o `help`
-							e para extração de documentação, com aplicativos tipo
-							o Sphinx.
+                            Essas docstrings depois são utilizadas para o `help`
+                            e para extração de documentação, com aplicativos tipo
+                            o Sphinx.
 
-							Outra coisa: Strings. Docstrings são strings normais,
-							só que ficam logo abaixo do módulo/classe/função. E
-							como strings normais, elas podem ser geradas com
-							aspas simples ou duplas; as três aspas significam que
-							a string pode ter quebra de linhas.
-						</aside>
-					</section>
-				</section>
+                            Outra coisa: Strings. Docstrings são strings normais,
+                            só que ficam logo abaixo do módulo/classe/função. E
+                            como strings normais, elas podem ser geradas com
+                            aspas simples ou duplas; as três aspas significam que
+                            a string pode ter quebra de linhas.
+                        </aside>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>Módulos e imports</h2>
+                <section>
+                    <section>
+                        <h2>Módulos e imports</h2>
 
-						<pre><code>
+                        <pre><code>
 import random
 from argparse import ArgumentParser
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							Para importar módulos no Python, se usa `import` ou
-							`from X import Y`.
-						</aside>
-					</section>
+                        <aside class="notes">
+                            Para importar módulos no Python, se usa `import` ou
+                            `from X import Y`.
+                        </aside>
+                    </section>
 
-					<section>
-						<h2>Módulos e imports</h2>
+                    <section>
+                        <h2>Módulos e imports</h2>
 
-						<img src="_images/modules.png" alt="Visão de módulos"/>
+                        <img src="_images/modules.png" alt="Visão de módulos"/>
 
-						<aside class="notes">
-							Imagine dois módulos: `mod1` e `mod2`.
+                        <aside class="notes">
+                            Imagine dois módulos: `mod1` e `mod2`.
 
-							`mod1` tem uma função `func1` e `mod2` tem uma
-							funcão `func2`.
+                            `mod1` tem uma função `func1` e `mod2` tem uma
+                            funcão `func2`.
 
-							Como ambos estão em espaços separados, de `mod1` eu
-							não consigo chamar `func2` (e nem o contrário).
-						</aside>
-					</section>
+                            Como ambos estão em espaços separados, de `mod1` eu
+                            não consigo chamar `func2` (e nem o contrário).
+                        </aside>
+                    </section>
 
-					<section>
-						<h2>Módulos e imports</h2>
+                    <section>
+                        <h2>Módulos e imports</h2>
 
-						<img src="_images/modules-import.png" alt="import"/>
+                        <img src="_images/modules-import.png" alt="import"/>
 
-						<aside class="notes">
-							Se eu fizer `import mod2`, tudo que tiver dentro
-							de `mod2` vai vir para o "namespace" atual (assim
-							como quando tu cria um objeto a partir de uma classe
-							ele vira uma "instância", ao importar um módulo,
-							ele vira um namespace).
+                        <aside class="notes">
+                            Se eu fizer `import mod2`, tudo que tiver dentro
+                            de `mod2` vai vir para o "namespace" atual (assim
+                            como quando tu cria um objeto a partir de uma classe
+                            ele vira uma "instância", ao importar um módulo,
+                            ele vira um namespace).
 
-							Agora, usando o nome do módulo/namespace, eu consigo
-							chamar `func2`, por exemplo.
+                            Agora, usando o nome do módulo/namespace, eu consigo
+                            chamar `func2`, por exemplo.
 
-							Como fazer a chamada usando o namespace é visto a seguir.
-						</aside>
-					</section>
+                            Como fazer a chamada usando o namespace é visto a seguir.
+                        </aside>
+                    </section>
 
-					<section>
-						<h2>Módulos e imports</h2>
+                    <section>
+                        <h2>Módulos e imports</h2>
 
-						<img src="_images/modules-from-import.png" alt="from X import Y"/>
+                        <img src="_images/modules-from-import.png" alt="from X import Y"/>
 
-						<aside class="notes">
-							Se eu fizer `from mod2 import func2`, a única coisa
-							que eu vou trazer para o namespace atual é `func2`; 
-							se houvessem outras funções ou outros módulos ou classes,
-							essas não estariam disponíveis para uso.
-						</aside>
-					</section>
-				</section>
+                        <aside class="notes">
+                            Se eu fizer `from mod2 import func2`, a única coisa
+                            que eu vou trazer para o namespace atual é `func2`; 
+                            se houvessem outras funções ou outros módulos ou classes,
+                            essas não estariam disponíveis para uso.
+                        </aside>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>Variáveis e tipos</h2>
+                <section>
+                    <section>
+                        <h2>Variáveis e tipos</h2>
 
-						<pre><code>
+                        <pre><code>
 CONSONANTS = ['f', 'j', 'c', 'l', 'n']
 PASSPHRASE = '{}u{}am para as {}o{}i{}as'
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							Primeiro, como vimos, strings são marcadas com aspas simples
-							ou duplas. 
+                        <aside class="notes">
+                            Primeiro, como vimos, strings são marcadas com aspas simples
+                            ou duplas. 
 
-							Segundo, temos uma lista: `[]` indicam listas e, nesse caso,
-							nos temos uma lista de strings (não existe o conceito de "um
-							caractere" como em C, por exemplo -- simplesmente, strings
-							com um caractere só).
+                            Segundo, temos uma lista: `[]` indicam listas e, nesse caso,
+                            nos temos uma lista de strings (não existe o conceito de "um
+                            caractere" como em C, por exemplo -- simplesmente, strings
+                            com um caractere só).
 
-							Terceiro: Existe uma string com uns colchetes no meio. Por
-							si só, esses colchetes não fazem nada e se alguém tentar
-							imprimir essa string, os colchetes ainda vão estar lá.
+                            Terceiro: Existe uma string com uns colchetes no meio. Por
+                            si só, esses colchetes não fazem nada e se alguém tentar
+                            imprimir essa string, os colchetes ainda vão estar lá.
 
-							Quarto: como pode ser visto, o nome dessas variávels está
-							em maiúsculo. Isso é apenas por notação para indicar 
-							constantes, embora o Python não tenha esse conceito de
-							constantes; isso é apenas convenção (e, mais pra frente,
-							nós vamos estragar essa convenção.)
-						</aside>
-					</section>
-				</section>
+                            Quarto: como pode ser visto, o nome dessas variávels está
+                            em maiúsculo. Isso é apenas por notação para indicar 
+                            constantes, embora o Python não tenha esse conceito de
+                            constantes; isso é apenas convenção (e, mais pra frente,
+                            nós vamos estragar essa convenção.)
+                        </aside>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>Funções</h2>
+                <section>
+                    <section>
+                        <h2>Funções</h2>
 
-						<pre><code>
+                        <pre><code>
 def print_phrase(consonants):
     """Print the phrase with the randomized consonants."""
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							Nossa primeira função, sem nada de especial:
+                        <aside class="notes">
+                            Nossa primeira função, sem nada de especial:
 
-							Primeiro, elas começam com `def`.
+                            Primeiro, elas começam com `def`.
 
-							Segundo, elas tem nomes e, por padrão, tem que ser em
-							minúsculas e separadas por underscore; não existe
-							nada na linguagem barrando criar funções com nomes
-							todos em maiúsculas ou com camelCase, mas, de novo, 
-							é a convenção da comunidade.
+                            Segundo, elas tem nomes e, por padrão, tem que ser em
+                            minúsculas e separadas por underscore; não existe
+                            nada na linguagem barrando criar funções com nomes
+                            todos em maiúsculas ou com camelCase, mas, de novo, 
+                            é a convenção da comunidade.
 
-							Terceiro, funções tem parâmetros, que seguem a mesma
-							convenção de nomes que já vimos.
+                            Terceiro, funções tem parâmetros, que seguem a mesma
+                            convenção de nomes que já vimos.
 
-							Quarto, funcões são seguidas de dois pontos.
+                            Quarto, funcões são seguidas de dois pontos.
 
-							Quinto: Python não usa colchetes para blocos; blocos
-							são definidos por identação (como pode ser visto pela
-							docstring).
-						</aside>
-					</section>
+                            Quinto: Python não usa colchetes para blocos; blocos
+                            são definidos por identação (como pode ser visto pela
+                            docstring).
+                        </aside>
+                    </section>
 
-					<section>
-						<h2>Funções</h2>
+                    <section>
+                        <h2>Funções</h2>
 
-						<pre><code>
+                        <pre><code>
 def print_phrase(consonants, something_else):
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							Para ter mais parâmetros, basta adicionar os parâmetros
-							separados por vírgulas.
-						</aside>
-					</section>
+                        <aside class="notes">
+                            Para ter mais parâmetros, basta adicionar os parâmetros
+                            separados por vírgulas.
+                        </aside>
+                    </section>
 
-					<section>
-						<h2>Funcões</h2>
+                    <section>
+                        <h2>Funcões</h2>
 
-						<pre><code>
+                        <pre><code>
 def soma(primeiro, segundo):
     total = primeiro + segundo
-	return total
-						</code></pre>
+    return total
+                        </code></pre>
 
-						<aside class="notes">
-							Se uma função tem algum retorno, basta adicionar `return`;
-							funções sem `return` retornam um valor vazio, chamado `None`
-							(que é o mesmo que `nil`, `null` e tantos outros nomes).
+                        <aside class="notes">
+                            Se uma função tem algum retorno, basta adicionar `return`;
+                            funções sem `return` retornam um valor vazio, chamado `None`
+                            (que é o mesmo que `nil`, `null` e tantos outros nomes).
 
-							Não existe diferença na hora de criar uma "função" e uma
-							"procedure", como existe no Pascal: Simplesmente funções que
-							não retornam valor não retornam valor (e ficam como None).
-						</aside>
-					</section>
+                            Não existe diferença na hora de criar uma "função" e uma
+                            "procedure", como existe no Pascal: Simplesmente funções que
+                            não retornam valor não retornam valor (e ficam como None).
+                        </aside>
+                    </section>
 
-					<section>
-						<h2>Funções</h2>
+                    <section>
+                        <h2>Funções</h2>
 
-						<pre><code>
+                        <pre><code>
 soma(1, 2)
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							Para chamar uma função, basta chamar a função passando os
-							parâmetros.
-						</aside>
-					</section>
+                        <aside class="notes">
+                            Para chamar uma função, basta chamar a função passando os
+                            parâmetros.
+                        </aside>
+                    </section>
 
-					<section>
-						<h2>Funções</h2>
+                    <section>
+                        <h2>Funções</h2>
 
-						<pre><code>
+                        <pre><code>
 soma(primeiro=2, segundo=3)
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							O legal de Python é que é possível colocar nome dos
-							parâmetros na chamada da função...
-						</aside>
-					</section>
+                        <aside class="notes">
+                            O legal de Python é que é possível colocar nome dos
+                            parâmetros na chamada da função...
+                        </aside>
+                    </section>
 
-					<section>
-						<h2>Funções</h2>
+                    <section>
+                        <h2>Funções</h2>
 
-						<pre><code>
+                        <pre><code>
 soma(segundo=3, primeiro=2)
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							... e por isso dá pra misturar a ordem dos parâmetros,
-							se ficar mais fácil de ler.
+                        <aside class="notes">
+                            ... e por isso dá pra misturar a ordem dos parâmetros,
+                            se ficar mais fácil de ler.
 
-							Também ajuda se a função tiver vários parâmetros, sem
-							contar que ajuda quem tiver lendo o código pra não
-							precisar voltar e ver quais são os parâmetros.
-						</aside>
-					</section>
-				</section>
+                            Também ajuda se a função tiver vários parâmetros, sem
+                            contar que ajuda quem tiver lendo o código pra não
+                            precisar voltar e ver quais são os parâmetros.
+                        </aside>
+                    </section>
 
-				<section>
-					<section>
-						<h2>Welcome to Hell</h2>
+                    <section>
+                        <h2>Funções</h2>
 
-						<pre><code>
+                        <pre><code>
+def soma(primeiro=0, segundo=0):
+                        </code></pre>
+
+                        <pre><code>
+soma()
+soma(1)
+soma(segundo=3)
+                        </code></pre>
+
+                        <aside class="notes">
+                            Parâmetros também podem ser opcionais, passando
+                            o valor que o mesmo vai ter se não for passado.
+
+                            E, com nomes nos parâmetros, é possível "pular"
+                            por parâmetros que tem valor default.
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Pausa: Varargs</h2>
+
+                        <pre><code>
+def soma(primeiro, segundo):
+    total = primeiro + segundo
+    return total
+                        </code></pre>
+
+                        <pre class="fragment"><code>
+soma(1)
+                        </code></pre>
+
+                        <pre class="fragment"><code>
+soma(1, 2, 3)
+                        </code></pre>
+
+                        <aside class="notes">
+                            O que acontece quando não se passa a quantidade correta
+                            de parâmetros para uma função?
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Pausa: Varargs</h2>
+
+                        <pre><code>
+TypeError: soma() takes exactly 2 arguments (3 given)
+                        </code></pre>
+
+                        <aside class="notes">
+                            Simplesmente, o Python se recusa a executar porque não
+                            foi passado o número correto de parâmetros.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Pausa: Varargs</h2>
+
+                        <pre><code>
+def soma(*valores):
+                        </code></pre>
+
+                        <aside class="notes">
+                            Entram os varargs: Quando um parâmetro tem um asterísco
+                            na frente do nome, ele significa "colete tudo que foi
+                            passado que não conseguiu associar a um parâmetro e
+                            retorne como lista"
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Pausa: Varargs</h2>
+
+                        <pre><code>
+def soma(*valores):
+    print(valores)
+                        </code></pre>
+
+                        <pre><code>
+soma(1, 2, 3, 4, 5)
+                        </code></pre>
+
+                        <pre class="fragment"><code>
+[1, 2, 3, 4, 5]
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Pausa: Varargs</h2>
+
+                        <pre><code>
+def soma(inicial, segundo=0, *valores):
+    print(inicial)
+    print(segundo)
+    print(valores)
+
+                        </code></pre>
+
+                        <pre><code>
+soma(2)
+                        </code></pre>
+
+                        <pre><code>
+2
+0
+[]
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Pausa: Varargs</h2>
+
+                        <p>
+                            E o que acontece com parâmetros com nomes?
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Pausa: Varargs</h2>
+
+                        <pre><code>
+def soma(**valores):
+    print(valores)
+                        </code></pre>
+
+                        <pre><code>
+soma(primeiro=1, segundo=2)
+                        </code></pre>
+
+                        <pre><code>
+{'primeiro': 1, 'segundo': 2}
+                        </code></pre>
+
+                        <aside class="notes">
+                            Para capturar parâmetros com nomes, usam-se
+                            dois asteríscos na frente do nome. Assim como um
+                            asterísco significa "capture tudo que não for
+                            capturado por parâmetros normais", dois asteríscos
+                            significam "capture tudo que tiver nome e não
+                            for capturado por parâmetros normais".
+
+                            E agora também vimos como funcionam dicionários
+                            em Python (que são chamadas de "objetos", "arrays
+                            associativos", "mapas" e outros nomes em outras
+                            linguagens).
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Pausa: Varargs</h2>
+
+                        <p>
+                            O legal de varargs (e o asterísco) é que ele
+                            funciona pros dois lados: Não só ele transforma
+                            parâmetros em lista, mas ele também pode
+                            funcionar para converter uma lista em parâmetros.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Pausa: Varargs</h2>
+
+                        <pre><code>
+params = [4, 4]
+soma(*params)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Pausa: Objetos</h2>
+
+                        <p>
+                            Sem entrar em detalhes sobre como
+                            criar objetos:
+                        </p>
+
+                        <ul>
+                            <li class="fragment">Objetos tem métodos (funções associadas a um objeto)</li>
+                            <li class="fragment">Para chamar um método, usa-se '.' e o nome do método</li>
+                            <li class="fragment">Strings são objetos</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Pausa: Objetos</h2>
+
+                        <pre><code>
+"isso é uma string"
+                        </code></pre>
+
+                        <aside class="notes">
+                            Uma string é um objeto.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Pausa: Objetos</h2>
+
+                        <pre><code>
+help("isso é uma string")
+                        </code></pre>
+
+                        <aside class="notes">
+                            Pedindo help num objeto vai mostrar o help
+                            da classe do objeto; no caso, serão mostrados
+                            todos os métodos presentes no objeto "str", de
+                            string.
+
+                            E é por isso que é interessante colocar docstrings:
+                            help() vai mostrar tudo que aquele objeto faz,
+                            desde que documentado.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Pausa: Objetos</h2>
+
+                        <pre><code>
+"isso é uma string".capitalize()
+                        </code></pre>
+
+                        <pre><code>
+frase = "isso é uma string"
+frase.capitalize()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><span style="color:crimson">Welcome to Hell</span></h2>
+
+                        <pre><code>
     print(PASSPHRASE.format(*consonants).capitalize())
-						</code></pre>
-					</section>
-				</section>
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2><span style="color:crimson">Welcome to</span> Hell</h2>
+
+                        <p>O que sabemos:</p>
+
+                        <ul>
+                            <li class="fragment"><code>PASSPHRASE</code> é uma string.</li>
+                            <li class="fragment"><code>.format</code> deve ser um método de strings.</li>
+                            <li class="fragment"><code>consonants</code> é uma lista</li>
+                            <li class="fragment"><code>*consonants</code> tá transformando a lista em parâmetros</li>
+                            <li class="fragment"><code>capitalize</code> também deve ser um método de strings</li>
+                        </ul>
+                    </section>
+                </section>
             </div>
         </div>
 
