@@ -273,6 +273,144 @@ from argparse import ArgumentParser
 CONSONANTS = ['f', 'j', 'c', 'l', 'n']
 PASSPHRASE = '{}u{}am para as {}o{}i{}as'
 						</code></pre>
+
+						<aside class="notes">
+							Primeiro, como vimos, strings são marcadas com aspas simples
+							ou duplas. 
+
+							Segundo, temos uma lista: `[]` indicam listas e, nesse caso,
+							nos temos uma lista de strings (não existe o conceito de "um
+							caractere" como em C, por exemplo -- simplesmente, strings
+							com um caractere só).
+
+							Terceiro: Existe uma string com uns colchetes no meio. Por
+							si só, esses colchetes não fazem nada e se alguém tentar
+							imprimir essa string, os colchetes ainda vão estar lá.
+
+							Quarto: como pode ser visto, o nome dessas variávels está
+							em maiúsculo. Isso é apenas por notação para indicar 
+							constantes, embora o Python não tenha esse conceito de
+							constantes; isso é apenas convenção (e, mais pra frente,
+							nós vamos estragar essa convenção.)
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Funções</h2>
+
+						<pre><code>
+def print_phrase(consonants):
+    """Print the phrase with the randomized consonants."""
+						</code></pre>
+
+						<aside class="notes">
+							Nossa primeira função, sem nada de especial:
+
+							Primeiro, elas começam com `def`.
+
+							Segundo, elas tem nomes e, por padrão, tem que ser em
+							minúsculas e separadas por underscore; não existe
+							nada na linguagem barrando criar funções com nomes
+							todos em maiúsculas ou com camelCase, mas, de novo, 
+							é a convenção da comunidade.
+
+							Terceiro, funções tem parâmetros, que seguem a mesma
+							convenção de nomes que já vimos.
+
+							Quarto, funcões são seguidas de dois pontos.
+
+							Quinto: Python não usa colchetes para blocos; blocos
+							são definidos por identação (como pode ser visto pela
+							docstring).
+						</aside>
+					</section>
+
+					<section>
+						<h2>Funções</h2>
+
+						<pre><code>
+def print_phrase(consonants, something_else):
+						</code></pre>
+
+						<aside class="notes">
+							Para ter mais parâmetros, basta adicionar os parâmetros
+							separados por vírgulas.
+						</aside>
+					</section>
+
+					<section>
+						<h2>Funcões</h2>
+
+						<pre><code>
+def soma(primeiro, segundo):
+    total = primeiro + segundo
+	return total
+						</code></pre>
+
+						<aside class="notes">
+							Se uma função tem algum retorno, basta adicionar `return`;
+							funções sem `return` retornam um valor vazio, chamado `None`
+							(que é o mesmo que `nil`, `null` e tantos outros nomes).
+
+							Não existe diferença na hora de criar uma "função" e uma
+							"procedure", como existe no Pascal: Simplesmente funções que
+							não retornam valor não retornam valor (e ficam como None).
+						</aside>
+					</section>
+
+					<section>
+						<h2>Funções</h2>
+
+						<pre><code>
+soma(1, 2)
+						</code></pre>
+
+						<aside class="notes">
+							Para chamar uma função, basta chamar a função passando os
+							parâmetros.
+						</aside>
+					</section>
+
+					<section>
+						<h2>Funções</h2>
+
+						<pre><code>
+soma(primeiro=2, segundo=3)
+						</code></pre>
+
+						<aside class="notes">
+							O legal de Python é que é possível colocar nome dos
+							parâmetros na chamada da função...
+						</aside>
+					</section>
+
+					<section>
+						<h2>Funções</h2>
+
+						<pre><code>
+soma(segundo=3, primeiro=2)
+						</code></pre>
+
+						<aside class="notes">
+							... e por isso dá pra misturar a ordem dos parâmetros,
+							se ficar mais fácil de ler.
+
+							Também ajuda se a função tiver vários parâmetros, sem
+							contar que ajuda quem tiver lendo o código pra não
+							precisar voltar e ver quais são os parâmetros.
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Welcome to Hell</h2>
+
+						<pre><code>
+    print(PASSPHRASE.format(*consonants).capitalize())
+						</code></pre>
 					</section>
 				</section>
             </div>
