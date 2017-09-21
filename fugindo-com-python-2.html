@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Fugindo para as Colinas com Python</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="theme/azion.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none outside;
+            }
+
+			li {
+				display: block;
+			}
+
+			.cursor {
+				background-color: #666;
+				color: white;
+			}
+			
+			img {
+				max-height: 90%;
+			}
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="_images/python.jpg">
+                        <h1 class="semi-opaque">Fugindo para as Colinas Com Python</h1>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
+
+                        <div>
+                            <ul class="empty">
+                                <li>Júlio Biason</li>
+								<li>Azion Technologies<img src="_images/azion-logo.png" alt="Azion logo" class='company-logo'></li>
+                                <li>@juliobiason</li>
+                                <li>julio.biason@gmail.com</li>
+                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <img src="_images/start-a-fight.jpg" alt="Eu faço perguntas em reuniões que eu não sei nada e reunião explode; não é de propósito" class='stretch'/>
+
+						<aside class="notes">
+							Eu sou famoso (ou era) por entrar eu reuniões, fazer uma
+							pergunta e a reunião explodir em discussões (úteis, diga-se
+							de passagem). Mas eu não fazia isso de propósito.
+						</aside>
+                    </section>
+
+					<section>
+						<img src="_images/fast-speaker.jpg" alt="Eu falo rárpido">
+
+						<aside class="notes">
+							Eu também tenho costume de falar rápido.
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>O Problema</h2>
+
+						<ul>
+							<li class="fragment">"Hello world" não é muito didático</li>
+							<li class="fragment">Escrever "Fujam para as colinas"</li>
+							<li class="fragment">... com randomização de alguns elementos.</li>
+							<li class="fragment">Ex: "Cujam para as folinas", "Lujam para as cofinas" e "Nujam para as folicas"</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Solução</h2>
+
+						<pre><code>"""Randomize a "Run to the hills" phrase."""
+
+from __future__ import print_function
+
+import random
+from argparse import ArgumentParser
+
+
+CONSONANTS = ['f', 'j', 'c', 'l', 'n']
+PASSPHRASE = '{}u{}am para as {}o{}i{}as'
+
+
+def print_phrase(consonants):
+    """Print the phrase with the randomized consonants."""
+    print(PASSPHRASE.format(*consonants).capitalize())
+
+
+def totally_random():
+    """Run a totally random way."""
+    random.shuffle(CONSONANTS)
+    print_phrase(CONSONANTS)
+
+
+def switch_two():
+    """Run by changing two steps at a time."""
+    first = random.randint(0, 1)
+    second = random.randint(2, 4)
+
+    CONSONANTS[second], CONSONANTS[first] = \
+        CONSONANTS[first], CONSONANTS[second]
+    print_phrase(CONSONANTS)
+
+
+if __name__ == "__main__":
+    args = ArgumentParser()
+    args.add_argument('-t', '--totally',
+                      dest='totally',
+                      default=False,
+                      action='store_true',
+                      help='Like, toootaly random')
+    args.add_argument('-s', '--short',
+                      dest='short',
+                      default=False,
+                      action='store_true',
+                      help='Not so random')
+    result = args.parse_args()
+
+    if result.totally:
+        totally_random()
+    elif result.short:
+        switch_two()
+    else:
+        print('Dude, option!')</code></pre>
+					</section>
+				</section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
