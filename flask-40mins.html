@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Flask em 40 Minutos ou Menos</title>
+
+        <meta name="description" content="Colocando uma aplicação Flask em produção em 40 minutos (ou menos)">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="theme/azion.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none outside;
+            }
+
+            li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+					<section data-background="_images/flask.png"> <!--  data-header -->
+                        <h1 class="semi-opaque">Flask em 40 Minutos ou Menos</h1>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
+
+                        <div>
+                            <ul class="empty">
+                                <li>Júlio Biason</li>
+                                <li>Azion Technologies<img src="_images/azion-logo.png" alt="Azion logo" class='company-logo'></li>
+                                <li>@juliobiason</li>
+                                <li>julio.biason@gmail.com</li>
+                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <img src="_images/start-a-fight.jpg" alt="Eu faço perguntas em reuniões que eu não sei nada e reunião explode; não é de propósito" class='stretch'/>
+
+                        <aside class="notes">
+                            Eu sou famoso (ou era) por entrar eu reuniões, fazer uma
+                            pergunta e a reunião explodir em discussões (úteis, diga-se
+                            de passagem). Mas eu não fazia isso de propósito.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <img src="_images/fast-speaker.jpg" alt="Eu falo rárpido">
+
+                        <aside class="notes">
+                            Eu também tenho costume de falar rápido.
+                        </aside>
+                    </section>
+                </section>
+
+				<section>
+					<section>
+						<h2>Motivação</h2>
+
+						<ul>
+							<li class="fragment">Flask é super simples, mas poderoso.</li>
+							<li class="fragment">Python é super simples, mas poderoso.</li>
+							<li class="fragment">Ninguém fala como é colocar isso em produção.</li>
+						</ul>
+
+						<aside class="notes">
+							Uma das coisas que o pessoal sempre comenta é
+							como é fácil programar em Python, como Flask é
+							simples, como Django consegue fazer um monte de
+							coisa (e é fácil), mas sempre falta aquela parte
+							de "e como eu coloco isso em um servidor de
+							verdade ao invés de ficar executando no development
+							server?"
+
+							É isso que eu vou tentar responder nessa 
+							apresentação.
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>A aplicação</h2>
+
+						<p>
+							Um sistema de atas de reunião onde as atas
+							são arquivos MarkDown, com a data no nome.
+						</p>
+
+						<aside class="notes">
+							Não que seja um sistema super complexo (nem
+							banco de dados tem!) mas serve pra mostrar
+							Flask o suficiente e ser complicado o
+							suficiente para ter as "pegadinhas" de se
+							colocar algo desse tipo em produção.
+						</aside>
+					</section>
+
+					<section>
+						<h2>Estrutura de diretórios</h2>
+
+						<pre>├── ata
+│   ├── defaults.py
+│   ├── __init__.py
+│   ├── main.py
+│   ├── static
+│   │   └── style.css
+│   └── templates
+│       ├── entry.html
+│       ├── entry_not_found.html
+│       ├── index.html
+│       ├── layout.html
+│       └── page_not_found.html
+├── contents
+│   └── 2017-10-31.md
+└── requirements.txt</pre>
+					</section>
+
+					<section>
+						<h3><code>├── ata</code></h3>
+
+						<p>Módulo/fontes.</p>
+
+						<aside class="notes">
+							Normalmente se recomenda que os
+							fontes fiquem num diretório com o nome
+							do projeto. Qualquer coisa fora desse
+							diretório não é código.
+						</aside>
+					</section>
+
+					<section>
+						<h3><code>│   ├── defaults.py</code></h3>
+
+						<p>Valores default da aplicação.</p>
+
+						<aside class="notes">
+							O Flask trabalha com arquivos de configuração
+							em Python mesmo (carregando objetos Python).
+							Vamos ver esse arquivo mais pra frente.
+						</aside>
+					</section>
+
+					<section>
+						<h3><code>│   ├── __init__.py</code></h3>
+
+						<p>
+							<code>__init__.py</code> é necessário
+							para indicar ao Python que o diretório
+							pode se lido.
+						</p>
+					</section>
+
+					<section>
+						<h3><code>│   ├── main.py</code></h3>
+
+						<p>O arquivo inicial da aplicação.</p>
+
+						<aside class="notes">
+							Qualquer nome (desde que seja importável
+							pelo interpretador Python) é valido. Outros
+							nomes podem ser "server.py" ou "ata.py".
+
+							A comunidade Node tem o costume de marcar
+							o ponto inicial de uma aplicação com "index.js".
+							Embora "index.py" funcione, eu não sugiro porque
+							o arquivo pode conter mais do que simplesmente
+							o o index da aplicação (e é o que vamos fazer
+							nesse aplicação).
+						</aside>
+					</section>
+
+					<section>
+						<h3><code>│   ├── static</code></h3>
+
+						<p>
+							Arquivos estáticos.
+						</p>
+
+						<aside class="notes">
+							Qualquer coisa que não precise ser processada
+							pelo Flask. Por exemplo, arquivos CSS, JS e 
+							imagens.
+						</aside>
+					</section>
+
+					<section>
+						<h3><code>│   └── templates</code></h3>
+
+						<p>
+							Arquivos de template.
+						</p>
+
+						<aside class="notes">
+							O formato utilizado é o Jinja, que é 
+							praticamente a mesma coisa que os templates
+							do Django (com algumas coisas a mais, que
+							infelizmente não iremos ver).
+						</aside>
+					</section>
+
+					<section>
+						<h3><code>├── contents</code></h3>
+
+						<p>
+							Onde o conteúdo a ser apresentado está.
+						</p>
+
+						<aside class="notes">
+							Isso é usado apenas para testes em desenvolvimento.
+						</aside>
+					</section>
+
+					<section>
+						<h3><code>└── requirements.txt</code></h3>
+
+						<p>
+							Dependências do projeto.
+						</p>
+
+						<aside class="notes">
+							... assim como todo bom e qualquer 
+							projeto Python.
+						</aside>
+					</section>
+				</section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+                    <section>
+                        <h1 class="fragment semi-opaque">Perguntas?</h1>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
