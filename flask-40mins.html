@@ -64,7 +64,7 @@
         <div class="reveal">
             <div class="slides">
                 <section>
-					<section data-background="_images/flask.png"> <!--  data-header -->
+                    <section data-background="_images/flask.png"> <!--  data-header -->
                         <h1 class="semi-opaque">Flask em 40 Minutos ou Menos</h1>
                     </section>
                 </section>
@@ -103,53 +103,53 @@
                     </section>
                 </section>
 
-				<section>
-					<section>
-						<h2>Motivação</h2>
+                <section>
+                    <section>
+                        <h2>Motivação</h2>
 
-						<ul>
-							<li class="fragment">Flask é super simples, mas poderoso.</li>
-							<li class="fragment">Python é super simples, mas poderoso.</li>
-							<li class="fragment">Ninguém fala como é colocar isso em produção.</li>
-						</ul>
+                        <ul>
+                            <li class="fragment">Flask é super simples, mas poderoso.</li>
+                            <li class="fragment">Python é super simples, mas poderoso.</li>
+                            <li class="fragment">Ninguém fala como é colocar isso em produção.</li>
+                        </ul>
 
-						<aside class="notes">
-							Uma das coisas que o pessoal sempre comenta é
-							como é fácil programar em Python, como Flask é
-							simples, como Django consegue fazer um monte de
-							coisa (e é fácil), mas sempre falta aquela parte
-							de "e como eu coloco isso em um servidor de
-							verdade ao invés de ficar executando no development
-							server?"
+                        <aside class="notes">
+                            Uma das coisas que o pessoal sempre comenta é
+                            como é fácil programar em Python, como Flask é
+                            simples, como Django consegue fazer um monte de
+                            coisa (e é fácil), mas sempre falta aquela parte
+                            de "e como eu coloco isso em um servidor de
+                            verdade ao invés de ficar executando no development
+                            server?"
 
-							É isso que eu vou tentar responder nessa 
-							apresentação.
-						</aside>
-					</section>
-				</section>
+                            É isso que eu vou tentar responder nessa 
+                            apresentação.
+                        </aside>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>A aplicação</h2>
+                <section>
+                    <section>
+                        <h2>A aplicação</h2>
 
-						<p>
-							Um sistema de atas de reunião onde as atas
-							são arquivos MarkDown, com a data no nome.
-						</p>
+                        <p>
+                            Um sistema de atas de reunião onde as atas
+                            são arquivos MarkDown, com a data no nome.
+                        </p>
 
-						<aside class="notes">
-							Não que seja um sistema super complexo (nem
-							banco de dados tem!) mas serve pra mostrar
-							Flask o suficiente e ser complicado o
-							suficiente para ter as "pegadinhas" de se
-							colocar algo desse tipo em produção.
-						</aside>
-					</section>
+                        <aside class="notes">
+                            Não que seja um sistema super complexo (nem
+                            banco de dados tem!) mas serve pra mostrar
+                            Flask o suficiente e ser complicado o
+                            suficiente para ter as "pegadinhas" de se
+                            colocar algo desse tipo em produção.
+                        </aside>
+                    </section>
 
-					<section>
-						<h2>Estrutura de diretórios</h2>
+                    <section>
+                        <h2>Estrutura de diretórios</h2>
 
-						<pre>├── ata
+                        <pre>├── ata
 │   ├── defaults.py
 │   ├── __init__.py
 │   ├── main.py
@@ -164,116 +164,498 @@
 ├── contents
 │   └── 2017-10-31.md
 └── requirements.txt</pre>
-					</section>
+                    </section>
 
-					<section>
-						<h3><code>├── ata</code></h3>
+                    <section>
+                        <h3><code>├── ata</code></h3>
 
-						<p>Módulo/fontes.</p>
+                        <p>Módulo/fontes.</p>
 
-						<aside class="notes">
-							Normalmente se recomenda que os
-							fontes fiquem num diretório com o nome
-							do projeto. Qualquer coisa fora desse
-							diretório não é código.
-						</aside>
-					</section>
+                        <aside class="notes">
+                            Normalmente se recomenda que os
+                            fontes fiquem num diretório com o nome
+                            do projeto. Qualquer coisa fora desse
+                            diretório não é código.
+                        </aside>
+                    </section>
 
-					<section>
-						<h3><code>│   ├── defaults.py</code></h3>
+                    <section>
+                        <h3><code>│   ├── defaults.py</code></h3>
 
-						<p>Valores default da aplicação.</p>
+                        <p>Valores default da aplicação.</p>
 
-						<aside class="notes">
-							O Flask trabalha com arquivos de configuração
-							em Python mesmo (carregando objetos Python).
-							Vamos ver esse arquivo mais pra frente.
-						</aside>
-					</section>
+                        <aside class="notes">
+                            O Flask trabalha com arquivos de configuração
+                            em Python mesmo (carregando objetos Python).
+                            Vamos ver esse arquivo mais pra frente.
+                        </aside>
+                    </section>
 
-					<section>
-						<h3><code>│   ├── __init__.py</code></h3>
+                    <section>
+                        <h3><code>│   ├── __init__.py</code></h3>
 
-						<p>
-							<code>__init__.py</code> é necessário
-							para indicar ao Python que o diretório
-							pode se lido.
-						</p>
-					</section>
+                        <p>
+                            <code>__init__.py</code> é necessário
+                            para indicar ao Python que o diretório
+                            pode se lido.
+                        </p>
+                    </section>
 
-					<section>
-						<h3><code>│   ├── main.py</code></h3>
+                    <section>
+                        <h3><code>│   ├── main.py</code></h3>
 
-						<p>O arquivo inicial da aplicação.</p>
+                        <p>O arquivo inicial da aplicação.</p>
 
-						<aside class="notes">
-							Qualquer nome (desde que seja importável
-							pelo interpretador Python) é valido. Outros
-							nomes podem ser "server.py" ou "ata.py".
+                        <aside class="notes">
+                            Qualquer nome (desde que seja importável
+                            pelo interpretador Python) é valido. Outros
+                            nomes podem ser "server.py" ou "ata.py".
 
-							A comunidade Node tem o costume de marcar
-							o ponto inicial de uma aplicação com "index.js".
-							Embora "index.py" funcione, eu não sugiro porque
-							o arquivo pode conter mais do que simplesmente
-							o o index da aplicação (e é o que vamos fazer
-							nesse aplicação).
-						</aside>
-					</section>
+                            A comunidade Node tem o costume de marcar
+                            o ponto inicial de uma aplicação com "index.js".
+                            Embora "index.py" funcione, eu não sugiro porque
+                            o arquivo pode conter mais do que simplesmente
+                            o o index da aplicação (e é o que vamos fazer
+                            nesse aplicação).
+                        </aside>
+                    </section>
 
-					<section>
-						<h3><code>│   ├── static</code></h3>
+                    <section>
+                        <h3><code>│   ├── static</code></h3>
 
-						<p>
-							Arquivos estáticos.
-						</p>
+                        <p>
+                            Arquivos estáticos.
+                        </p>
 
-						<aside class="notes">
-							Qualquer coisa que não precise ser processada
-							pelo Flask. Por exemplo, arquivos CSS, JS e 
-							imagens.
-						</aside>
-					</section>
+                        <aside class="notes">
+                            Qualquer coisa que não precise ser processada
+                            pelo Flask. Por exemplo, arquivos CSS, JS e 
+                            imagens.
+                        </aside>
+                    </section>
 
-					<section>
-						<h3><code>│   └── templates</code></h3>
+                    <section>
+                        <h3><code>│   └── templates</code></h3>
 
-						<p>
-							Arquivos de template.
-						</p>
+                        <p>
+                            Arquivos de template.
+                        </p>
 
-						<aside class="notes">
-							O formato utilizado é o Jinja, que é 
-							praticamente a mesma coisa que os templates
-							do Django (com algumas coisas a mais, que
-							infelizmente não iremos ver).
-						</aside>
-					</section>
+                        <aside class="notes">
+                            O formato utilizado é o Jinja, que é 
+                            praticamente a mesma coisa que os templates
+                            do Django (com algumas coisas a mais, que
+                            infelizmente não iremos ver).
+                        </aside>
+                    </section>
 
-					<section>
-						<h3><code>├── contents</code></h3>
+                    <section>
+                        <h3><code>├── contents</code></h3>
 
-						<p>
-							Onde o conteúdo a ser apresentado está.
-						</p>
+                        <p>
+                            Onde o conteúdo a ser apresentado está.
+                        </p>
 
-						<aside class="notes">
-							Isso é usado apenas para testes em desenvolvimento.
-						</aside>
-					</section>
+                        <aside class="notes">
+                            Isso é usado apenas para testes em desenvolvimento.
+                        </aside>
+                    </section>
 
-					<section>
-						<h3><code>└── requirements.txt</code></h3>
+                    <section>
+                        <h3><code>└── requirements.txt</code></h3>
 
-						<p>
-							Dependências do projeto.
-						</p>
+                        <p>
+                            Dependências do projeto.
+                        </p>
 
-						<aside class="notes">
-							... assim como todo bom e qualquer 
-							projeto Python.
-						</aside>
-					</section>
-				</section>
+                        <aside class="notes">
+                            ... assim como todo bom e qualquer 
+                            projeto Python.
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>requirements.txt</code></h2>
+
+                        <pre><code>flask~=0.12.2
+Markdown~=2.6.9</code></pre>
+
+                        <aside class="notes">
+                            Nossas duas dependências: Flask e
+                            Markdown.
+
+                            "~=" é um validador de versões com
+                            a definição de "compatível". Ou seja
+                            estamos buscando o Flask compatível com
+                            a versão 0.12.2 e o Markdown compatível
+                            com a versão 2.6.9.
+
+                            Como o PIP sabe disso? Por vesionamento
+                            semantico.
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>main.py</code></h2>
+                        <h3>Imports</h3>
+
+                        <pre><code>import os
+import os.path
+
+import markdown
+
+from flask import Flask
+from flask import render_template</code></pre>
+
+                        <aside class="notes">
+                            Dos imports, a única coisa "diferente"
+                            aqui é o import do markdown -- uma biblioteca
+                            externa que vai estar no nosso requirements.txt
+                            -- e os imports do Flask. Aqui só vamos usar dois
+                            elementos: o Flask, que é o objeto principal
+                            e o render_template, para renderizar templates
+                            Jinja.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2><code>main.py</code></h2>
+                        <h3>A App</h3>
+
+                        <pre><code>app = Flask(__name__)</code></pre>
+
+                        <aside class="notes">
+                            Flask é o objeto principal da aplicação.
+                            Ele precisa de um namespace e o nome
+                            da própria classe serve.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2><code>main.py</code></h2>
+                        <h3>Configuração</h3>
+
+                        <pre><code>app.config.from_object('ata.defaults')
+app.config.from_envvar('ATA_SETTINGS', silent=True)</code></pre>
+
+                        <aside class="notes">
+                            O objeto da aplicação (ou simplesmente app)
+                            tem um objeto "config" com as configurações.
+
+                            As configurações podem ser carregadas de vários
+                            lugares e aqui temos duas:
+
+                            from_object vai tentar importar o objeto e usar
+                            as variáveis definidas no mesmo.
+
+                            from_envvar vai procurar o arquivo apontando
+                            pela variável de ambiente indicada (por exemplo,
+                            se alguém tivesse feito `export ATA_SETTINGS=/etc/ata.cfg`
+                            esse arquivo seria carregado). Normalmente, quando
+                            uma das configs indicadas não for encontrada (por
+                            exemplo, o arquivo não existe ou a variável de
+                            ambiente não foi definida) o Flask vai abortar
+                            a execução. Para não abortar, precisamos do 
+                            `silent=True` -- fail silently.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2><code>main.py</code></h2>
+                        <h3>A primeira rota.</h3>
+
+                        <pre><code>@app.route('/')
+def index():</code></pre>
+
+                        <aside class="notes">
+                            Nossa primeira iteração com o sistema de 
+                            rotas do Flask. Vale notar que, diferente do
+                            Django, que tem um arquivo com todas as rotas,
+                            Flask utiliza decorators para indicar qual
+                            função será chamada. É possível também indicar
+                            quais métodos serão aceitos (e assim é possível
+                            ter uma função para GET e outra para POST, na
+                            mesma rota).
+
+                            Assim como o Django, Flask trabalha com endpoints.
+                            O nome do endpoint, nesse caso, é o nome da
+                            própria função (então, neste caso, o endpoint
+                            é "index"). Mais pra frente veremos porque isso
+                            é importante.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2><code>main.py</code></h2>
+                        <h3>O índice</h3>
+
+                        <pre><code>    content = os.listdir(app.config['STORAGE'])
+    data = []
+    for entry in sorted(content, reverse=True):
+        app.logger.debug('Found %s', entry)
+        if not entry.endswith('.md'):
+            continue
+
+        with open(os.path.join(app.config['STORAGE'], entry)) as origin:
+            content = origin.read()
+            output = markdown.markdown(content)
+            try:
+                first_paragraph_end = output.index('</p>')
+                paragraph = output[:first_paragraph_end]
+            except ValuError:
+                paragraph = output
+
+            entry_name = entry[:entry.find('.md')]
+            data.append((entry_name, output))
+
+    return render_template('index.html', data=data)</code></pre>
+
+                        <aside class="notes">
+                            Infelizmente, não tem como diminuir a quantidade
+                            de código a ser apresentado aqui. Mas basicamente
+                            temos o seguinte:
+
+                            Estamos usando o app.config para buscar uma 
+                            configuração, "STORAGE". Nesse exemplo, é o
+                            diretório com o conteúdo e ele é configurado
+                            em "defaults.py" (que vamos ver na sequencia).
+
+                            Segundo, estamos usando a biblioteca Markdown para
+                            converter o arquivo MarkDown para HTML. De forma
+                            "boba", estamos pegando o primeiro parágrafo.
+
+                            Terceiro, estamos usando a função "render_template"
+                            para renderizar o arquivo "index.html", com uma
+                            variável chamada "data". Essa variável vai aparecer
+                            nos templates -- e a única forma de passar variáveis
+                            é através da passagem pelos parametros da função
+                            render_template.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2><code>main.py</code></h2>
+                        <h3>Entradas específicas</h3>
+
+                        <pre><code>@app.route('/&lt;entry_name&gt;')
+def show_entry(entry_name):
+    filename = os.path.join(app.config['STORAGE'], entry_name + '.md')
+    with open(filename) as origin:
+        content = origin.read()
+        output = markdown.markdown(content)
+
+    return render_template('entry.html', output=output,
+                           entry=entry_name)</code></pre>
+
+                        <aside class="notes">
+                            Mais uma rota, com uma diferença: ela aceita
+                            um parametro a mais, "entry_name". Esse mesmo
+                            nome deve aparecer na função.
+
+                            Assim como visto anteriormente, render_template
+                            recebe um arquivo template a ser carregado e
+                            duas variáveis: "output" com o conteúdo renderizado
+                            do Markdown e "entry" com o nome da entrada.
+
+                            Ponto para quem achar o erro aqui (não é erro: é
+                            pra mostrar umas das facilidades do Flask).
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2><code>main.py</code></h2>
+                        <h3>Tratamento de erros.</h3>
+
+                        <pre><code>@app.errorhandler(404)
+def page_not_found():
+    return render_template('page_not_found.html')</code></pre>
+
+                        <aside class="notes">
+                            Com "errorhandler" é possível indicar o que
+                            deve ser apresentado quando ocorre um erro.
+
+                            No caso, estamos definindo que quando ocorrer
+                            um 404, deve ser feito o render_template do 
+                            arquivo "page_not_found.html"
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2><code>main.py</code></h2>
+                        <h3>Tratamento de erros</h3>
+
+                        <pre><code>@app.errorhandler(FileNotFoundError)
+def entry_not_found(_):
+    return render_template('entry_not_found.html')</code></pre>
+
+                        <aside class="notes">
+                            Além de tratar com códigos de erro,
+                            errorhandler também sabe lidar com
+                            exceções. No caso, se em qualquer
+                            lugar da aplicação ocorrer um 
+                            "FileNotFoundError", esse será tratado
+                            aqui.
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>defaults.py</code></h2>
+
+                        <pre><code>DEBUG=True
+STORAGE='/home/jbiason/src/ata/contents'</code></pre>
+
+                        <aside class="notes">
+                            Contém as configurações do sistema.
+                            DEBUG é uma variável controlada pelo
+                            próprio Flask (assim como o DEBUG do Django).
+                            Existem várias variáveis que podem ser
+                            configuradas e todas estão listadas
+                            na documentação do Flask.
+                        
+                            Entre essas variáveis está o DEBUG, o diretório
+                            onde se encontram os templates, o diretório
+                            dos arquivos estáticos e assim por diante.
+
+                            No nosso caso, como não estamos substiuindo
+                            essas variáveis, elas estão com o valor padrão
+                            de estarem junto com os fontes (assim como
+                            criamos nossa estrutura de diretórios).
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3><code>style.css</code></h3>
+
+                        <pre><code>h1#header {
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+.entry {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 15px;
+}</code></pre>
+
+                        <aside class="notes">
+                            O arquivo de estilos é bem bobo, mas
+                            serve para vermos onde ele deve ficar
+                            quando colocarmos o Flask em produção.
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><code>templates</code></h2>
+                        <h3><code>layout.html</code></h3>
+
+                        <pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Atas de Reunião&lt;/title&gt;
+        &lt;link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;h1 id='header'&gt;
+            Atas de reuniao
+        &lt;/h1&gt;
+        {% block maincontent %}{% endblock %}
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                    <aside class="notes">
+                        Para templates Jinja, assim como Django, é
+                        possível ter um arquivo base do qual todos
+                        os demais decendem.
+
+                        Importante notar aqui o url_for(), que faz
+                        a conversão do endpoint para uma URL (no nosso
+                        caso, do static) e quando endpoint requer um
+                        parametro (como o nosso "entry_name") ele *tem*
+                        que estar no comando. static requer filename
+                        para saber qual arquivo estático deve ser
+                        carregado.
+                    </aside>
+                </section>
+
+                <section>
+                    <h2><code>templates</code></h2>
+                    <h3><code>index.html</code></h3>
+
+                    <pre><code>{% extends "layout.html" %}
+{% block maincontent %}
+    &lt;div class='entry'&gt;
+        {% for entry, text in data %}
+        &lt;a href="{{ url_for('show_entry', entry_name=entry) }}"&gt;{{ entry }}&lt;/a&gt;
+            {{ text|safe }}
+        {% endfor %}
+    &lt;/div&gt;
+{% endblock %}</code></pre>
+
+                    <aside class="notes">
+                        O arquivo apresentado na raíz da aplicação.
+
+                        Variáveis com {{  }}, url_for() usando a função
+                        "show_entry" com um parametro
+                    </aside>
+                </section>
+
+                <section>
+                    <h2><code>templates</code></h2>
+                    <h3><code>entry.html</code></h3>
+
+                    <pre><code>{% extends "layout.html" %}
+{% block maincontent %}
+    &lt;div class="entry"&gt;
+        &lt;div class="title"&gt;{{ entry }}&lt;/div&gt;
+        {{ output|safe }}
+    &lt;/div&gt;
+{% endblock %}</code></pre>
+
+                    <aside class="notes">
+                        Como apresentar somente uma entrada.
+                    </aside>
+                </section>
+
+                <section>
+                    <h2><code>templates</code></h2>
+                    <h3><code>page_not_found.html</code></h3>
+
+                    <pre><code>{% extends "layout.html" %}
+{% block maincontent %}
+    &lt;h2&gt;Page not found&lt;/h2&gt;
+{% endblock %}</code></pre>
+
+                    <aside class="notes">
+                        A página quando ocorrer um 404...
+                    </aside>
+                </section>
+
+                <section>
+                    <h2><code>templates</code></h2>
+                    <h3><code>entry_not_found.html</code></h3>
+
+                    <pre><code>{% extends "layout.html" %}
+{% block maincontent %}
+    &lt;h2&gt;Entry not found&lt;/h2&gt;
+{% endblock %}</code></pre>
+
+                    <aside class="notes">
+                        ... e quando a entrada não existir
+                        (que é a captura do nosso FileNotFoundError)
+                    </aside>
+                </section>
 
                 <section data-background='_images/thats-all-folks.jpg'>
                     <section>
