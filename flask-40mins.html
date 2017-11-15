@@ -163,6 +163,8 @@
 │       └── page_not_found.html
 ├── contents
 │   └── 2017-10-31.md
+├── setup.py
+├── MANIFEST.in
 └── requirements.txt</pre>
                     </section>
 
@@ -657,6 +659,34 @@ STORAGE='/home/jbiason/src/ata/contents'</code></pre>
 						</aside>
 					</section>
 				</section>
+
+				<section>
+					<section>
+						<h2><code>setup.py</code></h2>
+
+						<pre><code>from setuptools import setup
+
+with open('requirements.txt') as origin:
+    requirements = origin.readlines()
+
+setup(name='Ata',
+      version='0.1',
+      long_description='A Flask app',
+      packages=['ata'],
+      zip_safe=False,
+      include_package_data=True,
+      install_requires=requirements)</code></pre>
+					</section>
+				</section>
+
+                <section>
+                    <section>
+                        <h2><code>MANIFEST.in</code></h2>
+
+                        <pre><code>recursive-include ata/templates *
+recursive-include ata/static *</code></pre>
+                    </section>
+                </section>
 
 				<section>
 					<section>
