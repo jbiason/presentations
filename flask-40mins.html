@@ -574,88 +574,105 @@ STORAGE='/home/jbiason/src/ata/contents'</code></pre>
     &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 
-                    <aside class="notes">
-                        Para templates Jinja, assim como Django, é
-                        possível ter um arquivo base do qual todos
-                        os demais decendem.
+						<aside class="notes">
+							Para templates Jinja, assim como Django, é
+							possível ter um arquivo base do qual todos
+							os demais decendem.
 
-                        Importante notar aqui o url_for(), que faz
-                        a conversão do endpoint para uma URL (no nosso
-                        caso, do static) e quando endpoint requer um
-                        parametro (como o nosso "entry_name") ele *tem*
-                        que estar no comando. static requer filename
-                        para saber qual arquivo estático deve ser
-                        carregado.
-                    </aside>
-                </section>
+							Importante notar aqui o url_for(), que faz
+							a conversão do endpoint para uma URL (no nosso
+							caso, do static) e quando endpoint requer um
+							parametro (como o nosso "entry_name") ele *tem*
+							que estar no comando. static requer filename
+							para saber qual arquivo estático deve ser
+							carregado.
+						</aside>
+					</section>
 
-                <section>
-                    <h2><code>templates</code></h2>
-                    <h3><code>index.html</code></h3>
+					<section>
+						<h2><code>templates</code></h2>
+						<h3><code>index.html</code></h3>
 
-                    <pre><code>{% extends "layout.html" %}
-{% block maincontent %}
-    &lt;div class='entry'&gt;
-        {% for entry, text in data %}
-        &lt;a href="{{ url_for('show_entry', entry_name=entry) }}"&gt;{{ entry }}&lt;/a&gt;
-            {{ text|safe }}
-        {% endfor %}
-    &lt;/div&gt;
-{% endblock %}</code></pre>
+						<pre><code>{% extends "layout.html" %}
+	{% block maincontent %}
+		&lt;div class='entry'&gt;
+			{% for entry, text in data %}
+			&lt;a href="{{ url_for('show_entry', entry_name=entry) }}"&gt;{{ entry }}&lt;/a&gt;
+				{{ text|safe }}
+			{% endfor %}
+		&lt;/div&gt;
+	{% endblock %}</code></pre>
 
-                    <aside class="notes">
-                        O arquivo apresentado na raíz da aplicação.
+						<aside class="notes">
+							O arquivo apresentado na raíz da aplicação.
 
-                        Variáveis com {{  }}, url_for() usando a função
-                        "show_entry" com um parametro
-                    </aside>
-                </section>
+							Variáveis com {{  }}, url_for() usando a função
+							"show_entry" com um parametro
+						</aside>
+					</section>
 
-                <section>
-                    <h2><code>templates</code></h2>
-                    <h3><code>entry.html</code></h3>
+					<section>
+						<h2><code>templates</code></h2>
+						<h3><code>entry.html</code></h3>
 
-                    <pre><code>{% extends "layout.html" %}
-{% block maincontent %}
-    &lt;div class="entry"&gt;
-        &lt;div class="title"&gt;{{ entry }}&lt;/div&gt;
-        {{ output|safe }}
-    &lt;/div&gt;
-{% endblock %}</code></pre>
+						<pre><code>{% extends "layout.html" %}
+	{% block maincontent %}
+		&lt;div class="entry"&gt;
+			&lt;div class="title"&gt;{{ entry }}&lt;/div&gt;
+			{{ output|safe }}
+		&lt;/div&gt;
+	{% endblock %}</code></pre>
 
-                    <aside class="notes">
-                        Como apresentar somente uma entrada.
-                    </aside>
-                </section>
+						<aside class="notes">
+							Como apresentar somente uma entrada.
+						</aside>
+					</section>
 
-                <section>
-                    <h2><code>templates</code></h2>
-                    <h3><code>page_not_found.html</code></h3>
+					<section>
+						<h2><code>templates</code></h2>
+						<h3><code>page_not_found.html</code></h3>
 
-                    <pre><code>{% extends "layout.html" %}
-{% block maincontent %}
-    &lt;h2&gt;Page not found&lt;/h2&gt;
-{% endblock %}</code></pre>
+						<pre><code>{% extends "layout.html" %}
+	{% block maincontent %}
+		&lt;h2&gt;Page not found&lt;/h2&gt;
+	{% endblock %}</code></pre>
 
-                    <aside class="notes">
-                        A página quando ocorrer um 404...
-                    </aside>
-                </section>
+						<aside class="notes">
+							A página quando ocorrer um 404...
+						</aside>
+					</section>
 
-                <section>
-                    <h2><code>templates</code></h2>
-                    <h3><code>entry_not_found.html</code></h3>
+					<section>
+						<h2><code>templates</code></h2>
+						<h3><code>entry_not_found.html</code></h3>
 
-                    <pre><code>{% extends "layout.html" %}
-{% block maincontent %}
-    &lt;h2&gt;Entry not found&lt;/h2&gt;
-{% endblock %}</code></pre>
+						<pre><code>{% extends "layout.html" %}
+	{% block maincontent %}
+		&lt;h2&gt;Entry not found&lt;/h2&gt;
+	{% endblock %}</code></pre>
 
-                    <aside class="notes">
-                        ... e quando a entrada não existir
-                        (que é a captura do nosso FileNotFoundError)
-                    </aside>
-                </section>
+						<aside class="notes">
+							... e quando a entrada não existir
+							(que é a captura do nosso FileNotFoundError)
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Rodando</h2>
+						<h3>(Dev server)</h3>
+
+						<pre><code>
+FLASK_APP=ata/main.py flask run
+						</code></pre>
+
+						<pre class="fragment"><code>
+export FLASK_RUN=ata/main
+flask run
+						</code></pre>
+					</section>
+				</section>
 
                 <section data-background='_images/thats-all-folks.jpg'>
                     <section>
