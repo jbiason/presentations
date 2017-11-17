@@ -838,6 +838,7 @@ python3 -m pip install -U -r /usrlocal/apps/ata/requirements.txt</code></pre>
                         <p><code>/etc/uwsgi.d/ata.ini</code></p>
 
                         <pre><code>[uwsgi]
+env=ATA_SETTINGS=/etc/ata.cfg
 chdir=/usr/local/apps/ata
 module=wsgi
 plugins=python3
@@ -846,6 +847,75 @@ uid=uwsgi
 gid=uwsgi
 processes=4
 socket=/var/run/uwsgi/ata.sock</code></pre>
+
+                        <aside class="notes">
+                            `env` serve para configurar uma variável de
+                            ambiente; no caso, estamos configurando 
+                            a variável ATA_SETTINGS para ter o valor
+                            /etc/ata.cfg -- que vai ser nosso arquivo
+                            de configuração local.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Rodando de verdade</h2>
+                        <h3>Primeira configuração da app</h3>
+
+                        <p><code>/etc/ata.cfg</code></p>
+
+                        <pre><code>DEBUG=False
+STORAGE=/var/db/ata/</code></pre>
+
+                        <aside class="notes">
+                            Basicamente, o mesmo que o nosso arquivo
+                            de exemplo, mas agora com valores de
+                            verdade.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Rodando de verdade</h2>
+                        <h3>Primeira configuração do nginx</h3>
+
+                        <p><code>/etc/nginx/conf.d/ata.conf</code></p>
+
+                        <pre><code>pstream ata-wsgi {
+    server  unix:///var/run/uwsgi/ata.sock;
+}
+
+server {
+    include /etc/nginx/uwsgi_params;
+
+    access_log /var/log/nginx/ata.log main;
+
+    location /static/ {
+        root /usr/local/apps/ata/static
+    }
+
+    location / {
+        uwsgi_read_timeout  3000;
+        uwsgi_pass azionmanager-uwsgi;
+    }
+}</code></pre>
+
+                        <aside class="notes">
+                            E o nginx roda apontando para o socket
+                            criado pelo uwsgi.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Rodando de verdade</h2>
+                        <h3>Depois da primeira execução</h3>
+                        <h4>(Ou seja, updates)</h4>
+
+                        <pre><code>tar xzf Ata-0.1.tar.gz --one-top-level=/usr/local/apps/
+ln -sf /usr/local/apps/Ata-0.1 /usr/local/apps/ata
+source /usr/local/venv/ata/bin/activate
+python3 -m pip install -U -r /usrlocal/apps/ata/requirements.txt
+service uwsgi restart
+service nginx restart
+                        </code></pre>
                     </section>
                 </section>
 
