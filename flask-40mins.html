@@ -162,10 +162,17 @@
 │       ├── layout.html
 │       └── page_not_found.html
 ├── contents
-│   └── 2017-10-31.md
 ├── setup.py
+├── wsgi.py
 ├── MANIFEST.in
 └── requirements.txt</pre>
+
+                        <aside class="notes">
+                            Essa é a estrutura básica de uma aplicação Flask
+                            (ou basicamente qualquer aplicação Python). Na
+                            sequencia veremos o que cada diretório contém e
+                            sua funcionalidade.
+                        </aside>
                     </section>
 
                     <section>
@@ -273,6 +280,21 @@
                         <aside class="notes">
                             ... assim como todo bom e qualquer 
                             projeto Python.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3><code>├── wsgi.py</code></h3>
+
+                        <p>
+                            Execução do projeto em modo wsgi.
+                        </p>
+
+                        <aside class="notes">
+                            Pela forma como WSGI deve ser executado,
+                            normalmente se cria um arquivo chamado
+                            wsgi.py que executa o projeto em modo
+                            WSGI.
                         </aside>
                     </section>
                 </section>
@@ -576,146 +598,256 @@ STORAGE='/home/jbiason/src/ata/contents'</code></pre>
     &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 
-						<aside class="notes">
-							Para templates Jinja, assim como Django, é
-							possível ter um arquivo base do qual todos
-							os demais decendem.
+                        <aside class="notes">
+                            Para templates Jinja, assim como Django, é
+                            possível ter um arquivo base do qual todos
+                            os demais decendem.
 
-							Importante notar aqui o url_for(), que faz
-							a conversão do endpoint para uma URL (no nosso
-							caso, do static) e quando endpoint requer um
-							parametro (como o nosso "entry_name") ele *tem*
-							que estar no comando. static requer filename
-							para saber qual arquivo estático deve ser
-							carregado.
-						</aside>
-					</section>
+                            Importante notar aqui o url_for(), que faz
+                            a conversão do endpoint para uma URL (no nosso
+                            caso, do static) e quando endpoint requer um
+                            parametro (como o nosso "entry_name") ele *tem*
+                            que estar no comando. static requer filename
+                            para saber qual arquivo estático deve ser
+                            carregado.
+                        </aside>
+                    </section>
 
-					<section>
-						<h2><code>templates</code></h2>
-						<h3><code>index.html</code></h3>
+                    <section>
+                        <h2><code>templates</code></h2>
+                        <h3><code>index.html</code></h3>
 
-						<pre><code>{% extends "layout.html" %}
-	{% block maincontent %}
-		&lt;div class='entry'&gt;
-			{% for entry, text in data %}
-			&lt;a href="{{ url_for('show_entry', entry_name=entry) }}"&gt;{{ entry }}&lt;/a&gt;
-				{{ text|safe }}
-			{% endfor %}
-		&lt;/div&gt;
-	{% endblock %}</code></pre>
+                        <pre><code>{% extends "layout.html" %}
+    {% block maincontent %}
+        &lt;div class='entry'&gt;
+            {% for entry, text in data %}
+            &lt;a href="{{ url_for('show_entry', entry_name=entry) }}"&gt;{{ entry }}&lt;/a&gt;
+                {{ text|safe }}
+            {% endfor %}
+        &lt;/div&gt;
+    {% endblock %}</code></pre>
 
-						<aside class="notes">
-							O arquivo apresentado na raíz da aplicação.
+                        <aside class="notes">
+                            O arquivo apresentado na raíz da aplicação.
 
-							Variáveis com {{  }}, url_for() usando a função
-							"show_entry" com um parametro
-						</aside>
-					</section>
+                            Variáveis com {{  }}, url_for() usando a função
+                            "show_entry" com um parametro
+                        </aside>
+                    </section>
 
-					<section>
-						<h2><code>templates</code></h2>
-						<h3><code>entry.html</code></h3>
+                    <section>
+                        <h2><code>templates</code></h2>
+                        <h3><code>entry.html</code></h3>
 
-						<pre><code>{% extends "layout.html" %}
-	{% block maincontent %}
-		&lt;div class="entry"&gt;
-			&lt;div class="title"&gt;{{ entry }}&lt;/div&gt;
-			{{ output|safe }}
-		&lt;/div&gt;
-	{% endblock %}</code></pre>
+                        <pre><code>{% extends "layout.html" %}
+    {% block maincontent %}
+        &lt;div class="entry"&gt;
+            &lt;div class="title"&gt;{{ entry }}&lt;/div&gt;
+            {{ output|safe }}
+        &lt;/div&gt;
+    {% endblock %}</code></pre>
 
-						<aside class="notes">
-							Como apresentar somente uma entrada.
-						</aside>
-					</section>
+                        <aside class="notes">
+                            Como apresentar somente uma entrada.
+                        </aside>
+                    </section>
 
-					<section>
-						<h2><code>templates</code></h2>
-						<h3><code>page_not_found.html</code></h3>
+                    <section>
+                        <h2><code>templates</code></h2>
+                        <h3><code>page_not_found.html</code></h3>
 
-						<pre><code>{% extends "layout.html" %}
-	{% block maincontent %}
-		&lt;h2&gt;Page not found&lt;/h2&gt;
-	{% endblock %}</code></pre>
+                        <pre><code>{% extends "layout.html" %}
+    {% block maincontent %}
+        &lt;h2&gt;Page not found&lt;/h2&gt;
+    {% endblock %}</code></pre>
 
-						<aside class="notes">
-							A página quando ocorrer um 404...
-						</aside>
-					</section>
+                        <aside class="notes">
+                            A página quando ocorrer um 404...
+                        </aside>
+                    </section>
 
-					<section>
-						<h2><code>templates</code></h2>
-						<h3><code>entry_not_found.html</code></h3>
+                    <section>
+                        <h2><code>templates</code></h2>
+                        <h3><code>entry_not_found.html</code></h3>
 
-						<pre><code>{% extends "layout.html" %}
-	{% block maincontent %}
-		&lt;h2&gt;Entry not found&lt;/h2&gt;
-	{% endblock %}</code></pre>
+                        <pre><code>{% extends "layout.html" %}
+    {% block maincontent %}
+        &lt;h2&gt;Entry not found&lt;/h2&gt;
+    {% endblock %}</code></pre>
 
-						<aside class="notes">
-							... e quando a entrada não existir
-							(que é a captura do nosso FileNotFoundError)
-						</aside>
-					</section>
-				</section>
+                        <aside class="notes">
+                            ... e quando a entrada não existir
+                            (que é a captura do nosso FileNotFoundError)
+                        </aside>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2><code>setup.py</code></h2>
+                <section>
+                    <section>
+                        <h2><code>setup.py</code></h2>
 
-						<pre><code>from setuptools import setup
+                        <pre><code>from setuptools import setup
 
 with open('requirements.txt') as origin:
     requirements = origin.readlines()
 
-setup(name='Ata',
+setup(name='ata',
       version='0.1',
       long_description='A Flask app',
       packages=['ata'],
       zip_safe=False,
       include_package_data=True,
       install_requires=requirements)</code></pre>
-					</section>
-				</section>
+
+                        <aside class="notes">
+                            Um arquivo de setup basicamente padrão.
+
+                            Duas coisas aqui são importantes:
+
+                            `zip_safe` deve ser `False`. Quando True,
+                            ele indica que o conteúdo pode ser mantido
+                            em um zip/egg sem problemas. Como teremos
+                            arquivos que tem que ser lidos pelo sistema
+                            operacional, não podemos manter os mesmos
+                            dentro de um zip -- precisamos que o 
+                            conteúdo do pacote seja descompactado.
+
+                            `include_package_data` serve para indicar
+                            ao setup que devem ser considerados também
+                            os arquivos indicados em MANIFEST.in; sem
+                            isso, somente arquivos fontes serão colocados
+                            no pacote.
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3><code>wsgi.py</code></h3>
+
+                        <pre><code>from ata.main import app as application</code></pre>
+
+                        <aside class="notes">
+                            Sim, "tudo" isso.
+                        </aside>
+                    </section>
+                </section>
 
                 <section>
                     <section>
                         <h2><code>MANIFEST.in</code></h2>
 
                         <pre><code>recursive-include ata/templates *
-recursive-include ata/static *</code></pre>
+recursive-include ata/static *
+include requirements.txt</code></pre>
+
+                        <aside class="notes">
+                            MANIFEST.in indica diretórios com conteúdo
+                            que deve ser adicionado ao pacote que não
+                            são arquivos fonte.
+
+                            Documentação, imagens, templates, CSS,
+                            JS, qualquer arquivo dessa natureza que
+                            deva ir para o pacote deve ser listado
+                            aqui.
+                        </aside>
                     </section>
                 </section>
 
-				<section>
-					<section>
-						<h2>Rodando</h2>
-						<h3>(Dev server)</h3>
+                <section>
+                    <section>
+                        <h2>Rodando</h2>
+                        <h3>(Dev server)</h3>
 
-						<pre><code>
+                        <pre><code>
 FLASK_APP=ata/main.py flask run
-						</code></pre>
+                        </code></pre>
 
-						<pre class="fragment"><code>
-export FLASK_RUN=ata/main
+                        <pre class="fragment"><code>
+export FLASK_APP=ata/main
 flask run
-						</code></pre>
-					</section>
-				</section>
+                        </code></pre>
 
-				<section>
-					<section>
-						<h2>Rodando de verdade</h2>
-						<h3>Dependências de sistema</h3>
+                        <aside class="notes">
+                            A partir do Flask 0.12, para executar
+                            a aplicação, é preciso exportar a
+                            variável FLASK_APP com o nome do arquivo
+                            principal.
+                        </aside>
+                    </section>
+                </section>
 
-						<pre><code>sudo dnf install nginx uwsgi</code></pre>
+                <section>
+                    <section>
+                        <h2>Rodando de verdade</h2>
+                        <h3>Dependências de sistema</h3>
 
-						<pre><code>sudo yum install nginx uwsgi</code></pre>
+                        <pre><code>sudo dnf install nginx uwsgi uwsgi-plugin-python3</code></pre>
 
-						<pre><code>sudo apt-get install nginx uwsgi</code></pre>
-					</section>
-				</section>
+                        <pre><code>sudo yum install nginx uwsgi uwsgi-plugin-python3</code></pre>
+
+                        <aside class="notes">
+                            Vamos precisar de dois pacotes do sistema
+                            operacional: nginx e uwsgi. O uwsgi vai
+                            servir para "envelopar" a aplicação Flask
+                            e expor o WSGI; nginx nós vamos usar para
+                            expor a aplicação ao mundo.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Rodando de verdade</h2>
+                        <h3>Virtualenv (primeira vez)</h3>
+
+                        <pre><code>mkdir -p /usr/local/venv
+mkdir -p /usr/local/apps
+python -m venv /usr/local/venv/ata</code></pre>
+
+                        <aside class="notes">
+                            Esses passos são necessários apenas se for
+                            a primeira instalação: precisamos de um
+                            diretório para o aplicativo e um diretório
+                            para os virtualenvs -- e inicializar o
+                            virtualenv da aplicação.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Rodando de verdade</h2>
+                        <h3>Instalando novas versões</h3>
+
+                        <pre><code>tar xzf Ata-0.1.tar.gz --one-top-level=/usr/local/apps/
+ln -sf /usr/local/apps/Ata-0.1 /usr/local/apps/ata
+source /usr/local/venv/ata/bin/activate
+python3 -m pip install -U -r /usrlocal/apps/ata/requirements.txt</code></pre>
+
+                        <aside class="notes">
+                            O que fazemos aqui é ter um diretório para as
+                            aplicações (porque uma pessoa não pára simplesmente
+                            na sua primeira aplicação); como o diretório
+                            vem versionado, vamos aproveitar isso para termos
+                            várias versões disponíveis ao mesmo tempo;
+                            para mudar a versão, mudamos o link simbólico.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Rodando de verdade</h2>
+                        <h3>Primeira configuração uwsgi</h3>
+
+                        <p><code>/etc/uwsgi.d/ata.ini</code></p>
+
+                        <pre><code>[uwsgi]
+chdir=/usr/local/apps/ata
+module=wsgi
+plugins=python3
+virtualenv=/usr/local/venv/ata
+uid=uwsgi
+gid=uwsgi
+processes=4
+socket=/var/run/uwsgi/ata.sock</code></pre>
+                    </section>
+                </section>
 
                 <section data-background='_images/thats-all-folks.jpg'>
                     <section>
