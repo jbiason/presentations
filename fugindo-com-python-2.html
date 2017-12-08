@@ -153,26 +153,32 @@ def switch_two():
     print_phrase(CONSONANTS)
 
 
+def unknown():
+    """We don't know what to do."""
+    print('Dude, option!')
+
+
 if __name__ == "__main__":
     args = ArgumentParser()
     args.add_argument('-t', '--totally',
-                      dest='totally',
-                      default=False,
-                      action='store_true',
+                      dest='type',
+                      action='store_const',
+                      const='totally',
                       help='Like, toootaly random')
     args.add_argument('-s', '--short',
-                      dest='short',
-                      default=False,
-                      action='store_true',
+                      dest='type',
+                      action='store_const',
+                      const='switch'
                       help='Not so random')
     result = args.parse_args()
 
-    if result.totally:
-        totally_random()
-    elif result.short:
-        switch_two()
-    else:
-        print('Dude, option!')</code></pre>
+    callbacks = {
+        'totally': totally_random,
+        'switch': switch_two
+    }
+
+    func = callbacks.get(result.type, unknown)
+    func()</code></pre>
                     </section>
                 </section>
 
@@ -646,9 +652,9 @@ frase.capitalize()
     print(PASSPHRASE.format(*consonants).capitalize())
                         </code></pre>
 
-						<aside class="notes">
-							Holy cow!
-						</aside>
+                        <aside class="notes">
+                            Holy cow!
+                        </aside>
                     </section>
 
                     <section>
@@ -690,10 +696,10 @@ frase.capitalize()
 Bem vindo Júlio!
                         </code></pre>
 
-						<aside class="notes">
-							Format funciona da seguinte format: Tudo que tiver `{}` no
-							meio, ele troca pelo que vier de parâmetro.
-						</aside>
+                        <aside class="notes">
+                            Format funciona da seguinte format: Tudo que tiver `{}` no
+                            meio, ele troca pelo que vier de parâmetro.
+                        </aside>
                     </section>
 
                     <section>
@@ -708,283 +714,319 @@ PASSPHRASE.format('f', 'j', 'c', 'l', 'n')
 'fujam para as colinas'
                         </code></pre>
 
-						<aside class="notes">
-							... se eu passar cada uma das consoantes no format com
-							a nossa string original, ele vai trocar cada um dos `{}`
-							pelas consoantes passadas como parâmetros, uma a uma.
-						</aside>
+                        <aside class="notes">
+                            ... se eu passar cada uma das consoantes no format com
+                            a nossa string original, ele vai trocar cada um dos `{}`
+                            pelas consoantes passadas como parâmetros, uma a uma.
+                        </aside>
                     </section>
 
-					<section>
-						<h2>Welcome to... Hell</h2>
-						
-						<pre><code>
+                    <section>
+                        <h2>Welcome to... Hell</h2>
+                        
+                        <pre><code>
 CONSONANTS = ['f', 'j', 'c', 'l', 'n']
 PASSPHRASE = '{}u{}am para as {}o{}i{}as'
 PASSPHRASE.format(*CONSONANTS)
-						</code></pre>
+                        </code></pre>
 
-						<pre><code>
+                        <pre><code>
 'fujam para as colinas'
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							... e como a gente viu que dá pra converter listas
-							para parâmetros, usando o `*` a gente passa a lista,
-							que é convertida para chamada de parâmetros exatamente
-							como anteriormente e ainda temos o mesmo resultado.
-						</aside>
-					</section>
+                        <aside class="notes">
+                            ... e como a gente viu que dá pra converter listas
+                            para parâmetros, usando o `*` a gente passa a lista,
+                            que é convertida para chamada de parâmetros exatamente
+                            como anteriormente e ainda temos o mesmo resultado.
+                        </aside>
+                    </section>
 
-					<section>
-						<h2>Welcome to... Hell?</h2>
+                    <section>
+                        <h2>Welcome to... Hell?</h2>
 
-						<pre><code>
+                        <pre><code>
 'fujam para as colinas'.capitalize()
-						</code></pre>
+                        </code></pre>
 
-						<pre><code>
+                        <pre><code>
 Fujam para as colinas
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							E `capitalize()` simplesmente converte o primeiro
-							caractere para maiúscula.
-						</aside>
-					</section>
+                        <aside class="notes">
+                            E `capitalize()` simplesmente converte o primeiro
+                            caractere para maiúscula.
+                        </aside>
+                    </section>
                 </section>
 
-				<section>
-					<section>
-						<h2>Randomizações</h2>
+                <section>
+                    <section>
+                        <h2>Randomizações</h2>
 
-						<pre><code>
+                        <pre><code>
 def totally_random():
     """Run a totally random way."""
     random.shuffle(CONSONANTS)
     print_phrase(CONSONANTS)
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							Nada complicado: A gente chama o `random.shuffle`,
-							que é um método do módulo `random` que a gente fez
-							import lá no começo.
+                        <aside class="notes">
+                            Nada complicado: A gente chama o `random.shuffle`,
+                            que é um método do módulo `random` que a gente fez
+                            import lá no começo.
 
-							O único problema aqui é que `shuffle` faz *in-place*,
-							ou seja, a lista vai ter o conteúdo alterado.
-						</aside>
-					</section>
+                            O único problema aqui é que `shuffle` faz *in-place*,
+                            ou seja, a lista vai ter o conteúdo alterado.
+                        </aside>
+                    </section>
 
-					<section>
-						<h2>Randomizações</h2>
+                    <section>
+                        <h2>Randomizações</h2>
 
-						<pre><code>
+                        <pre><code>
 def switch_two():
     """Run by changing two steps at a time."""
     first = random.randint(0, 1)
     second = random.randint(2, 4)
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							Essa função simplesmente escolhe dois números randomicamente.
+                        <aside class="notes">
+                            Essa função simplesmente escolhe dois números randomicamente.
 
-							O primeiro vai de 0 a 1.
+                            O primeiro vai de 0 a 1.
 
-							E o segundo de 2 a 4.
+                            E o segundo de 2 a 4.
 
-							... que, se a gente contar, são exatamente as posições das
-							consoantes de "fujam" e de "colinas", respecticamente,
-							começando por 0.
-						</aside>
-					</section>
-				</section>
+                            ... que, se a gente contar, são exatamente as posições das
+                            consoantes de "fujam" e de "colinas", respecticamente,
+                            começando por 0.
+                        </aside>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>Welcome to hell, maybe?</h2>
+                <section>
+                    <section>
+                        <h2>Welcome to hell, maybe?</h2>
 
-						<pre><code>
+                        <pre><code>
     CONSONANTS[second], CONSONANTS[first] = \
         CONSONANTS[first], CONSONANTS[second]
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<h2>Welcome to Listas!</h2>
+                    <section>
+                        <h2>Welcome to Listas!</h2>
 
-						<pre><code>
+                        <pre><code>
 # CONSONANTS = ['f', 'j', 'c', 'l', 'n']
 # second = random.randint(2, 4)
 CONSONANTS[second]
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							Para acessar um elemento específico de uma lista
-							é só usar colchetes e um índice; ou seja, iremos
-							pegar a consoante indicada pelo número randômico
-							seleciado (entre 2 e 4, inclusive).
-						</aside>
-					</section>
+                        <aside class="notes">
+                            Para acessar um elemento específico de uma lista
+                            é só usar colchetes e um índice; ou seja, iremos
+                            pegar a consoante indicada pelo número randômico
+                            seleciado (entre 2 e 4, inclusive).
+                        </aside>
+                    </section>
 
-					<section>
-						<h2>Welcome to Tuples!</h2>
+                    <section>
+                        <h2>Welcome to Tuples!</h2>
 
-						<p>
-							Tuplas são como listas, só que 
-							não podem ser alteradas.
-						</p>
+                        <p>
+                            Tuplas são como listas, só que 
+                            não podem ser alteradas.
+                        </p>
 
-						<p>
-							E pra criar uma tupla:
-						</p>
+                        <p>
+                            E pra criar uma tupla:
+                        </p>
 
-						<pre><code>
+                        <pre><code>
 valor, valor
-						</code></pre>
+                        </code></pre>
 
-						<p class="fragment">Ou mais bonitinho: <code>(valor, valor)</code></p>
-	 				</section>
+                        <p class="fragment">Ou mais bonitinho: <code>(valor, valor)</code></p>
+                    </section>
 
-					<section>
-						<h2>Welcome to Destructuring</h2>
+                    <section>
+                        <h2>Welcome to Destructuring</h2>
 
-						<pre><code>
+                        <pre><code>
 primeiro, segundo = [1, 2]
 print(primeiro)
 print(segundo)
-						</code></pre>
+                        </code></pre>
 
-						<pre><code>
+                        <pre><code>
 1
 2
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							Destructuring (e não destroying) serve
-							para "desmontar" tuplas e listas.
+                        <aside class="notes">
+                            Destructuring (e não destroying) serve
+                            para "desmontar" tuplas e listas.
 
-							Por exemplo, a lista tem dois elementos; se
-							eu apontar os dois valores para ela, o
-							primeiro vai ter o primeiro valor e o segundo,
-							o segundo; se forem três, eu preciso de três
-							variáveis.
+                            Por exemplo, a lista tem dois elementos; se
+                            eu apontar os dois valores para ela, o
+                            primeiro vai ter o primeiro valor e o segundo,
+                            o segundo; se forem três, eu preciso de três
+                            variáveis.
 
-							E se o número de váriaveis estiver errado,
-							dá erro.
-						</aside>
-					</section>
+                            E se o número de váriaveis estiver errado,
+                            dá erro.
+                        </aside>
+                    </section>
 
-					<section>
-						<h2>Tudo junto, agora!</h2>
+                    <section>
+                        <h2>Tudo junto, agora!</h2>
 
-						<pre><code>
+                        <pre><code>
     CONSONANTS[second], CONSONANTS[first] = \
         CONSONANTS[first], CONSONANTS[second]
-						</code></pre>
+                        </code></pre>
 
-						<pre class="fragment"><code>
+                        <pre class="fragment"><code>
 tmp = CONSONANTS[first]
 CONSONANTS[first] = CONSONANTS[second]
 CONSONANTS[second] = tmp
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							Ou seja, estamos pegando a consonante
-							escolhida randomicamente entre 0 e 1 (f e j)
-							e a consoante escolhida randomicante entre
-							2 e 4 (c, l, n) e criando uma tupla com esses
-							dois valores; a seguir a gente desmonta
-							(destructura) esses dois na ordem inversa.
-						</aside>
-					</section>
-				</section>
+                        <aside class="notes">
+                            Ou seja, estamos pegando a consonante
+                            escolhida randomicamente entre 0 e 1 (f e j)
+                            e a consoante escolhida randomicante entre
+                            2 e 4 (c, l, n) e criando uma tupla com esses
+                            dois valores; a seguir a gente desmonta
+                            (destructura) esses dois na ordem inversa.
+                        </aside>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>O Pai de Todos Módulos</h2>
+                <section>
+                    <section>
+                        <h2>O Pai de Todos Módulos</h2>
 
-						<pre><code>
+                        <pre><code>
 if __name__ == "__main__":
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							Falamos antes que um módulo, quando
-							importado, vira um namespace.
+                        <aside class="notes">
+                            Falamos antes que um módulo, quando
+                            importado, vira um namespace.
 
-							Pois bem, namespaces tem nomes que podem
-							ser acessados com `__name__`.
+                            Pois bem, namespaces tem nomes que podem
+                            ser acessados com `__name__`.
 
-							E o que acontece quando um script é 
-							executado diretamente pela linha de
-							comando? O módulo é "importado" pelo
-							interpretador, mas qual é o nome do
-							namespace?
+                            E o que acontece quando um script é 
+                            executado diretamente pela linha de
+                            comando? O módulo é "importado" pelo
+                            interpretador, mas qual é o nome do
+                            namespace?
 
-							`__main__`.
+                            `__main__`.
 
-							Essa construção permite que scripts sejam
-							tanto executados diretamente quando importados.
+                            Essa construção permite que scripts sejam
+                            tanto executados diretamente quando importados.
 
-							No caso, todo o conteúdo desse if só vai
-							ser executado se for executado pela linha
-							de comando. Se for importado por um outro
-							script, o script vai ter acesso às funções,
-							mas não vai ser afetado pela leitura da
-							linha de comando.
-						</aside>
-					</section>
-				</section>
+                            No caso, todo o conteúdo desse if só vai
+                            ser executado se for executado pela linha
+                            de comando. Se for importado por um outro
+                            script, o script vai ter acesso às funções,
+                            mas não vai ser afetado pela leitura da
+                            linha de comando.
+                        </aside>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>A linha de comando</h2>
+                <section>
+                    <section>
+                        <h2>A linha de comando</h2>
 
-						<pre><code>
+                        <pre><code>
     args = ArgumentParser()
     args.add_argument('-t', '--totally',
-                      dest='totally',
-                      default=False,
-                      action='store_true',
+                      dest='type',
+                      action='store_const',
+                      const='totally',
                       help='Like, toootaly random')
     args.add_argument('-s', '--short',
-                      dest='short',
-                      default=False,
-                      action='store_true',
+                      dest='type',
+                      action='store_const',
+                      const='switch'
                       help='Not so random')
     result = args.parse_args()
-						</code></pre>
+                        </code></pre>
 
-						<aside class="notes">
-							Nada de muito mágico aqui, exceto que o
-							ArgumentParser faz um monte de coisas pra
-							nós: nós só definimos os parametros, onde eles
-							vão ficar no final, qual ação a ser tomada
-							e um help. E o ArgumentParser faz todo
-							o resto.
-						</aside>
-					</section>
-				</section>
+                        <aside class="notes">
+                            Nada de muito mágico aqui, exceto que o
+                            ArgumentParser faz um monte de coisas pra
+                            nós: nós só definimos os parametros, onde eles
+                            vão ficar no final, qual ação a ser tomada
+                            e um help. E o ArgumentParser faz todo
+                            o resto.
+                        </aside>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>E os finalmentes...</h2>
+                <section>
+                    <section>
+                        <h2>Funções são cidadãos de primeira classe</h2>
 
-						<pre><code>
-    if result.totally:
-        totally_random()
-    elif result.short:
-        switch_two()
-    else:
-        print('Dude, option!')</code></pre>
+                        <pre><code>
+    callbacks = {
+        'totally': totally_random,
+        'switch': switch_two
+    }
+    func = callbacks.get(result.type, unknown)
+    func()
+                        </code></pre>
 
-						<aside class="notes">
-							E a gente simplesmente acessa as propriedades
-							do objeto de resultado do `parse_args` e,
-							se for verdadeiro (True), executamos
-							uma função ou a outra.
-						</aside>
-					</section>
-				</section>
+                        <aside class="notes">
+                            "Cidadão de primeira classe" significa que
+                            funções são tratadas como qualquer outro
+                            objeto/elemento/variável. No caso estamos
+                            criado um dicionário onde a chave é uma
+                            string (não por coincidência as mesmas
+                            strings que estão no argumentparser) e
+                            o valor são funções.
+
+                            Dicionários são objetos como strings e 
+                            possuem uma função `get()`; essa função
+                            retorna o valor da entrada com a chave 
+                            indicada e, caso não exista, retorna um valor
+                            padrão (que normalmente é `None`).
+
+                            Aqui temos, então, uma relação das possíveis
+                            strings que existem no ArgumentParser e as
+                            funções que podem ser chamadas; com o valor
+                            vindo da linha de comando, selecionamos a
+                            função `totally_random` ou `switch_two` ou,
+                            ainda, se o valor de `type` não existir,
+                            assume-se `unkonwn` -- de certa forma, agora
+                            `func` é um ponteiro para uma função.
+
+                            E para executar a função apontada pela variável,
+                            basta colocar os parênteses, como faria com
+                            qualquer função em Python.
+
+                            E esse é basicamente o formato de como se faz
+                            `switch` em Python.
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-background="_images/python.jpg">
+                        <h1 class="semi-opaque">Fulindo para as Cojinas com Python</h1>
+                    </section>
+
+                    <section data-background="_images/python.jpg">
+                        <h1 class="semi-opaque">Fucindo para as Lonijas com Python</h1>
+                    </section>
+                </section>
 
                 <section data-background='_images/thats-all-folks.jpg'>
                     <section>
