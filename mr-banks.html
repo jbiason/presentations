@@ -77,7 +77,7 @@
 						<h2>Batch Processing</h2>
 
 						<pre><code>
-cat /var/log/messages | cut -d\  -f 1 | sort | uniq
+cat /var/log/messages | grep sync | cut -d\  -f 1 | sort | uniq
 						</code></pre>
 					</section>
 
