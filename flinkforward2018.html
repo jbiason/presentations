@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Flink Forward 2018</title>
+
+        <meta name="description" content="Colocando uma aplicação Flask em produção em 40 minutos (ou menos)">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="theme/azion.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none outside;
+            }
+
+            li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+			}
+
+			td.seen {
+				font-style: italic;
+				font-weight: bold;
+			}
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="_images/ff_logo.png" data-tile>
+						<h1 class="semi-opaque">
+							Flink Forward 2018
+						</h1>
+                    </section>
+                </section>
+
+				<section>
+					<section data-background="_images/ff_dayone.jpg">
+					</section>
+
+					<section data-background="_images/ff_watermarks0.png">
+					</section>
+
+					<section>
+						<img src="_images/ff_watermark1.png" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/ff_watermark2.png" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/ff_watermark3.png" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/ff_watermark4.png" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/ff_watermark5.png" alt=""/>
+					</section>
+
+					<section data-background="_images/ff_broadcast0.png"></section>
+
+					<section>
+						<img src="_images/ff_broadcast1.png" alt=""/>
+					</section>
+
+					<section data-background="_images/ff_state0.png"></section>
+
+					<section>
+						<img src="_images/ff_state1.png" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/ff_state2.png" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/ff_state3.png" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/ff_state4.png" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/ff_state5.png" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/ff_state6.png" alt=""/>
+					</section>
+
+					<!-- Testing Harnesses for Operators -->
+					<section data-background="_images/ff_harness0.png"></section>
+					<section>
+						<img src="_images/ff_harness1.png" alt=""/>
+					</section>
+
+					<!-- State and Schema Migration -->
+					<section data-background="_images/ff_migration0.png"></section>
+					<section>
+						<img src="_images/ff_migration1.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_migration2.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_migration3.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_migration4.png" alt=""/>
+					</section>
+
+					<!-- Exactly-Once Processing -->
+					<section data-background="_images/ff_exactlyonce0.png"></section>
+					<section>
+						<img src="_images/ff_exactlyonce1.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_exactlyonce2.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_exactlyonce3.png" alt=""/>
+					</section>
+
+					<!-- Deployment and FLIP-6 -->
+					<section data-background="_images/ff_flip60.png"></section>
+					<section>
+						<img src="_images/ff_flip61.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_flip62.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_flip63.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_flip64.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_flip65.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_flip66.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_flip67.png" alt=""/>
+					</section>
+
+					<!-- Running Flink 24-7 -->
+					<section data-background="_images/ff_capacity0.png"></section>
+					<section>
+						<img src="_images/ff_capacity1.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_capacity2.png" alt=""/>
+					</section>
+
+					<!-- Metrics, Monitoring and Troubleshooting -->
+					<section data-background="_images/ff_monitoring0.png"></section>
+					<section>
+						<img src="_images/ff_monitoring1.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_monitoring2.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_monitoring3.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_monitoring4.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_monitoring5.png" alt=""/>
+					</section>
+					<section>
+						<img src="_images/ff_monitoring6.png" alt=""/>
+					</section>
+				</section>
+
+				<section>
+					<section data-background="_images/ff_daytwo.jpg">
+					</section>
+
+					<section>
+						<table>
+							<thead>
+								<tr>
+									<th>Keynotes</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										What turns stream processing from a tool into a platform?<br/>
+										<small>Stephan Ewen, data Artisans</small>
+									</td>
+								</tr>
+
+								<tr>
+									<td>
+										Stream Processing Revolutionizing Big Data<br/>
+										<small>
+											Srikanth Satya, Dell EMC 
+										</small>
+									</td>
+								</tr>
+
+								<tr>
+									<td>
+										Apache Flink + Apache Beam: Expanding the horizons of Big Data<br/>
+										<small>
+											Anand Iyer, Google Cloud
+										</small>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<table>
+							<thead>
+								<tr>
+									<th>11:00</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										Powering Yelp’s Data Pipeline Infrastructure with Apache Flink</br><small>Enrico Canzonieri, Yelp Inc.</small>
+									</td>
+								</tr>
+
+								<tr>
+									<td class="seen">
+										Scaling stream data pipelines <br/><small>Flavio Junqueira, Pravega by DellEMC</small>
+									</td>
+
+									<aside class="notes">
+										- Pravega
+										- Kinda like Kafka
+										- Auto-partition
+										- When a partition is created or destroyed a Flink TaskManager is created/destroyed
+										- Pravega requires a key already
+									</aside>
+								</tr>
+
+								<tr>
+									<td>
+										Building a scalable focused web crawler with Flink <br/><small>Ken Krugler, Scale Unlimited</small>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<img src="_images/ff_pravega.png" alt=""/>
+					</section>
+
+					<section>
+						<table>
+							<thead>
+								<tr>
+									<th>11:50</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr>
+									<td>Building Flink As a Service platform at Uber</br><small>Shuyi Chen, Uber</small></td>
+								</tr>
+
+								<tr>
+									<td class="seen">eBay monitoring platform preprocessing and alerting on Flink</br><small>Garret Li, ebay</small></td>
+									<aside class="notes">
+										- Sherlock.IO
+										- "The Frink", nervous
+										- Policy changes go through the pipeline
+										- https://vimeo.com/265025956/c7d5576622
+									</aside>
+								</tr>
+
+								<tr>
+									<td>Using Flink for balances and controls across platform boundaries<br/><small>Faraz Babar, American Express</small></td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<img src="_images/ff_sherlock.jpg" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/ff_sherlock_policy.png" alt=""/>
+					</section>
+
+					<section>
+						<table>
+							<thead>
+								<tr><th>12:20</th></tr>
+							</thead>
+
+							<tbody>
+								<tr><td>Scaling Flink in Cloud<br/><small>Steven Wu, Netflix</small></td></tr>
+								<tr><td>Flink real-time analysis in CloudStream Service of Huawei Cloud<br/><small>Jinkui Shi, Huawei</small></td></tr>
+								<tr>
+									<td class="seen">Why and how to leverage the simplicity and power of SQL on Flink<br/><small>Fabian Hueske, data Artisans</small></td>
+									<aside class="notes">
+										- Built-in in Flink 1.5
+										- Can create pipelines on the fly
+										- Launches TaskManagers
+									</aside>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<img src="_images/ff_sql.png" alt=""/>
+					</section>
+
+					<section>
+						<table>
+							<thead><tr><th>2:00</th></tr></thead>
+							<tbody>
+								<tr><td>Optimizations in Blink Runtime for Global Shopping Festival at Alibaba<br><small>Feng Wang, Alibaba </small></td></tr>
+								<tr>
+									<td class="seen">Bootstrapping State In Apache Flink<br/><small>Gregory Fee, Lyft </small></td>
+									<aside class="notes">
+										- Lyft
+										- Grouping all information, including old ones
+										- Required for information of all rides of all users over all the time
+										- Old data on S3, new data on Kafka
+										- Multiple inputs
+										- Old input will hold new input
+									</aside>
+								</tr>
+								<tr><td>Panta Rhei: designing distributed applications with streams<br/><small> Aris Koliopoulos, Drivetribe </small></td></tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<img src="_images/ff_lyft.png" alt=""/>
+					</section>
+
+					<section>
+						<table>
+							<thead><tr><th>2:50</th></tr></thead>
+							<tbody>
+								<tr><td> Powering Tensorflor with Big Data (Apache BEAM &amp; Flink) <br/><small> Holden Karau, Google Cloud </small></td></tr>
+								<tr><td class="seen">Alibaba’s common algorithm platform on Flink<br/><small> Xu Yang, Alibaba </small></td></tr>
+								<tr><td> Cloud Native Flink <br/><small> Jowanza Joseph, One Click Retail </small></td></tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<table>
+							<thead><tr><th>3:20</th></tr></thead>
+							<tbody>
+								<tr><td> Embedding Flink Throughout an Operationalized Streaming ML Lifecycle <br/><small> Dave Torok, Comcast Corporation </small></td></tr>
+								<tr><td>Scaling Uber’s Realtime Optimization with Apache Flink <br/><small> Xingzhong Xu, Uber Technologies Inc. </small></td></tr>
+								<tr>
+									<td class="seen"> Operating Flink on Mesos at Scale <br/><small> Jörg Schad, Mesosphere </small></td>
+									<aside class="notes">
+										- Basically, the same Kubernetes does
+										- Use of Kube or Mesos is a personal choice
+									</aside>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<img src="_images/ff_mesos.png" alt=""/>
+					</section>
+
+					<section>
+						<table>
+							<thead><tr><th>4:30</th></tr></thead>
+							<tbody>
+								<tr>
+									<td class="seen"> Finding Bad Acorns <br/><small> Andrew Gao, Capital One </small></td>
+									<aside class="notes">
+										- Teller validation
+										- Python integration (because data scientists use Jupyter)
+										- Queryable state
+										- Broke the monolith
+									</aside>
+								</tr>
+								<tr><td> dA Platform – Production-ready stream processing with Apache Flink <br/><small> Robert Metzger, data Artisans </small></td></tr>
+								<tr><td> Real-time monitoring of Mobile Internet Quality of Experience using Flink <br/><small> David Reniz, Everis </small></td></tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<img src="_images/ff_acorns_python.png" alt=""/>
+					</section>
+
+					<section>
+						<img src="_images/ff_acorns_state.png" alt=""/>
+					</section>
+
+					<section>
+						<table>
+							<thead><tr><th>5:20</th></tr></thead>
+							<tbody>
+								<tr><td> How to build a modern stream processor: The science behind Apache Flink <br/><small> Stefan Richter, data Artisans </small></td></tr>
+								<tr>
+									<td class="seen"> Testing Stateful Streaming Applications <br/><small> Seth Wiesman, MediaMath </small></td>
+									<aside class="notes">
+										- Math guy
+										- Test pipeline, break pipeline to test checkpoint
+										- WHYYYYY?!?!?!
+									</aside>
+								</tr>
+								<tr><td> Extending Flink metrics: Real-time BI atop existing Flink streaming pipelines <br/><small> Andrew Torson, Walmart Labs </small></td></tr>
+							</tbody>
+						</table>
+					</section>
+				</section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
