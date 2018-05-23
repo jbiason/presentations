@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Introdução ao Clean Code Meetup</title>
+
+        <meta name="description" content="Colocando uma aplicação Flask em produção em 40 minutos (ou menos)">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="theme/azion.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none outside;
+            }
+
+            li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+            }
+
+            td.seen {
+                font-style: italic;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="_images/cleancode.jpg" data-header>
+                        <h1 class="semi-opaque">
+                            Introdução ao Clean Code Meetup
+                        </h1>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
+
+                        <div>
+                            <ul class="empty">
+                                <li>Júlio Biason</li>
+                                <li>Azion Technologies<img src="_images/azion-logo.png" alt="Azion logo" class='company-logo'></li>
+                                <li>@juliobiason</li>
+                                <li>julio.biason@gmail.com</li>
+                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>De onde saiu essa ideia?</h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>The Book</h2>
+
+                        <img src="_images/cleancode.jpg" alt=""/>
+                    </section>
+
+                    <section>
+                        <p style="text-align:left">
+                            S<span class="fragment">ingle Responsibility Principle</span></br>
+                            O<span class="fragment">pen/Closed Principle</span></br>
+                            L<span class="fragment">iskov Substituiion Principle</span></br>
+                            I<span class="fragment">nterface Segregation Principle</span></br>
+                            D<span class="fragment">ependency Inversion Principle</span></br>
+                        </p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2><a href="https://twitter.com/ramalhoorg/status/979336752958791681" target="_blank">Luciano Ramalho</a></h2>
+                        <pre><code># Python: check that password as at least one lowercase 
+# letter, one uppercase and three digits 
+def check(password): 
+    return (any(c.islower() for c in password) 
+            and any(c.isupper() for c in password) 
+            and sum(c.isdigit() for c in password) &gt;= 3)</code></pre>
+
+                    </section>
+
+                    <section>
+                        <h2><a href="https://twitter.com/dabeaz/status/979370009607770118" target="_blank">David Beazley</a></h2>
+
+                        <pre><code>
+from collections import Counter 
+from unicodedata import category 
+def check(password): 
+    c = Counter(category(ch) for ch in password) 
+    return c['Ll']&gt;=1 and c['Lu'] &gt;= 1 and c['Nd'] &gt;= 3
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2><a href="https://twitter.com/juliobiason/status/981582433920475136" target="_blank">Julio Biason</a></h2>
+
+                        <pre><code>
+LOWERCASE_CHARS = "Ll" 
+UPCASE_CHARS = "Lu" 
+NUMBERS = "Nd" 
+
+def check(password): 
+    number_of = Counter(category(ch) for ch in password) 
+    return number_of[LOWERCASE_CHARS] &gt;= 1 and number_of[UPCASE_CHARS] &gt;= 1 and number_of[NUMBERS] &gt;= 3
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>
+                            "Programs must be written for people to read, and only
+                            incidentally for machines to execute."
+                        </p>
+
+                        <p>
+                            Abelson / Sussman, "Structure and Interpretation of Computer Programs"
+                        </p>
+
+                        <aside class="notes">
+                            Sussman is a coauthor (with Hal Abelson and his
+                            wife Julie Sussman) of the introductory computer
+                            science textbook Structure and Interpretation of
+                            Computer Programs.
+                        </aside>
+                    </section>
+                </section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+                    <section>
+                        <h1 class="fragment semi-opaque">Perguntas?</h1>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
