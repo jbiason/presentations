@@ -126,8 +126,7 @@
 					<section>
 						<h2>Código sendo testado</h2>
 
-						<pre><code>
-#!/usr/bin/env python
+						<pre><code>#!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
 """This is a sample code that simulates a user being created."""
@@ -226,14 +225,153 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
-						</code></pre>
+    main()</code></pre>
 					</section>
 				</section>
 
 				<section>
 					<section>
 						<h2>Robot Framework</h2>
+
+						<ul>
+							<li>Componentes começam com <code>***</code></li>
+							<li>
+								Contém elementos de:
+								<ul>
+									<li>Settings: Configuração do ambiente do Robot</li>
+									<li>Keywords: Novas expressões</li>
+									<li>Test Case: Os testes.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Robot Framework</h2>
+
+						<pre><code>
+*** Settings ***
+Library 	TestingSource.py
+
+*** Test Cases ***
+Invalid password
+	Given that I have a username	foo
+	  And that I have a password	test123
+	 When I try to create a user
+     Then I should get an error of invalid password
+
+*** Keywords ***
+That I have a username 
+	[Arguments]		${username}
+	set username 	${username}
+
+That I have a password 
+	[Arguments]		${password}
+	Set password	${password}
+
+I try to create a user
+	Create user
+
+I should get an error of invalid password
+	Is invalid password
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Robot Framework</h2>
+
+						<pre><code>*** Settings ***
+Library 	TestingSource.py</code></pre>
+
+						<p>Configuração: Indica que deve ser carregado uma biblioteca em
+						Python (a seguir).</p>
+					</section>
+
+					<section>
+						<h2>Robot Framework</h2>
+
+						<pre><code>import mainsource
+
+
+class TestingSource(object):
+    def __init__(self):
+        self.username = None
+        self.password = None
+        self.last_exception = None
+
+    def set_username(self, username):
+        self.username = username
+
+    def set_password(self, password):
+        self.password = password
+
+    def create_user(self):
+        try:
+            mainsource.create_user(self.username, self.password)
+        except mainsource.UserCreationError as exc:
+            self.last_exception = exc
+
+    def is_invalid_password(self):
+        return (self.last_exception and
+                isinstance(self.last_exception,
+                           mainsource.PasswordIsNotStrongEnough))</code></pre>
+					</section>
+
+					<section>
+						<h2>Robot Framework</h2>
+
+						<pre><code>*** Test Cases ***
+Invalid password
+    Given that I have a username		foo
+      And that I have a password		test123
+     When I try to create a user
+     Then I should get an error of invalid password</code></pre>
+
+						<p>
+							<code>Given</code>, <code>And</code>, <code>When</code> e
+							<code>Then</code> são palavras reservadas.
+						</p>
+
+						<p>
+							Parâmetros tem que ser separados com Tabs.
+						</p>
+					</section>
+
+					<section>
+						<h2>Robot Framework</h2>
+
+						<pre><code>*** Keywords ***
+That I have a username 
+	[Arguments]		${username}
+	set username 	${username}
+
+That I have a password 
+	[Arguments]		${password}
+	Set password	${password}
+
+I try to create a user
+	Create user
+
+I should get an error of invalid password
+	Is invalid password</code></pre>
+					</section>
+
+					<section>
+						<h2>Robot Framework</h2>
+
+						<pre><code>$ robot example.robot
+ ==============================================================================
+ Example
+ ==============================================================================
+ Invalid password                                                      | PASS |
+ ------------------------------------------------------------------------------
+ Example                                                               | PASS |
+ 1 critical test, 1 passed, 0 failed
+ 1 test total, 1 passed, 0 failed
+ ==============================================================================
+ Output:  /Users/juliobiason/personal/presentations/_sources/python-bdd/output.xml
+ Log:     /Users/juliobiason/personal/presentations/_sources/python-bdd/log.html
+ Report:  /Users/juliobiason/personal/presentations/_sources/python-bdd/report.html</code></pre>
 					</section>
 				</section>
 
