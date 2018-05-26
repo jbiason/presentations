@@ -233,6 +233,8 @@ if __name__ == "__main__":
 					<section>
 						<h2>Robot Framework</h2>
 
+						<p><code>pip install robotframework</code></p>
+
 						<ul>
 							<li>Componentes começam com <code>***</code></li>
 							<li>
@@ -373,11 +375,110 @@ I should get an error of invalid password
  Log:     /Users/juliobiason/personal/presentations/_sources/python-bdd/log.html
  Report:  /Users/juliobiason/personal/presentations/_sources/python-bdd/report.html</code></pre>
 					</section>
+
+					<section>
+						<h2>Robot Framework</h2>
+
+						<p>Vantagens:</p>
+
+						<ul>
+							<li>Libraries</li>
+							<li>Por causa dos <code>***</code>, testes podem estar
+							    em vários arquivos -- incluindo RST.</li>
+						</ul>
+					</section>
 				</section>
 
 				<section>
 					<section>
 						<h2>Behave</h2>
+
+						<p><code>pip install behave</code></p>
+
+						<ul>
+							<li>Mais simples</li>
+							<li>Testes ficam em arquivos <code>.feature</code> (tal qual Cucumber)</li>
+							<li>Informações são passadas por <code>context</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Behave</h2>
+
+						<pre><code>Feature: Testing passwords
+
+	Scenario: Invalid password
+		Given that I have a username foo
+		  And that I have a password test123
+		 When I try to create an user
+		 Then I should get an error of invalid password</code></pre>
+					</section>
+
+					<section>
+						<h2>Behave</h2>
+
+						<pre><code># -*- encoding: utf-8 -*-
+
+"""Behave steps."""
+
+import behave
+import mainsource
+
+
+@behave.given("that I have a username {name}")
+def set_username(context, name):
+    context.username = name
+    return
+
+
+@behave.given("that I have a password {password}")
+def set_password(context, password):
+    context.password = password
+    return
+
+
+@behave.when("I try to create an user")
+def create_user(context):
+    try:
+        mainsource.create_user(context.username, context.password)
+    except mainsource.UserCreationError as exc:
+        context.last_exception = exc
+    return
+
+
+@behave.then("I should get an error of invalid password")
+def is_invalid_password(context):
+    assert hasattr(context, 'last_exception')
+    assert isinstance(context.last_exception,
+                      mainsource.PasswordIsNotStrongEnough)</code></pre>
+						
+					</section>
+
+					<section>
+						<h2>Behave</h2>
+
+						<pre><code>Feature: Testing passwords # features/example.feature:1
+
+  Scenario: Invalid password                       # features/example.feature:3
+    Given that I have a username foo               # features/steps/example_steps.py:9 0.001s
+    And that I have a password test123             # features/steps/example_steps.py:15 0.000s
+    When I try to create an user                   # features/steps/example_steps.py:21 0.001s
+    Then I should get an error of invalid password # features/steps/example_steps.py:30 0.000s
+
+1 feature passed, 0 failed, 0 skipped
+1 scenario passed, 0 failed, 0 skipped
+4 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.002s </code></pre>
+					</section>
+
+					<section>
+						<h2>Behave</h2>
+
+						<p>Vantagens:</p>
+
+						<ul>
+							<li>Mais simples</li>
+						</ul>
 					</section>
 				</section>
 
