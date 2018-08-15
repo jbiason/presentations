@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Filosofando sobre Tests</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="theme/azion.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none outside;
+            }
+
+			li {
+				display: block;
+			}
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <!-- <section data-background="_images/tdd-kentbeck-book.jpg" data-header> -->
+                    <section data-background="_images/tdd-kentbeck-book.jpg">
+                        <h1 class="semi-opaque">Filosofando sobre Testes</h1>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
+
+                        <div>
+                            <ul class="empty">
+                                <li>Júlio Biason</li>
+								<li>Azion Technologies<img src="_images/azion-logo.png" alt="Azion logo" class='company-logo'></li>
+                                <li>@juliobiason</li>
+								<li>https://functional.cafe/@juliobiason</li>
+                                <li>julio.biason@gmail.com</li>
+                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <img src="_images/start-a-fight.jpg" alt="Eu faço perguntas em reuniões que eu não sei nada e reunião explode; não é de propósito" class='stretch'/>
+
+						<aside class="notes">
+							Eu sou famoso (ou era) por entrar eu reuniões, fazer uma
+							pergunta e a reunião explodir em discussões (úteis, diga-se
+							de passagem). Mas eu não fazia isso de propósito.
+						</aside>
+                    </section>
+
+					<section>
+						<img src="_images/mini-hitler.jpg" alt="Me chamaram de Mini Hitler"/>
+					</section>
+
+                    <section>
+                        <img src="_images/filho-do-capeta.jpg" alt="... mas hoje eu vim botar os filho dos outro no go horse." class='stretch'/>
+
+						<aside class="notes">
+							... mas hoje eu vim "botá os fio dos otro no Go Horse, fazê
+							eles escrevê menos teste"
+						</aside>
+                    </section>
+
+					<section>
+						<h2><span style="color:red">WARNING</span></h2>
+
+						<img src="_images/patriarch.jpg" alt="... e eu sou meio não-ortodoxo sobre testes."/>
+					</section>
+                </section>
+
+                <section>
+                    <section>
+                        <img src="_images/tdd-where-it-went-wrong.png" alt="TDD: Where it went wrong" class="stretch"/>
+                        <p>Ian Cooper: <a href="https://vimeo.com/68375232">"TDD, where did it all go wrong"</a></p>
+                    </section>
+
+                    <section>
+                        <h2>TDD</h2>
+
+                        <p>Kent Beck:</p>
+
+                        <ul>
+                            <li>"Run in isolation", nothing more, nothing less.</li>
+                            <li>"Avoid testing implementation details, test behaviours"</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>TDD</h2>
+
+                        <p>Discussões como "qual a unidade a ser testada" é que geraram
+                        coisas como BDD e ATDD (Acceptance Test-Driven Development).</p>
+                    </section>
+
+                    <section>
+                        <h2>TDD</h2>
+
+                        <p>Reddit: <a href="https://www.reddit.com/r/django/comments/5bearg/should_i_write_unit_tests_for_djangos_built_in/" target="_blank">Devo escrever testes para a validação interna do Django?</a></p>
+
+                        <h1 class="fragment">SIM!</h1>
+					</section>
+
+                    <section>
+                        <h2>TDD</h2>
+
+                        <p>Nossos testes End-to-End.</p>
+
+                        <aside class="notes">
+                            Explicação do que aconteceu com os testes do gerenciador de alertas.
+                        </aside>
+                    </section>
+				</section>
+
+				<section>
+					<section>
+						
+					</section>
+				</section>
+
+                <section>
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code class="python">
+class Client:
+    def __init__(self, name):
+        self.name = name
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <p>Novo requisito: "somente aceitar nomes válidos, que tem 2
+                            palavras ou mais."</p>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <p>SOLID principles:</p>
+                        <ul>
+                            <li><strong>SRP - Single Responsability Principle</strong></li>
+                            <li>OCP - Open/closed principle</li>
+                            <li>LSP - Liskov substitution principle (design by contract)</li>
+                            <li>ISP - Interface Segreation Principle</li>
+                            <li>DIP - Dependency Inversion Principle</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code class="python">
+def _multiple_names(name):
+    split_names = name.split(' ')
+    return len(split_names) > 1
+
+def _validate_name(name):
+    if not _multiple_names(name):
+        raise Exception("Invalid name")
+    return name
+
+class Client:
+    def __init__(self, name):
+        self.name = _validate_name(name)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code class="python">
+import pytest
+
+def test_single_name():
+    assert not _multiple_names('Cher')
+
+def test_multiple_name():
+    assert _multiple_names('Julio Biason')
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code class="python">
+def test_valid_name():
+    _validate_name('Julio Biason')
+
+def test_invalid_name():
+    with pytest.raises(Exception):
+        _validate_name('Cher')
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code class="python">
+def test_client_error():
+    with pytest.raises(Exception):
+        Client(name='Cher')
+
+def test_client():
+    Client(name='Julio Biason')
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code>
+$ pytest client.py
+==== test session starts ====
+rootdir: /home/jbiason/unitt, inifile:
+collected 6 items
+
+client.py ......
+
+==== 6 passed in 0.03 seconds ====
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code>
+$ pytest --cov=client client.py
+==== test session starts ====
+plugins: cov-2.4.0
+collected 6 items
+
+client.py ......
+
+---- coverage: platform linux, python 3.4.3-final-0 ----
+Name        Stmts   Miss  Cover
+-------------------------------
+client.py      25      0   100%
+
+==== 6 passed in 0.11 seconds ====
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <p>"Não podemos perder a Cher, a Xuxa, a Madonna, a Björk e o String como clientes!"</p>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code class="python">
+class Client:
+    def __init__(self, name):
+        self.name = name
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code>
+==== FAILURES ====
+____ test_client_error ____
+
+    def test_client_error():
+        with pytest.raises(Exception):
+&gt;           Client(name='Cher')
+E           Failed: DID NOT RAISE &lt;class 'Exception'>
+
+client.py:37: Failed
+==== 1 failed, 5 passed in 0.63 seconds ====
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code>
+$ pytest  client.py
+==== test session starts ====
+rootdir: /home/jbiason/unitt, inifile:
+plugins: cov-2.4.0
+collected 6 items
+
+client.py ......
+
+==== 6 passed in 0.03 seconds ====
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <pre><code>
+$ pytest --cov=client  client.py
+==== test session starts ====
+rootdir: /home/jbiason/unitt, inifile:
+plugins: cov-2.4.0
+collected 6 items
+
+client.py ......
+
+---- coverage: platform linux, python 3.4.3-final-0 ----
+Name        Stmts   Miss  Cover
+-------------------------------
+client.py      24      0   100%
+
+==== 6 passed in 0.12 seconds ====
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exemplo</h2>
+
+                        <p>Encontre o erro.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Resumo</h2>
+
+                    <ul>
+                        <li>Escreva testes que verifiquem requisitos, não a
+                        implementação do requisito</li>
+                        <li>Implementação pode mudar, os testes não deveriam.</li>
+                        <li>Garanta que o teste dependa apenas de si mesmo
+                        e não de outros testes.</li>
+                        <li>Use cobertura (coverage) para identificar código
+                        a ser removido, não para escrever mais testes.</li>
+                    </ul>
+                </section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+                    <section>
+                        <h1 class="fragment semi-opaque">Perguntas?</h1>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
