@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Resumo TDC 2017</title>
+
+        <meta name="description" content="Minha visão do conteúdo apresentado no TDC 2017">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="theme/azion.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none outside;
+            }
+
+            li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+					<section data-background="_images/flask.png">
+                        <h1 class="semi-opaque">Resumo TDC 2017</h1>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Disclaimer</h2>
+
+                        <ul>
+                            <li class="fragment">Apresentações não são minhas.</li>
+                            <li class="fragment">Eu não entendi tudo.</li>
+                            <li class="fragment">Tudo aqui são opiniões minhas.</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+						<h2>Trilha Funcional</h2>
+                    </section>
+
+					<section>
+						<h3>Elixir, do desenvolvimento a produção</h3>
+
+						<aside class="notes">
+							"35 years of microprocessor trend data": Processadores
+							não estão mais melhorando por performance do processador.
+
+							"No more free lunch (2005)"
+
+							Elixir, baseado no Erlang, tem suporte à micro-processamentos
+							dentro do próprio runtime. Permite execução de dados
+							concorrentes e monitores. "Let it crash".
+
+							A DeMaio utiliza Elixir. "Mas falta desenvolvedor!" Sim,
+							mas a escolha da linguagem foi justamente porque como 
+							ela tá como "linguagem das crianças legais", eles resolveram
+							investir.
+
+							Nem tudo é perfeito: hot code reloading não funciona tão
+							bem como indicam.
+						</aside>
+					</section>
+
+					<section>
+						<h3>Paradigma funciona até leigos podem entender</h3>
+
+						<aside class="notes">
+							Apresentou somente map, reduce e filter.
+						</aside>
+					</section>
+
+					<section>
+						<h3>Reactive Streams</h3>
+
+						<aside class="notes">
+							@humbertostreb
+
+							Reactivemanifesto.org
+
+							Akka streams. Alpakka = OCaml para akka
+
+							RxJava (Netflix usa pro circuit breaker)
+
+							Reactor, spring.
+
+							Java 9, com flows.
+
+							“Um palestrante não vir não é uma exceção, é algo
+							esperado de problemas.”
+
+							Reactor: Mono<> asynchronous 0-1, Flux<> sequence
+							of 0-n items.
+						</aside>
+					</section>
+
+					<section>
+						<h3>Programação funcional, reativa e paralela com C# e F#</h3>
+
+						<aside class="notes">
+							Elemar Jr
+
+							RavenDB
+
+							Complexo de Gabriela: “eu nasci assim, eu vou ser sempre assim…”
+
+							Imutabilidade: remover os set(), alteração criava novo objeto.
+						</aside>
+					</section>
+                </section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+                    <section>
+                        <h1 class="fragment semi-opaque">Perguntas?</h1>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>

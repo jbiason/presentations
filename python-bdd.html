@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>BDD em Python</title>
+
+        <meta name="description" content="Colocando uma aplicação Flask em produção em 40 minutos (ou menos)">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="theme/azion.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none outside;
+            }
+
+            li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+            }
+
+            td.seen {
+                font-style: italic;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="_images/bdd.jpg" data-header>
+                        <h1 class="semi-opaque">
+                            BDD em Python
+                        </h1>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
+
+                        <div>
+                            <ul class="empty">
+                                <li>Júlio Biason</li>
+                                <li>Azion Technologies<img src="_images/azion-logo.png" alt="Azion logo" class='company-logo'></li>
+                                <li>@juliobiason</li>
+                                <li>julio.biason@gmail.com</li>
+                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                </section>
+
+				<section>
+					<section>
+						<img src="_images/bdd-robot.png" alt="" style="background-color:black"/>
+						<img src="_images/bdd-behave.png" alt=""/>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Gherkin</h2>
+
+						<p style="text-align:left">
+							Given <span class="fragment">Definição do ambiente</span> <br/>
+							When <span class="fragment">O teste</span><br/>
+							Then <span class="fragment">Validação do teste</span><br/>
+						</p>
+
+						<aside class="notes">
+							Esse é o formato do "Gherkin", popularizado pelo framework
+							"Cucumber" de Ruby.
+
+							"Given" define o ambiente do teste; "Dado que" (eu tenho isso)...
+
+							"When" define o teste em si; "quando" (... eu fizer essa coisa)...
+
+							"Then" define a validação; "então" (... isso deve ter acontecido)
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Código sendo testado</h2>
+
+						<pre><code>#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+
+"""This is a sample code that simulates a user being created."""
+
+from __future__ import print_function
+
+import argparse
+import json
+
+from collections import Counter
+from unicodedata import category
+
+LOWERCASE_CHARS = "Ll"
+UPCASE_CHARS = "Lu"
+NUMBERS = "Nd"
+
+
+class UserCreationError(Exception):
+    """Base class for all exceptions in this module."""
+    pass
+
+
+class PasswordIsNotStrongEnough(UserCreationError):
+    """The password used is not strong enough."""
+    pass
+
+
+class UserAlreadyExists(UserCreationError):
+    """The user already exists in the database."""
+    pass
+
+
+def password_is_strong(password):
+    """Check if the password have enough strength."""
+    number_of = Counter(category(ch) for ch in password)
+    return (number_of[LOWERCASE_CHARS] >= 1 and
+            number_of[UPCASE_CHARS] >= 2 and
+            number_of[NUMBERS] >= 1 and
+            len(password) >= 12)
+
+
+def get_users():
+    """Retrieve the list of users in the system."""
+    data = {}
+    try:
+        with open('users.json') as origin:
+            data = json.load(origin)
+    except IOError:
+        # File does not exist, so we just assume it's empty
+        pass
+    return data
+
+
+def save_users(user_list):
+    """Save the user list back to the 'database'."""
+    with open('users.json', 'w') as target:
+        json.dump(user_list, target)
+    return
+
+
+def create_user(user, password):
+    """'Create' and user."""
+    if not password_is_strong(password.decode('utf-8')):
+        raise PasswordIsNotStrongEnough
+
+    users = get_users()
+    if user in users:
+        raise UserAlreadyExists
+
+    users[user] = password
+    save_users(users)
+    return
+
+
+def main():
+    """Expose the functions back in command line options."""
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-u', '--user',
+                        dest='user',
+                        help='Username to be created',
+                        required=True)
+    parser.add_argument('-p', '--password',
+                        dest='password',
+                        help='Password for the user',
+                        required=True)
+    args = parser.parse_args()
+    try:
+        create_user(args.user, args.password)
+    except PasswordIsNotStrongEnough:
+        print("That password is not strong enough")
+    except UserAlreadyExists:
+        print("Username already used")
+    else:
+        print("User created")
+    return
+
+
+if __name__ == "__main__":
+    main()</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Robot Framework</h2>
+
+						<p><code>pip install robotframework</code></p>
+
+						<ul>
+							<li>Componentes começam com <code>***</code></li>
+							<li>
+								Contém elementos de:
+								<ul>
+									<li>Settings: Configuração do ambiente do Robot</li>
+									<li>Keywords: Novas expressões</li>
+									<li>Test Case: Os testes.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Robot Framework</h2>
+
+						<pre><code>
+*** Settings ***
+Library 	TestingSource.py
+
+*** Test Cases ***
+Invalid password
+	Given that I have a username	foo
+	  And that I have a password	test123
+	 When I try to create a user
+     Then I should get an error of invalid password
+
+*** Keywords ***
+That I have a username 
+	[Arguments]		${username}
+	set username 	${username}
+
+That I have a password 
+	[Arguments]		${password}
+	Set password	${password}
+
+I try to create a user
+	Create user
+
+I should get an error of invalid password
+	Is invalid password
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Robot Framework</h2>
+
+						<pre><code>*** Settings ***
+Library 	TestingSource.py</code></pre>
+
+						<p>Configuração: Indica que deve ser carregado uma biblioteca em
+						Python (a seguir).</p>
+					</section>
+
+					<section>
+						<h2>Robot Framework</h2>
+
+						<pre><code>import mainsource
+
+
+class TestingSource(object):
+    def __init__(self):
+        self.username = None
+        self.password = None
+        self.last_exception = None
+
+    def set_username(self, username):
+        self.username = username
+
+    def set_password(self, password):
+        self.password = password
+
+    def create_user(self):
+        try:
+            mainsource.create_user(self.username, self.password)
+        except mainsource.UserCreationError as exc:
+            self.last_exception = exc
+
+    def is_invalid_password(self):
+        return (self.last_exception and
+                isinstance(self.last_exception,
+                           mainsource.PasswordIsNotStrongEnough))</code></pre>
+					</section>
+
+					<section>
+						<h2>Robot Framework</h2>
+
+						<pre><code>*** Test Cases ***
+Invalid password
+    Given that I have a username		foo
+      And that I have a password		test123
+     When I try to create a user
+     Then I should get an error of invalid password</code></pre>
+
+						<p>
+							<code>Given</code>, <code>And</code>, <code>When</code> e
+							<code>Then</code> são palavras reservadas.
+						</p>
+
+						<p>
+							Parâmetros tem que ser separados com Tabs.
+						</p>
+					</section>
+
+					<section>
+						<h2>Robot Framework</h2>
+
+						<pre><code>*** Keywords ***
+That I have a username 
+	[Arguments]		${username}
+	set username 	${username}
+
+That I have a password 
+	[Arguments]		${password}
+	Set password	${password}
+
+I try to create a user
+	Create user
+
+I should get an error of invalid password
+	Is invalid password</code></pre>
+					</section>
+
+					<section>
+						<h2>Robot Framework</h2>
+
+						<pre><code>$ robot example.robot
+ ==============================================================================
+ Example
+ ==============================================================================
+ Invalid password                                                      | PASS |
+ ------------------------------------------------------------------------------
+ Example                                                               | PASS |
+ 1 critical test, 1 passed, 0 failed
+ 1 test total, 1 passed, 0 failed
+ ==============================================================================
+ Output:  /Users/juliobiason/personal/presentations/_sources/python-bdd/output.xml
+ Log:     /Users/juliobiason/personal/presentations/_sources/python-bdd/log.html
+ Report:  /Users/juliobiason/personal/presentations/_sources/python-bdd/report.html</code></pre>
+					</section>
+
+					<section>
+						<h2>Robot Framework</h2>
+
+						<p>Vantagens:</p>
+
+						<ul>
+							<li>Libraries</li>
+							<li>Por causa dos <code>***</code>, testes podem estar
+							    em vários arquivos -- incluindo RST.</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Behave</h2>
+
+						<p><code>pip install behave</code></p>
+
+						<ul>
+							<li>Mais simples</li>
+							<li>Testes ficam em arquivos <code>.feature</code> (tal qual Cucumber)</li>
+							<li>Informações são passadas por <code>context</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Behave</h2>
+
+						<pre><code>Feature: Testing passwords
+
+	Scenario: Invalid password
+		Given that I have a username foo
+		  And that I have a password test123
+		 When I try to create an user
+		 Then I should get an error of invalid password</code></pre>
+					</section>
+
+					<section>
+						<h2>Behave</h2>
+
+						<pre><code># -*- encoding: utf-8 -*-
+
+"""Behave steps."""
+
+import behave
+import mainsource
+
+
+@behave.given("that I have a username {name}")
+def set_username(context, name):
+    context.username = name
+    return
+
+
+@behave.given("that I have a password {password}")
+def set_password(context, password):
+    context.password = password
+    return
+
+
+@behave.when("I try to create an user")
+def create_user(context):
+    try:
+        mainsource.create_user(context.username, context.password)
+    except mainsource.UserCreationError as exc:
+        context.last_exception = exc
+    return
+
+
+@behave.then("I should get an error of invalid password")
+def is_invalid_password(context):
+    assert hasattr(context, 'last_exception')
+    assert isinstance(context.last_exception,
+                      mainsource.PasswordIsNotStrongEnough)</code></pre>
+						
+					</section>
+
+					<section>
+						<h2>Behave</h2>
+
+						<pre><code>Feature: Testing passwords # features/example.feature:1
+
+  Scenario: Invalid password                       # features/example.feature:3
+    Given that I have a username foo               # features/steps/example_steps.py:9 0.001s
+    And that I have a password test123             # features/steps/example_steps.py:15 0.000s
+    When I try to create an user                   # features/steps/example_steps.py:21 0.001s
+    Then I should get an error of invalid password # features/steps/example_steps.py:30 0.000s
+
+1 feature passed, 0 failed, 0 skipped
+1 scenario passed, 0 failed, 0 skipped
+4 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.002s </code></pre>
+					</section>
+
+					<section>
+						<h2>Behave</h2>
+
+						<p>Vantagens:</p>
+
+						<ul>
+							<li>Mais simples</li>
+						</ul>
+					</section>
+				</section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+                    <section>
+                        <h1 class="fragment semi-opaque">Perguntas?</h1>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>

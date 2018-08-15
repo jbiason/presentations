@@ -7,7 +7,7 @@
 section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background h5, section.has-dark-background h6 {
   color: #fff; }
 
-.reveal section h1.semi-opaque {
+.reveal section .semi-opaque {
   background-color: rgba(0, 0, 0, 0.7);
   color: #fff;
   text-shadow: 2px 2px #000; }

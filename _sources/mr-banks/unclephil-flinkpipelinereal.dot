@@ -1,0 +1,270 @@
+digraph UnclePhil {
+	kafka [color=gray, label="Kafka"];
+
+	selector1 [label="Selector"];
+	selector2 [label="Selector"];
+	selector3 [label="Selector"];
+	selector4 [label="Selector"];
+	selector5 [label="Selector"];
+	selector6 [label="Selector"];
+	selector7 [label="Selector"];
+	selector8 [label="Selector"];
+	selector9 [label="Selector"];
+	selector10 [label="Selector"];
+	selector11 [label="Selector"];
+	selector12 [label="Selector"];
+
+	process1 [label="ProcessMessages"];
+	process2 [label="ProcessMessages"];
+	process3 [label="ProcessMessages"];
+	process4 [label="ProcessMessages"];
+	process5 [label="ProcessMessages"];
+	process6 [label="ProcessMessages"];
+	process7 [label="ProcessMessages"];
+	process8 [label="ProcessMessages"];
+	process9 [label="ProcessMessages"];
+	process10 [label="ProcessMessages"];
+	process11 [label="ProcessMessages"];
+	process12 [label="ProcessMessages"];
+
+	splitter1 [label="MessageSpliter"];
+	splitter2 [label="MessageSpliter"];
+	splitter3 [label="MessageSpliter"];
+	splitter4 [label="MessageSpliter"];
+	splitter5 [label="MessageSpliter"];
+	splitter6 [label="MessageSpliter"];
+	splitter7 [label="MessageSpliter"];
+	splitter8 [label="MessageSpliter"];
+	splitter9 [label="MessageSpliter"];
+	splitter10 [label="MessageSpliter"];
+	splitter11 [label="MessageSpliter"];
+	splitter12 [label="MessageSpliter"];
+
+	extract1 [label="MetricExtractor"];
+	extract2 [label="MetricExtractor"];
+	extract3 [label="MetricExtractor"];
+	extract4 [label="MetricExtractor"];
+	extract5 [label="MetricExtractor"];
+	extract6 [label="MetricExtractor"];
+	extract7 [label="MetricExtractor"];
+	extract8 [label="MetricExtractor"];
+	extract9 [label="MetricExtractor"];
+	extract10 [label="MetricExtractor"];
+	extract11 [label="MetricExtractor"];
+	extract12 [label="MetricExtractor"];
+
+	keyby [label="keyBy/Hash"];
+
+	window1 [label="Window"];
+	window2 [label="Window"];
+	window3 [label="Window"];
+	window4 [label="Window"];
+	window5 [label="Window"];
+	window6 [label="Window"];
+	window7 [label="Window"];
+	window8 [label="Window"];
+	window9 [label="Window"];
+	window10 [label="Window"];
+	window11 [label="Window"];
+	window12 [label="Window"];
+
+	reduce1 [label="Reduce"];
+	reduce2 [label="Reduce"];
+	reduce3 [label="Reduce"];
+	reduce4 [label="Reduce"];
+	reduce5 [label="Reduce"];
+	reduce6 [label="Reduce"];
+	reduce7 [label="Reduce"];
+	reduce8 [label="Reduce"];
+	reduce9 [label="Reduce"];
+	reduce10 [label="Reduce"];
+	reduce11 [label="Reduce"];
+	reduce12 [label="Reduce"];
+
+	sink1 [label="Sink"];
+	sink2 [label="Sink"];
+	sink3 [label="Sink"];
+	sink4 [label="Sink"];
+	sink5 [label="Sink"];
+	sink6 [label="Sink"];
+	sink7 [label="Sink"];
+	sink8 [label="Sink"];
+	sink9 [label="Sink"];
+	sink10 [label="Sink"];
+	sink11 [label="Sink"];
+	sink12 [label="Sink"];
+
+	kafka -> selector1;
+	kafka -> selector2;
+	kafka -> selector3;
+	kafka -> selector4;
+	kafka -> selector5;
+	kafka -> selector6;
+	kafka -> selector7;
+	kafka -> selector8;
+	kafka -> selector9;
+	kafka -> selector10;
+	kafka -> selector11;
+	kafka -> selector12;
+
+	selector1 -> process1;
+	selector2 -> process2;
+	selector3 -> process3;
+	selector4 -> process4;
+	selector5 -> process5;
+	selector6 -> process6;
+	selector7 -> process7;
+	selector8 -> process8;
+	selector9 -> process9;
+	selector10 -> process10;
+	selector11 -> process11;
+	selector12 -> process12;
+
+	process1 -> splitter1;
+	process2 -> splitter2;
+	process3 -> splitter3;
+	process4 -> splitter4;
+	process5 -> splitter5;
+	process6 -> splitter6;
+	process7 -> splitter7;
+	process8 -> splitter8;
+	process9 -> splitter9;
+	process10 -> splitter10;
+	process11 -> splitter11;
+	process12 -> splitter12;
+
+	splitter1 -> extract1;
+	splitter1 -> extract1;
+	splitter1 -> extract1;
+
+	splitter2 -> extract2;
+	splitter2 -> extract2;
+	splitter2 -> extract2;
+
+	splitter3 -> extract3;
+	splitter3 -> extract3;
+	splitter3 -> extract3;
+
+	splitter4 -> extract4;
+	splitter4 -> extract4;
+	splitter4 -> extract4;
+
+	splitter5 -> extract5;
+	splitter5 -> extract5;
+	splitter5 -> extract5;
+
+	splitter6 -> extract6;
+	splitter6 -> extract6;
+	splitter6 -> extract6;
+
+	splitter7 -> extract7;
+	splitter7 -> extract7;
+	splitter7 -> extract7;
+
+	splitter8 -> extract8;
+	splitter8 -> extract8;
+	splitter8 -> extract8;
+
+	splitter9 -> extract9;
+	splitter9 -> extract9;
+	splitter9 -> extract9;
+
+	splitter10 -> extract10;
+	splitter10 -> extract10;
+	splitter10 -> extract10;
+
+	splitter11 -> extract11;
+	splitter11 -> extract11;
+	splitter11 -> extract11;
+
+	splitter12 -> extract12;
+	splitter12 -> extract12;
+	splitter12 -> extract12;
+
+	extract1 -> keyby;
+	extract1 -> keyby;
+	extract1 -> keyby;
+
+	extract2 -> keyby;
+	extract2 -> keyby;
+	extract2 -> keyby;
+
+	extract3 -> keyby;
+	extract3 -> keyby;
+	extract3 -> keyby;
+
+	extract4 -> keyby;
+	extract4 -> keyby;
+	extract4 -> keyby;
+
+	extract5 -> keyby;
+	extract5 -> keyby;
+	extract5 -> keyby;
+
+	extract6 -> keyby;
+	extract6 -> keyby;
+	extract6 -> keyby;
+
+	extract7 -> keyby;
+	extract7 -> keyby;
+	extract7 -> keyby;
+
+	extract8 -> keyby;
+	extract8 -> keyby;
+	extract8 -> keyby;
+
+	extract9 -> keyby;
+	extract9 -> keyby;
+	extract9 -> keyby;
+
+	extract10 -> keyby;
+	extract10 -> keyby;
+	extract10 -> keyby;
+
+	extract11 -> keyby;
+	extract11 -> keyby;
+	extract11 -> keyby;
+
+	extract12 -> keyby;
+	extract12 -> keyby;
+	extract12 -> keyby;
+
+	keyby -> window1;
+	keyby -> window2;
+	keyby -> window3;
+	keyby -> window4;
+	keyby -> window5;
+	keyby -> window6;
+	keyby -> window7;
+	keyby -> window8;
+	keyby -> window9;
+	keyby -> window10;
+	keyby -> window11;
+	keyby -> window12;
+
+	window1 -> reduce1;
+	window2 -> reduce2;
+	window3 -> reduce3;
+	window4 -> reduce4;
+	window5 -> reduce5;
+	window6 -> reduce6;
+	window7 -> reduce7;
+	window8 -> reduce8;
+	window9 -> reduce9;
+	window10 -> reduce10;
+	window11 -> reduce11;
+	window12 -> reduce12;
+
+	reduce1 -> sink1;
+	reduce2 -> sink2;
+	reduce3 -> sink3;
+	reduce4 -> sink4;
+	reduce5 -> sink5;
+	reduce6 -> sink6;
+	reduce7 -> sink7;
+	reduce8 -> sink8;
+	reduce9 -> sink9;
+	reduce10 -> sink10;
+	reduce11 -> sink11;
+	reduce12 -> sink12;
+}

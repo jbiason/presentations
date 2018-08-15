@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Documentando Projetos Python com Sphinx</title>
+
+        <meta name="description" content="Colocando uma aplicação Flask em produção em 40 minutos (ou menos)">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="theme/azion.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none outside;
+            }
+
+            li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+			}
+
+			td.seen {
+				font-style: italic;
+				font-weight: bold;
+			}
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="_images/sphinx_logo.jpg" data-header>
+						<h1 class="semi-opaque">
+							Documentando Projetos Python com Sphinx
+						</h1>
+                    </section>
+                </section>
+
+				<section>
+					<section>
+						<h2>Sobre Sphinx</h2>
+
+						<ul>
+							<li>Ferramenta oficial de documentação de projetos Python</li>
+							<li>Usa reStructuredText por padrão</li>
+							<li>Arquitetura de plugins</li>
+							<li>Especificamente para Python, consegue extrair a documentação de 
+							    dentro de docstrings</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>reStructuredText</h2>
+						<h3>Títulos</h3>
+
+						<p>Abaixo do texto, p.ex.</p>
+
+						<pre><code>Título
+######</code></pre>
+
+						<p>
+							O caracter define o nível do tíulo. Depois de
+							<code>#</code>, vem <code>*</code>, <code>=</code>,
+							<code>-</code>, <code>^</code> e
+							<code>"</code>.
+						</p>
+					</section>
+
+					<section>
+						<h2>reStructuredText</h2>
+						<h3>Markup</h3>
+
+						<p>Um *asterísco* para <i>itálico</i>.</p>
+						<p>Dois **asteríscos** para <strong>negrito</strong>.</p>
+						<p>Duas ``crases`` para <code>código</code>.</p>
+					</section>
+
+					<section>
+						<h2>reStructuredText</h2>
+						<h3>Listas</h3>
+
+						<p><code>*</code> no começo da linha para bullets.</p>
+
+						<pre><code>* Listas podem ter
+  mais de uma linha.</code></pre>
+					</section>
+
+					<section>
+						<h2>reStructuredText</h2>
+						<h3>Listas</h3>
+
+						<p>Um número ou <code>#</code> seguido de ponto para uma lista numerada.</p>
+
+						<pre><code>1. Item 1.
+2. Item 2.</code></pre>
+					</section>
+
+					<section>
+						<h2>reStructuredText</h2>
+						<h3>Listas</h3>
+
+						<p>Para sublistas, basta identar.</p>
+
+						<pre><code>* Item 1
+   * Item 1.1
+   * Item 1.2
+* Item 2</code></pre>
+					</section>
+
+					<section>
+						<h2>reStructuredText</h2>
+
+						<p>
+							E ainda:
+
+							<ul>
+								<li>Tabelas!</li>
+								<li>Citações!</li>
+								<li>Listas de definições!</li>
+								<li class="fragment">COMMANDOS ESPECIAIS!</li>
+							</ul>
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Sphinx</h2>
+
+						<p>Certifique-se que Sphinx está instalado no virtualenv ativo.</p>
+
+						<p class="fragment">É bobo falar isso, mas é que ele não surge do nada.</p>
+					</section>
+
+					<section>
+						<h2>Sphinx</h2>
+
+						<p>Primeira vez? <code>sphinx-quickstart docs</code></p>
+
+						<p class="fragment">Responda o wizard.</p>
+
+						<p class="fragment">
+							Importante:<br/>
+							<code>&gt; autodoc: automatically insert docstrings from modules (y/n) [n]: y</code>
+						</p>
+
+						<p class="fragment">
+							(Se você esqueceu disso, é possível editar o arquivo de configuração depois.)
+						</p>
+					</section>
+
+					<section>
+						<h2>Sphinx</h2>
+
+						<pre><code>|-- Makefile
+|-- build
+`-- source
+    |-- _static
+    |-- _templates
+    |-- conf.py
+    `-- index.rst</code></pre>
+					</section>
+
+					<section>
+						<h2>Sphinx</h2>
+
+						<pre><code>Welcome to THE PROJECT!'s documentation!
+========================================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`</code></pre>
+					</section>
+
+					<section>
+						<h2>Sphinx</h2>
+
+						<p>
+							<code>make html</code>
+						</p>
+					</section>
+
+					<section>
+						<h2>Sphinx</h2>
+
+						<p>
+							<img src="_images/sphinx_sample.png" alt=""/>
+						</p>
+					</section>
+
+					<section>
+						<h2>Sphinx</h2>
+
+						source/about.rst
+
+						<pre><code>About the project
+#################
+
+*PROJECT!* is a **SUPER AWESOME** project.
+
+Believe us!</code></pre>
+					</section>
+
+					<section>
+						<h2>Sphinx</h2>
+
+						<p>
+							<code>make html</code>
+						</p>
+
+						<p class="fragment">
+							<code>checking consistency... /private/tmp/docs/source/about.rst:: WARNING: document isn't included in any toctree</code>
+						</p>
+					</section>
+
+					<section>
+						<h2>Sphinx</h2>
+
+						source/index.rst
+
+						<pre><code>Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   about</code></pre>
+					</section>
+
+					<section>
+						<h2>Sphinx</h2>
+
+						<img src="_images/sphinx_updated_index.png" alt=""/>
+					</section>
+
+					<section>
+						<h2>Sphinx</h2>
+
+						<img src="_images/sphinx_updated_about.png" alt=""/>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>CADÊ O PYTHON?</h1>
+					</section>
+
+					<section>
+						<h2>Autodoc</h2>
+
+						<p>Lembra do</p>
+						<p><code>&gt; autodoc: automatically insert docstrings from modules (y/n) [n]: y</code></p>
+						<p>?</p>
+					</section>
+
+					<section>
+						<h2>Autodoc</h2>
+
+						<p>source.py</p>
+
+						<p>
+							<pre><code>#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+
+"""This is a SUPER MODULE of the PROJECT! project."""
+
+
+def awesome():
+    """AWESOME function."""
+    return 'AWESOME!'</code></pre>
+						</p>
+					</section>
+
+					<section>
+						<h2>Autodoc</h2>
+
+						source/source.rst
+
+						<pre><code>THE SOURCE
+##########
+
+.. autofunction:: source.awesome</code></pre>
+					</section>
+
+					<section>
+						<h2>Autodoc</h2>
+
+						<p>source/conf.py <span class="fragment">&lt;- configuração do Sphinx</span></p>
+
+						<pre class='fragment'><code># If extensions (or modules to document with autodoc) are in another directory,
+# add these directories to sys.path here. If the directory is relative to the
+# documentation root, use os.path.abspath to make it absolute, like shown here.
+sys.path.insert(0, os.path.abspath('../../src'))</code></pre>
+
+						<p class="fragment">IMPORTANTE!</p>
+						<p class="fragment">É relativo ao <code>conf.py</code>, não do diretório do <code>make</code>.</p>
+					</section>
+
+					<section>
+						<h2>Autodoc</h2>
+
+						<img src="_images/sphinx_awesome.png" alt=""/>
+					</section>
+
+					<section>
+						<h2>Autodoc</h2>
+
+						<p>source.py</p>
+
+						<p>
+							<pre><code>def cool(name, awesomeness_level=100):
+    """Just a cool function.
+
+    :param str name: The cool person name.
+    :param awesomeness_level: Their awesomeness level.
+    :type awesomeness_level: int or None
+
+    :return: A message for the cool person.
+    :rtype: str
+
+    :raises ValueError: if the awesomeness level is over 9000.
+
+    :note: For true awesomeness, check :py:func:`source.awesome`.
+    """
+    return '{name} is just cool, not awesome'.format(name=name)</code></pre>
+						</p>
+					</section>
+
+					<section>
+						<h2>Autodoc</h2>
+
+						<p>source/source.rst</p>
+
+						<pre><code>THE SOURCE
+##########
+
+.. autofunction:: source.awesome
+.. autofunction:: source.cool</code></pre>
+					</section>
+
+					<section>
+						<h2>Autodoc</h2>
+						
+						<img src="_images/sphinx_cool.png" alt=""/>
+					</section>
+
+					<section>
+						<h2>Autodoc</h2>
+
+						<p>... peraí...</p>
+
+						<p>Cadê a documentação do módulo?</p>
+					</section>
+
+					<section>
+						<h2>Autodoc</h2>
+
+						<p>source/source.rst</p>
+
+						<p>
+							<pre><code>THE SOURCE
+##########
+
+.. .. autofunction:: source.awesome
+.. .. autofunction:: source.cool
+
+Ok, now you'll see **THE SOURCE**! It's the most freaking *awesome* source in
+the whole planet! 
+
+Try no to piss in your pants.
+
+.. automodule:: source
+   :members:</code></pre>
+						</p>
+					</section>
+
+					<section>
+						<h2>Autodoc</h2>
+
+						<img src="_images/sphinx_source_automodule.png" alt=""/>
+					</section>
+
+					<section>
+						<h2>Autodoc</h2>
+
+						<ul>
+							<li><code>autoclass</code>: documentação da classe inteira.</li>
+							<li><code>:members:</code>: contém a lista de membros a serem listados, none = tudo.</li>
+							<li><code>:undoc-members:</code>: usado com <code>:members:</code>, remove itens individuais da lista.</li>
+						</ul>
+					</section>
+				</section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+                    <section>
+                        <h1 class="fragment semi-opaque">Perguntas?</h1>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>

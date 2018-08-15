@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Mr Banks -- Ou Como Aprendi a Parar de Me Preocupar e Amar o Stream Processing</title>
+
+        <meta name="description" content="Colocando uma aplicação Flask em produção em 40 minutos (ou menos)">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="theme/azion.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none outside;
+            }
+
+            li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="_images/unclephil.jpg">
+						<h1 class="semi-opaque">
+							Mr Banks
+							<small class="fragment">Ou Como Aprendi a Parar de Me Preocupar e Amar o Stream Processing </small>
+						</h1>
+                    </section>
+                </section>
+
+				<section>
+					<section>
+						<h2>Batch Processing</h2>
+
+						<pre><code>
+cat /var/log/messages | grep sync | cut -d\  -f 1 | sort | uniq
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Batch Processing</h2>
+
+						<pre><code>
+v5	2017-10-17T11:09:59+00:00	7695w	27695w	
+1462530548	ha	1441740010	servico.clubeportoseguro.com.br	
+0.064	GET	BYPASS	200	-	200	1199	http	
+/api/produto	-	-	
+application/json; charset=utf-8	HTTP/1.1	
+230	1205	0.047	0.064	0.064	8000	
+200.230.226.125	17759	-	-	-	-	-	
+-	-	Jakarta Commons-HttpClient/3.1	-	-	-
+						</code></pre>
+
+						<aside class="notes">
+							Esse é uma linha de exemplo dos nossos logs.
+
+							Um dos nossos serviços, o Monkeys Collect, captura pacotes de
+							2000 dessas linhas e coloca no Kafka.
+						</aside>
+					</section>
+
+					<section>
+						<h2>Batch Processing</h2>
+
+						<ul>
+							<li>Campos são nomeados</li>
+							<li>É verificado o status do cache (hit, miss, updating, bypass)</li>
+							<li>É calculado a banda utilizada (do usuário pra edge, da edge pra origem, da origem de volta pra edge, e da edge pro usuário)</li>
+							<li>Dados são agrupados por cliente, produto e janela de tempo</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Batch Processing</h2>
+
+						<pre><code>
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-o
+
+import collections
+
+
+def default_data():
+    return {
+        'requests': 0,
+        'user_to_edge': 0,
+        'edge_to_origin': 0,
+        'origin_to_edge': 0,
+        'edge_to_user': 0,
+        'client': '',
+        'time': ''
+    }
+
+
+def to_bytes(string):
+    value = 0
+    for val1 in string.split(','):
+        for val2 in val1.split(':'):
+            if val2 != '-':
+                value += int(val2)
+    return value
+
+
+def main():
+    clients = collections.defaultdict(default_data)
+    with open('v5sample1.log') as content:
+        for line in content:
+            line = line.split('\t')
+            time = line[1]
+            client_id = line[2]
+            client = client_id + time[:16]
+            upstream_cache_status = line[10].lower()
+            upstream_bytes_received = to_bytes(line[14])
+            request_length = to_bytes(line[21])
+            bytes_sent = to_bytes(line[22])
+
+            clients[client]['requests'] += 1
+            clients[client]['user_to_edge'] += request_length
+            clients[client]['edge_to_origin'] += request_length \
+                if upstream_cache_status not in ['hit', 'updating'] \
+                else 0
+
+            clients[client]['origin_to_edge'] += upstream_bytes_received
+            clients[client]['edge_to_user'] += bytes_sent
+            clients[client]['client'] = client_id
+            clients[client]['time'] = 'at11_{min}'.format(min=time[14:16])
+
+if __name__ == "__main__":
+    main()
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Batch Processing</h2>
+
+						<p>Ou seja, se pegássemos cada arquivo e processássemos
+						linha por linha, teríamos um batch processing.</p>
+					</section>
+
+					<section>
+						<h2>Batch Processing</h2>
+
+						<p>Problemas:</p>
+
+						<ul>
+							<li class="fragment">Os logs não param.</li>
+							<li class="fragment">São ~25 arquivos/segundo gerados pela CDN. <span class="fragment">(Só HTTP)</span></li>
+							<li class="fragment">Cada arquivo é de uma máquina, não o agregado geral.</li>
+							<li class="fragment">"Event time" vs "Processing Time"</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>"Os logs não param"</h2>
+
+						<img src="_images/unclephil-nonstop.gif" height="200px" style="float:right" alt="The logs never stop"/>
+
+						<p class="fragment">Kafka</p>
+
+						<img class="fragment" src="_images/unclephil-kafka.png" alt="A simple representation of Kafka" />
+					</section>
+
+					<section>
+						<p>"São ~25 arquivos/segundo gerados pela CDN."</p>
+
+						<p>"Cada arquivo é de uma máquina, não o agregado geral."</p>
+						
+						<img class="fragment" src="_images/unclephil-victory.gif" alt="Kafka provides solution for those two too" />
+					</section>
+
+					<section>
+						<p>Se estamos processando os logs continuamente...</p>
+
+						<img class="fragment" src="_images/unclephil-continuous.gif" alt="" />
+
+						<h2 class="fragment">STREAM PROCESSING!</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>"Event time" vs "Processing Time"</h2>
+
+						<img src="_images/unclephil-time.jpg" height="300px" alt="Taking about Event time vs Processing Time"/>
+					</section>
+
+					<section>
+						<h2>"Event time" vs "Processing Time"</h2>
+
+						<ul>
+							<li class="fragment">Cada máquina está gerando logs no seu ritmo (máquinas menos acessadas geral logs mais devagar)</li>
+							<li class="fragment">Monkeys collect aguarda ter ~2000 linhas para enviar para o Kafka</li>
+							<li class="fragment">Mensagens tem que chegar ao Kafka e então serem processadas</li>
+							<li class="fragment"><code>v5	2017-10-17T11:09:59+00:00</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>"Event time" vs "Processing Time"</h2>
+
+						<p>Processing time: A hora que o evento foi <i>processado</i>.</p>
+						<p>Event time: A hora que o event foi <i>gerado</i>.</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Flink</h2>
+
+						<img src="_images/unclephil-kafkaflink.png" alt="A representation of flink consuming kafka events"/>
+					</section>
+
+					<section>
+						<h2>Flink</h2>
+						
+						<ul>
+							<li>Window: janela de tempo, com um período definido (1h, 1min).</li>
+							<li>Watermark: tempo a partir da criação da janela para começar a despejar os dados.</li>
+							<li>Lateness: tempo em que a janela permanece em memória.</li>
+							<li>Late arrivals: eventos que surgem depois que a janela foi removida.</li>
+						</ul>
+					</section>
+
+					<section data-transition="fade">
+						<h2>Flink</h2>
+
+						<img src="_images/unclephil-step0.png" alt=""/>
+					</section>
+
+					<section data-transition="fade">
+						<h2>Flink</h2>
+
+						<img src="_images/unclephil-step1.png" alt=""/>
+					</section>
+
+					<section data-transition="fade">
+						<h2>Flink</h2>
+
+						<img src="_images/unclephil-step2.png" alt=""/>
+					</section>
+
+					<section data-transition="fade">
+						<h2>Flink</h2>
+
+						<img src="_images/unclephil-step3.png" alt=""/>
+					</section>
+
+					<section data-transition="fade">
+						<h2>Flink</h2>
+
+						<img src="_images/unclephil-step4.png" alt=""/>
+
+						<img class="fragment" src="_images/unclephil-out.gif" alt="" style="float:right" width="240px"/>
+					</section>
+
+					<section data-transition="fade">
+						<h2>Flink</h2>
+
+						<img src="_images/unclephil-step5.png" alt=""/>
+					</section>
+
+					<section data-transition="fade">
+						<h2>Flink</h2>
+
+						<img src="_images/unclephil-step6.png" alt=""/>
+					</section>
+
+					<section data-transition="fade">
+						<h2>Flink</h2>
+
+						<img src="_images/unclephil-step7.png" alt=""/>
+
+						<p class="fragment" style="float:right">
+							<img src="_images/unclephil-out.gif" width="240px" alt=""/>
+							<br/>
+							<img src="_images/unclephil-out.gif" width="240px" alt=""/>
+						</p>
+					</section>
+
+					<section data-transition="fade">
+						<h2>Flink</h2>
+
+						<img src="_images/unclephil-step8.png" alt=""/>
+					</section>
+
+					<section data-transition="fade">
+						<h2>Flink</h2>
+
+						<img src="_images/unclephil-step9.png" alt=""/>
+					</section>
+
+					<section data-transition="fade">
+						<h2>Flink</h2>
+
+						<img src="_images/unclephil-step10.png" alt=""/>
+					</section>
+
+					<section>
+						<h2>Flink</h2>
+
+						<p>"One more thing..."</p>
+
+						<img src="_images/unclephil-onemorething.jpg" alt=""/>
+					</section>
+
+					<section>
+						<h2>Flink</h2>
+
+						<p>
+							Quando os registros são passados para a janela, eles são
+							agrupados (ao invés de conter todos os registros que se
+							encaixam na janela, somente os valores agrupados
+							são guardados).
+						</p> 
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Mr Banks</h2>
+
+						<img src="_images/unclephil-mrbanks.gif" alt=""/>
+					</section>
+
+					<section>
+						<h2>Mr Banks</h2>
+
+						<pre><code>source
+  .filter(new Selector(processor)).name(s"Selecting ${processor * 100}% messages")
+  .process(new ProcessMessages(brokenMessageTag)).name("Message Processor")
+  .flatMap(new MessageSpliter).name("Get Logs")   // get the lines in the message
+  .filter(new LogBrokenFilter).name("Remove broken logs")
+  .filter(new MissingClientFilter).name("Remove logs without clients")
+  .flatMap(new MetricExtractor).name("Create metrics")
+  .assignTimestampsAndWatermarks(new MetricTimestampAndWatermarks(watermarkTime)).name("Watermark")
+  .keyBy(_.key)
+  .window(TumblingEventTimeWindows.of(windowTime))
+  .allowedLateness(latenessTime)
+  .sideOutputLateData(lateMessageTag)
+  .reduce(new MetricReducer(), new MetricWindowTimeMatcher()).name("Group metrics")
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Mr Banks</h2>
+
+						<pre><code>.filter(new Selector(processor)).name(s"Selecting ${processor * 100}% messages")</code></pre>
+					</section>
+
+					<section>
+						<h2>Mr Banks</h2>
+
+						<pre><code>.process(new ProcessMessages(brokenMessageTag)).name("Message Processor")</code></pre>
+					</section>
+
+					<section>
+						<h2>Mr Banks</h2>
+
+						<pre><code>.flatMap(new MessageSpliter).name("Get Logs")</code></pre>
+					</section>
+
+					<section>
+						<h2>Mr Banks</h2>
+
+						<pre><code>.filter(new LogBrokenFilter).name("Remove broken logs")</code></pre>
+					</section>
+
+					<section>
+						<h2>Mr Banks</h2>
+
+						<pre><code>.filter(new MissingClientFilter).name("Remove logs without clients")</code></pre>
+					</section>
+
+					<section>
+						<h2>Mr Banks</h2>
+
+						<pre><code>.flatMap(new MetricExtractor).name("Create metrics")</code></pre>
+					</section>
+
+					<section>
+						<h2>Mr Banks</h2>
+
+						<pre><code>.assignTimestampsAndWatermarks(new MetricTimestampAndWatermarks(watermarkTime)).name("Watermark")</code></pre>
+					</section>
+
+					<section>
+						<h2>Mr Banks</h2>
+
+						<pre><code>.keyBy(_.key)</code></pre>
+					</section>
+
+					<section>
+						<h2>Mr Banks</h2>
+
+						<pre><code>.window(TumblingEventTimeWindows.of(windowTime))</code></pre>
+					</section>
+
+					<section>
+						<h2>Mr Banks</h2>
+
+						<pre><code>.allowedLateness(latenessTime)</code></pre>
+					</section>
+
+					<section>
+						<h2>Mr Banks</h2>
+
+						<pre><code>.sideOutputLateData(lateMessageTag)</code></pre>
+					</section>
+
+					<section>
+						<h2>Mr Banks</h2>
+
+						<pre><code>.reduce(new MetricReducer(), new MetricWindowTimeMatcher()).name("Group metrics")</code></pre>
+					</section>
+
+					<section>
+						<h2>Mr Banks</h2>
+
+						<img src="_images/unclephil-flinkpipeline.png" alt=""/>
+					</section>
+
+					<section>
+						<h2>Mr Banks</h2>
+
+						<img src="_images/unclephil-flinkpipelinereal.png" alt=""/>
+					</section>
+				</section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+                    <section>
+                        <h1 class="fragment semi-opaque">Perguntas?</h1>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
