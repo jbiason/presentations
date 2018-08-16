@@ -55,7 +55,7 @@
         <div class="reveal">
             <div class="slides">
                 <section>
-                    <!-- <section data-background="_images/tdd-kentbeck-book.jpg" data-header> -->
+                    <!-- <section data-header> -->
                     <section data-background="_images/tdd-kentbeck-book.jpg">
                         <h1 class="semi-opaque">Filosofando sobre Testes</h1>
                     </section>
@@ -107,6 +107,17 @@
 					</section>
                 </section>
 
+				<section>
+					<h2>Agenda:</h2>
+
+					<ul>
+						<li>TDD Kent Beck Style.</li>
+						<li>Fast Test, Slow Tests.</li>
+						<li>Explosão de testes.</li>
+						<li>Coverage.</li>
+					</ul>
+				</section>
+
                 <section>
                     <section>
                         <img src="_images/tdd-where-it-went-wrong.png" alt="TDD: Where it went wrong" class="stretch"/>
@@ -137,6 +148,8 @@
                         <p>Reddit: <a href="https://www.reddit.com/r/django/comments/5bearg/should_i_write_unit_tests_for_djangos_built_in/" target="_blank">Devo escrever testes para a validação interna do Django?</a></p>
 
                         <h1 class="fragment">SIM!</h1>
+
+						<p class="fragment">... bom, talvez sim.</p>
 					</section>
 
                     <section>
@@ -152,13 +165,109 @@
 
 				<section>
 					<section>
-						
+						<img src="_images/tdd-fast-test-slow-test.png" alt="" class="stretch"/>
+
+						<p>Gary Bernhardt: <a href="https://www.youtube.com/watch?v=RAxiiRPHS9k" target="_blank">Fast Test, Slow Test</a></p>
+					</section>
+
+					<section>
+						<img src="_images/tdd-fast-test-slow-test-2.png" alt=""/ class="stretch">
+					</section>
+
+					<section>
+						<h2>Fast Test, Slow Test</h2>
+
+						<ul>
+							<li>Testar modelos.</li>
+							<li>Testar views.</li>
+							<li>Testar controllers.</li>
+						</ul>
+
+						<p class="fragment">... soa familiar?</p>
+					</section>
+
+					<section>
+						<h2>Fast Test, Slow Test</h2>
+
+						<ul>
+							<li>Desenvolvedores podem testar, rapidamente, suas alterações.</li>
+							<li>Não significa que testes de integração não são necessários,
+							mas estes podem ser rodados no CI.</li>
+						</ul>
+
+						<p class="fragment">... continua soando familiar?</p>
+					</section>
+
+					<section>
+						<h2>Fast Test, Slow Test</h2>
+
+						<p>Qual o valor desse teste para o meu projeto?</p>
+					</section>
+
+					<section>
+						<h2>Fast Test, Slow Test</h2>
+
+						<p>Se eu estou escrevendo testes do meu modelo sem
+						que seja integrado com o meu controller, eu estou
+						testando o que?</p>
+
+						<p class="fragment"><u>Aderência a arquitetura do projeto</u>.</p>
+					</section>
+
+					<section>
+						<h2>Fast Test, Slow Test</h2>
+
+						<p>Se o teste que verifica a funcionalidade para
+						o usuário (integração) produz mais valor
+						que o teste que garante a aderência do projeto à
+						uma arquitetura, qual teste deve ser rodado
+						primariamente?</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>A Explosão dos Testes Lentos</h2>
+					</section>
+
+					<section>
+						<h2>Explosão de Testes Lentos</h2>
+
+						<p>"Testes de integração são lentos, então eu tenho que rodar-los
+							menos ou ter menos desses testes."</p>
+					</section>
+
+					<section>
+						<h2>Explosão de Testes Lentos</h2>
+
+						<ul>
+							<li>Rode apenas o teste da alteração que está sendo feita.</li>
+							<li class="fragment">Rode os testes relacionados.</li>
+							<li class="fragment">Deixe todos os demais testes para o CI.</li>
+						</ul>
+
 					</section>
 				</section>
 
                 <section>
+					<section>
+						<h2>Coverage</h2>
+					</section>
+
+					<section>
+						<h2>Coverage</h2>
+
+						<p>Se os testes indicam quais funcionalidades devem estar
+						presentes...</p>
+
+						<p class="fragment">... coverage vai indicar quais partes
+						de código não tem nada a ver com as funcionalidades que
+						vão ser entregues.</p>
+					</section>
+
                     <section>
-                        <h2>Exemplo</h2>
+                        <h2>Coverage</h2>
+						<h3>Exemplo</h3>
 
                         <pre><code class="python">
 class Client:
@@ -168,27 +277,16 @@ class Client:
                     </section>
 
                     <section>
-                        <h2>Exemplo</h2>
+                        <h2>Coverage</h2>
+						<h3>Exemplo</h3>
 
                         <p>Novo requisito: "somente aceitar nomes válidos, que tem 2
                             palavras ou mais."</p>
                     </section>
 
                     <section>
-                        <h2>Exemplo</h2>
-
-                        <p>SOLID principles:</p>
-                        <ul>
-                            <li><strong>SRP - Single Responsability Principle</strong></li>
-                            <li>OCP - Open/closed principle</li>
-                            <li>LSP - Liskov substitution principle (design by contract)</li>
-                            <li>ISP - Interface Segreation Principle</li>
-                            <li>DIP - Dependency Inversion Principle</li>
-                        </ul>
-                    </section>
-
-                    <section>
-                        <h2>Exemplo</h2>
+                        <h2>Coverage</h2>
+						<h3>Exemplo</h3>
 
                         <pre><code class="python">
 def _multiple_names(name):
@@ -207,7 +305,8 @@ class Client:
                     </section>
 
                     <section>
-                        <h2>Exemplo</h2>
+                        <h2>Coverage</h2>
+						<h3>Exemplo</h3>
 
                         <pre><code class="python">
 import pytest
@@ -221,7 +320,8 @@ def test_multiple_name():
                     </section>
 
                     <section>
-                        <h2>Exemplo</h2>
+                        <h2>Coverage</h2>
+						<h3>Exemplo</h3>
 
                         <pre><code class="python">
 def test_valid_name():
@@ -234,7 +334,8 @@ def test_invalid_name():
                     </section>
 
                     <section>
-                        <h2>Exemplo</h2>
+                        <h2>Coverage</h2>
+						<h3>Exemplo</h3>
 
                         <pre><code class="python">
 def test_client_error():
@@ -247,7 +348,8 @@ def test_client():
                     </section>
 
                     <section>
-                        <h2>Exemplo</h2>
+                        <h2>Coverage</h2>
+						<h3>Exemplo</h3>
 
                         <pre><code>
 $ pytest client.py
@@ -262,7 +364,8 @@ client.py ......
                     </section>
 
                     <section>
-                        <h2>Exemplo</h2>
+                        <h2>Coverage</h2>
+						<h3>Exemplo</h3>
 
                         <pre><code>
 $ pytest --cov=client client.py
@@ -282,13 +385,15 @@ client.py      25      0   100%
                     </section>
 
                     <section>
-                        <h2>Exemplo</h2>
+                        <h2>Coverage</h2>
+						<h3>Exemplo</h3>
 
                         <p>"Não podemos perder a Cher, a Xuxa, a Madonna, a Björk e o String como clientes!"</p>
                     </section>
 
                     <section>
-                        <h2>Exemplo</h2>
+                        <h2>Coverage</h2>
+						<h3>Exemplo</h3>
 
                         <pre><code class="python">
 class Client:
@@ -298,7 +403,8 @@ class Client:
                     </section>
 
                     <section>
-                        <h2>Exemplo</h2>
+                        <h2>Coverage</h2>
+						<h3>Exemplo</h3>
 
                         <pre><code>
 ==== FAILURES ====
@@ -315,7 +421,8 @@ client.py:37: Failed
                     </section>
 
                     <section>
-                        <h2>Exemplo</h2>
+                        <h2>Coverage</h2>
+						<h3>Exemplo</h3>
 
                         <pre><code>
 $ pytest  client.py
@@ -331,7 +438,8 @@ client.py ......
                     </section>
 
                     <section>
-                        <h2>Exemplo</h2>
+                        <h2>Coverage</h2>
+						<h3>Exemplo</h3>
 
                         <pre><code>
 $ pytest --cov=client  client.py
@@ -352,29 +460,35 @@ client.py      24      0   100%
                     </section>
 
                     <section>
-                        <h2>Exemplo</h2>
+                        <h2>Coverage</h2>
+						<h3>Exemplo</h3>
 
                         <p>Encontre o erro.</p>
                     </section>
-                </section>
 
-                <section>
-                    <h2>Resumo</h2>
+					<section>
+						<h2>Coverage</h2>
 
-                    <ul>
-                        <li>Escreva testes que verifiquem requisitos, não a
-                        implementação do requisito</li>
-                        <li>Implementação pode mudar, os testes não deveriam.</li>
-                        <li>Garanta que o teste dependa apenas de si mesmo
-                        e não de outros testes.</li>
-                        <li>Use cobertura (coverage) para identificar código
-                        a ser removido, não para escrever mais testes.</li>
-                    </ul>
+						<p>100% de cobertura de testes é possível.</p>
+
+						<p class="fragment">... desde que esteja disposto a escrever
+						código que testa funcionalidades do usuário e não conformidade
+						de arquitetura e código não coberto seja apagado.</p>
+					</section>
                 </section>
 
                 <section data-background='_images/thats-all-folks.jpg'>
                     <section>
                         <h1 class="fragment semi-opaque">Perguntas?</h1>
+
+						<div class="fragment semi-opaque">
+							<ul>
+								<li>@juliobiason</li>
+								<li>https://functional.cafe/@juliobiason</li>
+                                <li>julio.biason@gmail.com</li>
+                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+							</ul>
+						</div>
                     </section>
                 </section>
             </div>
