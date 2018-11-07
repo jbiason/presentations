@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Uma Não-Gentil Introdução ao Stream Processing</title>
+
+        <meta name="description" content="Uma introdução não-gentil ao stream processing">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="theme/azion.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none outside;
+            }
+
+            li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+            }
+
+            td.seen {
+                font-style: italic;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="_images/streamprocessing.jpg" data-header>
+                        <h1 class="semi-opaque">
+                            Stream Processing
+                        </h1>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
+
+                        <div>
+                            <ul class="empty">
+                                <li>Júlio Biason</li>
+                                <li>Azion Technologies<img src="_images/azion-logo.png" alt="Azion logo" class='company-logo'></li>
+                                <li>@juliobiason</li>
+								<li>https://functional.cafe/@juliobiason</li>
+                                <li>julio.biason@gmail.com</li>
+                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <img src="_images/start-a-fight.jpg" alt="Eu faço perguntas em reuniões que eu não sei nada e reunião explode; não é de propósito" class='stretch'/>
+
+                        <aside class="notes">
+                            Eu sou famoso (ou era) por entrar eu reuniões, fazer uma
+                            pergunta e a reunião explodir em discussões (úteis, diga-se
+                            de passagem). Mas eu não fazia isso de propósito.
+                        </aside>
+                    </section>
+
+					<section>
+						<img src="_images/mini-hitler.jpg" alt="Me chamaram de Mini Hitler"/>
+
+						<aside class="notes">
+							Para alguns, eu sou um mini-Hitler.
+						</aside>
+					</section>
+                </section>
+
+				<section>
+					<section>
+						<img class="stretch" src="_images/streamprocessing-azion.png" alt="Lista de pontos de presença da Azion" />
+					</section>
+
+					<section>
+						<h3>O que é uma CDN</h3>
+					</section>
+
+					<section>
+						<img class="stretch plain" src="_images/streamprocessing-connection.png" alt="" />
+
+						<aside class="notes">
+							Numa conexão "normal", o seu computador conecta no
+							modem, que se conecta em um servidor do seu
+							provedor, que se conecta em outro servidor, que se
+							conecta em outro, que se conecta em outro até que,
+							finalmente, ele chega ao servidor que você
+							realmente quer.
+						</aside>
+					</section>
+
+					<section>
+						<img class="stretch plain" src="_images/streamprocessing-cdn.png" alt="" />
+
+						<aside class="notes">
+							Com uma CDN, ao invés do servidor do provedor
+							atravessar toda a internet até chegar ao servidor
+							de destino, o servidor da CDN verifica se ele tem o
+							arquivo requisitado e, se tiver, responde
+							imediatamente.
+
+							Quem sai ganhando com uma CDN?
+
+							- O usuário, já que a resposta vem mais rápida.
+							- O cliente da CDN, pois ele não vai precisar ter
+							  um servidor ou uma banda larga para poder responder
+							  todos os usuários, já que alguns vão ficar somente
+							  na CDN.
+							- O provedor, já que ele tem que pagar qualquer
+							  tráfego que saia da sua rede.
+						</aside>
+					</section>
+
+					<section>
+						<img class="stretch plain" src="_images/streamprocessing-names.png" alt="" />
+
+						<aside class="notes">
+							Apenas para dar "nomes aos bois":
+
+							- "Usuário" é quem inicia a conexão.
+							- Cada servidor da CDN é chamado de Edge (e podem
+							  haver mais de uma edge em cada ponto de presença)
+							- O servidor do cliente da CDN é chamado de
+							  "origem" (já que esse tem os dados originais).
+						</aside>
+					</section>
+				</section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+				</section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
+
