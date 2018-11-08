@@ -200,6 +200,58 @@
 					<section data-background="_images/streamprocessing-message-broker.png">
 						<h1 class="semi-opaque">Message Brokers</h1>
 					</section>
+
+					<section>
+						<img class="plain stretch" src="_images/streamprocessing-broker.png" alt="" />
+
+						<aside class="notes">
+							Um message broker é um serviço que guarda dados
+							como um banco de dados, mas possui dois tipos de
+							clientes: 
+
+							- Um dos clientes é um "Producer", responsável pela
+							  geração de dados; numa analogia com banco de dados,
+							  seria um aplicativo que somente fizesse INSERRTS.
+
+							- O outro cliente é o "Consumer", responsável por
+							  ler os dados gerados os dados gerados pelo
+							  Producer.
+						</aside>
+					</section>
+
+					<section>
+						<img class="plain stretch" src="_images/streamprocessing-broker2.png" alt="" />
+
+						<aside class="notes">
+							Uma das vantagens de message brokers é que, havendo
+							um aumento da geração dos dados, é possível
+							simplesmente plugar mais um Producer.
+						</aside>
+					</section>
+
+					<section>
+						<img class="plain stretch" src="_images/streamprocessing-broker3.png" alt="" />
+
+						<aside class="notes">
+							... e, da mesma forma, se a produção de dados for
+							muito grande e o consumer não estiver dando conta,
+							basta adicionar mais Consumers.
+
+							... e o próprio mesage broker vai cuidar para
+							distribuir os dados do Producer entre os Consumers.
+						</aside>
+
+						<aside class="notes">
+							Message Brokers são também muito usados em
+							micro-serviços.
+						</aside>
+					</section>
+
+					<section>
+                        <img src="_images/streamprocessing-kafka.png" alt="Kafka Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+                        <img src="_images/streamprocessing-rabbitmq.png" alt="RabbitMQ Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+                        <img src="_images/streamprocessing-sqs.png" alt="AWS SQS Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+					</section>
 				</section>
 
 				<section>
