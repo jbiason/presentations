@@ -168,6 +168,44 @@
 							  "origem" (já que esse tem os dados originais).
 						</aside>
 					</section>
+
+					<section>
+						<h2>Por que isso é importante?</h2>
+
+						<ul>
+							<li>Os clientes são cobrados pelo tráfego que passa pela CDN.</li>
+							<li class="fragment"><strong>Queremos mostrar o consumo em tempo real.</strong></li>
+							<li class="fragment"><strong>... para todos os clientes.</strong></li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Como resolver isso?</h2>
+
+						<p>Poderíamos simplesmente ir somando o total</p>
+						<p class="fragment">... se não tivéssemos várias máquinas processando.</p>
+					</section>
+
+					<section>
+						<h2>Como resolver isso?</h2>
+
+						<p>Poderíamos mandar todos os dados para um banco de dados e ir marcando os registros como processados</p>
+						<p class="fragment">... se isso não significasse que o banco cresceria infinitamente.</p>
+						<p class="fragment">... a não ser que registros antigos fosse apagados.</p>
+						<p class="fragment">... que é o que serviços de mensageria fazem.</p>
+					</section>
+				</section>
+
+				<section>
+					<section data-background="_images/streamprocessing-message-broker.png">
+						<h1 class="semi-opaque">Message Brokers</h1>
+					</section>
+				</section>
+
+				<section>
+					<section data-background="_images/streamprocessing-monolith.jpg">
+						<h1 class="fragment semi-opaque">Batch Processing</h1>
+					</section>
 				</section>
 
                 <section data-background='_images/thats-all-folks.jpg'>
@@ -188,7 +226,7 @@
                 center: true,
                 // showNotes: true,
 
-                transition: 'slide', // none/fade/slide/convex/concave/zoom
+                transition: 'fade', // none/fade/slide/convex/concave/zoom
 
                 // Optional reveal.js plugins
                 dependencies: [
