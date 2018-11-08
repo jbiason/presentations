@@ -268,6 +268,169 @@
 					<section data-background="_images/streamprocessing-monolith.jpg">
 						<h1 class="fragment semi-opaque">Batch Processing</h1>
 					</section>
+
+					<section>
+						<pre><code>sudo cat /etc/shadow | cut -d ':' -f 2 | sort | uniq -c</code></pre>
+					</section>
+
+					<section>
+						<ul>
+							<li>Entrada: conteúdo do arquivo /etc/shadow</li>
+							<li>Processamento: capturando o segundo campo separado por ":"</li>
+							<li>Agrupamento: ordenamento dos dados (sort + uniq)</li>
+							<li>Saída: total de duplicados (ainda uniq)</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>Batch processing seria o caso de processar os dados de um dia.</p>
+
+						<p>Se novos dados entrassem no total do dia, bastaria reprocessar os dados do dia.</p>
+
+						<p class="fragment">ou do mês, ou do ano.</p>
+					</section>
+
+					<section>
+						<img class="stretch plain" src="_images/dunno.jpg" alt="" />
+
+                        <aside class="notes">
+                            Esse é todo o conhecimento que eu tenho de batch
+                            processing, simplesmente porque eu pulei
+                            diretamente para stream processing sem nunca ter
+                            feito muita coisa com batch processing.
+                        </aside>
+					</section>
+
+					<section>
+                        <img src="_images/streamprocessing-spark.png" alt="Apache Spark Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+                        <img src="_images/streamprocessing-hadoop.png" alt="Apache Hadoop Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+					</section>
+				</section>
+
+				<section>
+					<section data-background="_images/streamprocessing-functional.jpg">
+						<h1 class="semi-opaque">Programação Funcional</h1>
+					</section>
+
+					<section>
+						<h2>Buzzwords!</h2>
+
+						<ul>
+							<li>Teoria das Categorias!</li>
+							<li title="In category theory, a branch of mathematics, a monad (also triple, triad, standard construction and fundamental construction)[1] is an endofunctor (a functor mapping a category to itself), together with two natural transformations. Monads are used in the theory of pairs of adjoint functors, and they generalize closure operators on partially ordered sets to arbitrary categories.">Monads!</li>
+							<li>Functors!</li>
+						</ul>
+					</section>
+
+					<section>
+						<img class="stretch" src="_images/fuck-that.jpg" alt="" />
+					</section>
+
+					<section>
+						<h2>Funções Puras</h2>
+
+						<p class="fragment">Uma função é considerada pura se
+							ela sempre retorna o mesmo resultado para os mesmos
+							parâmetros.</p>
+					</section>
+
+					<section>
+						<pre><code>def mult(a):
+    return a * 4</code></pre>
+					</section>
+
+					<section>
+						<pre><code>mult(2)</code></pre>
+						<span class="fragment">8</span>
+
+						<pre class="fragment"><code>mult(2)</code></pre>
+						<span class="fragment">8</span>
+					</section>
+
+					<section>
+						<pre><code>class LightSwitch:
+    def __init__(self):
+        self.state = False
+
+    def switch(self):
+        self.state = not self.state
+        print(self.state)</code></pre>
+					</section>
+
+                    <section>
+                        <pre><code>light = LightSwitch()
+light.switch()</code></pre>
+                        <span class="fragment">True</span>
+
+                        <pre class="fragment"><code>light.switch()</code></pre>
+                        <span class="fragment">False</span>
+                    </section>
+
+                    <section>
+                        <pre><code>print()</code></pre>
+
+                        <aside class="notes">
+                            Por mais estranho que possa soar, `print()` também
+                            não é uma função pura, porque chamar print() duas
+                            vezes vai deixar duas linhas na tela.
+                        </aside>
+
+                        <pre class="fragment"><code>INSERT INTO table (value, value)</code></pre>
+
+                        <aside class="notes">
+                            Insert também não é considerada uma função pura,
+                            porque cada vez que é chamada adiciona um novo
+                            registro na tabela.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Imutabilidade</h2>
+
+                        <p>Uma vez que o dado é gerado, ele nunca muda.</p>
+
+                        <p class="fragment"><small>(Transparência referencial)</small></p>
+                    </section>
+
+                    <section>
+                        <img src="_images/lisp.png" alt="">
+
+                        <aside class="notes">
+                            Mas uma coisa legal que seguiu a teoria das
+                            categorias, implementando programação funcional,
+                            foi Lisp.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <ul>
+                            <li><code>map()</code></li>
+                            <li><code>reduce()</code></li>
+                            <li class="fragment"><code>fold()</code></li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <ul>
+                            <li><code>(map lambda iterator)</code></li>
+                            <li><code>(reduce lambda iterator)</code></li>
+                            <li><code>(fold lambda iterator start)</code></li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <ul>
+                            <li><code>map</code>: transforma cada um dos
+                                elementos do iterador através do função lambda
+                                em uma nova lista.</li>
+                            <li><code>reduce</code>: remove elementos do
+                                iterador que não sejam verdadeiros pelo lambda
+                                e produz uma nova lista. </li>
+                            <li><code>fold</code>: converte todos os elementos
+                                da lista em um único valor, começando com um
+                                valor adicionar (por exemplo, <code>sum</code>).</li>
+                        </ul>
+                    </section>
 				</section>
 
                 <section data-background='_images/thats-all-folks.jpg'>
