@@ -113,6 +113,7 @@
 
 				<section>
 					<section>
+                        <h2>This is Azion</h2>
 						<img class="stretch" src="_images/streamprocessing-azion.png" alt="Lista de pontos de presença da Azion" />
 					</section>
 
@@ -170,10 +171,10 @@
 					</section>
 
 					<section>
-						<h2>Por que isso é importante?</h2>
+						<h2>O que uma CDN tem a ver com Stream Processing?</h2>
 
 						<ul>
-							<li>Os clientes são cobrados pelo tráfego que passa pela CDN.</li>
+							<li class="fragment">Os clientes são cobrados pelo tráfego que passa pela CDN.</li>
 							<li class="fragment"><strong>Queremos mostrar o consumo em tempo real.</strong></li>
 							<li class="fragment"><strong>... para todos os clientes.</strong></li>
 						</ul>
@@ -434,6 +435,67 @@ light.switch()</code></pre>
                         </ul>
                     </section>
 				</section>
+
+                <section>
+                    <section data-background="_images/streamprocessing.jpg">
+                        <h1 class="semi-opaque">Stream Processing</h1>
+                    </section>
+
+					<section>
+						<pre><code>sudo cat /etc/shadow | cut -d ':' -f 2 | sort | uniq -c</code></pre>
+					</section>
+
+					<section>
+                        <pre><code>sudo cat [broker] | cut -d ':' -f 2 | sort | uniq -c</code></pre>
+					</section>
+
+					<section>
+                        <pre><code>sudo cat [broker] | map | sort | uniq -c</code></pre>
+					</section>
+
+					<section>
+                        <pre><code>sudo cat [broker] | map | fold</code></pre>
+					</section>
+
+					<section>
+                        <pre><code>sudo cat [broker] | map | fold</code></pre>
+                        <pre><code>sudo cat [broker] | map | fold</code></pre>
+                        <pre><code>sudo cat [broker] | map | fold</code></pre>
+                        <pre><code>sudo cat [broker] | map | fold</code></pre>
+                        <pre><code>sudo cat [broker] | map | fold</code></pre>
+					</section>
+
+					<section>
+                        <pre><code>sudo cat [broker] | map | group_by | fold</code></pre>
+                        <pre><code>sudo cat [broker] | map | group_by | fold</code></pre>
+                        <pre><code>sudo cat [broker] | map | group_by | fold</code></pre>
+                        <pre><code>sudo cat [broker] | map | group_by | fold</code></pre>
+                        <pre><code>sudo cat [broker] | map | group_by | fold</code></pre>
+					</section>
+
+                    <section>
+                        <img class="stretch" src="_images/streamprocessing-streamprocessing.png" alt=""/>
+                    </section>
+
+                    <section>
+                        <img class="stretch" src="_images/streamprocessing-pipeline.png" alt="" />
+                    </section>
+
+                    <section>
+                        <img src="_images/streamprocessing-storm.png" alt="Apache Spark Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+                        <img src="_images/streamprocessing-flink.png" alt="Apache Spark Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+                        <img src="_images/streamprocessing-wallaroo.png" alt="Apache Spark Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+                        <img src="_images/streamprocessing-beam.png" alt="Apache Spark Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+                    </section>
+
+					<section>
+                        "A distributed system is one in which the failure of a
+                        computer you didn't even know existed can render your
+                        own computer unusable"
+
+						-- Leslie Lamport, 1987
+					</section>
+                </section>
 
                 <section data-background='_images/thats-all-folks.jpg'>
 				</section>
