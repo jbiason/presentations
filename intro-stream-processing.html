@@ -83,7 +83,7 @@
                         <div>
                             <ul class="empty">
                                 <li>Júlio Biason</li>
-                                <li>Azion Technologies<img src="_images/azion-logo.png" alt="Azion logo" class='company-logo'></li>
+                                <li><img src="_images/azion-logo.png" alt="Azion logo" class='company-logo'>Azion Technologies</li>
                                 <li>@juliobiason</li>
 								<li>https://functional.cafe/@juliobiason</li>
                                 <li>julio.biason@gmail.com</li>
@@ -112,9 +112,26 @@
                 </section>
 
 				<section>
+					<h2>O que eu vou falar:</h2>
+
+					<ul>
+						<li>Processamento distribuído</li>
+						<li>Batch Processing</li>
+						<li>Programação Funcional</li>
+						<li>Stream processing</li>
+						<li>(Big Data)</li>
+					</ul>
+				</section>
+
+				<section>
 					<section>
                         <h2>This is Azion</h2>
 						<img class="stretch" src="_images/streamprocessing-azion.png" alt="Lista de pontos de presença da Azion" />
+
+						<aside class="notes">
+							Esse é o mapa de Pontos de Presença da Azion. Em
+							alguns desses lugares, temos mais de um servidor.
+						</aside>
 					</section>
 
 					<section>
@@ -171,13 +188,38 @@
 					</section>
 
 					<section>
-						<h2>O que uma CDN tem a ver com Stream Processing?</h2>
+						<h2>This is Azion</h2>
+						
+						<p>Em média, a CDN atende 50.000 requisições/segundo.</p>
+					</section>
+
+					<section>
+						<h2>CDN? Stream Processing?</h2>
 
 						<ul>
 							<li class="fragment">Os clientes são cobrados pelo tráfego que passa pela CDN.</li>
 							<li class="fragment"><strong>Queremos mostrar o consumo em tempo real.</strong></li>
 							<li class="fragment"><strong>... para todos os clientes.</strong></li>
+							<li class="fragment"><strong>...e os dados não páram de ser gerados.</strong></li>
+
+							<aside class="notes">
+								Um dos problemas que a CDN enfrenta é que ela
+								está sempre atendendo requisições. Assim,
+								informações estão sempre aparecendo e tentar
+								gerar os resultados em tempo real é complicado.
+							</aside>
 						</ul>
+					</section>
+
+					<section>
+						<h2>CDN? Stream Processing?</h2>
+
+						<p>
+							Impossível guardar os 50.000 registros/segundo num
+							banco de dados e fazer um SELECT pra ver o total.
+						</p>
+
+						<p class="fragment">Precisamos os dados "read ready".</p>
 					</section>
 
 					<section>
@@ -185,13 +227,24 @@
 
 						<p>Poderíamos simplesmente ir somando o total</p>
 						<p class="fragment">... se não tivéssemos várias máquinas processando.</p>
+
+						<aside class="notes">
+							Se estívessemos usando apenas uma máquina, a cada
+							linha de log gerada poderíamos ir somando o que
+							cada cliente consumiu. Acontece que temos várias
+							máquinas (de novo, em alguns POPs, tem mais de um
+							servidor) e aí entram questões de transferência de
+							dados de um lado para o outro, tempo de latência de
+							rede e tudo mais. Isso tudo complica na hora de
+							juntar os dados.
+						</aside>
 					</section>
 
 					<section>
 						<h2>Como resolver isso?</h2>
 
-						<p>Poderíamos mandar todos os dados para um banco de dados e ir marcando os registros como processados</p>
-						<p class="fragment">... se isso não significasse que o banco cresceria infinitamente.</p>
+						<p>Poderíamos mandar todos os dados para um banco de dados e ir calculando e marcando esses como processados.</p>
+						<p class="fragment" title="Os arquivos de log, zipados, ocupam petabytes">... se isso não significasse que o banco cresceria infinitamente.</p>
 						<p class="fragment">... a não ser que registros antigos fosse apagados.</p>
 						<p class="fragment">... que é o que serviços de mensageria fazem.</p>
 					</section>
@@ -262,6 +315,18 @@
 							- SQS (dentro da Amazon)
 							- ZeroMQ
 						</aside>
+
+						<aside class="notes">
+							Desses, o ZeroMQ e RabbitMQ são os mais usados para
+							integração entre micro-serviços; para stream
+							processing, Kafka é o grande vencedor
+							(provavelmente pela forma como ele permite que mais
+							de um consumidor se conecte a uma fila de dados e
+							como os dados são particionados para permitir
+							consumidores concorrentes); SQS é mais utilizado
+							para integração entre outros serviços Amazon com o
+							Lambda.
+						</aside>
 					</section>
 				</section>
 
@@ -276,10 +341,10 @@
 
 					<section>
 						<ul>
-							<li>Entrada: conteúdo do arquivo /etc/shadow</li>
-							<li>Processamento: capturando o segundo campo separado por ":"</li>
-							<li>Agrupamento: ordenamento dos dados (sort + uniq)</li>
-							<li>Saída: total de duplicados (ainda uniq)</li>
+							<li><strong>Entrada</strong>: conteúdo do arquivo /etc/shadow</li>
+							<li><strong>Processamento</strong>: capturando o segundo campo separado por ":"</li>
+							<li><strong>Agrupamento</strong>: ordenamento dos dados (sort + uniq)</li>
+							<li><strong>Saída</strong>: total de duplicados (ainda uniq)</li>
 						</ul>
 					</section>
 
@@ -387,6 +452,16 @@ light.switch()</code></pre>
                         <pre class="fragment"><code>random()</code></pre>
                     </section>
 
+					<section>
+						<p>"Idempotência"</p>
+
+						<aside class="notes">
+							A ideia de que rodar alguma coisa e ela sempre
+							responde da mesma forma também é chamado de
+							"idempotência".
+						</aside>
+					</section>
+
                     <section>
                         <h2>Imutabilidade</h2>
 
@@ -423,13 +498,13 @@ light.switch()</code></pre>
 
                     <section>
                         <ul>
-                            <li><code>map</code>: transforma cada um dos
+                            <li><code><strong>map</strong></code>: transforma cada um dos
                                 elementos do iterador através do função lambda
                                 em uma nova lista.</li>
-                            <li><code>reduce</code>: remove elementos do
+                            <li><code><strong>reduce</strong></code>: remove elementos do
                                 iterador que não sejam verdadeiros pelo lambda
                                 e produz uma nova lista. </li>
-                            <li><code>fold</code>: converte todos os elementos
+                            <li><code><strong>fold</strong></code>: converte todos os elementos
                                 da lista em um único valor, começando com um
                                 valor adicionar (por exemplo, <code>sum</code>).</li>
                         </ul>
@@ -481,12 +556,28 @@ light.switch()</code></pre>
                         <img class="stretch" src="_images/streamprocessing-pipeline.png" alt="" />
                     </section>
 
+					<section>
+						<img class="stretch" src="_images/unclephil-flinkpipelinereal.png" alt="" />
+					</section>
+
                     <section>
-                        <img src="_images/streamprocessing-storm.png" alt="Apache Spark Logo" style="float:left;width:200px;margin:50px;" class="no-border">
-                        <img src="_images/streamprocessing-flink.png" alt="Apache Spark Logo" style="float:left;width:200px;margin:50px;" class="no-border">
-                        <img src="_images/streamprocessing-wallaroo.png" alt="Apache Spark Logo" style="float:left;width:200px;margin:50px;" class="no-border">
-                        <img src="_images/streamprocessing-beam.png" alt="Apache Spark Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+                        <img src="_images/streamprocessing-storm.png" alt="Apache Storm Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+                        <img src="_images/streamprocessing-flink.png" alt="Apache Flink Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+                        <img src="_images/streamprocessing-wallaroo.png" alt="Wallaroo  Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+                        <img src="_images/streamprocessing-beam.png" alt="Apache Beam Logo" style="float:left;width:200px;margin:50px;" class="no-border">
                     </section>
+
+					<section>
+						<img class="stretch" src="_images/broken-gif-Andy-Samberg.gif" alt="" />
+					</section>
+
+					<section>
+						<img class="stretch" src="_images/normal12.jpg" alt="" />
+					</section>
+
+					<section>
+						<img class="stretch" src="_images/zuul.jpg" alt="" />
+					</section>
 
 					<section>
                         "A distributed system is one in which the failure of a
@@ -498,6 +589,11 @@ light.switch()</code></pre>
                 </section>
 
                 <section data-background='_images/thats-all-folks.jpg'>
+					<h3 class="semi-opaque fragment">
+						Por falar nisso, estamos contratando :) </p>
+
+						<a href="http://jobs.azion.com">jobs.azion.com</a>
+					</h3>
 				</section>
             </div>
         </div>
