@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
         <link rel="stylesheet" href="reveal.js/css/reveal.css">
-        <link rel="stylesheet" href="theme/azion.css" id="theme">
+        <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
 
         <!-- Code syntax highlighting -->
         <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
@@ -62,6 +62,16 @@
                 font-style: italic;
                 font-weight: bold;
             }
+
+			.semi-opaque {
+				background-color: rgba(0, 0, 0, 0.7);
+				color: #fff;
+				text-shadow: 2px 2px #000;
+			}
+
+			.reveal h1 {
+				font-size: 3em !important;
+			}
         </style>
     </head>
 
@@ -147,20 +157,6 @@
 							  na CDN.
 							- O provedor, já que ele tem que pagar qualquer
 							  tráfego que saia da sua rede.
-						</aside>
-					</section>
-
-					<section>
-						<img class="stretch plain" src="_images/streamprocessing-names.png" alt="" />
-
-						<aside class="notes">
-							Apenas para dar "nomes aos bois":
-
-							- "Usuário" é quem inicia a conexão.
-							- Cada servidor da CDN é chamado de Edge (e podem
-							  haver mais de uma edge em cada ponto de presença)
-							- O servidor do cliente da CDN é chamado de
-							  "origem" (já que esse tem os dados originais).
 						</aside>
 					</section>
 
