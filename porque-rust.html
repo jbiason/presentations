@@ -94,7 +94,7 @@
 					</section>
 
 					<section>
-						<pre><code>
+						<pre><code class="hljs rust" data-trim>
 fn main() {
     let a = 2;
     a = 3;
@@ -104,7 +104,7 @@ fn main() {
 					</section>
 
 					<section>
-						<pre><code>
+						<pre><code class="hljs" data-trim>
 3 |     let a = 2;
   |         -
   |         |
@@ -116,7 +116,7 @@ fn main() {
 					</section>
 
 					<section>
-						<pre><code>
+						<pre><code class="hljs rust" data-trim>
 fn main() {
     let mut a = 2;
     a = 3;
@@ -132,25 +132,27 @@ fn main() {
 					</section>
 
 					<section>
-						<pre><code>
-a = 2
+						<pre><code class="hljs rust" data-trim>
+a = String::from("hello");
 						</code></pre>
 					</section>
 
 					<section>
-						"Variável <code>a</code> tem o valor 2"
+						"Variável <code>a</code> tem o valor <code>"hello"</code>"
 					</section>
 
 					<section>
 						<div>
-							"Posição de memória apontada por <code>a</code> tem o valor 2"
+							"Posição de memória apontada por <code>a</code> tem o valor <code>"hello"</code>"
 						</div>
 
 						<div class="fragment">
 							<pre><code>
-0x3f5cbf89 = 2
+0x3f5cbf89 = "hello"
 							</code></pre>
 						</div>
+
+						<img src="_images/rust-memory.png" alt="" class="fragment">
 					</section>
 
 					<section>
@@ -165,7 +167,7 @@ a = 2
 					</section>
 
 					<section>
-						<pre><code>
+						<pre><code class="hljs rust" data-trim>
 fn main() {
     let a = String::from("hello");
     let _b = a;
@@ -189,19 +191,23 @@ error[E0382]: borrow of moved value: `a`
 					</section>
 
 					<section>
-						<h3>E se eu precisar acessar a variável em mais de um lugar?</h3>
+						<p>E se eu precisar acessar a variável em mais de um lugar?</p>
 
-						<p class="fragment">References</p>
+						<h3 class="fragment">References</h3>
 					</section>
 
 					<section>
-						<pre><code>
+						<pre><code class="hljs rust" data-trim>
 fn main() {
     let a = String::from("hello");
     let _b = &a;
     println!("{}", a)
 }
 						</code></pre>
+					</section>
+
+					<section>
+						<img src="_images/rust-reference.png" alt="">
 					</section>
 
 					<section>
@@ -225,11 +231,18 @@ fn main() {
 					</section>
 
 					<section>
-						<img src="_images/rust-memory.png" alt="">
+						<img src="_images/dunno.jpg" alt="">
 					</section>
 
 					<section>
-						<img src="_images/rust-reference.png" alt="">
+						<pre><code class="hljs go" data-trim>presente := Presente { ... }
+canal &lt;- presente</code></pre>
+					</section>
+
+					<section>
+						<pre><code class="hljs go" data-trim>presente := Presente { ... }
+canal &lt;- presente
+presente.abrir()</code></pre>
 					</section>
 
 					<section>
@@ -239,11 +252,14 @@ fn main() {
 
 				<section>
 					<section>
-						<h2>Enums</h2>
+						<h2>Tipos Algébricos</h2>
+
+						<p class="fragment">(structs)</p>
 					</section>
 
 					<section>
-						<pre><code>
+						<h3>enum</h3>
+						<pre><code class="hljs rust" data-trim>
 enum IpAddr {
    V4,
    V6
@@ -252,7 +268,7 @@ enum IpAddr {
 					</section>
 
 					<section>
-						<pre><code>
+						<pre><code class="hljs rust" data-trim>
 enum IpAddr {
     V4(String),
     V6(String),
@@ -261,18 +277,18 @@ enum IpAddr {
 					</section>
 
 					<section>
-						<pre><code>
+						<pre><code class="hljs rust" data-trim>
 let home = IpAddr::V4(String::from("127.0.0.1");
 
 match home {
-    V4(address) => println!("IPv4 addr: {}", address),
-    V6(address) => println!("Ipv6 addr: {}", address),
+    V4(address) =&gt; println!("IPv4 addr: {}", address),
+    V6(address) =&gt; println!("Ipv6 addr: {}", address),
 }
 						</code></pre>
 					</section>
 
 					<section>
-						<pre><code>
+						<pre><code class="hljs rust" data-trim>
 enum Option&lt;T&gt; {
     Some(T),
     None
@@ -287,7 +303,7 @@ enum Option&lt;T&gt; {
 					</section>
 
 					<section>
-						<pre><code>
+						<pre><code class="hljs python" data-trim>
 try:
     something()
 except Exception:
@@ -296,7 +312,7 @@ except Exception:
 					</section>
 
 					<section>
-						<pre><code>
+						<pre><code class="hljs java" data-trim>
 try {
    something();
 } catch (Exception ex) {
@@ -306,7 +322,7 @@ try {
 					</section>
 
 					<section>
-						<pre><code>
+						<pre><code class="hljs c" data-trim>
 FILE* f = fopen("someting.txt", "wb");
 fprintf(f, "Done!");
 fclose(f);
@@ -320,7 +336,7 @@ fclose(f);
 					</section>
 
 					<section>
-						<pre><code>
+						<pre><code class="hljs rust" data-trim>
 enum Result&lt;T, E&gt; {
     Ok(T),
     Err(E),
@@ -329,36 +345,36 @@ enum Result&lt;T, E&gt; {
 					</section>
 
 					<section>
-						<pre><code>
+						<pre><code class="hljs rust" data-trim>
 File::create("something.txt") match {
-    Ok(fp) => fp.write_all(b"Hello world"),
-    Err(err) => println!("Failure! {}", err),
+    Ok(fp) =&gt; fp.write_all(b"Hello world"),
+    Err(err) =&gt; println!("Failure! {}", err),
 }
 						</code></pre>
 					</section>
 
 					<section>
-						<pre><code>
+						<pre><code class="hljs rust" data-trim>
 File::create("something.txt") match {
-    Ok(fp) => fp.write_all(b"Hello world") match {
-        Ok(_) => (),
-        Err(err) => println!("Can't write! {}", err),
+    Ok(fp) =&gt; fp.write_all(b"Hello world") match {
+        Ok(_) =&gt; (),
+        Err(err) =&gt; println!("Can't write! {}", err),
     }
-    Err(err) => println!("Failure! {}", err),
+    Err(err) =&gt; println!("Failure! {}", err),
 }
 						</code></pre>
 					</section>
 
                     <section>
-                        <pre><code>
-let mut file = File::create("something.txt).unwrap();
+                        <pre><code class="hljs rust" data-trim>
+let mut file = File::create("something.txt").unwrap();
 file.write(b"Hello world").unwrap();
                         </code></pre>
                     </section>
 
                     <section>
-                        <pre><code>
-let mut file = File::create("something.txt)?;
+                        <pre><code class="hljs rust" data-trim>
+let mut file = File::create("something.txt")?;
 file.write(b"Hello world")?;
 OK(())
                         </code></pre>
@@ -379,7 +395,7 @@ OK(())
 					</section>
 
 					<section>
-						<img src="_images/rust-issues.png" alt="4.5k issues no Github">
+						<img src="_images/rust-issues.png" alt="4.5k issues no Github" class="stretch">
 					</section>
 
                     <section>
