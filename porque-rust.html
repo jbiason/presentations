@@ -63,9 +63,9 @@
                 font-weight: bold;
             }
 
-			.semi-opaque {
-				background-color: rgba(0, 0, 0, 0.7);
-			}
+            .semi-opaque {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
         </style>
     </head>
 
@@ -78,33 +78,51 @@
                     </section>
                 </section>
 
-				<section>
-					<section>
-						<p>
-							<a href="https://insights.stackoverflow.com/survey/2019">A languagem mais amada segundo o StackOverflow Survey</a>
+                <section>
+                    <section>
+                        <img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
 
-							<p class="fragment">... pelo 4⁰ ano seguido.</p>
-						</p>
-					</section>
-				</section>
+                        <div>
+                            <ul class="empty">
+                                <li>Júlio Biason</li>
+                                <li>https://functional.cafe/@juliobiason</li>
+                                <li>julio.biason@pm.me</li>
+                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>Imutabilidade por Default</h2>
-					</section>
+                <section>
+                    <section>
+                        <p>
+                            <a href="https://insights.stackoverflow.com/survey/2019">
+                                A languagem mais amada segundo o StackOverflow
+                                Survey 2019
+                            </a>
 
-					<section>
-						<pre><code class="hljs rust" data-trim>
+                            <p class="fragment">... pelo 4⁰ ano seguido.</p>
+                        </p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Imutabilidade por Default</h2>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs rust" data-trim>
 fn main() {
     let a = 2;
     a = 3;
     println!("{}", a);
 }
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<pre><code class="hljs" data-trim>
+                    <section>
+                        <pre><code class="hljs" data-trim>
 3 |     let a = 2;
   |         -
   |         |
@@ -112,72 +130,72 @@ fn main() {
   |         help: make this binding mutable: `mut a`
 4 |     a = 3;
   |     ^^^^^ cannot assign twice to immutable variable
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<pre><code class="hljs rust" data-trim>
+                    <section>
+                        <pre><code class="hljs rust" data-trim>
 fn main() {
     let mut a = 2;
     a = 3;
     println!("{}", a);
 }
-						</code></pre>
-					</section>
-				</section>
+                        </code></pre>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>Borrow Checker</h2>
-					</section>
+                <section>
+                    <section>
+                        <h2>Borrow Checker</h2>
+                    </section>
 
-					<section>
-						<pre><code class="hljs rust" data-trim>
+                    <section>
+                        <pre><code class="hljs rust" data-trim>
 a = String::from("hello");
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						"Variável <code>a</code> tem o valor <code>"hello"</code>"
-					</section>
+                    <section>
+                        "Variável <code>a</code> tem o valor <code>"hello"</code>"
+                    </section>
 
-					<section>
-						<div>
-							"Posição de memória apontada por <code>a</code> tem o valor <code>"hello"</code>"
-						</div>
+                    <section>
+                        <div>
+                            "Posição de memória apontada por <code>a</code> tem o valor <code>"hello"</code>"
+                        </div>
 
-						<div class="fragment">
-							<pre><code>
+                        <div class="fragment">
+                            <pre><code>
 0x3f5cbf89 = "hello"
-							</code></pre>
-						</div>
+                            </code></pre>
+                        </div>
 
-						<img src="_images/rust-memory.png" alt="" class="fragment">
-					</section>
+                        <img src="_images/rust-memory.png" alt="" class="fragment">
+                    </section>
 
-					<section>
-						<div>
-							A language that doesn't affect the way you think
-							about programming, is not worth knowing.
-						</div>
+                    <section>
+                        <div>
+                            A language that doesn't affect the way you think
+                            about programming, is not worth knowing.
+                        </div>
 
-						<div>
-							-- Alan Perlis, "ALGOL"
-						</div>
-					</section>
+                        <div>
+                            -- Alan Perlis, "ALGOL"
+                        </div>
+                    </section>
 
-					<section>
-						<pre><code class="hljs rust" data-trim>
+                    <section>
+                        <pre><code class="hljs rust" data-trim>
 fn main() {
     let a = String::from("hello");
     let _b = a;
     println!("{}", a)
 }
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<pre><code>
+                    <section>
+                        <pre><code>
 error[E0382]: borrow of moved value: `a`
  --> src/main.rs:5:20
   |
@@ -187,174 +205,202 @@ error[E0382]: borrow of moved value: `a`
   |                    ^ value borrowed here after move
   |
   = note: move occurs because `a` has type `std::string::String`, which does not implement the `Copy` trait
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<p>E se eu precisar acessar a variável em mais de um lugar?</p>
+                    <section>
+                        <p>E se eu precisar acessar a variável em mais de um lugar?</p>
 
-						<h3 class="fragment">References</h3>
-					</section>
+                        <h3 class="fragment">References</h3>
+                    </section>
 
-					<section>
-						<pre><code class="hljs rust" data-trim>
+                    <section>
+                        <pre><code class="hljs rust" data-trim>
 fn main() {
     let a = String::from("hello");
     let _b = &a;
     println!("{}", a)
 }
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<img src="_images/rust-reference.png" alt="">
-					</section>
+                    <section>
+                        <img src="_images/rust-reference.png" alt="">
+                    </section>
 
-					<section>
-						<h3>Regras do Borrow Checker</h3>
+                    <section>
+                        <h3>Regras do Borrow Checker</h3>
 
-						<ul>
-							<li class="fragment">Uma região de memória tem apenas um dono.</li>
-							<li class="fragment">Uma região de memória pode ter inifitas referências 
-								<span class="fragment">
-									desde que elas não durem mais do que o dono.
-								</span>
-							</li>
-							<li class="fragment">
-								É possível ter uma referência mutável de uma região de memória 
-								<span class="fragment">
-									mas para haver uma referência mutável ela deve ser a <strong>única</strong>
-									referência.
-								</span>
-							</li>
-						</ul>
-					</section>
+                        <p class="fragment">
+                            Uma região de memória tem apenas um dono.
+                        </p>
 
-					<section>
-						<img src="_images/dunno.jpg" alt="">
-					</section>
+                        <p class="fragment">
+                            A região é desalocada quando o dono sair de escopo.
+                        </p>
+                    </section>
 
-					<section>
-						<pre><code class="hljs go" data-trim>presente := Presente { ... }
+                    <section>
+                        <h3>Regras do Borrow Checker</h3>
+
+                        <p class="fragment">
+                            Uma região de memória pode ter inifitas referências.
+                        </p>
+
+                        <p class="fragment">
+                            ... desde que elas não durem mais do que o dono.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Regras do Borrow Checker</h3>
+
+                        <p class="fragment">
+                            É possível ter uma referência mutável de uma região de memória.
+                        </p>
+
+                        <p class="fragment">
+                            ... mas para haver uma referência mutável ela deve ser
+                            a <strong>única</strong> referência.
+                        </p>
+                    </section>
+
+                    <section>
+                        <img src="_images/dunno.jpg" alt="">
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs go" data-trim>presente := Presente { ... }
 canal &lt;- presente</code></pre>
-					</section>
+                    </section>
 
-					<section>
-						<pre><code class="hljs go" data-trim>presente := Presente { ... }
+                    <section>
+                        <pre><code class="hljs go" data-trim>presente := Presente { ... }
 canal &lt;- presente
 presente.abrir()</code></pre>
-					</section>
+                    </section>
 
-					<section>
-						<a href="https://swift.org/blog/swift-5-exclusivity/">Swift 5 Exclusivity Enforcement</a>
-					</section>
-				</section>
+                    <section>
+                        <a href="https://swift.org/blog/swift-5-exclusivity/">Swift 5 Exclusivity Enforcement</a>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>Tipos Algébricos</h2>
+                <section>
+                    <section>
+                        <h2>Tipos Algébricos</h2>
 
-						<p class="fragment">(structs)</p>
-					</section>
+                        <p class="fragment">(structs)</p>
+                    </section>
 
-					<section>
-						<h3>enum</h3>
-						<pre><code class="hljs rust" data-trim>
+                    <section>
+                        <h3>struct</h3>
+
+                        <pre><code class="hljs rust" data-trim>
+struct Present {
+    package_color: String,
+    content: String
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>enum</h3>
+                        <pre><code class="hljs rust" data-trim>
 enum IpAddr {
    V4,
    V6
 }
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<pre><code class="hljs rust" data-trim>
+                    <section>
+                        <pre><code class="hljs rust" data-trim>
 enum IpAddr {
     V4(String),
     V6(String),
 }
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<pre><code class="hljs rust" data-trim>
+                    <section>
+                        <pre><code class="hljs rust" data-trim>
 let home = IpAddr::V4(String::from("127.0.0.1");
 
 match home {
     V4(address) =&gt; println!("IPv4 addr: {}", address),
     V6(address) =&gt; println!("Ipv6 addr: {}", address),
 }
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<pre><code class="hljs rust" data-trim>
+                    <section>
+                        <pre><code class="hljs rust" data-trim>
 enum Option&lt;T&gt; {
     Some(T),
     None
 }
-						</code></pre>
-					</section>
-				</section>
+                        </code></pre>
+                    </section>
+                </section>
 
-				<section>
-					<section>
-						<h2>Error Control</h2>
-					</section>
+                <section>
+                    <section>
+                        <h2>Error Control</h2>
+                    </section>
 
-					<section>
-						<pre><code class="hljs python" data-trim>
+                    <section>
+                        <pre><code class="hljs python" data-trim>
 try:
     something()
 except Exception:
     pass
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<pre><code class="hljs java" data-trim>
+                    <section>
+                        <pre><code class="hljs java" data-trim>
 try {
    something();
 } catch (Exception ex) {
    System.out.println(ex);
 }
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<pre><code class="hljs c" data-trim>
+                    <section>
+                        <pre><code class="hljs c" data-trim>
 FILE* f = fopen("someting.txt", "wb");
 fprintf(f, "Done!");
 fclose(f);
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<div>
-							Onde o erro foi tratado nisso?
-						</div>
-					</section>
+                    <section>
+                        <div>
+                            Onde o erro foi tratado nisso?
+                        </div>
+                    </section>
 
-					<section>
-						<pre><code class="hljs rust" data-trim>
+                    <section>
+                        <pre><code class="hljs rust" data-trim>
 enum Result&lt;T, E&gt; {
     Ok(T),
     Err(E),
 }
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<pre><code class="hljs rust" data-trim>
+                    <section>
+                        <pre><code class="hljs rust" data-trim>
 File::create("something.txt") match {
     Ok(fp) =&gt; fp.write_all(b"Hello world"),
     Err(err) =&gt; println!("Failure! {}", err),
 }
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<pre><code class="hljs rust" data-trim>
+                    <section>
+                        <pre><code class="hljs rust" data-trim>
 File::create("something.txt") match {
     Ok(fp) =&gt; fp.write_all(b"Hello world") match {
         Ok(_) =&gt; (),
@@ -362,8 +408,8 @@ File::create("something.txt") match {
     }
     Err(err) =&gt; println!("Failure! {}", err),
 }
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
                     <section>
                         <pre><code class="hljs rust" data-trim>
@@ -379,24 +425,30 @@ file.write(b"Hello world")?;
 OK(())
                         </code></pre>
                     </section>
-				</section>
+                </section>
 
-				<section>
-					<section>
-						<h2>Crazy stuff</h2>
-					</section>
+                <section>
+                    <section>
+                        <h2>Macros</h2>
+                    </section>
+                </section>
 
-					<section>
-						<a href="https://medium.com/@shnatsel/how-rusts-standard-library-was-vulnerable-for-years-and-nobody-noticed-aebf0503c3d6">How Rust’s standard library was vulnerable for years and nobody noticed</a>
-					</section>
+                <section>
+                    <section>
+                        <h2>Crazy stuff</h2>
+                    </section>
 
-					<section>
-						<a href="https://medium.com/@sgrif/no-the-problem-isnt-bad-coders-ed4347810270">No, the problem isn’t “bad coders”</a>
-					</section>
+                    <section>
+                        <a href="https://medium.com/@shnatsel/how-rusts-standard-library-was-vulnerable-for-years-and-nobody-noticed-aebf0503c3d6">How Rust’s standard library was vulnerable for years and nobody noticed</a>
+                    </section>
 
-					<section>
-						<img src="_images/rust-issues.png" alt="4.5k issues no Github" class="stretch">
-					</section>
+                    <section>
+                        <a href="https://medium.com/@sgrif/no-the-problem-isnt-bad-coders-ed4347810270">No, the problem isn’t “bad coders”</a>
+                    </section>
+
+                    <section>
+                        <img src="_images/rust-issues.png" alt="4.5k issues no Github" class="stretch">
+                    </section>
 
                     <section>
                         <a href="https://rustup.rs/">rustup</a>
@@ -413,36 +465,36 @@ OK(())
                             <small>wasm32-unknown-unknown</small> <small class="fragment">(WebAssembly)</small>
                         </div>
                     </section>
-				</section>
+                </section>
 
-				<section>
-					<section>
-						<h2>Bibliotecas</h2>
-					</section>
+                <section>
+                    <section>
+                        <h2>Bibliotecas</h2>
+                    </section>
 
-					<section>
-						<h3>Rayon</h3>
+                    <section>
+                        <h3>Rayon</h3>
 
-						<pre><code>
+                        <pre><code>
 fn sum_of_squares(input: &amp;[i32]) -&gt; i32 {
     input.iter()
          .map(|&amp;i| i * i)
          .sum()
 }
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
-					<section>
-						<h3>Rayon</h3>
+                    <section>
+                        <h3>Rayon</h3>
 
-						<pre><code>
+                        <pre><code>
 fn sum_of_squares(input: &amp;[i32]) -&gt; i32 {
     input.par_iter()
          .map(|&amp;i| i * i)
          .sum()
 }
-						</code></pre>
-					</section>
+                        </code></pre>
+                    </section>
 
                     <section>
                         <h3>Log-Derive</h3>
@@ -458,44 +510,52 @@ fn call_isan(num: &amp;str) -&gt; Result&lt;Success, Error&gt; {
 }
                         </code></pre>
                     </section>
-				</section>
+                </section>
 
-				<section>
-					<section>
-						<h2>E quem usa?</h2>
-					</section>
+                <section>
+                    <section>
+                        <h2>E quem usa?</h2>
+                    </section>
 
-					<section>
-						<h3>Magic Pocket</h3>
+                    <section>
+                        <h3>Magic Pocket</h3>
 
-						<p>Dropbox</p>
+                        <p>Dropbox</p>
 
-						<p>Petabyte storage</p>
-					</section>
+                        <p>Petabyte storage</p>
+                    </section>
 
-					<section>
-						<h3>Servo</h3>
+                    <section>
+                        <h3>Servo</h3>
 
-						<p>Mozilla</p>
+                        <p>Mozilla</p>
 
-						<p>Base do Firefox Quantum</p>
-					</section>
+                        <p>Base do Firefox Quantum</p>
+                    </section>
 
-					<section>
-						<h3>Azure</h3>
+                    <section>
+                        <h3>Azure</h3>
 
-						<p>Microsoft</p>
+                        <p>Microsoft</p>
 
-						<p>Usado na parte de IoT do Azure</p>
-					</section>
+                        <p>Usado na parte de IoT do Azure</p>
+                    </section>
 
-					<section>
-						<h3>Tor</h3>
-					</section>
-				</section>
+                    <section>
+                        <h3>Tor</h3>
+                    </section>
+                </section>
 
                 <section data-background='_images/thats-all-folks.jpg'>
-				</section>
+                    <div class="semi-opaque">
+                        <ul class="empty">
+                            <li>Júlio Biason</li>
+                            <li>https://functional.cafe/@juliobiason</li>
+                            <li>julio.biason@pm.me</li>
+                            <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+                        </ul>
+                    </div>
+                </section>
             </div>
         </div>
 
