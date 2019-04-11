@@ -392,7 +392,7 @@ enum Result&lt;T, E&gt; {
 
                     <section>
                         <pre><code class="hljs rust" data-trim>
-File::create("something.txt") match {
+match File::create("something.txt") {
     Ok(fp) =&gt; fp.write_all(b"Hello world"),
     Err(err) =&gt; println!("Failure! {}", err),
 }
@@ -401,8 +401,8 @@ File::create("something.txt") match {
 
                     <section>
                         <pre><code class="hljs rust" data-trim>
-File::create("something.txt") match {
-    Ok(fp) =&gt; fp.write_all(b"Hello world") match {
+match File::create("something.txt") {
+    Ok(fp) =&gt; match fp.write_all(b"Hello world") {
         Ok(_) =&gt; (),
         Err(err) =&gt; println!("Can't write! {}", err),
     }
@@ -432,6 +432,28 @@ OK(())
                         <h2>Macros</h2>
                     </section>
                 </section>
+
+				<section>
+					<section>
+						<h2>Hora da anedota!</h2>
+
+						<img class="stretch" src="_images/senta-que-la-vem-historia.gif" alt="">
+					</section>
+
+					<section>
+						<p>localtime</p>
+
+						<p class="fragment">SimpleDateFormatter</p>
+					</section>
+
+					<section>
+						<h3>Rust resolveria isso?</h3>
+
+						<h2 class="fragment">Não</h2>
+
+						<h4 class="fragment">... na verdade, nem ia compilar.</h4>
+					</section>
+				</section>
 
                 <section>
                     <section>
