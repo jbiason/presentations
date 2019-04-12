@@ -122,7 +122,7 @@
 					</section>
 
 					<section>
-						<p>Resultado final com performance semelhate ao C...</p>
+						<p>Resultado final com performance semelhante ao C...</p>
 
 						<img src="_images/rust-energy.png" alt="">
 
@@ -206,6 +206,10 @@ fn main() {
 
 						<aside class="notes">
 							... a não ser que você transforme sua variável em mutável.
+
+							Ainda, Rust tem funcionalidades para facilitar
+							copiar dados de um lado para o outro (como o
+							"spread operator" em structs).
 						</aside>
                     </section>
                 </section>
@@ -440,6 +444,18 @@ presente.abrir()</code></pre>
 
 					<section>
 						<h2>E GC?</h2>
+
+						<p class="fragment">GC não é determinístico.</p>
+
+						<aside class="notes">
+							Um problema com GC é que ele é não determinístico:
+							uma hora o teu código roda rápido e outro momento
+							ele fica lento, sem que tu consiga entender o
+							porque.
+
+							Sem GC, a execução do código torna-se determinística e
+							tu pode ter certeza da velocidade de execução.
+						</aside>
 					</section>
 
                     <section>
@@ -705,6 +721,24 @@ OK(())
                         </div>
                     </section>
                 </section>
+
+				<section>
+					<section>
+						<h2>Falando em WASM...</h2>
+					</section>
+
+					<section>
+						<h2>WASM</h2>
+
+						<p><a href="https://rustwasm.github.io/wasm-pack/installer/">wasm-pack</a></p>
+					</section>
+
+					<section>
+						<h2><a href="https://wasi.dev/">WASI</a></h2>
+
+						<p>The WebAssembly System Interface</p>
+					</section>
+				</section>
 
                 <section>
                     <section>
