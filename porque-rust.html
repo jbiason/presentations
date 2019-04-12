@@ -102,13 +102,69 @@
                             </a>
 
                             <p class="fragment">... pelo 4⁰ ano seguido.</p>
+
+							<aside class="notes">
+								O resultado do StackOverflow é sobre qual
+								linguagem os programadores realmente gostam de
+								programar (e quais eles tem pavor de usar).
+
+								Pessoalmente, depois de 30 anos programando,
+								quando começei a brincar com Rust, eu
+								finalmente me diverti enquanto programava.
+							</aside>
                         </p>
                     </section>
                 </section>
 
                 <section>
+					<section>
+						<h2>"Low Level Language with High Level Abstractions"</h2>
+					</section>
+
+					<section>
+						<p>Resultado final com performance semelhate ao C...</p>
+
+						<img src="_images/rust-energy.png" alt="">
+
+						<aside class="notes">
+							Num estudo sobre quais linguagens consomem mais
+							energia, Rust chegou bem próximo de C.
+
+							Parte do trabalho de otimização do Rust vem da LLVM
+							(parte do pacote do Clang), mas a árvore de
+							abstração ainda é gerada pela linguagem -- o que
+							significa que o compilador Rust consegue "ajudar" o
+							LLVM a otimizar o código.
+						</aside>
+					</section>
+
+					<section>
+						<p>... mas com abstrações em algo nível</p>
+
+						<ul>
+							<li>Strings sem tamanho fixo</li>
+							<li>Listas</li>
+							<li>Mapas</li>
+						</ul>
+
+						<aside class="notes">
+							Ao contrário de C, em que só se mexe com ponteiros
+							pra cima e pra baixo, Rust tem todas as abstrações
+							de alto nível que estamos acostumados com outras
+							linguagens.
+						</aside>
+					</section>
+				</section>
+
                     <section>
                         <h2>Imutabilidade por Default</h2>
+
+						<aside class="notes">
+							Por que "imutabilidade" seria algo importante?
+							Imutabilidade muda a forma como pensamos nos dados,
+							e evita que o estado fique mudando quando não
+							queremos.
+						</aside>
                     </section>
 
                     <section>
@@ -131,6 +187,11 @@ fn main() {
 4 |     a = 3;
   |     ^^^^^ cannot assign twice to immutable variable
                         </code></pre>
+
+						<aside class="notes">
+							Se você tentar mudar um dado depois de criado, o
+							compilador Rust não vai deixar.
+						</aside>
                     </section>
 
                     <section>
@@ -141,12 +202,25 @@ fn main() {
     println!("{}", a);
 }
                         </code></pre>
+
+						<aside class="notes">
+							... a não ser que você transforme sua variável em mutável.
+						</aside>
                     </section>
                 </section>
 
                 <section>
                     <section>
                         <h2>Borrow Checker</h2>
+
+						<aside class="notes">
+							O "Borrow Checker" é uma das principais novidades
+							do Rust em comparação com outras linguagens.
+
+							Ele basicamente controla como as variáveis vão ser
+							alocadas, quando serão desalocadas, quem pode
+							acessar o conteúdo da mesma e assim por diante.
+						</aside>
                     </section>
 
                     <section>
@@ -157,6 +231,12 @@ a = String::from("hello");
 
                     <section>
                         "Variável <code>a</code> tem o valor <code>"hello"</code>"
+
+						<aside class="notes">
+							Em todas as linguagens que eu usei, sempre que via
+							uma atribuição, eu pensava "a variável X tem o
+							valor Y" -- mesmo em C.
+						</aside>
                     </section>
 
                     <section>
@@ -170,7 +250,24 @@ a = String::from("hello");
                             </code></pre>
                         </div>
 
-                        <img src="_images/rust-memory.png" alt="" class="fragment">
+						<aside class="notes">
+							Nunca uma linguagem me fez "despensar" no nome da
+							variável pra pensar que ela representa, na verdade,
+							uma posição de memória.
+						</aside>
+					</section>
+
+					<section>
+                        <img src="_images/rust-memory.png" alt="" class="fragment stretch">
+
+						<aside class="notes">
+							É mais ou menos isso que Rust "pensa" internamente
+							quando vê uma variável: uma posição de memória, de
+							um tamanho já definido, de um tipo definido.
+
+							E essa posição de memória *pertence* apenas à
+							variável indicada.
+						</aside>
                     </section>
 
                     <section>
@@ -206,12 +303,24 @@ error[E0382]: borrow of moved value: `a`
   |
   = note: move occurs because `a` has type `std::string::String`, which does not implement the `Copy` trait
                         </code></pre>
+
+						<aside class="notes">
+							O borrow checked não deixa a variável "a" ser
+							utilizada: quando a atribuímos "_b" o valor de "a",
+							o que estamos fazendo é indicando que aquela
+							posição de memória agora é controlada por "_b" e
+							não mais por "a".
+						</aside>
                     </section>
 
                     <section>
                         <p>E se eu precisar acessar a variável em mais de um lugar?</p>
 
                         <h3 class="fragment">References</h3>
+
+						<aside class="notes">
+							Assim como C++, Rust tem o conceito de "referências".
+						</aside>
                     </section>
 
                     <section>
@@ -225,7 +334,12 @@ fn main() {
                     </section>
 
                     <section>
-                        <img src="_images/rust-reference.png" alt="">
+                        <img src="_images/rust-reference.png" alt="" class="stretch">
+
+						<aside class="notes">
+							Uma referência nada mais é que um ponteiro para um
+							"controlador" de uma região de memória.
+						</aside>
                     </section>
 
                     <section>
@@ -238,6 +352,16 @@ fn main() {
                         <p class="fragment">
                             A região é desalocada quando o dono sair de escopo.
                         </p>
+
+						<aside class="notes">
+							Uma coisa engraçada sobre "quando sair de escopo" é
+							que existe uma função semelhante ao "free()" do C,
+							chamada "drop". Essa função não tem nada no corpo,
+							e recebe um parâmetro (sem ser por referência), se
+							tornando a dona da memória; assim, como ela termina
+							exatamente naquele ponto, a região de memória é
+							liberada.
+						</aside>
                     </section>
 
                     <section>
@@ -250,6 +374,14 @@ fn main() {
                         <p class="fragment">
                             ... desde que elas não durem mais do que o dono.
                         </p>
+
+						<aside class="notes">
+							Não é possível ter uma função que cria uma variável
+							e retorna apenas uma referência para essa variável:
+							no momento que a função for encerrada, ela irá
+							levar todas as variáveis com ela e as referências
+							se tornaram inválidas.
+						</aside>
                     </section>
 
                     <section>
@@ -267,22 +399,54 @@ fn main() {
 
                     <section>
                         <img src="_images/dunno.jpg" alt="">
+
+						<aside class="notes">
+							E o que isso ajuda, no final das contas?
+						</aside>
                     </section>
 
                     <section data-transition="fade">
                         <pre><code class="hljs go" data-trim>presente := Presente { ... }
 canal &lt;- presente
 &nbsp;</code></pre>
+
+						<aside class="notes">
+							Num exemplo em Go, criamos uma estrutura e passamos
+							essa estrutura para outra thread através de um
+							canal.
+						</aside>
                     </section>
 
                     <section data-transition="fade">
                         <pre><code class="hljs go" data-trim>presente := Presente { ... }
 canal &lt;- presente
 presente.abrir()</code></pre>
+
+						<aside class="notes">
+							... e depois de passar o presente pra outra pessoa,
+							nós abrimos o presente.
+
+							Mas se estamos entregando um presente pra alguém,
+							como é que estamos abrindo o presente?
+
+							O borrow checker não permite esse tipo de coisa:
+							Ele irá barrar a função atual de continuar
+							utilizando a variável porque, afinal de contas,
+							agora a região de memória pertence à outra função
+							(uma função que está rodando em outra thread).
+						</aside>
                     </section>
 
                     <section>
                         <a href="https://swift.org/blog/swift-5-exclusivity/">Swift 5 Exclusivity Enforcement</a>
+
+						<aside class="notes">
+							A ideia do borrow checker é tão interessante que
+							até o Swift 5 agora tem o seu próprio borrow
+							checker (com outro nome, mas o princípio da coisa é
+							basicamente o mesmo, apesar de ser um pouco mais
+							leve no Swift).
+						</aside>
                     </section>
                 </section>
 
@@ -297,6 +461,32 @@ presente.abrir()</code></pre>
 						<p>localtime</p>
 
 						<p class="fragment">SimpleDateFormatter</p>
+
+						<aside class="notes">
+							A muito tempo atrás, eu estava ajudando uma colega
+							a resolver um problema com processamento de eventos
+							num projeto em C. Aparentemente, quando um evento
+							era processado, acontecia do tempo de processamento
+							ficar errado (algo como ficar negativo ou levar
+							menos de 10ms pra fazer uma query num banco
+							oracle). Quando perguntei como ela estava
+							calculando o tempo, ela me falou que estava usando
+							o "localtime". Foi quando me lembrei que
+							"localtime" não é thread-safe e, por isso, quando
+							uma thread passava pela chamada da função, o valor
+							era "resetado".
+
+							Outra situação aconteceu recentemente: Num projeto
+							Java, começou a acontecer de, em alguns casos, a
+							função que convertia strings para Date começou a
+							dar resultados completamente errados.
+							Estranhamente, eu lembrei da questão do localtime e
+							perguntei se o projeto usava threads: sim; fui
+							direto no DuckDuckGo e procurei por
+							"simpledateformatter thread safe" e o primeiro
+							resultado foi uma pergunta do StackOverflow: "Why
+							isn't SimpleDateFormatter thread-safe?"
+						</aside>
 					</section>
 
 					<section>
@@ -305,6 +495,17 @@ presente.abrir()</code></pre>
 						<h2 class="fragment">Não</h2>
 
 						<h4 class="fragment">... na verdade, nem ia compilar.</h4>
+
+						<aside class="notes">
+							Uma questão importante para o Rust são "Zero Cost
+							Abstractions", segundo a definição do Bjarne
+							Stroustrup, criado do C++: para que algo seja
+							aceito no compilador, é preciso que o custo de não
+							usar algo não acarrete nada; ou seja, tornar uma
+							função thread-safe simplesmente inserindo um mutex,
+							não é zero cost porque, se tu não estiver usando
+							threads, não faz sentido o mutex.
+						</aside>
 					</section>
 				</section>
 
@@ -324,6 +525,10 @@ struct Present {
     content: String
 }
                         </code></pre>
+
+						<aside class="notes">
+							 
+						</aside>
                     </section>
 
                     <section>
@@ -456,6 +661,12 @@ OK(())
                     </section>
                 </section>
 
+				<section>
+					<section>
+						<h2>Traits/Generics</h2>
+					</section>
+				</section>
+
                 <section>
                     <section>
                         <h2>Crazy stuff</h2>
@@ -532,40 +743,6 @@ fn call_isan(num: &amp;str) -&gt; Result&lt;Success, Error&gt; {
     }
 }
                         </code></pre>
-                    </section>
-                </section>
-
-                <section>
-                    <section>
-                        <h2>E quem usa?</h2>
-                    </section>
-
-                    <section>
-                        <h3>Magic Pocket</h3>
-
-                        <p>Dropbox</p>
-
-                        <p>Petabyte storage</p>
-                    </section>
-
-                    <section>
-                        <h3>Servo</h3>
-
-                        <p>Mozilla</p>
-
-                        <p>Base do Firefox Quantum</p>
-                    </section>
-
-                    <section>
-                        <h3>Azure</h3>
-
-                        <p>Microsoft</p>
-
-                        <p>Usado na parte de IoT do Azure</p>
-                    </section>
-
-                    <section>
-                        <h3>Tor</h3>
                     </section>
                 </section>
 
