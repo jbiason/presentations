@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Por que você deveria aprender Rust</title>
+        <title>Porque você deveria aprender Rust</title>
 
         <meta name="description" content="Por que você deveria aprender Rust">
         <meta name="author" content="Julio Biason">
@@ -74,7 +74,7 @@
             <div class="slides">
                 <section>
                     <section data-background="_images/rust-ferris.png" data-header>
-                        <h1 class="semi-opaque">Por Que Rust</h1>
+                        <h1 class="semi-opaque">Porque Rust</h1>
                     </section>
                 </section>
 
@@ -122,7 +122,7 @@
 					</section>
 
 					<section>
-						<p>Resultado final com performance semelhate ao C...</p>
+						<p>Resultado final com performance semelhante ao C...</p>
 
 						<img src="_images/rust-energy.png" alt="">
 
@@ -156,6 +156,7 @@
 					</section>
 				</section>
 
+				<section>
                     <section>
                         <h2>Imutabilidade por Default</h2>
 
@@ -205,6 +206,10 @@ fn main() {
 
 						<aside class="notes">
 							... a não ser que você transforme sua variável em mutável.
+
+							Ainda, Rust tem funcionalidades para facilitar
+							copiar dados de um lado para o outro (como o
+							"spread operator" em structs).
 						</aside>
                     </section>
                 </section>
@@ -258,7 +263,7 @@ a = String::from("hello");
 					</section>
 
 					<section>
-                        <img src="_images/rust-memory.png" alt="" class="fragment stretch">
+                        <img src="_images/rust-memory.png" alt="" class="stretch">
 
 						<aside class="notes">
 							É mais ou menos isso que Rust "pensa" internamente
@@ -436,6 +441,22 @@ presente.abrir()</code></pre>
 							(uma função que está rodando em outra thread).
 						</aside>
                     </section>
+
+					<section>
+						<h2>E GC?</h2>
+
+						<p class="fragment">GC não é determinístico.</p>
+
+						<aside class="notes">
+							Um problema com GC é que ele é não determinístico:
+							uma hora o teu código roda rápido e outro momento
+							ele fica lento, sem que tu consiga entender o
+							porque.
+
+							Sem GC, a execução do código torna-se determinística e
+							tu pode ter certeza da velocidade de execução.
+						</aside>
+					</section>
 
                     <section>
                         <a href="https://swift.org/blog/swift-5-exclusivity/">Swift 5 Exclusivity Enforcement</a>
@@ -658,6 +679,8 @@ OK(())
                 <section>
                     <section>
                         <h2>Macros</h2>
+
+						<small class="fragment">?</small>
                     </section>
                 </section>
 
@@ -665,6 +688,50 @@ OK(())
 					<section>
 						<h2>Traits/Generics</h2>
 					</section>
+
+					<section>
+                        <pre><code class="hljs rust" data-trim>
+enum Result&lt;T, E&gt; {
+    Ok(T),
+    Err(E),
+}
+                        </code></pre>
+					</section>
+
+					<section>
+						<pre><code class="hljs rust" data-trim>
+trait Summary {
+    fn summarize(&amp;self) -&gt; String;
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<pre><code class="hljs rust" data-trim>
+struct Super {
+    phrase: String
+}
+
+impl Summary for Super {
+    fn summarize(&amp;self) -&gt; String {
+        self.phrase
+            .split_whitespace()
+            .map(|word| word.chars().nth(0).unwrap())
+            .collect();
+    }
+}
+                        </code></pre>
+					</section>
+                    
+                    <section>
+                        <pre><code class="hljs rust" data-trim>
+fn get_summary(summarizable: T) -&gt; String
+    where T: Summary
+{
+    ...
+}
+                        </code></pre>
+                    </section>
 				</section>
 
                 <section>
@@ -700,6 +767,24 @@ OK(())
                         </div>
                     </section>
                 </section>
+
+				<section>
+					<section>
+						<h2>Falando em WASM...</h2>
+					</section>
+
+					<section>
+						<h2>WASM</h2>
+
+						<p><a href="https://rustwasm.github.io/wasm-pack/installer/">wasm-pack</a></p>
+					</section>
+
+					<section>
+						<h2><a href="https://wasi.dev/">WASI</a></h2>
+
+						<p>The WebAssembly System Interface</p>
+					</section>
+				</section>
 
                 <section>
                     <section>
