@@ -679,6 +679,8 @@ OK(())
                 <section>
                     <section>
                         <h2>Macros</h2>
+
+						<small class="fragment">?</small>
                     </section>
                 </section>
 
@@ -686,6 +688,50 @@ OK(())
 					<section>
 						<h2>Traits/Generics</h2>
 					</section>
+
+					<section>
+                        <pre><code class="hljs rust" data-trim>
+enum Result&lt;T, E&gt; {
+    Ok(T),
+    Err(E),
+}
+                        </code></pre>
+					</section>
+
+					<section>
+						<pre><code class="hljs rust" data-trim>
+trait Summary {
+    fn summarize(&amp;self) -&gt; String;
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<pre><code class="hljs rust" data-trim>
+struct Super {
+    phrase: String
+}
+
+impl Summary for Super {
+    fn summarize(&amp;self) -&gt; String {
+        self.phrase
+            .split_whitespace()
+            .map(|word| word.chars().nth(0).unwrap())
+            .collect();
+    }
+}
+                        </code></pre>
+					</section>
+                    
+                    <section>
+                        <pre><code class="hljs rust" data-trim>
+fn get_summary(summarizable: T) -&gt; String
+    where T: Summary
+{
+    ...
+}
+                        </code></pre>
+                    </section>
 				</section>
 
                 <section>
