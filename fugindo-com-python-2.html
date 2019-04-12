@@ -58,15 +58,15 @@
                 max-height: 90%;
             }
 
-			.semi-opaque {
-				background-color: rgba(0, 0, 0, 0.7);
-				color: #fff;
-				text-shadow: 2px 2px #000;
-			}
+            .semi-opaque {
+                background-color: rgba(0, 0, 0, 0.8);
+                color: #fff;
+                text-shadow: 2px 2px #000;
+            }
 
-			.reveal h1 {
-				font-size: 3em !important;
-			}
+            .reveal h1 {
+                font-size: 3em !important;
+            }
         </style>
     </head>
 
@@ -86,9 +86,8 @@
                         <div>
                             <ul class="empty">
                                 <li>Júlio Biason</li>
-								<li>@juliobiason</li>
-								<li>https://functional.cafe/@juliobiason</li>
-                                <li>julio.biason@gmail.com</li>
+                                <li>https://functional.cafe/@juliobiason</li>
+                                <li>julio.biason@pm.me</li>
                                 <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
                             </ul>
                         </div>
@@ -112,7 +111,7 @@
                     <section>
                         <h2>Solução</h2>
 
-                        <pre><code>"""Randomize a "Run to the hills" phrase."""
+                        <pre><code class="hljs python" data-trim>"""Randomize a "Run to the hills" phrase."""
 
 from __future__ import print_function
 
@@ -178,7 +177,7 @@ if __name__ == "__main__":
                     <section>
                         <h2>Docstrings</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 """Randomize a "Run to the hills" phrase."""    
                         </code></pre>
 
@@ -203,7 +202,7 @@ if __name__ == "__main__":
                     <section>
                         <h2>Módulos e imports</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 import random
 from argparse import ArgumentParser
                         </code></pre>
@@ -267,7 +266,7 @@ from argparse import ArgumentParser
                     <section>
                         <h2>Variáveis e tipos</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 CONSONANTS = ['f', 'j', 'c', 'l', 'n']
 PASSPHRASE = '{}u{}am para as {}o{}i{}as'
                         </code></pre>
@@ -292,13 +291,25 @@ PASSPHRASE = '{}u{}am para as {}o{}i{}as'
                             nós vamos estragar essa convenção.)
                         </aside>
                     </section>
+
+                    <section>
+                        <h2>Variáveis e tipos (um pouco mais)</h2>
+
+                        <ul>
+                            <li><code>" ou '</code>: Strings</li>
+                            <li><code>[]</code>: Listas/arrays</li>
+                            <li><code>{}</code>: Dicionários/mapas/objetos/arrays associativos</li>
+                            <li><code>()</code>: Tuplas</li>
+                            <li><code>Set()</code>: Conjuntos (tipo lista, sem duplicações)</li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section>
                     <section>
                         <h2>Funções</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 def print_phrase(consonants):
     """Print the phrase with the randomized consonants."""
                         </code></pre>
@@ -328,7 +339,7 @@ def print_phrase(consonants):
                     <section>
                         <h2>Funções</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 def print_phrase(consonants, something_else):
                         </code></pre>
 
@@ -341,7 +352,7 @@ def print_phrase(consonants, something_else):
                     <section>
                         <h2>Funcões</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 def soma(primeiro, segundo):
     total = primeiro + segundo
     return total
@@ -361,7 +372,7 @@ def soma(primeiro, segundo):
                     <section>
                         <h2>Funções</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 soma(1, 2)
                         </code></pre>
 
@@ -374,7 +385,7 @@ soma(1, 2)
                     <section>
                         <h2>Funções</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 soma(primeiro=2, segundo=3)
                         </code></pre>
 
@@ -387,7 +398,7 @@ soma(primeiro=2, segundo=3)
                     <section>
                         <h2>Funções</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 soma(segundo=3, primeiro=2)
                         </code></pre>
 
@@ -404,11 +415,11 @@ soma(segundo=3, primeiro=2)
                     <section>
                         <h2>Funções</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 def soma(primeiro=0, segundo=0):
                         </code></pre>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 soma()
 soma(1)
 soma(segundo=3)
@@ -428,17 +439,17 @@ soma(segundo=3)
                     <section>
                         <h2>Pausa: Varargs</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 def soma(primeiro, segundo):
     total = primeiro + segundo
     return total
                         </code></pre>
 
-                        <pre class="fragment"><code>
+                        <pre class="fragment"><code class="hljs python" data-trim>
 soma(1)
                         </code></pre>
 
-                        <pre class="fragment"><code>
+                        <pre class="fragment"><code class="hljs python" data-trim>
 soma(1, 2, 3)
                         </code></pre>
 
@@ -451,7 +462,7 @@ soma(1, 2, 3)
                     <section>
                         <h2>Pausa: Varargs</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 TypeError: soma() takes exactly 2 arguments (3 given)
                         </code></pre>
 
@@ -464,7 +475,7 @@ TypeError: soma() takes exactly 2 arguments (3 given)
                     <section>
                         <h2>Pausa: Varargs</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 def soma(*valores):
                         </code></pre>
 
@@ -479,16 +490,16 @@ def soma(*valores):
                     <section>
                         <h2>Pausa: Varargs</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 def soma(*valores):
     print(valores)
                         </code></pre>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 soma(1, 2, 3, 4, 5)
                         </code></pre>
 
-                        <pre class="fragment"><code>
+                        <pre class="fragment"><code class="hljs python" data-trim>
 [1, 2, 3, 4, 5]
                         </code></pre>
                     </section>
@@ -496,7 +507,7 @@ soma(1, 2, 3, 4, 5)
                     <section>
                         <h2>Pausa: Varargs</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 def soma(inicial, segundo=0, *valores):
     print(inicial)
     print(segundo)
@@ -504,11 +515,11 @@ def soma(inicial, segundo=0, *valores):
 
                         </code></pre>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 soma(2)
                         </code></pre>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 2
 0
 []
@@ -526,16 +537,16 @@ soma(2)
                     <section>
                         <h2>Pausa: Varargs</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 def soma(**valores):
     print(valores)
                         </code></pre>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 soma(primeiro=1, segundo=2)
                         </code></pre>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 {'primeiro': 1, 'segundo': 2}
                         </code></pre>
 
@@ -568,7 +579,7 @@ soma(primeiro=1, segundo=2)
                     <section>
                         <h2>Pausa: Varargs</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 params = [4, 4]
 soma(*params)
                         </code></pre>
@@ -594,7 +605,7 @@ soma(*params)
                     <section>
                         <h2>Pausa: Objetos</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 "isso é uma string"
                         </code></pre>
 
@@ -606,7 +617,7 @@ soma(*params)
                     <section>
                         <h2>Pausa: Objetos</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 help("isso é uma string")
                         </code></pre>
 
@@ -625,11 +636,11 @@ help("isso é uma string")
                     <section>
                         <h2>Pausa: Objetos</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 "isso é uma string".capitalize()
                         </code></pre>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 frase = "isso é uma string"
 frase.capitalize()
                         </code></pre>
@@ -640,7 +651,7 @@ frase.capitalize()
                     <section>
                         <h2><span style="color:crimson">Welcome to Hell</span></h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
     print(PASSPHRASE.format(*consonants).capitalize())
                         </code></pre>
 
@@ -680,11 +691,11 @@ frase.capitalize()
                     <section>
                         <h2><span style="color:crimson">Welcome</span> to Hell</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 'Bem vindo {}!'.format('Júlio')
                         </code></pre>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 Bem vindo Júlio!
                         </code></pre>
 
@@ -697,12 +708,12 @@ Bem vindo Júlio!
                     <section>
                         <h2>Welcome to Hell</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 PASSPHRASE = '{}u{}am para as {}o{}i{}as'
 PASSPHRASE.format('f', 'j', 'c', 'l', 'n')
                         </code></pre>
 
-                        <pre class="fragment"><code>
+                        <pre class="fragment"><code class="hljs python" data-trim>
 'fujam para as colinas'
                         </code></pre>
 
@@ -716,13 +727,13 @@ PASSPHRASE.format('f', 'j', 'c', 'l', 'n')
                     <section>
                         <h2>Welcome to... Hell</h2>
                         
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 CONSONANTS = ['f', 'j', 'c', 'l', 'n']
 PASSPHRASE = '{}u{}am para as {}o{}i{}as'
 PASSPHRASE.format(*CONSONANTS)
                         </code></pre>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 'fujam para as colinas'
                         </code></pre>
 
@@ -737,11 +748,11 @@ PASSPHRASE.format(*CONSONANTS)
                     <section>
                         <h2>Welcome to... Hell?</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 'fujam para as colinas'.capitalize()
                         </code></pre>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 Fujam para as colinas
                         </code></pre>
 
@@ -756,7 +767,7 @@ Fujam para as colinas
                     <section>
                         <h2>Randomizações</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 def totally_random():
     """Run a totally random way."""
     random.shuffle(CONSONANTS)
@@ -776,7 +787,7 @@ def totally_random():
                     <section>
                         <h2>Randomizações</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 def switch_two():
     """Run by changing two steps at a time."""
     first = random.randint(0, 1)
@@ -801,7 +812,7 @@ def switch_two():
                     <section>
                         <h2>Welcome to hell, maybe?</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
     CONSONANTS[second], CONSONANTS[first] = \
         CONSONANTS[first], CONSONANTS[second]
                         </code></pre>
@@ -810,7 +821,7 @@ def switch_two():
                     <section>
                         <h2>Welcome to Listas!</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 # CONSONANTS = ['f', 'j', 'c', 'l', 'n']
 # second = random.randint(2, 4)
 CONSONANTS[second]
@@ -836,7 +847,7 @@ CONSONANTS[second]
                             E pra criar uma tupla:
                         </p>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 valor, valor
                         </code></pre>
 
@@ -846,13 +857,13 @@ valor, valor
                     <section>
                         <h2>Welcome to Destructuring</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 primeiro, segundo = [1, 2]
 print(primeiro)
 print(segundo)
                         </code></pre>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 1
 2
                         </code></pre>
@@ -875,12 +886,12 @@ print(segundo)
                     <section>
                         <h2>Tudo junto, agora!</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
     CONSONANTS[second], CONSONANTS[first] = \
         CONSONANTS[first], CONSONANTS[second]
                         </code></pre>
 
-                        <pre class="fragment"><code>
+                        <pre class="fragment"><code class="hljs python" data-trim>
 tmp = CONSONANTS[first]
 CONSONANTS[first] = CONSONANTS[second]
 CONSONANTS[second] = tmp
@@ -901,7 +912,7 @@ CONSONANTS[second] = tmp
                     <section>
                         <h2>O Pai de Todos Módulos</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
 if __name__ == "__main__":
                         </code></pre>
 
@@ -937,7 +948,7 @@ if __name__ == "__main__":
                     <section>
                         <h2>A linha de comando</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
     args = ArgumentParser()
     args.add_argument('-t', '--totally',
                       dest='type',
@@ -967,7 +978,7 @@ if __name__ == "__main__":
                     <section>
                         <h2>Funções são cidadãos de primeira classe</h2>
 
-                        <pre><code>
+                        <pre><code class="hljs python" data-trim>
     callbacks = {
         'totally': totally_random,
         'switch': switch_two
@@ -1011,6 +1022,46 @@ if __name__ == "__main__":
                 </section>
 
                 <section>
+                    <section>
+                        <h2>O que faltou?</h2>
+                    </section>
+
+                    <section>
+                        <h3>List comprehensions</h3>
+
+                        <pre><code class="hljs python" data-trim>
+numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+pares = [num
+         for num
+         in numeros
+         if num % 2 = 0]
+                        </code></pre>
+
+                        <p class="fragment">Curiosidade: Strings são iteráveis como listas.</p>
+                    </section>
+
+                    <section>
+                        <h3>Generators</h3>
+
+                        <pre><code class="hljs python" data-trim>
+numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+pares = (num
+         for num
+         in numeros
+         if num % 2 = 0)
+                        </code></pre>
+
+                        <pre><code class="hljs python fragment" data-trim>
+&lt;generator object &lt;genexpr&gt; at 0x7f03ce4e67d0&gt;
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Laziness</h3>
+                    </section>
+                </section>
+
+                <section>
                     <section data-background="_images/python.jpg">
                         <h1 class="semi-opaque">Fulindo para as Cojinas com Python</h1>
                     </section>
@@ -1022,47 +1073,49 @@ if __name__ == "__main__":
 
                 <section data-background='_images/thats-all-folks.jpg'>
                     <section>
-                        <h1 class="fragment semi-opaque">Perguntas?</h1>
-
-						<div class="fragment semi-opaque">
-							<ul>
-								<li>@juliobiason</li>
-								<li>https://functional.cafe/@juliobiason</li>
-                                <li>julio.biason@gmail.com</li>
+                        <div class="semi-opaque">
+                            <ul class="empty">
+                                <li>Júlio Biason</li>
+                                <li>https://functional.cafe/@juliobiason</li>
+                                <li>julio.biason@pm.me</li>
                                 <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
-							</ul>
-						</div>
-					</section>
-				</section>
-			</div>
-		</div>
+                            </ul>
+                        </div>
 
-		<script src="reveal.js/lib/js/head.min.js"></script>
-		<script src="reveal.js/js/reveal.js"></script>
+                        <h3></h3> <!-- this is stupid, but I'm not in the mood to figure out the proper CSS -->
 
-		<script>
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
-				// showNotes: true,
+                        <h1 class="fragment semi-opaque">Perguntas?</h1>
+                    </section>
+                </section>
+            </div>
+        </div>
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-					{ src: 'reveal.js/plugin/notes/notes.js', async: true }
-				]
-			});
-		</script>
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
 
-	</body>
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
 </html>
