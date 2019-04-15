@@ -11,7 +11,8 @@ import datetime
 import json
 
 DATA_BACKGROUND = re.compile(r"data-background=['\"](.*?)['\"]")
-PRES_TITLE = re.compile(r"<h1.*?>(.*?)</h1>")
+PRES_TITLE1 = re.compile(r"<h1.*?>(.*?)</h1>")
+PRES_TITLE2 = re.compile(r"<h2.*?>(.*?)</h2>")
 HEADER = re.compile(r"section.*data-background=['\"]"
                     r"(?P<image>.*?)['\"].*data-header"
                     r"(?P<content>.*?)section", re.M | re.S)
@@ -33,7 +34,10 @@ def retrieve_presentation_info(filename):
 
     logging.debug('Header: %r', header.groupdict())
     image = header.groupdict()['image']
-    title = PRES_TITLE.search(header.groupdict()['content'])
+    title = PRES_TITLE1.search(header.groupdict()['content'])
+
+    if not title:
+        title = PRES_TITLE2.search(header.groupdict()['content'])
 
     if content and image and title:
         logging.debug('Image for %s = %s', filename, image)
