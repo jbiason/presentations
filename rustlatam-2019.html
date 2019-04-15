@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Rust LATAM 2019</title>
+
+        <meta name="description" content="Rust Latam 2019">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none outside;
+            }
+
+            li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+            }
+
+            td.seen {
+                font-style: italic;
+                font-weight: bold;
+            }
+
+            .semi-opaque {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="_images/rustlatam.png" data-header>
+                        <h1 class="semi-opaque">Rust Latam 2019</h1>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
+
+                        <div>
+                            <ul class="empty">
+                                <li>Júlio Biason</li>
+                                <li>https://functional.cafe/@juliobiason</li>
+                                <li>julio.biason@pm.me</li>
+                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                </section>
+
+				<section>
+					<img src="_images/rustlatam-travel.png" alt="" class="stretch">
+
+					<aside class="notes">
+						O Rust Latam foi o primeiro evento de Rust na América
+						Latina e aconteceu em Montevidéo, a 815km de Porto
+						Alegre.
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<img src="_images/several-song-filled-hours-later.jpg" alt="" class="stretch">
+					</section>
+
+					<section>
+						<h2>Workshops</h2>
+
+						<h4 class="fragment">Learning WebAssembly and Rust</h4>
+
+						<aside class="notes">
+							No primeiro dia, eu fui no workshop de webassembly.
+							Foi uma apresentação bem introdutória, inclusive
+							para quem não conhecia Rust, mas que me ajudou um
+							bocado a entender o Borrow Checker.
+
+							A apresentação das ferramentas foi bem completa,
+							mas a parte de webassembly foi totalmente "chupada"
+							do livro do RustWasm.
+
+							Mesmo assim, foi uma baita apresentação.
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<img class="stretch" src="_images/the-next-day.jpg" alt="">
+					</section>
+
+					<section>
+						<h2>Talks Day</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Opening Keynote</h2>
+						<h3>Niko Matsakis</h3>
+					</section>
+
+					<section>
+						<img class="stretch" src="_images/rustlatam-openingkeynote.jpg" alt="">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Defense Against The Wrong Logic: Proactive Rust Coding</h2>
+						<h3>Michael Gattozzi</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Interop with Android, IOS and WASM in the same project</h2>
+						<h3>Otávio Pace</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Rebuilding the Stack for Serverlesso</h2>
+						<h3>Sergio Benitez</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>WebAssembly with Rust</h2>
+						<h3>Kevin Hoffman</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Friendly Ferris: Developing Kind Compiler Errors</h2>
+						<h3>Esteban Kuber</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Procedural Macros vs Sliced Bread</h2>
+						<h3>Alex Crichton</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>The Power of the "Where" Clause</h2>
+						<h3>Florian Gilcher</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Closing Keynote</h2>
+						<h3>Without Boats</h3>
+					</section>
+				</section>
+
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
