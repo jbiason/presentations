@@ -195,6 +195,34 @@ fn main() {
                         </aside>
                     </section>
 
+                    <section data-transition="fade">
+                        <pre><code class="hljs" data-trim data-line-numbers="7">
+3 |     let a = 2;
+  |         -
+  |         |
+  |         first assignment to `a`
+  |         help: make this binding mutable: `mut a`
+4 |     a = 3;
+  |     ^^^^^ cannot assign twice to immutable variable
+                        </code></pre>
+					</section>
+
+                    <section data-transition="fade">
+                        <pre><code class="hljs" data-trim data-line-numbers="5">
+3 |     let a = 2;
+  |         -
+  |         |
+  |         first assignment to `a`
+  |         help: make this binding mutable: `mut a`
+4 |     a = 3;
+  |     ^^^^^ cannot assign twice to immutable variable
+                        </code></pre>
+					</section>
+
+                    <section>
+                        <img class="stretch" src="_images/Sorry-bout-that.gif" alt="">
+                    </section>
+
                     <section>
                         <pre><code class="hljs rust" data-trim>
 fn main() {
@@ -410,11 +438,15 @@ fn main() {
                     </section>
 
                     <section>
-                        <img src="_images/dunno.jpg" alt="">
+                        <img src="_images/dunno.jpg" alt="" class="stretch">
 
                         <aside class="notes">
                             E o que isso ajuda, no final das contas?
                         </aside>
+                    </section>
+
+                    <section>
+                        <img class="stretch" src="_images/builds-character.png" alt="">
                     </section>
 
                     <section data-transition="fade">
@@ -450,9 +482,13 @@ presente.abrir()</code></pre>
                     </section>
 
                     <section>
-                        <h2>E GC?</h2>
+                        <h2>GC?</h2>
 
                         <p class="fragment">GC não é determinístico.</p>
+
+                        <small class="fragment">
+                            (mas ainda tem um container que é um contador de refências)
+                        </small>
 
                         <aside class="notes">
                             Um problema com GC é que ele é não determinístico:
