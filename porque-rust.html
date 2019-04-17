@@ -780,13 +780,40 @@ fn get_summary(summarizable: T) -&gt; String
                         <h2>Structs genéricas</h2>
 
                         <pre><code class="hljs rust" data-trim>
-struct Point<T> {
+struct Point&lt;T&gt; {
     x: T,
     y: T
 }
                         </code></pre>
                     </section>
                 </section>
+
+				<section>
+					<section>
+						<h2>Tests</h2>
+
+						<pre><code class="hljs rust" data-trim>
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn testing() {
+    }
+}
+						</code></pre>
+					</section>
+
+                    <section>
+                        <pre><code>
+$ cargo test
+   Compiling adder v0.1.0 (file:///projects/adder)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.22 secs
+     Running target/debug/deps/adder-ce99bcc2479f4607
+
+running 1 test
+test tests::testing ... ok
+                        </code></pre>
+                    </section>
+				</section>
 
                 <section>
                     <section>
