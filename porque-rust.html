@@ -101,9 +101,55 @@
 							<li>Criada em 2006 por Graydon Hoare.</li>
 							<li>Patrocinada pela Mozilla em 2009.</li>
 							<li>Versão 1.0 em 2015.</li>
-							<li>Versão atual: 1.34.1.</li>
+							<li>Versão atual: 1.35</li>
 						</ul>
 					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>
+							História
+							<img class="fragment" src="_images/AYV1X0yv.png" alt="" style="width:100px;margin:0">
+						</h2>
+
+
+						<p>
+							<span class="fragment">Basic</span>
+							<span class="fragment"> (com números e estruturado)</span>
+							<span class="fragment">, dBase III Plus</span>
+							<span class="fragment">, Clipper</span>
+							<span class="fragment">, Pascal</span>
+							<span class="fragment">, Cobol</span>
+							<span class="fragment">, Delphi (ObjectPascal)</span>
+							<span class="fragment">, C</span>
+							<span class="fragment">, C++</span>
+							<span class="fragment">, ActionScript (Flash)</span>
+							<span class="fragment">, PHP</span>
+							<span class="fragment">, JavaScript</span>
+							<span class="fragment">, Python</span>
+							<span class="fragment">, Objective-C</span>
+							<span class="fragment">, Clojure</span>
+							<span class="fragment">, Java</span>
+							<span class="fragment">, Scala</span>
+							<span class="fragment"><strong>, Rust.</strong></span>
+						</p>
+					</section>
+
+					<section>
+						<img src="_images/my_opinion.jpg" alt="">
+					</section>
+
+                    <section>
+                        <div>
+                            A language that doesn't affect the way you think
+                            about programming, is not worth knowing.
+                        </div>
+
+                        <div>
+                            -- Alan Perlis, "ALGOL"
+                        </div>
+                    </section>
 				</section>
 
                 <section>
@@ -167,18 +213,19 @@
                             linguagens.
                         </aside>
                     </section>
+
+					<section>
+						<img src="_images/nope.gif" alt="" class="stretch">
+					</section>
+
+					<section>
+						<img src="_images/potato-farming-300x225.jpg" alt="" class="stretch">
+					</section>
                 </section>
 
                 <section>
                     <section>
-                        <h2>Imutabilidade por Default</h2>
-
-                        <aside class="notes">
-                            Por que "imutabilidade" seria algo importante?
-                            Imutabilidade muda a forma como pensamos nos dados,
-                            e evita que o estado fique mudando quando não
-                            queremos.
-                        </aside>
+                        <h2>Compilador Chato mas Amigável</h2>
                     </section>
 
                     <section>
@@ -234,24 +281,6 @@ fn main() {
 
                     <section>
                         <img class="stretch" src="_images/Sorry-bout-that.gif" alt="">
-                    </section>
-
-                    <section>
-                        <pre><code class="hljs rust" data-trim>
-fn main() {
-    let mut a = 2;
-    a = 3;
-    println!("{}", a);
-}
-                        </code></pre>
-
-                        <aside class="notes">
-                            ... a não ser que você transforme sua variável em mutável.
-
-                            Ainda, Rust tem funcionalidades para facilitar
-                            copiar dados de um lado para o outro (como o
-                            "spread operator" em structs).
-                        </aside>
                     </section>
                 </section>
 
@@ -314,17 +343,6 @@ a = String::from("hello");
                             E essa posição de memória *pertence* apenas à
                             variável indicada.
                         </aside>
-                    </section>
-
-                    <section>
-                        <div>
-                            A language that doesn't affect the way you think
-                            about programming, is not worth knowing.
-                        </div>
-
-                        <div>
-                            -- Alan Perlis, "ALGOL"
-                        </div>
                     </section>
 
                     <section>
@@ -495,26 +513,6 @@ presente.abrir()</code></pre>
                     </section>
 
                     <section>
-                        <h2>GC?</h2>
-
-                        <p class="fragment">GC não é determinístico.</p>
-
-                        <small class="fragment">
-                            (mas ainda tem um container que é um contador de refências)
-                        </small>
-
-                        <aside class="notes">
-                            Um problema com GC é que ele é não determinístico:
-                            uma hora o teu código roda rápido e outro momento
-                            ele fica lento, sem que tu consiga entender o
-                            porque.
-
-                            Sem GC, a execução do código torna-se determinística e
-                            tu pode ter certeza da velocidade de execução.
-                        </aside>
-                    </section>
-
-                    <section>
                         <a href="https://swift.org/blog/swift-5-exclusivity/">Swift 5 Exclusivity Enforcement</a>
 
                         <aside class="notes">
@@ -569,9 +567,9 @@ presente.abrir()</code></pre>
                     <section>
                         <h3>Rust resolveria isso?</h3>
 
-                        <h2 class="fragment">Não</h2>
+                        <h2 class="fragment">SIM</h2>
 
-                        <h4 class="fragment">... na verdade, nem ia compilar.</h4>
+                        <h4 class="fragment">... porque nem ia compilar.</h4>
 
                         <aside class="notes">
                             Uma questão importante para o Rust são "Zero Cost
