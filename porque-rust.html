@@ -513,26 +513,6 @@ presente.abrir()</code></pre>
                     </section>
 
                     <section>
-                        <h2>GC?</h2>
-
-                        <p class="fragment">GC não é determinístico.</p>
-
-                        <small class="fragment">
-                            (mas ainda tem um container que é um contador de refências)
-                        </small>
-
-                        <aside class="notes">
-                            Um problema com GC é que ele é não determinístico:
-                            uma hora o teu código roda rápido e outro momento
-                            ele fica lento, sem que tu consiga entender o
-                            porque.
-
-                            Sem GC, a execução do código torna-se determinística e
-                            tu pode ter certeza da velocidade de execução.
-                        </aside>
-                    </section>
-
-                    <section>
                         <a href="https://swift.org/blog/swift-5-exclusivity/">Swift 5 Exclusivity Enforcement</a>
 
                         <aside class="notes">
@@ -587,9 +567,9 @@ presente.abrir()</code></pre>
                     <section>
                         <h3>Rust resolveria isso?</h3>
 
-                        <h2 class="fragment">Não</h2>
+                        <h2 class="fragment">SIM</h2>
 
-                        <h4 class="fragment">... na verdade, nem ia compilar.</h4>
+                        <h4 class="fragment">... porque nem ia compilar.</h4>
 
                         <aside class="notes">
                             Uma questão importante para o Rust são "Zero Cost
