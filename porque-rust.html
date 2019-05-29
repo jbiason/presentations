@@ -80,6 +80,12 @@
                     <section data-background="_images/rust-ferris.png">
                         <h2 class="semi-opaque">Porque Você DEVE Aprender Rust</h2>
                     </section>
+
+					<aside class="notes">
+						Eu ia falar do porque o pessoal deveria aprender Rust,
+						mas acho que faz mais sentido dizer que o pessoal TEM
+						QUE aprender Rust.
+					</aside>
                 </section>
 
                 <section>
@@ -108,6 +114,14 @@
 							<li>Versão atual: 1.35</li>
 						</ul>
 					</section>
+
+					<aside class="notes">
+						Parte burocrática da apresentação.
+
+						PS: Pode ser que, quando você essa apresentação, 1.35
+						não seja mais a versão atual; a cada 6 semanas, sai uma
+						nova versão do compilador.
+					</aside>
 				</section>
 
 				<section>
@@ -116,7 +130,6 @@
 							História
 							<img class="fragment" src="_images/AYV1X0yv.png" alt="" style="width:100px;margin:0">
 						</h2>
-
 
 						<p>
 							<span class="fragment">Basic</span>
@@ -138,10 +151,27 @@
 							<span class="fragment">, Scala</span>
 							<span class="fragment"><strong>, Rust.</strong></span>
 						</p>
+
+						<aside class="notes">
+							Um porque de história sobre esse que lhes apresenta
+							a linguagem:
+
+							Eu já trabalhei com todas essas linguagens. Fora
+							essas, eu ainda sei ler 
+
+							- Perl
+							- Ruby
+							- Haskell
+						</aside>
 					</section>
 
 					<section>
 						<img src="_images/my_opinion.jpg" alt="">
+
+						<aside class="notes">
+							Alerta: Tudo aqui é a minha opinião sobre Rust e o
+							contexto geral de linguagens de programação.
+						</aside>
 					</section>
 
                     <section>
@@ -153,6 +183,18 @@
                         <div>
                             -- Alan Perlis, "ALGOL"
                         </div>
+
+						<aside class="notes">
+							Apesar de ter todas essas linguagens, eu ainda
+							preciso passar essa frase do Perlis, porque
+							realmente Rust mudou a forma como eu penso em
+							outras linguagens.
+
+							Apesar do forte do Rust ser a proteção de memória,
+							eu posso oficialmente dizer que agora eu entendo
+							generics muito melhor por causa da forma como o
+							Rust trabalha.
+						</aside>
                     </section>
 				</section>
 
@@ -220,10 +262,25 @@
 
 					<section>
 						<img src="_images/nope.gif" alt="" class="stretch">
+
+						<aside class="notes">
+							Honestamente, se surgir uma nova linguagem que
+							tenha mais proteções de memória, com performance
+							ainda melhor que C mas eu tiver que escrever uma
+							lista encadeada mais uma vez, eu destruo todas as
+							coisas tecnológicas ao meu redor...
+						</aside>
 					</section>
 
 					<section>
 						<img src="_images/potato-farming-300x225.jpg" alt="" class="stretch">
+
+						<aside class="notes">
+							E vou plantar batata.
+
+							... porque aprendemos absolutamente NADA sobre
+							desenvolvimento.
+						</aside>
 					</section>
                 </section>
 
@@ -240,6 +297,22 @@ fn main() {
     println!("{}", a);
 }
                         </code></pre>
+
+						<aside class="notes">
+							Primeiro contato com Rust: assim como C, tem uma
+							função `main`, que pode retornar um inteiro; para
+							atribuir variáveis, usa-se `let`.
+
+							Uma coisa: Rust é "strong and statically typed", o
+							que sigifnica que a linguagem tem tipos, mas por
+							padrão o compilador tenta inferir o tipo.
+
+							Uma outra forma de escrever o let seria:
+
+							```
+							let a: u8 = 2;
+							```
+						</aside>
                     </section>
 
                     <section>
@@ -269,6 +342,11 @@ fn main() {
 4 |     a = 3;
   |     ^^^^^ cannot assign twice to immutable variable
                         </code></pre>
+
+						<aside class="notes">
+							... mas se tu olhar com calma, tu vai ver que não só o
+							compilador disse, claramente, o que era o problema...
+						</aside>
 					</section>
 
                     <section data-transition="fade">
@@ -281,10 +359,21 @@ fn main() {
 4 |     a = 3;
   |     ^^^^^ cannot assign twice to immutable variable
                         </code></pre>
+
+						<aside class="notes">
+							... como também vai dizer como resolver o problema.
+						</aside>
 					</section>
 
                     <section>
                         <img class="stretch" src="_images/Sorry-bout-that.gif" alt="">
+
+						<aside class="notes">
+							Ou seja, o compilador não só vai lá e diz: ERRADO!
+
+							... ele ainda dá uma dica de como resolver esse
+							problema.
+						</aside>
                     </section>
                 </section>
 
