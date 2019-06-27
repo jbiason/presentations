@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Rápida Introdução ao Rust</title>
+
+        <meta name="description" content="Por que você deveria aprender Rust">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none inside;
+            }
+
+            .revel ul.empty li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+            }
+
+            td.seen {
+                font-style: italic;
+                font-weight: bold;
+            }
+
+            .semi-opaque {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="_images/rust-ferris.png" data-header>
+                        <h2 class="semi-opaque">Rápida Introdução ao Rust</h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
+
+                        <div>
+                            <ul class="empty">
+                                <li>Júlio Biason</li>
+                                <li>https://functional.cafe/@juliobiason</li>
+                                <li>julio.biason@pm.me</li>
+                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>História</h2>
+
+                        <ul>
+                            <li>Criada em 2006 por Graydon Hoare.</li>
+                            <li>Patrocinada pela Mozilla em 2009.</li>
+                            <li>Versão 1.0 em 2015.</li>
+                            <li>Versão atual: 1.35</li>
+                            <li>Objetivo: Criar uma linguagem rápida mas com seguraça de memória.</li>
+                        </ul>
+                    </section>
+
+                    <aside class="notes">
+                        Parte burocrática da apresentação.
+
+                        PS: Pode ser que, quando você essa apresentação, 1.35
+                        não seja mais a versão atual; a cada 6 semanas, sai uma
+                        nova versão do compilador.
+                    </aside>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>
+                            História
+                            <img class="fragment" src="_images/AYV1X0yv.png" alt="" style="width:100px;margin:0">
+                        </h2>
+
+                        <p>
+                            <span class="fragment">Basic</span>
+                            <span class="fragment"> (com números e estruturado)</span>
+                            <span class="fragment">, dBase III Plus</span>
+                            <span class="fragment">, Clipper</span>
+                            <span class="fragment">, Pascal</span>
+                            <span class="fragment">, Cobol</span>
+                            <span class="fragment">, Delphi (ObjectPascal)</span>
+                            <span class="fragment">, C</span>
+                            <span class="fragment">, C++</span>
+                            <span class="fragment">, ActionScript (Flash)</span>
+                            <span class="fragment">, PHP</span>
+                            <span class="fragment">, JavaScript</span>
+                            <span class="fragment">, Python</span>
+                            <span class="fragment">, Objective-C</span>
+                            <span class="fragment">, Clojure</span>
+                            <span class="fragment">, Java</span>
+                            <span class="fragment">, Scala</span>
+                            <span class="fragment"><strong>, Rust.</strong></span>
+                        </p>
+
+                        <aside class="notes">
+                            Um porque de história sobre esse que lhes apresenta
+                            a linguagem:
+
+                            Eu já trabalhei com todas essas linguagens. Fora
+                            essas, eu ainda sei ler 
+
+                            - Perl
+                            - Ruby
+                            - Haskell
+                        </aside>
+                    </section>
+
+                    <section>
+                        <img src="_images/my_opinion.jpg" alt="">
+
+                        <aside class="notes">
+                            Alerta: Tudo aqui é a minha opinião sobre Rust e o
+                            contexto geral de linguagens de programação.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <div>
+                            A language that doesn't affect the way you think
+                            about programming, is not worth knowing.
+                        </div>
+
+                        <div>
+                            -- Alan Perlis, "ALGOL"
+                        </div>
+
+                        <aside class="notes">
+                            Apesar de ter todas essas linguagens, eu ainda
+                            preciso passar essa frase do Perlis, porque
+                            realmente Rust mudou a forma como eu penso em
+                            outras linguagens.
+
+                            Apesar do forte do Rust ser a proteção de memória,
+                            eu posso oficialmente dizer que agora eu entendo
+                            generics muito melhor por causa da forma como o
+                            Rust trabalha.
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Meu Primeiro Rust</h3>
+
+                        <pre><code class="rust">
+fn main() {
+    println!("Hello, world!");
+}
+                        </code></pre>
+
+                        <aside class="notes">
+                            Esse é um exemplo básico de como é um código Rust:
+
+                            1. A função de entrada no sistema é a main()
+                            2. Funções são definidas com `fn`.
+                            3. A linguagem usa chaves.
+                            4. A exclamação indica que `println` é uma macro (e que,
+                               por de trás dos panos, vai ser gerado mais código).
+                            5. Linhas terminam com ponto e vírgula
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Meu Primeiro Rust</h3>
+
+                        <p>Tempo para gerar esse código:</p>
+
+                        <h2 class="fragment">0 segundos</h2>
+                    </section>
+
+                    <section>
+                        <h3>Meu Primeiro Rust</h3>
+
+                        <code>cargo init</code>
+
+                        <aside class="notes">
+                            Apesar do compilar do rust ser o `rustc`, a linguagem vem
+                            com o seu sistema de manutenção de projetos, chamado cargo.
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>
+                            <a href="https://doc.rust-lang.org/cargo/">
+                                Cargo
+                            </a>
+                        </h2>
+
+                        <p>"Cargo is the Rust package manager"</p>
+
+                        <p>
+                            "Cargo downloads your Rust package’s dependencies,
+                            compiles your packages, makes distributable
+                            packages, and uploads them to crates.io, the Rust
+                            community’s package registry."
+                        </p>
+                        
+                        <aside class="notes">
+                            Além de tudo que está indicado na descrição do cargo,
+                            ele também interage fortemente com o `rustc` para
+                            resolução de dependências duplicadas.
+
+                            Por exemplo, no caso do meu primeiro estar usando
+                            a biblioteca `log` versão 2.0, mas uma das dependências
+                            precisar a `log` 1.2, Cargo e Rustc conversam para manter
+                            as duas versões, usando "name mangling" para que
+                            funções com mesmo nome mas formato diferente
+                            possam estar no mesmo binário.
+
+                            E sim, há "tree shaking" para a remoção de funções
+                            não utilizadas.
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Mas De Volta Ao Rust</h3>
+
+                        <pre><code class="rust">
+fn main() {
+    let a:u8 = 2;
+    println!("{}", a);
+}
+                        </code></pre>
+                    </section>
+
+                    <aside class="notes">
+                        Rust é uma linguagem fortemente e estaticamente tipada.
+                        Para definir uma variável, inicia-se com `let`, nome
+                        da variável, `:`, o tipo da variável (u8 = unsigned 8 bits),
+                        `=` e o valor.
+                    </aside>
+
+                    <section>
+                        <h3>Mas De Volta Ao Rust</h3>
+
+                        <pre><code class="rust">
+fn main() {
+    let a = 2u8;
+    println!("{}", a);
+}
+                        </code></pre>
+                    </section>
+
+                    <aside class="notes">
+                        Uma coisa que é possível fazer é definir que o valor tem
+                        uma determinada precisão e, com isso, deixar o tipo de
+                        fora da definição da variável, e o compilador irá inferir
+                        o tipo.
+                    </aside>
+
+                    <section>
+                        <h3>Mas De Volta Ao Rust</h3>
+
+                        <pre><code class="rust">
+fn main() {
+    let a = 2;
+    println!("{}", a);
+}
+                        </code></pre>
+                    </section>
+
+                    <aside class="notes">
+                        Ou pode-se deixar sem qualquer definição e o compilador
+                        irá encontrar o melhor tipo que "caiba" o valor e seja
+                        eficiente para a máquina destino.
+                    </aside>
+
+                    <section>
+                        <h3>Mas De Volta ao Rust</h3>
+
+                        <pre><code class="rust">
+fn factorial(i: u64) -&gt; u64 {
+    match i {
+        0 =&gt; 1,
+        n =&gt; n * factorial(n-1)
+    }
+}
+                        </code></pre>
+                    </section>
+
+                    <aside class="notes">
+                        Um pouco mais complicado, mas um fatorial:
+                        A função (`fn`) recebe uma variável `i` que
+                        é um unsigned de 64 bits (funções é o único
+                        lugar onde inferência de tipos não ocorre)
+                        e retorna um unsigned de 64 bits.
+
+                        `match` faz pattern matching com o valor de `i`:
+                        se for 0, a expressão do match fica com o valor `1`;
+                        qualquer outro valor entra na segunda ponta como
+                        `n`, e a expressão termina com esse valor multiplicado
+                        pelo fatorial dele menos 1.
+                    </aside>
+
+                    <section>
+                        <h3>Mas De Volta ao Rust</h3>
+
+                        <pre><code class="rust">
+fn is_pred(i: u64) -&gt; Bool {
+    if i % 2 == 0 {
+       True
+    } else {
+       False
+    }
+}
+                        </code></pre>
+
+                        <aside class="notes">
+                            Um pouco parecido com Scala, para Rust o resultado
+                            de uma função é a expressão final. Sim, ele tem
+                            suporte a `return`, mas esse somente é usando no
+                            caso de haver uma interrupção do fluxo de processamento
+                            (por exemplo, guardians).
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Mas De Volta ao Rust</h3>
+
+                        <pre><code class="rust">
+fn is_pred(i: u64) -&gt; Bool {
+    i % 2 == 0
+}
+                        </code></pre>
+
+                        <aside class="notes">
+                            Uma forma mais simples de escrever a função anterior.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Mas De Volta ao Rust</h3>
+
+                        <pre><code class="rust">
+enum IPAddr {
+    IPV4,
+    IPV6
+}
+                        </code></pre>
+
+                        <aside class="notes">
+                            Rust tem enums como toda boa linguagem.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Mas De Volta ao Rust</h3>
+
+                        <pre><code class="rust">
+enum IPAddr {
+    IPV4(String),
+    IPV6(String)
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Mas De Volta ao Rust</h3>
+
+                        <pre><code class="rust">
+let home = IpAddr::V4(String::from("127.0.0.1");
+
+match home {
+    V4(ipv4_address) =&gt; println!("IPv4 addr: {}", ipv4_address),
+    V6(ipv6_address) =&gt; println!("Ipv6 addr: {}", ipv6_address),
+}
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>E Aquela "Segurança de Memória"?</h2>
+                    </section>
+
+                    <section>
+                        <h3>1. No Null Pointers</h3>
+
+                        <pre><code class="rust">
+match may_not_exist(value: Option&lt;String&gt;) {
+    match value {
+        Some(the_string) =&gt; println!("I got a string! {}", the_string),
+        None =&gt; println!("I got nothing")
+    }
+}
+                        </code></pre>
+
+                        <aside class="notes">
+                            Para evitar null pointers, Rust usa a "habilidade"
+                            ter enums com valores dentro com um enum chamado 
+                            "Option"; Option tem dois valores: Some, com o
+                            valor dentro ou None, que não tem valor algum.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>2. No Shared Memory</h3>
+
+                        <pre><code class="rust">
+fn main() {
+   let a = String::from("A reference to a string in the code section copied to the stack");
+   let b = a;
+   println!("The string is: {}", a);
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <img src="_images/rust-memory.png" alt="" class="stretch">
+
+                        <aside class="notes">
+                            É mais ou menos isso que Rust "pensa" internamente
+                            quando vê uma variável: uma posição de memória, de
+                            um tamanho já definido, de um tipo definido.
+
+                            E essa posição de memória *pertence* apenas à
+                            variável indicada.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>2. No Shared Memory</h3>
+
+                        <pre><code class="rust">
+fn main() {
+   let a = String::from("A reference to a string in the code section copied to the stack");
+   let b = &amp;a;
+   println!("The string is: {}", a);
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <img src="_images/rust-reference.png" alt="" class="stretch">
+                    </section>
+
+                    <section data-transition="fade">
+                        <pre><code class="hljs go" data-trim>presente := Presente { ... }
+canal &lt;- presente
+&nbsp;</code></pre>
+
+                        <aside class="notes">
+                            Num exemplo em Go, criamos uma estrutura e passamos
+                            essa estrutura para outra thread através de um
+                            canal.
+                        </aside>
+                    </section>
+
+                    <section data-transition="fade">
+                        <pre><code class="hljs go" data-trim>presente := Presente { ... }
+canal &lt;- presente
+presente.abrir()</code></pre>
+
+                        <aside class="notes">
+                            ... e depois de passar o presente pra outra pessoa,
+                            nós abrimos o presente.
+
+                            Mas se estamos entregando um presente pra alguém,
+                            como é que estamos abrindo o presente?
+
+                            O borrow checker não permite esse tipo de coisa:
+                            Ele irá barrar a função atual de continuar
+                            utilizando a variável porque, afinal de contas,
+                            agora a região de memória pertence à outra função
+                            (uma função que está rodando em outra thread).
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>3. Immutable variables by default</h3>
+
+                        <pre><code class="rust">
+fn main() {
+    let a = 3;
+    a = 5;
+}
+                        </code></pre>
+                    </section>
+                </section>
+                
+                <section>
+                    <section>
+                        <h3>Error Control</h3>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs rust" data-trim>
+enum Result&lt;T, E&gt; {
+    Ok(T),
+    Err(E),
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs rust" data-trim>
+match File::create("something.txt") {
+    Ok(fp) =&gt; fp.write_all(b"Hello world"),
+    Err(err) =&gt; println!("Failure! {}", err),
+}
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Compilador Chato mas Amigável</h2>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs rust" data-trim>
+fn main() {
+    let a = 2;
+    a = 3;
+    println!("{}", a);
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs" data-trim>
+3 |     let a = 2;
+  |         -
+  |         |
+  |         first assignment to `a`
+  |         help: make this binding mutable: `mut a`
+4 |     a = 3;
+  |     ^^^^^ cannot assign twice to immutable variable
+                        </code></pre>
+
+                        <aside class="notes">
+                            Se você tentar mudar um dado depois de criado, o
+                            compilador Rust não vai deixar.
+                        </aside>
+                    </section>
+
+                    <section data-transition="fade">
+                        <pre><code class="hljs" data-trim data-line-numbers="7">
+3 |     let a = 2;
+  |         -
+  |         |
+  |         first assignment to `a`
+  |         help: make this binding mutable: `mut a`
+4 |     a = 3;
+  |     ^^^^^ cannot assign twice to immutable variable
+                        </code></pre>
+
+                        <aside class="notes">
+                            ... mas se tu olhar com calma, tu vai ver que não só o
+                            compilador disse, claramente, o que era o problema...
+                        </aside>
+                    </section>
+
+                    <section data-transition="fade">
+                        <pre><code class="hljs" data-trim data-line-numbers="5">
+3 |     let a = 2;
+  |         -
+  |         |
+  |         first assignment to `a`
+  |         help: make this binding mutable: `mut a`
+4 |     a = 3;
+  |     ^^^^^ cannot assign twice to immutable variable
+                        </code></pre>
+
+                        <aside class="notes">
+                            ... como também vai dizer como resolver o problema.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <img class="stretch" src="_images/Sorry-bout-that.gif" alt="">
+
+                        <aside class="notes">
+                            Ou seja, o compilador não só vai lá e diz: ERRADO!
+
+                            ... ele ainda dá uma dica de como resolver esse
+                            problema.
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <p>
+                            <a href="https://insights.stackoverflow.com/survey/2019">
+                                A linguagem mais amada segundo o StackOverflow
+                                Survey 2019
+                            </a>
+
+                            <p class="fragment">... pelo 4⁰ ano seguido.</p>
+
+                            <aside class="notes">
+                                O resultado do StackOverflow é sobre qual
+                                linguagem os programadores realmente gostam de
+                                programar (e quais eles tem pavor de usar).
+
+                                Pessoalmente, depois de 30 anos programando,
+                                quando começei a brincar com Rust, eu
+                                finalmente me diverti enquanto programava.
+                            </aside>
+                        </p>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>E agora?</h2>
+
+                    <ul>
+                        <li><a href="https://rustup.rs/">rustup</a></li>
+                        <li><a href="https://doc.rust-lang.org/book/">The Rust Book</a></li>
+                        <li><a href="https://doc.rust-lang.org/stable/rust-by-example/">Rust By Example</a></li>
+                        <li><a href="https://play.rust-lang.org/?version=stable">Rust Playground</a></li>
+                        <li><a href="https://t.me/rustlangbr">Rust Brasil (Telegram)</a></li>
+                    </ul>
+                </section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+                    <div class="semi-opaque">
+                        <ul class="empty">
+                            <li>Júlio Biason</li>
+                            <li>https://functional.cafe/@juliobiason</li>
+                            <li>julio.biason@pm.me</li>
+                            <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
