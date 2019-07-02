@@ -415,11 +415,11 @@ enum IPAddr {
                         <h3>Mas De Volta ao Rust</h3>
 
                         <pre><code class="rust">
-let home = IpAddr::V4(String::from("127.0.0.1");
+let home = IpAddr::IPV4(String::from("127.0.0.1");
 
 match home {
-    V4(ipv4_address) =&gt; println!("IPv4 addr: {}", ipv4_address),
-    V6(ipv6_address) =&gt; println!("Ipv6 addr: {}", ipv6_address),
+    IPV4(ipv4_address) =&gt; println!("IPv4 addr: {}", ipv4_address),
+    IPV6(ipv6_address) =&gt; println!("Ipv6 addr: {}", ipv6_address),
 }
                         </code></pre>
                     </section>
@@ -436,7 +436,7 @@ match home {
                         <pre><code class="rust">
 struct MyStruct {
     a_field: String,
-    r_a: [2; 10u64],
+    r_a: [2u64; 10],
 }
                         </code></pre>
                     </section>
@@ -447,7 +447,7 @@ struct MyStruct {
                         <pre><code class="rust">
 impl MyStruct {
     fn first_element(&amp;self) -&gt; u64 {
-        self.r_a.get(1)
+        self.r_a.get(0)
     }
 }
                         </code></pre>
@@ -729,6 +729,10 @@ fn main() {
                                 finalmente me diverti enquanto programava.
                             </aside>
                         </p>
+                    </section>
+
+                    <section>
+                        <img src="_images/rust-issues.png" alt="4.5k issues no Github" class="stretch">
                     </section>
                 </section>
 
