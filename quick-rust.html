@@ -122,25 +122,23 @@
                             <img class="fragment" src="_images/AYV1X0yv.png" alt="" style="width:100px;margin:0">
                         </h2>
 
-                        <p>
-                            <span class="fragment">Basic</span>
-                            <span class="fragment"> (com números e estruturado)</span>
-                            <span class="fragment">, dBase III Plus</span>
-                            <span class="fragment">, Clipper</span>
-                            <span class="fragment">, Pascal</span>
-                            <span class="fragment">, Cobol</span>
-                            <span class="fragment">, Delphi (ObjectPascal)</span>
-                            <span class="fragment">, C</span>
-                            <span class="fragment">, C++</span>
-                            <span class="fragment">, ActionScript (Flash)</span>
-                            <span class="fragment">, PHP</span>
-                            <span class="fragment">, JavaScript</span>
-                            <span class="fragment">, Python</span>
-                            <span class="fragment">, Objective-C</span>
-                            <span class="fragment">, Clojure</span>
-                            <span class="fragment">, Java</span>
-                            <span class="fragment">, Scala</span>
-                            <span class="fragment"><strong>, Rust.</strong></span>
+                        <p class="fragment">
+                            Basic (com números e estruturado),
+                            dBase III Plus,
+                            Clipper,
+                            Pascal,
+                            Cobol,
+                            Delphi (ObjectPascal),
+                            C,
+                            C++,
+                            ActionScript (Flash),
+                            PHP,
+                            JavaScript,
+                            Python,
+                            Objective-C,
+                            Clojure,
+                            Java,
+                            Scala<strong>, Rust.</strong>
                         </p>
 
                         <aside class="notes">
@@ -220,9 +218,7 @@ fn main() {
                     </section>
 
                     <section>
-                        <h3>Meu Primeiro Rust</h3>
-
-                        <code>cargo init</code>
+                        <h3><code>cargo init</code></h3>
 
                         <aside class="notes">
                             Apesar do compilar do rust ser o `rustc`, a linguagem vem
@@ -268,11 +264,11 @@ fn main() {
 
                 <section>
                     <section>
-                        <h3>Mas De Volta Ao Rust</h3>
+                        <h3>De Volta Ao Rust - Static Typed</h3>
 
                         <pre><code class="rust">
 fn main() {
-    let a:u8 = 2;
+    let a: u8 = 2;
     println!("{}", a);
 }
                         </code></pre>
@@ -319,9 +315,11 @@ fn main() {
                         irá encontrar o melhor tipo que "caiba" o valor e seja
                         eficiente para a máquina destino.
                     </aside>
+                </section>
 
+                <section>
                     <section>
-                        <h3>Mas De Volta ao Rust</h3>
+                        <h3>De Volta ao Rust - Pattern Matching</h3>
 
                         <pre><code class="rust">
 fn factorial(i: u64) -&gt; u64 {
@@ -346,9 +344,11 @@ fn factorial(i: u64) -&gt; u64 {
                         `n`, e a expressão termina com esse valor multiplicado
                         pelo fatorial dele menos 1.
                     </aside>
+                </section>
 
+                <section>
                     <section>
-                        <h3>Mas De Volta ao Rust</h3>
+                        <h3>De Volta ao Rust - Returns are not necessary</h3>
 
                         <pre><code class="rust">
 fn is_pred(i: u64) -&gt; Bool {
@@ -370,7 +370,7 @@ fn is_pred(i: u64) -&gt; Bool {
                     </section>
 
                     <section>
-                        <h3>Mas De Volta ao Rust</h3>
+                        <h3>De Volta ao Rust - Returns are not necessary</h3>
 
                         <pre><code class="rust">
 fn is_pred(i: u64) -&gt; Bool {
@@ -382,9 +382,11 @@ fn is_pred(i: u64) -&gt; Bool {
                             Uma forma mais simples de escrever a função anterior.
                         </aside>
                     </section>
+                </section>
 
+                <section>
                     <section>
-                        <h3>Mas De Volta ao Rust</h3>
+                        <h3>De Volta ao Rust - Enums</h3>
 
                         <pre><code class="rust">
 enum IPAddr {
@@ -425,6 +427,79 @@ match home {
 
                 <section>
                     <section>
+                        <h3>De Volta ao Rust - No OO</h3>
+                    </section>
+
+                    <section>
+                        <h3>No OO</h3>
+
+                        <pre><code class="rust">
+struct MyStruct {
+    a_field: String,
+    r_a: [2; 10u64],
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>No OO - But "functions in structs"</h3>
+
+                        <pre><code class="rust">
+impl MyStruct {
+    fn first_element(&amp;self) -&gt; u64 {
+        self.r_a.get(1)
+    }
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>No OO - But Traits</h3>
+
+                        <pre><code class="rust">
+trait Summarize {
+    fn summarize(&amp;self) -&gt; String;
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>No OO - But Traits</h3>
+
+                        <pre><code class="rust">
+impl Summarize for MyStruct {
+    fn summarize(&amp;self) -&gt; String {
+        self.a_field
+    }
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>No OO - But Generics</h3>
+
+                        <pre><code class="rust">
+fn make_summary&lt;T&gt;(summarizable: T) {
+    T.summarize()
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>No OO - But Generic Traits</h3>
+
+                        <pre><code class="rust">
+fn make_summary&lt;T&gt;(summarizable: T)
+    where T: Summarize
+{
+    T.summarize()
+}
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
                         <h2>E Aquela "Segurança de Memória"?</h2>
                     </section>
 
@@ -432,7 +507,7 @@ match home {
                         <h3>1. No Null Pointers</h3>
 
                         <pre><code class="rust">
-match may_not_exist(value: Option&lt;String&gt;) {
+fn may_not_exist(value: Option&lt;String&gt;) {
     match value {
         Some(the_string) =&gt; println!("I got a string! {}", the_string),
         None =&gt; println!("I got nothing")
