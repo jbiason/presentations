@@ -101,7 +101,7 @@
                             <li>Criada em 2006 por Graydon Hoare.</li>
                             <li>Patrocinada pela Mozilla em 2009.</li>
                             <li>Versão 1.0 em 2015.</li>
-                            <li>Versão atual: 1.35</li>
+							<li>Versão atual: <a href="https://www.whatrustisit.com/">1.35</a></li>
                             <li>Objetivo: Criar uma linguagem rápida mas com seguraça de memória.</li>
                         </ul>
                     </section>
@@ -141,17 +141,18 @@
                             Scala<strong>, Rust.</strong>
                         </p>
 
-                        <aside class="notes">
-                            Um porque de história sobre esse que lhes apresenta
-                            a linguagem:
+						<aside class="notes">
+							Em todos esses anos trabalhando nessa indústria vital,
+							eu já fiz algum código nessas linguagens acima.
+						</aside>
 
-                            Eu já trabalhei com todas essas linguagens. Fora
-                            essas, eu ainda sei ler 
+						<small class="fragment">
+							(Lisp, Haskell, Ruby)
+						</small>
 
-                            - Perl
-                            - Ruby
-                            - Haskell
-                        </aside>
+						<aside class="notes">
+							Além dessas, eu conheco essas acima.
+						</aside>
                     </section>
 
                     <section>
@@ -361,7 +362,7 @@ fn is_pred(i: u64) -&gt; Bool {
                         </code></pre>
 
                         <aside class="notes">
-                            Um pouco parecido com Scala, para Rust o resultado
+                            Um pouco parecido com Lisp, para Rust o resultado
                             de uma função é a expressão final. Sim, ele tem
                             suporte a `return`, mas esse somente é usando no
                             caso de haver uma interrupção do fluxo de processamento
@@ -422,6 +423,15 @@ match home {
     IPV6(ipv6_address) =&gt; println!("Ipv6 addr: {}", ipv6_address),
 }
                         </code></pre>
+
+						<aside class="notes">
+							Para extrair o valor de dentro da variante do enum,
+							é preciso usar `match`; além disso, o match tem que
+							ser extensivo -- todas as variantes devem ser testadas.
+
+							A parte importante disso vai aparecer quando for 
+							apresentado o tratamento de errors.
+						</aside>
                     </section>
                 </section>
 
@@ -439,6 +449,10 @@ struct MyStruct {
     r_a: [2u64; 10],
 }
                         </code></pre>
+
+						<aside class="notes">
+							Não temos classes, mas temos structs
+						</aside>
                     </section>
 
                     <section>
@@ -451,6 +465,12 @@ impl MyStruct {
     }
 }
                         </code></pre>
+
+						<aside class="notes">
+							É possível adicionar funções diretamente na
+							struct; no caso, &self é uma referência para
+							a estrutura em si.
+						</aside>
                     </section>
 
                     <section>
@@ -461,6 +481,16 @@ trait Summarize {
     fn summarize(&amp;self) -&gt; String;
 }
                         </code></pre>
+
+						<aside class="notes">
+							Assim como interfaces em Java, traits definem
+							funções que a struct deve ter para fazer parte
+							da trait.
+
+							É possível gerar traits que não indicam que
+							precisa criar nenhuma função, que sevem para
+							"taggear" structs.
+						</aside>
                     </section>
 
                     <section>
@@ -473,6 +503,11 @@ impl Summarize for MyStruct {
     }
 }
                         </code></pre>
+
+						<aside class="notes">
+							Para fazer com que uma struct implemente uma
+							trait, usa-se `impl for`.
+						</aside>
                     </section>
 
                     <section>
@@ -483,6 +518,18 @@ fn make_summary&lt;T&gt;(summarizable: T) {
     T.summarize()
 }
                         </code></pre>
+
+						<aside class="notes">
+							É possível gerar funções (e structs, como vamos
+							ver a seguir) que aceitem tipos genéricos.
+
+							Uma coisa "legal" de Rust é que a resolução dos
+							generics não acontece em tempo de execução: durante
+							a compilação, todos as structs e funções genéricas
+							são expandidas para os tipos utilizados (ou seja,
+							o código final fica com várias versões das mesmas
+							structs e funções).
+						</aside>
                     </section>
 
                     <section>
@@ -495,6 +542,15 @@ fn make_summary&lt;T&gt;(summarizable: T)
     T.summarize()
 }
                         </code></pre>
+
+						<aside class="notes">
+							É possível bloquear os tipos genéricos para
+							aqueles que implementem uma trait.
+
+							No exemplo acima, a função `make_summary`
+							vai aceitar qualquer tipo desde que esse
+							implemente a trait `Summarize`.
+						</aside>
                     </section>
                 </section>
 
@@ -520,6 +576,16 @@ fn may_not_exist(value: Option&lt;String&gt;) {
                             ter enums com valores dentro com um enum chamado 
                             "Option"; Option tem dois valores: Some, com o
                             valor dentro ou None, que não tem valor algum.
+
+							E, como vimos, match tem que ser extensivo, cobrindo
+							todas as opções. Ou seja, não é possível não tratar
+							o caso do `None`.
+
+							(É possível simplificar o match usando `if let`, que
+							faz pattern matching e permite acesso ao conteúdo
+							"embedded" dentro do bloco criado, mas é mais legal
+							pensar em match por causa da necessidade de ser
+							extensivo.)
                         </aside>
                     </section>
 
@@ -533,6 +599,13 @@ fn main() {
    println!("The string is: {}", a);
 }
                         </code></pre>
+
+						<aside class="notes">
+							Esse código não compila. O caso é que a região que
+							`a` apontava, que tem a string inteira, agora
+							pertence a `b` e, assim, `a` não aponta para lugar
+							algum de memória.
+						</aside>
                     </section>
 
                     <section>
@@ -558,6 +631,11 @@ fn main() {
    println!("The string is: {}", a);
 }
                         </code></pre>
+
+						<aside class="notes">
+							Uma forma de dar acesso a uma região de memória por mais
+							de um local é usar referências.
+						</aside>
                     </section>
 
                     <section>
@@ -605,6 +683,15 @@ fn main() {
     a = 5;
 }
                         </code></pre>
+
+						<aside class="notes">
+							Mais um exemplo que não compila. Variáveis em Rust
+							são definidas como imutáveis por padrão: uma vez
+							com um valor definido, não é possível mudar esse
+							valor.
+
+							É possível criar uma variável mutável, no entanto.
+						</aside>
                     </section>
                 </section>
                 
@@ -620,6 +707,17 @@ enum Result&lt;T, E&gt; {
     Err(E),
 }
                         </code></pre>
+
+						<aside class="notes">
+							Essa é uma das partes mais legais de Rust (IMHO):
+							Lembram que enums tem que ser extensivos? Lembram que
+							é possível ter estruturas genéricas?
+
+							No caso, desde a base das funções do Rust (aquelas
+							mais próximas ao sistema operacional), o resultado das
+							operações é um enum `Result`, que contem um `Ok` com
+							o resultado Ok da operação ou `Err` com o tipo de erro.
+						</aside>
                     </section>
 
                     <section>
@@ -629,6 +727,17 @@ match File::create("something.txt") {
     Err(err) =&gt; println!("Failure! {}", err),
 }
                         </code></pre>
+
+						<aside class="notes">
+							Lembram que matchs tem que ser extensivos, cobrindo
+							todas as variantes do enum? Pois é, dessa forma não
+							é possível escapar de tratar o erro.
+
+							(até é possível, usando a função `unwrap()`, mas o
+							que essa função faz é abortar a execução da aplicação --
+							o que é muito legal porque tu explícitamente disse
+							"aqui a coisa explode".)
+						</aside>
                     </section>
                 </section>
 
@@ -733,6 +842,22 @@ fn main() {
 
                     <section>
                         <img src="_images/rust-issues.png" alt="4.5k issues no Github" class="stretch">
+
+						<aside class="notes">
+							Outra curiosidade de Rust: 4.500 issues nesse screenshot.
+
+							(Da última vez que eu olhei, já estava em 4.800.)
+
+							Como é que uma linguagem que tem 4 anos já tem quase 5k bugs?
+							Acontece que toda a discussão da linguagem acontece no Github.
+							Novo formato do async? Github.
+							Suporte a um "JDBC" da vida dentro do Rust? Github.
+							Melhorias da linguagem? Github.
+
+							Nada acontece na lista em que só os desenvolvedores podem
+							postar, nada acontece no grupinho seleto que decide todas
+							as coisas da linguagem. Tudo é feito de forma transparente.
+						</aside>
                     </section>
                 </section>
 
