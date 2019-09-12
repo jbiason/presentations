@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Flink</title>
+
+        <meta name="description" content="Por que você deveria aprender Rust">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none inside;
+            }
+
+            .revel ul.empty li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+            }
+
+            td.seen {
+                font-style: italic;
+                font-weight: bold;
+            }
+
+            .semi-opaque {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+
+			img.padding {
+				padding: 10px;
+				background-color: #fff !important;
+			}
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="_images/streamprocessing-flink.png" data-header>
+                        <h2 class="semi-opaque">Flink</h2>
+                    </section>
+                </section>
+				
+				<section>
+					<section>
+						<pre><code>
+cat log.log | grep ERROR | cut -f2 -d: &gt; errors.txt
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Entrada</h4>
+
+						<h2><pre><code>cat log.log</code></pre></h2>
+					</section>
+
+					<section>
+						<h4>Processamento</h4>
+
+						<h2><pre><code>grep ERROR</code></pre></h2>
+
+						<h2>
+							<pre><code>cut -f2 -d:</code></pre>
+						</h2>
+					</section>
+
+					<section>
+						<h4>Saída</h4>
+
+						<h2>
+							<pre><code>&gt; errors.txt</code></pre>
+						</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h4>cat</h4>
+
+						<h3>Tem começo e fim</h3>
+
+						<h2 class="fragment">"bounded"</h2>
+					</section>
+
+					<section>
+						<h4>Dados "infinitos"</h4>
+
+						<h2 class="fragment">"unbounded"</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<img src="_images/flink1.png" alt="" class="stretch">
+					</section>
+
+					<section>
+						<img src="_images/flink2.png" alt="" class="stretch">
+					</section>
+
+					<section>
+						<img src="_images/flink3.png" alt="" class="stretch">
+					</section>
+
+					<section>
+						<img class="stretch" src="_images/datastream.png" alt="">
+					</section>
+
+					<section>
+						<h4>Operators</h4>
+
+						<ul>
+							<li><code>map</code></li>
+							<li><code>flatMap</code></li>
+							<li><code>filter</code></li>
+							<li><code>reduce</code></li>
+							<li class="fragment"><code>split/select</code></li>
+							<li class="fragment"><code>join</code></li>
+							<li class="fragment"><code>keyBy</code></li>
+							<li class="fragment"><code>window</code></li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<img src="_images/unclephil-time.jpg" alt="" class="stretch">
+					</section>
+
+					<section>
+						<img src="_images/unclephil-step0.png" alt="" class="stretch padding">
+					</section>
+
+					<section>
+						<img src="_images/unclephil-step1.png" alt="" class="stretch padding">
+					</section>
+
+					<section>
+						<img src="_images/unclephil-step2.png" alt="" class="stretch padding">
+					</section>
+
+					<section>
+						<img src="_images/unclephil-step3.png" alt="" class="stretch padding">
+					</section>
+
+					<section>
+						<img src="_images/unclephil-step4.png" alt="" class="stretch padding">
+					</section>
+
+					<section>
+						<img src="_images/unclephil-step5.png" alt="" class="stretch padding">
+					</section>
+
+					<section>
+						<img src="_images/unclephil-step6.png" alt="" class="stretch padding">
+					</section>
+
+					<section>
+						<img src="_images/unclephil-step7.png" alt="" class="stretch padding">
+					</section>
+
+					<section>
+						<img src="_images/unclephil-step8.png" alt="" class="stretch padding">
+					</section>
+
+					<section>
+						<img src="_images/unclephil-step9.png" alt="" class="stretch padding">
+					</section>
+
+					<section>
+						<img src="_images/unclephil-step10.png" alt="" class="stretch padding">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<img src="_images/dunno.jpg" alt="" class="stretch">
+					</section>
+
+					<section>
+						<img src="_images/flink-cluster1.png" alt="" class="stretch">
+					</section>
+					
+					<section>
+						<img class="stretch" src="_images/flink-cluster2.png" alt="">
+					</section>
+					
+					<section>
+						<img class="stretch" src="_images/flink-cluster3.png" alt="">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<img class="stretch" src="_images/unclephil-flinkpipelinereal.png" alt="">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<img class="stretch" src="_images/jobmanager-1.png" alt="">
+					</section>
+
+					<section>
+						<img class="stretch" src="_images/plan_visualizer.png" alt="">
+					</section>
+				</section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+					<section></section>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
