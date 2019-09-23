@@ -132,24 +132,11 @@
 						</h2>
 
 						<p>
-							<span class="fragment">Basic</span>
-							<span class="fragment"> (com números e estruturado)</span>
-							<span class="fragment">, dBase III Plus</span>
-							<span class="fragment">, Clipper</span>
-							<span class="fragment">, Pascal</span>
-							<span class="fragment">, Cobol</span>
-							<span class="fragment">, Delphi (ObjectPascal)</span>
-							<span class="fragment">, C</span>
-							<span class="fragment">, C++</span>
-							<span class="fragment">, ActionScript (Flash)</span>
-							<span class="fragment">, PHP</span>
-							<span class="fragment">, JavaScript</span>
-							<span class="fragment">, Python</span>
-							<span class="fragment">, Objective-C</span>
-							<span class="fragment">, Clojure</span>
-							<span class="fragment">, Java</span>
-							<span class="fragment">, Scala</span>
-							<span class="fragment"><strong>, Rust.</strong></span>
+							Basic (com números e estruturado), dBase III Plus,
+							Clipper, Pascal, Cobol, Delphi (ObjectPascal),
+							C, C++, ActionScript (Flash), PHP, JavaScript,
+							Python, Objective-C, Clojure, Java, Scala
+							<strong>, Rust.</strong>
 						</p>
 
 						<aside class="notes">
@@ -162,6 +149,7 @@
 							- Perl
 							- Ruby
 							- Haskell
+							- Swift
 						</aside>
 					</section>
 
@@ -257,25 +245,13 @@
                             pra cima e pra baixo, Rust tem todas as abstrações
                             de alto nível que estamos acostumados com outras
                             linguagens.
-                        </aside>
-                    </section>
 
-					<section>
-						<img src="_images/nope.gif" alt="" class="stretch">
-
-						<aside class="notes">
 							Honestamente, se surgir uma nova linguagem que
 							tenha mais proteções de memória, com performance
 							ainda melhor que C mas eu tiver que escrever uma
 							lista encadeada mais uma vez, eu destruo todas as
 							coisas tecnológicas ao meu redor...
-						</aside>
-					</section>
 
-					<section>
-						<img src="_images/potato-farming-300x225.jpg" alt="" class="stretch">
-
-						<aside class="notes">
 							E vou plantar batata.
 
 							... porque aprendemos absolutamente NADA sobre
@@ -291,10 +267,11 @@
 
                     <section>
                         <pre><code class="hljs rust" data-trim>
-fn main() {
+fn main() -&lt; int{
     let a = 2;
     a = 3;
     println!("{}", a);
+	0
 }
                         </code></pre>
 
@@ -569,10 +546,6 @@ fn main() {
                         </aside>
                     </section>
 
-                    <section>
-                        <img class="stretch" src="_images/builds-character.png" alt="">
-                    </section>
-
                     <section data-transition="fade">
                         <pre><code class="hljs go" data-trim>presente := Presente { ... }
 canal &lt;- presente
@@ -623,12 +596,9 @@ presente.abrir()</code></pre>
                         <h2>Hora da anedota!</h2>
 
                         <img class="stretch" src="_images/senta-que-la-vem-historia.gif" alt="">
-                    </section>
 
-                    <section>
-                        <p>localtime</p>
-
-                        <p class="fragment">SimpleDateFormatter</p>
+						<p class="fragment"><code>localtime</code></p>
+						<p class="fragment"><code>SimpleDateFormatter</code></p>
 
                         <aside class="notes">
                             A muito tempo atrás, eu estava ajudando uma colega
@@ -703,7 +673,7 @@ enum IpAddr {
 
                     <section>
                         <pre><code class="hljs rust" data-trim>
-let home = IpAddr::V4(String::from("127.0.0.1");
+let home = IpAddr::V4(String::from("127.0.0.1"));
 
 match home {
     V4(address) =&gt; println!("IPv4 addr: {}", address),
@@ -808,14 +778,6 @@ OK(())
 
                 <section>
                     <section>
-                        <h2>Macros</h2>
-
-                        <small class="fragment">?</small>
-                    </section>
-                </section>
-
-                <section>
-                    <section>
 						<h2>Structs</h2>
 
                         <pre><code class="hljs rust" data-trim>
@@ -834,7 +796,7 @@ struct Gift {
 						<h2>Structs</h2>
 
 						<pre><code class="hljs rust" data-trim>
-let presente = Gift { "red", "A GIFT!" };
+let presente = Gift { package_color: "red", content: "A GIFT!" };
 						</code></pre>
 					</section>
                 </section>
@@ -863,11 +825,11 @@ trait Summary {
 
                     <section>
                         <pre><code class="hljs rust" data-trim>
-struct Super {
+struct Phrase {
     phrase: String
 }
 
-impl Summary for Super {
+impl Summary for Phrase {
     fn summarize(&amp;self) -&gt; String {
         self.phrase
             .split_whitespace()
@@ -880,7 +842,7 @@ impl Summary for Super {
                     
                     <section>
                         <pre><code class="hljs rust" data-trim>
-fn get_summary(summarizable: T) -&gt; String
+fn get_summary&lt;T&gt;(summarizable: T) -&gt; String
     where T: Summary
 {
     ...
@@ -895,6 +857,29 @@ fn get_summary(summarizable: T) -&gt; String
 struct Point&lt;T&gt; {
     x: T,
     y: T
+}
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Macros</h2>
+
+                        <small class="fragment">?</small>
+                    </section>
+
+                    <section>
+                        <h3>Log-Derive</h3>
+
+                        <pre><code>
+#[logfn(ok = "TRACE", err = "ERROR")]
+fn call_isan(num: &amp;str) -&gt; Result&lt;Success, Error&gt; {
+    if num.len() &gt;= 10 &amp;&amp; num.len() &lt;= 15 {
+        Ok(Success)
+    } else {
+        Err(Error)
+    }
 }
                         </code></pre>
                     </section>
@@ -967,81 +952,12 @@ test tests::testing ... ok
                         <a href="https://rustup.rs/">rustup</a>
 
                         <div class="fragment">
-                            <small>stable-x86_64-pc-windows-msvc</small>
-                        </div>
-
-                        <div class="fragment">
                             <small>armv7-unknown-linux-gnueabihf</small>
                         </div>
 
                         <div class="fragment">
                             <small>wasm32-unknown-unknown</small> <small class="fragment">(WebAssembly)</small>
                         </div>
-                    </section>
-                </section>
-
-				<!--
-                <section>
-                    <section>
-                        <h2>Falando em WASM...</h2>
-                    </section>
-
-                    <section>
-                        <h2>WASM</h2>
-
-                        <p><a href="https://rustwasm.github.io/wasm-pack/installer/">wasm-pack</a></p>
-                    </section>
-
-                    <section>
-                        <h2><a href="https://wasi.dev/">WASI</a></h2>
-
-                        <p>The WebAssembly System Interface</p>
-                    </section>
-                </section>
-				-->
-
-                <section>
-                    <section>
-                        <h2>Bibliotecas</h2>
-                    </section>
-
-                    <section>
-                        <h3>Rayon</h3>
-
-                        <pre><code>
-fn sum_of_squares(input: &amp;[i32]) -&gt; i32 {
-    input.iter()
-         .map(|&amp;i| i * i)
-         .sum()
-}
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>Rayon</h3>
-
-                        <pre><code>
-fn sum_of_squares(input: &amp;[i32]) -&gt; i32 {
-    input.par_iter()
-         .map(|&amp;i| i * i)
-         .sum()
-}
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>Log-Derive</h3>
-
-                        <pre><code>
-#[logfn(ok = "TRACE", err = "ERROR")]
-fn call_isan(num: &amp;str) -&gt; Result&lt;Success, Error&gt; {
-    if num.len() &gt;= 10 &amp;&amp; num.len() &lt;= 15 {
-        Ok(Success)
-    } else {
-        Err(Error)
-    }
-}
-                        </code></pre>
                     </section>
                 </section>
 
