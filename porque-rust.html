@@ -111,14 +111,14 @@
 							<li>Criada em 2006 por Graydon Hoare.</li>
 							<li>Patrocinada pela Mozilla em 2009.</li>
 							<li>Versão 1.0 em 2015.</li>
-							<li>Versão atual: 1.35</li>
+							<li>Versão atual: 1.37</li>
 						</ul>
 					</section>
 
 					<aside class="notes">
 						Parte burocrática da apresentação.
 
-						PS: Pode ser que, quando você essa apresentação, 1.35
+						PS: Pode ser que, quando você essa apresentação, 1.37
 						não seja mais a versão atual; a cada 6 semanas, sai uma
 						nova versão do compilador.
 					</aside>
@@ -128,7 +128,7 @@
 					<section>
 						<h2>
 							História
-							<img class="fragment" src="_images/AYV1X0yv.png" alt="" style="width:100px;margin:0">
+							<img src="_images/AYV1X0yv.png" alt="" style="width:100px;margin:0">
 						</h2>
 
 						<p>
@@ -188,6 +188,7 @@
 
                 <section>
                     <section>
+						<h2>1. A Linguagem Mais Amada</h2>
                         <p>
                             <a href="https://insights.stackoverflow.com/survey/2019">
                                 A linguagem mais amada segundo o StackOverflow
@@ -211,7 +212,7 @@
 
                 <section>
                     <section>
-                        <h2>"Low Level Language with High Level Abstractions"</h2>
+                        <h2>2. "Low Level Language with High Level Abstractions"</h2>
                     </section>
 
                     <section>
@@ -262,7 +263,7 @@
 
                 <section>
                     <section>
-                        <h2>Compilador Chato mas Amigável</h2>
+                        <h2>3. Compilador Chato mas Amigável</h2>
                     </section>
 
                     <section>
@@ -356,7 +357,7 @@ fn main() -&lt; int{
 
                 <section>
                     <section>
-                        <h2>Borrow Checker</h2>
+                        <h2>4. Borrow Checker</h2>
 
                         <aside class="notes">
                             O "Borrow Checker" é uma das principais novidades
@@ -593,7 +594,7 @@ presente.abrir()</code></pre>
 
                 <section>
                     <section>
-                        <h2>Hora da anedota!</h2>
+                        <h3>Hora da anedota!</h3>
 
                         <img class="stretch" src="_images/senta-que-la-vem-historia.gif" alt="">
 
@@ -649,7 +650,7 @@ presente.abrir()</code></pre>
 
                 <section>
                     <section>
-                        <h2>Tipos Algébricos</h2>
+                        <h2>5. Tipos Algébricos</h2>
                     </section>
 
                     <section>
@@ -694,7 +695,7 @@ enum Option&lt;T&gt; {
 
                 <section>
                     <section>
-                        <h2>Error Control</h2>
+                        <h2>6. Error Control</h2>
                     </section>
 
                     <section>
@@ -778,7 +779,11 @@ OK(())
 
                 <section>
                     <section>
-						<h2>Structs</h2>
+						<h2>7. Generics/Traits</h2>
+					</section>
+
+					<section>
+						<h3>Structs</h3>
 
                         <pre><code class="hljs rust" data-trim>
 struct Gift {
@@ -793,20 +798,34 @@ struct Gift {
                     </section>
 
 					<section>
-						<h2>Structs</h2>
+						<h3>Structs</h3>
 
 						<pre><code class="hljs rust" data-trim>
 let presente = Gift { package_color: "red", content: "A GIFT!" };
 						</code></pre>
 					</section>
-                </section>
 
-                <section>
-                    <section>
-                        <h2>Traits/Generics</h2>
-                    </section>
+					<section>
+						<h3>Structs Genéricas</h3>
+                        <pre><code class="hljs rust" data-trim>
+struct Point&lt;T&gt; {
+    x: T,
+    y: T
+}
+                        </code></pre>
+					</section>
+
+					<section>
+						<h3>Structs Genéricas</h3>
+
+						<pre><code class="hljs rust" data-trim>
+let my_point = Point<f32>(x: 1.0, y: 2.0);
+						</code></pre>
+					</section>
 
                     <section>
+						<h3>Enums Generics</h3>
+
                         <pre><code class="hljs rust" data-trim>
 enum Result&lt;T, E&gt; {
     Ok(T),
@@ -816,6 +835,8 @@ enum Result&lt;T, E&gt; {
                     </section>
 
                     <section>
+						<h3>Traits</h3>
+
                         <pre><code class="hljs rust" data-trim>
 trait Summary {
     fn summarize(&amp;self) -&gt; String;
@@ -834,7 +855,7 @@ impl Summary for Phrase {
         self.phrase
             .split_whitespace()
             .map(|word| word.chars().nth(0).unwrap())
-            .collect();
+            .collect()
     }
 }
                         </code></pre>
@@ -849,47 +870,13 @@ fn get_summary&lt;T&gt;(summarizable: T) -&gt; String
 }
                         </code></pre>
                     </section>
-
-                    <section>
-                        <h2>Structs genéricas</h2>
-
-                        <pre><code class="hljs rust" data-trim>
-struct Point&lt;T&gt; {
-    x: T,
-    y: T
-}
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section>
-                    <section>
-                        <h2>Macros</h2>
-
-                        <small class="fragment">?</small>
-                    </section>
-
-                    <section>
-                        <h3>Log-Derive</h3>
-
-                        <pre><code>
-#[logfn(ok = "TRACE", err = "ERROR")]
-fn call_isan(num: &amp;str) -&gt; Result&lt;Success, Error&gt; {
-    if num.len() &gt;= 10 &amp;&amp; num.len() &lt;= 15 {
-        Ok(Success)
-    } else {
-        Err(Error)
-    }
-}
-                        </code></pre>
-                    </section>
                 </section>
 
 				<section>
 					<section>
 						<h2>
 							<a href="https://doc.rust-lang.org/cargo/">
-								Cargo
+								8. Cargo
 							</a>
 						</h2>
 
@@ -906,7 +893,7 @@ fn call_isan(num: &amp;str) -&gt; Result&lt;Success, Error&gt; {
 
 				<section>
 					<section>
-						<h2>Tests</h2>
+						<h2>9. Tests</h2>
 
 						<pre><code class="hljs rust" data-trim>
 #[cfg(test)]
@@ -933,7 +920,30 @@ test tests::testing ... ok
 
                 <section>
                     <section>
-                        <h2>Crazy stuff</h2>
+                        <h2>10. Macros</h2>
+
+                        <small class="fragment">?</small>
+                    </section>
+
+                    <section>
+                        <h3>Log-Derive</h3>
+
+                        <pre><code>
+#[logfn(ok = "TRACE", err = "ERROR")]
+fn call_isan(num: &amp;str) -&gt; Result&lt;Success, Error&gt; {
+    if num.len() &gt;= 10 &amp;&amp; num.len() &lt;= 15 {
+        Ok(Success)
+    } else {
+        Err(Error)
+    }
+}
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>11. Crazy stuff</h2>
                     </section>
 
                     <section>
