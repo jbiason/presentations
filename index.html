@@ -3,85 +3,33 @@
 	<head>
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>Presentations</title>
+			<title>Presentations.JulioBiason.Me 4.1</title>
 
-			<style>
-* {
-	font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-	font-size: 1em;
-	font-style: normal;
-}
-
-body {
-	max-width: 50rem;
-	padding: 20px 10px;
-	background: #000;
-	color: #ccc;
-	line-height: 1rem;
-	margin: 0 auto;
-}
-
-h1 {
-	display: block;
-	position: relative;
-	padding: 20px 0 10px;
-	margin 0;
-	overflow: hidden;
-	float: none;
-	line-height: 1.3rem;
-}
-
-h1:after {
-	content: "====================================================================================================";
-	position: absolute;
-	bottom: -7px;
-	left: 0;
-}
-
-h2 {
-	position: relative;
-	margin-top: 1rem;
-	margin-bottom: 10px;
-}
-
-h2:before {
-	content: "## ";
-	display: inline;
-}
-
-a, a:visited {
-	color: #ccc;
-	cursor: pointer;
-	border-bottom: 1px solid #ff2e88;
-	text-decoration: none;
-}
-
-a:after {
-	content: " " url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20class='i-external'%20viewBox='0%200%2032%2032'%20width='14'%20height='14'%20fill='none'%20stroke='%23ff9800'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='9.38%'%3E%3Cpath%20d='M14%209%20L3%209%203%2029%2023%2029%2023%2018%20M18%204%20L28%204%2028%2014%20M28%204%20L14%2018'/%3E%3C/svg%3E");
-}
-
-div.muted {
-	color: rgba(255,255,255,0.5);
-}
-
-div.hide {
-	display: none;
-}
-			</style>
+			<link rel="stylesheet" href="terminimal.css" title="" type="">
 	</head>
 
 	<body>
-		<h1>Presentations</h1>
+		<div class="container">
+			<header class="header">
+				<div class="header__iner">
+					<div class="header__logo">
+						<a href="https://presentations.juliobiason.me" style="text-decoration: none;">
+							<div class="logo">
+								Presentations.JulioBiason.Me 4.1
+							</div>
+						</a>
+					</div>
+				</div>
+			</header>
 
-		<div id='presentations'></div>
+			<div id='presentations'></div>
 
-		<script src="_external/jquery.js"></script>
-
-		<div id='record' class='hide'>
-			<h2 class="title"><a href='#'>Title</a></h2>
-			<div class="muted">Updated: <span class="updated">never</span></div>
+			<div id='record' class='hide'>
+				<h1 class="post-title"><a href='#'>Title</a></h1>
+			</div>
 		</div>
 
+		<script src="_external/jquery.js"></script>
 		<script type="text/javascript">
 			$(function() {
 				$.ajax({
