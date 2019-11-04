@@ -101,7 +101,6 @@ a.read-more:active {
  display:flex;
  flex-direction:column;
  position:relative;
- margin-bottom: 25px;
 }
 .header__inner {
  display:flex;
@@ -403,7 +402,7 @@ hr {
  display:none
 }
 .posts {
- margin:0 auto
+ /* margin:0 auto */
 }
 .post {
  width:100%;
