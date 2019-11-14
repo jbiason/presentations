@@ -54,10 +54,6 @@
                 color: white;
             }
             
-            img {
-                max-height: 90%;
-            }
-
             td.seen {
                 font-style: italic;
                 font-weight: bold;
@@ -71,6 +67,11 @@
 
 			.reveal h1 {
 				font-size: 3em !important;
+			}
+
+			.plain {
+				background-color: white !important;
+				padding: 10px !important;
 			}
         </style>
     </head>
@@ -118,45 +119,18 @@
 						<img class="stretch" src="_images/streamprocessing-aws.png" alt="Lista de pontos de presença da CDN da Amazon" />
 
 						<aside class="notes">
-						</aside>
-					</section>
+							Essa não é uma apresentação sobre CDN, mas como a 
+							apresentação requer algo que gere dados de forma
+							contínua, eu vou usar CDN como exemplo, até porque
+							trabalhei com isso.
 
-					<section>
-						<h3>O que é uma CDN</h3>
-					</section>
+							CDN nada mais é que um cache distribuído; ao invés
+							de todo mundo ir até o servidor de origem, os dados
+							são entregues por um servidor mais próximo do cliente.
 
-					<section>
-						<img class="stretch plain" src="_images/streamprocessing-connection.png" alt="" />
-
-						<aside class="notes">
-							Numa conexão "normal", o seu computador conecta no
-							modem, que se conecta em um servidor do seu
-							provedor, que se conecta em outro servidor, que se
-							conecta em outro, que se conecta em outro até que,
-							finalmente, ele chega ao servidor que você
-							realmente quer.
-						</aside>
-					</section>
-
-					<section>
-						<img class="stretch plain" src="_images/streamprocessing-cdn.png" alt="" />
-
-						<aside class="notes">
-							Com uma CDN, ao invés do servidor do provedor
-							atravessar toda a internet até chegar ao servidor
-							de destino, o servidor da CDN verifica se ele tem o
-							arquivo requisitado e, se tiver, responde
-							imediatamente.
-
-							Quem sai ganhando com uma CDN?
-
-							- O usuário, já que a resposta vem mais rápida.
-							- O cliente da CDN, pois ele não vai precisar ter
-							  um servidor ou uma banda larga para poder responder
-							  todos os usuários, já que alguns vão ficar somente
-							  na CDN.
-							- O provedor, já que ele tem que pagar qualquer
-							  tráfego que saia da sua rede.
+							Assim temos um sistema distribuído (vários servidores)
+							que não tem pausa (porque os vários servidores estão
+							o tempo todo entregando dados).
 						</aside>
 					</section>
 
@@ -196,6 +170,8 @@
 					</section>
 
 					<section>
+						<h2>"Read Ready"</h2>
+
 						<img class="stretch" src="_images/streamprocessing-read-ready.jpg" alt="">
 					</section>
 
@@ -467,9 +443,9 @@ light.switch()</code></pre>
 
                     <section>
                         <ul>
-                            <li><code>(map lambda iterator)</code></li>
-                            <li><code>(fold lambda iterator start)</code></li>
-                            <li><code>(filter lambda iterator start)</code></li>
+                            <li><code>(map lambda iterable)</code></li>
+                            <li><code>(fold lambda iterable start)</code></li>
+                            <li><code>(filter lambda iterable)</code></li>
                         </ul>
                     </section>
 
@@ -526,15 +502,15 @@ light.switch()</code></pre>
 					</section>
 
                     <section>
-                        <img class="stretch" src="_images/streamprocessing-streamprocessing.png" alt=""/>
+                        <img class="plain stretch" src="_images/streamprocessing-streamprocessing.png" alt=""/>
                     </section>
 
                     <section>
-                        <img class="stretch" src="_images/streamprocessing-pipeline.png" alt="" />
+                        <img class="plain stretch" src="_images/streamprocessing-pipeline.png" alt="" />
                     </section>
 
 					<section>
-						<img class="stretch" src="_images/unclephil-flinkpipelinereal.png" alt="" />
+						<img class="plain stretch" src="_images/unclephil-flinkpipelinereal.png" alt="" />
 					</section>
 
                     <section>
