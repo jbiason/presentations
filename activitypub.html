@@ -232,6 +232,27 @@
 							<li class="fragment">Tem vários conceitos iguais ao email.</li>
 							<li class="fragment">Composto de outros protolocos (como WebFinger, ActivityStreams, ActivityVocabulary e JSON-LD).</li>
 						</ul>
+
+						<aside class="notes">
+							1. O protocolo é certificado (e padronizado) pela
+							   W3C, o que deixa o protocolo aberto para
+							   qualquer um implementar a sua própria versão (e
+							   existem várias implementações, que eu vou falar
+							   mais pra frente).
+							2. Apesar d'eu ter comentado o email, que usa um
+							   protocolo específico, ActivityPub usa HTTP e JSON.
+							3. E apesar de ser HTTP e JSON, ainda aproveita
+							   alguns conceitos do email -- e sim, eu estou
+							   andando em circulos, mas peraí.
+							4. ActivityPub não é apenas um protocolo, mas é um
+							   protocolo construido sobre outros protocolos,
+							   como WebFinger para descoberta de informações de
+							   usuários, ActivityStreams que descreve o formato
+							   das atividades, ActivityVocabulary que inidica
+							   quais ações existentes e os tipos de objetos
+							   existentes e JSON-LD que define os formato dos
+							   objetos em JSON.
+						</aside>
 					</section>
 
 					<section>
@@ -244,6 +265,14 @@
 							<li class="fragment">Links</li>
 							<li class="fragment">(e mais, definidos no Vocabulary)</li>
 						</ul>
+
+						<aside class="notes">
+							Existem atores que aplicam as ações (person, bot,
+							company/service), e as atividades tem coisas como o
+							compartilhamento de notas (texto), imagens, links e
+							outras coisas. Praticamente tudo que possa ser
+							pensando em compartilhar.
+						</aside>
 					</section>
 
 					<section>
@@ -262,13 +291,19 @@
  "following": "https://social.example/alyssa/following/",
  "liked": "https://social.example/alyssa/liked/"}
 						</code></pre>
+
+						<aside class="notes">
+							Essa é a estrutura de um ator. Existem algumas
+							opções importantes/interessantes aqui.
+						</aside>
+
 					</section>
 
 					<section>
 						<h4>ActivityPub</h4>
 
 						<pre><code class="hljs json" data-trim>
- {"@context": "https://www.w3.org/ns/activitystreams",
+{"@context": "https://www.w3.org/ns/activitystreams",
  "type": "Create",
  "id": "https://social.example/alyssa/posts/a29a6843",
  "to": ["https://chatty.example/ben/"],
@@ -279,6 +314,20 @@
             "to": ["https://chatty.example/ben/"],
             "content": "Did you finish reading that book?"}}
 						</code></pre>
+
+						<aside class="notes">
+							E uma atividade -- por exemplo, nosso ator acima
+							enviando um texto para outro ator.
+						</aside>
+					</section>
+
+					<section>
+						<img class="stretch" src="_images/rewind.png" alt="">
+
+						<aside class="notes">
+							Mas vamos voltar um pouquinho para explicar como
+							ActivityPub é parecido com email.
+						</aside>
 					</section>
 
 					<section>
@@ -296,6 +345,18 @@
  "following": "https://social.example/alyssa/following/",
  "liked": "https://social.example/alyssa/liked/"}
 						</code></pre>
+
+						<aside class="notes">
+							Essa informação sobre o ator (que eu estou
+							mostrando do originador da mensagem) tem alguns
+							valores que são importantes.
+
+							Por exemplo, the "inbox" tem as mensagens que
+							chegaram para esse usuário.
+
+							Obviamente, não necessáriamente qualquer um pode
+							acessar o inbox, mas a informação pertence ao ator.
+						</aside>
 					</section>
 
 					<section>
@@ -313,6 +374,12 @@
  "following": "https://social.example/alyssa/following/",
  "liked": "https://social.example/alyssa/liked/"}
 						</code></pre>
+
+						<aside class="notes">
+							Assim como o "inbox", existe o "outbox" que é tudo
+							que o ator enviou. Basicamente, essa é a lista de
+							todas as atividades do usuário específico.
+						</aside>
 					</section>
 
 					<section>
@@ -330,6 +397,10 @@
  "following": "https://social.example/alyssa/following/",
  "liked": "https://social.example/alyssa/liked/"}
 						</code></pre>
+						
+						<aside class="notes">
+							A lista de seguidores do ator.
+						</aside>
 					</section>
 
 					<section>
@@ -347,6 +418,10 @@
  "following": "https://social.example/alyssa/following/",
  "liked": "https://social.example/alyssa/liked/"}
 						</code></pre>
+
+						<aside class="notes">
+							Follow com os atores que o ator segue.
+						</aside>
 					</section>
 
 					<section>
@@ -364,6 +439,11 @@
  "following": "https://social.example/alyssa/following/",
  "liked": "https://social.example/alyssa/liked/"}
 						</code></pre>
+
+						<aside class="notes">
+							E "liked" com o objetos que o ator marcou como
+							"like".
+						</aside>
 					</section>
 				</section>
 
