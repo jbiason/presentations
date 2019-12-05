@@ -1,6 +1,5 @@
 *.sw?
 .DS_Store
-index.json
 *.pyc
 *.xml
 report.html
