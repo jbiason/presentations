@@ -269,11 +269,11 @@
 
                     <section>
                         <pre><code class="hljs rust" data-trim>
-fn main() -&gt; int{
+fn main() -&gt; u8 {
     let a = 2;
     a = 3;
     println!("{}", a);
-    0
+    a
 }
                         </code></pre>
 
@@ -372,7 +372,7 @@ fn main() -&gt; int{
 
                     <section>
                         <pre><code class="hljs rust" data-trim>
-a = String::from("hello");
+let a = String::from("hello");
                         </code></pre>
                     </section>
 
@@ -556,9 +556,13 @@ pub fn drop&lt;T&gt;(_x: T) { }
                         </aside>
                     </section>
 
-                    <section>
-                        <img class="stretch" src="_images/processor-speed.png" alt="">
-                    </section>
+					<section>
+						<img class="stretch" src="_images/40-years-processor-trend.png" alt="">
+					</section>
+
+					<section>
+						<a href="https://www.zdnet.com/article/microsoft-70-percent-of-all-security-bugs-are-memory-safety-issues/">Microsoft: 70 percent of all security bugs are memory safety issues</a>
+					</section>
 
                     <section>
                         <a href="https://swift.org/blog/swift-5-exclusivity/">Swift 5 Exclusivity Enforcement</a>
@@ -660,15 +664,6 @@ let home = IpAddr::V4(String::from("127.0.0.1"));
 match home {
     V4(address) =&gt; println!("IPv4 addr: {}", address),
     V6(address) =&gt; println!("Ipv6 addr: {}", address),
-}
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <pre><code class="hljs rust" data-trim>
-enum Option&lt;T&gt; {
-    Some(T),
-    None
 }
                         </code></pre>
                     </section>
@@ -925,14 +920,6 @@ fn call_isan(num: &amp;str) -&gt; Result&lt;Success, Error&gt; {
                 <section>
                     <section>
                         <h2>11. Crazy stuff</h2>
-                    </section>
-
-                    <section>
-                        <a href="https://medium.com/@shnatsel/how-rusts-standard-library-was-vulnerable-for-years-and-nobody-noticed-aebf0503c3d6">How Rust’s standard library was vulnerable for years and nobody noticed</a>
-                    </section>
-
-                    <section>
-                        <a href="https://medium.com/@sgrif/no-the-problem-isnt-bad-coders-ed4347810270">No, the problem isn’t “bad coders”</a>
                     </section>
 
                     <section>
