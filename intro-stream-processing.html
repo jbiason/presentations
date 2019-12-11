@@ -76,30 +76,26 @@
         </style>
     </head>
 
-    <body>
-        <div class="reveal">
-            <div class="slides">
-                <section>
-                    <section data-background="_images/streamprocessing.jpg" data-header>
-                        <h2 class="semi-opaque">Uma Não-Gentil Introdução ao Stream Processing</h2>
-                    </section>
-                </section>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background="_images/streamprocessing.jpg" data-header>
+					<h2 class="semi-opaque">Uma Não-Gentil Introdução ao Stream Processing</h2>
+				</section>
 
-                <section>
-                    <section>
-                        <img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
+				<section>
+					<img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
 
-                        <div>
-                            <ul class="empty">
-                                <li>Júlio Biason</li>
-								<li><a href="https://functional.cafe/@juliobiason">https://functional.cafe/@juliobiason</a></li>
-								<li><a href="https://t.me/juliobiason">https://t.me/juliobiason</a></li>
-                                <li>julio.biason@pm.me</li>
-                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
-                            </ul>
-                        </div>
-                    </section>
-                </section>
+					<div>
+						<ul class="empty">
+							<li>Júlio Biason</li>
+							<li><a href="https://functional.cafe/@juliobiason">https://functional.cafe/@juliobiason</a></li>
+							<li><a href="https://t.me/juliobiason">https://t.me/juliobiason</a></li>
+							<li>julio.biason@pm.me</li>
+							<li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+						</ul>
+					</div>
+				</section>
 
 				<section>
 					<h2>Agenda:</h2>
@@ -115,7 +111,7 @@
 
 				<section>
 					<section>
-                        <h2>This is a CDN</h2>
+						<h2>This is a CDN</h2>
 						<img class="stretch" src="_images/streamprocessing-aws.png" alt="Lista de pontos de presença da CDN da Amazon" />
 
 						<aside class="notes">
@@ -136,7 +132,7 @@
 
 					<section>
 						<h2>This is a CDN</h2>
-						
+
 						<p>A AWS tem um limite máximo de 100.000 requisições/segundo.</p>
 					</section>
 
@@ -166,7 +162,7 @@
 							banco de dados e fazer um SELECT pra ver o total.
 						</p>
 
-						<p class="fragment">Precisamos os dados "read ready".</p>
+						<p class="fragment">Precisamos os dados "<strong>read ready</strong>".</p>
 					</section>
 
 					<section>
@@ -201,9 +197,7 @@
 						<p class="fragment">... a não ser que registros antigos fosse apagados.</p>
 						<p class="fragment">... que é o que serviços de mensageria fazem.</p>
 					</section>
-				</section>
 
-				<section>
 					<section data-background="_images/streamprocessing-message-broker.png">
 						<h1 class="semi-opaque">Message Brokers</h1>
 					</section>
@@ -217,12 +211,12 @@
 							clientes: 
 
 							- Um dos clientes é um "Producer", responsável pela
-							  geração de dados; numa analogia com banco de dados,
-							  seria um aplicativo que somente fizesse INSERRTS.
+							geração de dados; numa analogia com banco de dados,
+							seria um aplicativo que somente fizesse INSERRTS.
 
 							- O outro cliente é o "Consumer", responsável por
-							  ler os dados gerados os dados gerados pelo
-							  Producer.
+							ler os dados gerados os dados gerados pelo
+							Producer.
 						</aside>
 					</section>
 
@@ -255,10 +249,10 @@
 					</section>
 
 					<section>
-                        <img src="_images/streamprocessing-kafka.png" alt="Kafka Logo" style="float:left;width:200px;margin:50px;" class="no-border">
-                        <img src="_images/streamprocessing-rabbitmq.png" alt="RabbitMQ Logo" style="float:left;width:200px;margin:50px;" class="no-border">
-                        <img src="_images/streamprocessing-sqs.png" alt="AWS SQS Logo" style="float:left;width:200px;margin:50px;" class="no-border">
-                        <img src="_images/streamprocessing-zeromq.gif" alt="ZeroMQ Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+						<img src="_images/streamprocessing-kafka.png" alt="Kafka Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+						<img src="_images/streamprocessing-rabbitmq.png" alt="RabbitMQ Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+						<img src="_images/streamprocessing-sqs.png" alt="AWS SQS Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+						<img src="_images/streamprocessing-zeromq.gif" alt="ZeroMQ Logo" style="float:left;width:200px;margin:50px;" class="no-border">
 
 						<aside class="notes">
 							Os Mesage Brokers mais usados são:
@@ -281,9 +275,7 @@
 							Lambda.
 						</aside>
 					</section>
-				</section>
 
-				<section>
 					<section data-background="_images/streamprocessing-monolith.jpg">
 						<h1 class="fragment semi-opaque">Batch Processing</h1>
 					</section>
@@ -320,21 +312,19 @@
 					<section>
 						<img class="stretch plain" src="_images/dunno.jpg" alt="" />
 
-                        <aside class="notes">
-                            Esse é todo o conhecimento que eu tenho de batch
-                            processing, simplesmente porque eu pulei
-                            diretamente para stream processing sem nunca ter
-                            feito muita coisa com batch processing.
-                        </aside>
+						<aside class="notes">
+							Esse é todo o conhecimento que eu tenho de batch
+							processing, simplesmente porque eu pulei
+							diretamente para stream processing sem nunca ter
+							feito muita coisa com batch processing.
+						</aside>
 					</section>
 
 					<section>
-                        <img src="_images/streamprocessing-spark.png" alt="Apache Spark Logo" style="float:left;width:200px;margin:50px;" class="no-border">
-                        <img src="_images/streamprocessing-hadoop.png" alt="Apache Hadoop Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+						<img src="_images/streamprocessing-spark.png" alt="Apache Spark Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+						<img src="_images/streamprocessing-hadoop.png" alt="Apache Hadoop Logo" style="float:left;width:200px;margin:50px;" class="no-border">
 					</section>
-				</section>
 
-				<section>
 					<section data-background="_images/streamprocessing-functional.jpg">
 						<h1 class="semi-opaque">Programação Funcional</h1>
 					</section>
@@ -363,7 +353,7 @@
 
 					<section>
 						<pre><code>def mult(a):
-    return a * 4</code></pre>
+	return a * 4</code></pre>
 					</section>
 
 					<section>
@@ -376,42 +366,42 @@
 
 					<section>
 						<pre><code>class LightSwitch:
-    def __init__(self):
-        self.state = False
+	def __init__(self):
+		self.state = False
 
-    def switch(self):
-        self.state = not self.state
-        print(self.state)</code></pre>
+	def switch(self):
+		self.state = not self.state
+		print(self.state)</code></pre>
 					</section>
 
-                    <section>
-                        <pre><code>light = LightSwitch()
+					<section>
+						<pre><code>light = LightSwitch()
 light.switch()</code></pre>
-                        <span class="fragment">True</span>
+						<span class="fragment">True</span>
 
-                        <pre class="fragment"><code>light.switch()</code></pre>
-                        <span class="fragment">False</span>
-                    </section>
+						<pre class="fragment"><code>light.switch()</code></pre>
+						<span class="fragment">False</span>
+					</section>
 
-                    <section>
-                        <pre><code>print()</code></pre>
+					<section>
+						<pre><code>print()</code></pre>
 
-                        <aside class="notes">
-                            Por mais estranho que possa soar, `print()` também
-                            não é uma função pura, porque chamar print() duas
-                            vezes vai deixar duas linhas na tela.
-                        </aside>
+						<aside class="notes">
+							Por mais estranho que possa soar, `print()` também
+							não é uma função pura, porque chamar print() duas
+							vezes vai deixar duas linhas na tela.
+						</aside>
 
-                        <pre class="fragment"><code>INSERT INTO table (value, value)</code></pre>
+						<pre class="fragment"><code>INSERT INTO table (value, value)</code></pre>
 
-                        <aside class="notes">
-                            Insert também não é considerada uma função pura,
-                            porque cada vez que é chamada adiciona um novo
-                            registro na tabela.
-                        </aside>
+						<aside class="notes">
+							Insert também não é considerada uma função pura,
+							porque cada vez que é chamada adiciona um novo
+							registro na tabela.
+						</aside>
 
-                        <pre class="fragment"><code>random()</code></pre>
-                    </section>
+						<pre class="fragment"><code>random()</code></pre>
+					</section>
 
 					<section>
 						<p>"Idempotência"</p>
@@ -423,110 +413,110 @@ light.switch()</code></pre>
 						</aside>
 					</section>
 
-                    <section>
-                        <h2>Imutabilidade</h2>
+					<section>
+						<h2>Imutabilidade</h2>
 
-                        <p>Uma vez que o dado é gerado, ele nunca muda.</p>
+						<p>Uma vez que o dado é gerado, ele nunca muda.</p>
 
-                        <p class="fragment"><small>(Transparência referencial)</small></p>
-                    </section>
+						<p class="fragment"><small>(Transparência referencial)</small></p>
+					</section>
 
-                    <section>
-                        <img src="_images/lisp.png" alt="">
+					<section>
+						<img src="_images/lisp.png" alt="">
 
-                        <aside class="notes">
-                            Mas uma coisa legal que seguiu a teoria das
-                            categorias, implementando programação funcional,
-                            foi Lisp.
-                        </aside>
-                    </section>
+						<aside class="notes">
+							Mas uma coisa legal que seguiu a teoria das
+							categorias, implementando programação funcional,
+							foi Lisp.
+						</aside>
+					</section>
 
-                    <section>
-                        <ul>
-                            <li><code>map</code></li>
-                            <li><code>reduce</code> <span class="fragment">(fold)</span></li>
-                            <li class="fragment"><code>filter</code></li>
-                        </ul>
-                    </section>
+					<section>
+						<ul>
+							<li><code>map</code></li>
+							<li><code>reduce</code> <span class="fragment">(fold)</span></li>
+							<li class="fragment"><code>filter</code></li>
+						</ul>
+					</section>
 
-                    <section>
-                        <ul>
-                            <li><code>(map lambda iterable)</code></li>
-                            <li><code>(fold lambda iterable start)</code></li>
-                            <li><code>(filter lambda iterable)</code></li>
-                        </ul>
-                    </section>
+					<section>
+						<ul>
+							<li><code>(map lambda iterable)</code></li>
+							<li><code>(fold lambda iterable start)</code></li>
+							<li><code>(filter lambda iterable)</code></li>
+						</ul>
+					</section>
 
-                    <section>
-                        <ul>
-                            <li><code><strong>map</strong></code>: transforma cada um dos
-                                elementos do iterador através do função lambda
-                                em uma nova lista.</li>
-                            <li><code><strong>fold</strong></code>: converte todos os elementos
-                                da lista em um único valor, começando com um
-                                valor adicionar (por exemplo, <code>sum</code>).</li>
-                            <li><code><strong>filter</strong></code>: remove elementos do
-                                iterador que não sejam verdadeiros pelo lambda
-                                e produz uma nova lista. </li>
-                        </ul>
-                    </section>
+					<section>
+						<ul>
+							<li><code><strong>map</strong></code>: transforma cada um dos
+								elementos do iterador através do função lambda
+								em uma nova lista.</li>
+							<li><code><strong>fold</strong></code>: converte todos os elementos
+								da lista em um único valor, começando com um
+								valor adicionar (por exemplo, <code>sum</code>).</li>
+							<li><code><strong>filter</strong></code>: remove elementos do
+								iterador que não sejam verdadeiros pelo lambda
+								e produz uma nova lista. </li>
+						</ul>
+					</section>
 				</section>
 
-                <section>
-                    <section data-background="_images/streamprocessing.jpg">
-                        <h1 class="semi-opaque">Stream Processing</h1>
-                    </section>
+				<section>
+					<section data-background="_images/streamprocessing.jpg">
+						<h1 class="semi-opaque">Stream Processing</h1>
+					</section>
 
 					<section>
 						<pre><code>sudo cat /etc/shadow | cut -d ':' -f 2 | sort | uniq -c</code></pre>
 					</section>
 
 					<section>
-                        <pre><code>sudo cat [broker] | cut -d ':' -f 2 | sort | uniq -c</code></pre>
+						<pre><code>sudo cat [broker] | cut -d ':' -f 2 | sort | uniq -c</code></pre>
 					</section>
 
 					<section>
-                        <pre><code>sudo cat [broker] | map | sort | uniq -c</code></pre>
+						<pre><code>sudo cat [broker] | map | sort | uniq -c</code></pre>
 					</section>
 
 					<section>
-                        <pre><code>sudo cat [broker] | map | fold</code></pre>
+						<pre><code>sudo cat [broker] | map | fold</code></pre>
 					</section>
 
 					<section>
-                        <pre><code>sudo cat [broker] | map | fold</code></pre>
-                        <pre><code>sudo cat [broker] | map | fold</code></pre>
-                        <pre><code>sudo cat [broker] | map | fold</code></pre>
-                        <pre><code>sudo cat [broker] | map | fold</code></pre>
-                        <pre><code>sudo cat [broker] | map | fold</code></pre>
+						<pre><code>sudo cat [broker] | map | fold</code></pre>
+						<pre><code>sudo cat [broker] | map | fold</code></pre>
+						<pre><code>sudo cat [broker] | map | fold</code></pre>
+						<pre><code>sudo cat [broker] | map | fold</code></pre>
+						<pre><code>sudo cat [broker] | map | fold</code></pre>
 					</section>
 
 					<section>
-                        <pre><code>sudo cat [broker] | map | group_by | fold</code></pre>
-                        <pre><code>sudo cat [broker] | map | group_by | fold</code></pre>
-                        <pre><code>sudo cat [broker] | map | group_by | fold</code></pre>
-                        <pre><code>sudo cat [broker] | map | group_by | fold</code></pre>
-                        <pre><code>sudo cat [broker] | map | group_by | fold</code></pre>
+						<pre><code>sudo cat [broker] | map | group_by | fold</code></pre>
+						<pre><code>sudo cat [broker] | map | group_by | fold</code></pre>
+						<pre><code>sudo cat [broker] | map | group_by | fold</code></pre>
+						<pre><code>sudo cat [broker] | map | group_by | fold</code></pre>
+						<pre><code>sudo cat [broker] | map | group_by | fold</code></pre>
 					</section>
 
-                    <section>
-                        <img class="plain stretch" src="_images/streamprocessing-streamprocessing.png" alt=""/>
-                    </section>
+					<section>
+						<img class="plain stretch" src="_images/streamprocessing-streamprocessing.png" alt=""/>
+					</section>
 
-                    <section>
-                        <img class="plain stretch" src="_images/streamprocessing-pipeline.png" alt="" />
-                    </section>
+					<section>
+						<img class="plain stretch" src="_images/streamprocessing-pipeline.png" alt="" />
+					</section>
 
 					<section>
 						<img class="plain stretch" src="_images/unclephil-flinkpipelinereal.png" alt="" />
 					</section>
 
-                    <section>
-                        <img src="_images/streamprocessing-storm.png" alt="Apache Storm Logo" style="float:left;width:200px;margin:50px;" class="no-border">
-                        <img src="_images/streamprocessing-flink.png" alt="Apache Flink Logo" style="float:left;width:200px;margin:50px;" class="no-border">
-                        <img src="_images/streamprocessing-wallaroo.png" alt="Wallaroo  Logo" style="float:left;width:200px;margin:50px;" class="no-border">
-                        <img src="_images/streamprocessing-beam.png" alt="Apache Beam Logo" style="float:left;width:200px;margin:50px;" class="no-border">
-                    </section>
+					<section>
+						<img src="_images/streamprocessing-storm.png" alt="Apache Storm Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+						<img src="_images/streamprocessing-flink.png" alt="Apache Flink Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+						<img src="_images/streamprocessing-wallaroo.png" alt="Wallaroo  Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+						<img src="_images/streamprocessing-beam.png" alt="Apache Beam Logo" style="float:left;width:200px;margin:50px;" class="no-border">
+					</section>
 				</section>
 
 				<section>
@@ -572,9 +562,9 @@ light.switch()</code></pre>
 					</section>
 
 					<section>
-                        "A distributed system is one in which the failure of a
-                        computer you didn't even know existed can render your
-                        own computer unusable"
+						"A distributed system is one in which the failure of a
+						computer you didn't even know existed can render your
+						own computer unusable"
 
 						-- Leslie Lamport, 1987
 					</section>
@@ -606,52 +596,51 @@ light.switch()</code></pre>
 							graças ao jupyter.
 						</aside>
 					</section>
-                </section>
 
-                <section data-background='_images/thats-all-folks.jpg'>
-					<ul class="empty fragment semi-opaque">
-						<li><a href="https://functional.cafe/@juliobiason">https://functional.cafe/@juliobiason</a></li>
-						<li><a href="https://t.me/juliobiason">https://t.me/juliobiason</a></li>
-						<li>julio.biason@pm.me</li>
-						<li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
-					</ul>
+					<section data-background='_images/thats-all-folks.jpg'>
+						<ul class="empty fragment semi-opaque">
+							<li><a href="https://functional.cafe/@juliobiason">https://functional.cafe/@juliobiason</a></li>
+							<li><a href="https://t.me/juliobiason">https://t.me/juliobiason</a></li>
+							<li>julio.biason@pm.me</li>
+							<li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+						</ul>
 
-					<h3></h3>
+						<h3></h3>
 
-					<h3 class="semi-opaque fragment">
-						Perguntas?
-					</h3>
-				</section>
-            </div>
-        </div>
+						<h3 class="semi-opaque fragment">
+							Perguntas?
+						</h3>
+					</section>
+			</div>
+		</div>
 
-        <script src="reveal.js/lib/js/head.min.js"></script>
-        <script src="reveal.js/js/reveal.js"></script>
+		<script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.js"></script>
 
-        <script>
-            // Full list of configuration options available at:
-            // https://github.com/hakimel/reveal.js#configuration
-            Reveal.initialize({
-                controls: true,
-                progress: true,
-                history: true,
-                center: true,
-                // showNotes: true,
+		<script>
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				// showNotes: true,
 
-                transition: 'fade', // none/fade/slide/convex/concave/zoom
+				transition: 'fade', // none/fade/slide/convex/concave/zoom
 
-                // Optional reveal.js plugins
-                dependencies: [
-                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
-                ]
-            });
-        </script>
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
 
-    </body>
+	</body>
 </html>
 
