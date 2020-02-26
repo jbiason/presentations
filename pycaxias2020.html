@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>PyCaxias 2020</title>
+
+        <meta name="description" content="Por que você deveria aprender Rust">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none inside;
+            }
+
+            .revel ul.empty li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+            }
+
+            td.seen {
+                font-style: italic;
+                font-weight: bold;
+            }
+
+            .semi-opaque {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="_images/pycaxias.png" data-header>
+                        <h2 class="semi-opaque">PyCaxias 2020</h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
+
+                        <div>
+                            <ul class="empty">
+                                <li>Júlio Biason</li>
+                                <li><a href="https://functional.cafe/@juliobiason">https://functional.cafe/@juliobiason</a></li>
+                                <li><a href="https://t.me/juliobiason">https://t.me/juliobiason</a></li>
+                                <li>julio.biason@pm.me</li>
+                            </ul>
+                        </div>
+                    </section>
+
+					<section>
+						<h3>JulioBiason.me</h3>
+
+						<ul>
+							<li><a href="https://blog.juliobiason.me/">Blog</a></li>
+							<li><a href="https://presentations.juliobiason.me/">Presentations</a></li>
+							<li><a href="https://git.juliobiason.me/">Git</a></li>
+							<li><a href="https://resume.juliobiason.me/">CV/Resumé</a></li>
+							<li><a href="https://books.juliobiason.me/">Books</a></li>
+						</ul>
+					</section>
+                </section>
+
+				<section>
+					<section>
+						<h3>"Coisas Que Eu Aprendi Na Marra (Em 30 Anos de Desenvolvimento de Software)</h3>
+					</section>
+
+					<section>
+						<h2>Python: Passado, Presente e Futuro</h2>
+
+						<p class="fragment">... na minha visão</p>
+					</section>
+				</section>
+
+				<section>
+					<section data-background="_images/past.jpg">
+						<h2 class="semi-opaque">O Passado</h2>
+					</section>
+
+					<section>
+						<img class="stretch" src="_images/python15.png" alt="">
+					</section>
+
+					<section>
+						<h2>Python 1.5 (1998)</h2>
+						<ul>
+							<li><code>assert</code></li>
+							<li>raw strings (<code>r''</code>)</li>
+							<li>Novos métodos de dicionários: <code>.clear()</code>, <code>.copy()</code>, <code>.update()</code>, <code>.get()</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<p><code>[expression] and [on_true] or [on_false]</code></p>
+					</section>
+
+					<section>
+						<p>"Vamos fazer um <i>browser</i> em Python!"</p>
+					</section>
+
+					<section>
+						<img class="stretch" src="_images/tilefile.jpg" alt="">
+
+					</section>
+
+					<section>
+						<ul>
+							<li>Web Server</li>
+							<li class="fragment">Storage: <a href="https://docs.python.org/3/library/pickle.html?highlight=pickle#module-pickle">Pickle</a></li>
+							<li class="fragment">Atualizado storage: MySQL</li>
+							<li class="fragment">Criada toda uma camada para que o carregamento parecesse com leitura de pickles</li>
+						</ul>
+
+						<p class="fragment">Django 1.0: 2008</p>
+					</section>
+					
+					<section>
+						<p>"É mais fácil pra mim vender AJAX e Rails do que Flash e Python."</p>
+					</section>
+				</section>
+
+				<section>
+					<section data-background="_images/present.jpg">
+						<h2 class="semi-opaque">O Presente</h2>
+					</section>
+
+					<section>
+						<img class="stretch" src="_images/the-witch-is-dead.png" alt="">
+					</section>
+
+					<section>
+						<img class="stretch" src="_images/python27-clock.png" alt="">
+					</section>
+				</section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
