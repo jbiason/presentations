@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>PyCaxias 2020</title>
+
+        <meta name="description" content="Por que você deveria aprender Rust">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none inside;
+            }
+
+            .revel ul.empty li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+            }
+
+            td.seen {
+                font-style: italic;
+                font-weight: bold;
+            }
+
+            .semi-opaque {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="_images/pycaxias.png" data-header>
+                        <h2 class="semi-opaque">PyCaxias 2020</h2>
+                    </section>
+                </section>
+
+				<section>
+					<img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
+
+					<div>
+						<ul class="empty">
+							<li>Júlio Biason</li>
+							<li><a href="https://functional.cafe/@juliobiason">https://functional.cafe/@juliobiason</a></li>
+							<li><a href="https://t.me/juliobiason">https://t.me/juliobiason</a></li>
+							<li>julio.biason@pm.me</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<ul>
+						<li>Co-coordenador do meetup <strong>PyTche</strong></li>
+						<li>Coordenador do meetup <strong>Rust in POA</strong></li>
+						<li>Co-coordenador do meetup <strong>Design de Código</strong></li>
+						<li>Palestrante do <strong>Tchelinux</strong></li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>JulioBiason.me</h3>
+
+					<ul>
+						<li><a href="https://blog.juliobiason.me/">Blog</a></li>
+						<li><a href="https://presentations.juliobiason.me/">Presentations</a></li>
+						<li><a href="https://git.juliobiason.me/">Git</a></li>
+						<li><a href="https://resume.juliobiason.me/">CV/Resumé</a></li>
+						<li><a href="https://books.juliobiason.me/">Books</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>"Coisas Que Eu Aprendi Na Marra (Em 30 Anos de Desenvolvimento de Software)</h3>
+					<h3 class="fragment">😞</h3>
+				</section>
+
+				<section>
+					<h2>Python: Passado, Presente e Futuro</h2>
+
+					<p class="fragment">... na minha visão</p>
+				</section>
+
+				<section data-background="_images/past.jpg">
+					<h2 class="semi-opaque">O Passado</h2>
+				</section>
+
+				<section>
+					<h3>Python 1.5</h3>
+					<img class="stretch" src="_images/python15.png" alt="">
+				</section>
+
+				<section>
+					<h3>Python 1.5 (1998)</h3>
+					<ul>
+						<li><code>assert</code></li>
+						<li>raw strings (<code>r''</code>)</li>
+						<li>Novos métodos de dicionários: <code>.clear()</code>, <code>.copy()</code>, <code>.update()</code>, <code>.get()</code></li>
+					</ul>
+				</section>
+
+				<section>
+					<p><code>[expression] and [on_true] or [on_false]</code></p>
+				</section>
+
+				<section>
+					<p>"Vamos fazer um <i>browser</i> em Python!"</p>
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/tilefile.jpg" alt="">
+
+				</section>
+
+				<section>
+					<ul>
+						<li>Web Server</li>
+						<li class="fragment">Storage: <a href="https://docs.python.org/3/library/pickle.html?highlight=pickle#module-pickle">Pickle</a></li>
+						<li class="fragment">Atualizado storage: MySQL</li>
+						<li class="fragment">Criada toda uma camada para que o carregamento parecesse com leitura de pickles</li>
+					</ul>
+
+					<p class="fragment">Django 1.0: 2008</p>
+				</section>
+				
+				<section>
+					<p>"É mais fácil pra mim vender AJAX e Rails do que Flash e Python."</p>
+					<p>-- Tilefile CEO</p>
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/iplenix.png" alt="">
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/consuela.jpeg" alt="">
+				</section>
+
+				<section data-background="_images/present.jpg">
+					<h2 class="semi-opaque">O Presente</h2>
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/the-witch-is-dead.png" alt="">
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/python27-clock.png" alt="">
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/python-usage.png" alt="">
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/ipython.png" alt="">
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/ipython-notebook.png" alt="">
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/jupyter.jpeg" alt="">
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/scikit.jpeg" alt="">
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/python-datascience.png" alt="">
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/guido-no-bdfl.png" alt="">
+				</section>
+
+				<section data-background="_images/back-to-the-future.jpeg">
+					<h2 class="semi-opaque">O Futuro</h2>
+				</section>
+
+				<section>
+					<p>You can't connect the dots looking forward; you can only connect them looking backwards.</p>
+					<p>-- Steve Jobs</p>
+				</section>
+
+				<section>
+					<p>No man is an island,<br>
+						Entire of itself,<br>
+						Every man is a piece of the continent,<br>
+						A part of the main.</p>
+					<p>-- John Donne</p>
+				</section>
+
+				<section>
+					<h2>Type Hinting: Love it</h2>
+				</section>
+
+                <section>
+                    <p>"Mas Python não tem tipos!"</p>
+
+                    <pre class="fragment"><code data-trim>
+In [1]: type(object)
+Out[1]: type
+                    </code></pre>
+                </section>
+
+                <section>
+                    <img class="stretch" src="_images/isso-nao-prova-nada.png" alt="">
+                </section>
+
+                <section>
+                    <pre><code data-trim>
+In [4]: type("a")
+Out[4]: str
+
+In [5]: type(str)
+Out[5]: type
+                    </code></pre>
+                </section>
+
+				<section>
+					<pre><code data-trim>
+def to_fahrenheit(temperature: int) -> int:
+					</code></pre>
+				</section>
+
+                <section>
+                    <pre><code data-trim>
+@dataclass
+class Celcius:
+    temperature: int
+
+
+def to_fahrenheit(temperature: Celcius) -> int:
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>mypy</h2>
+                </section>
+
+                <section>
+                    <img class="stretch" src="_images/tweet-python2020.png" alt="">
+                </section>
+
+                <section>
+                    <h2>??</h2>
+
+                    <p class="fragment">None-aware operator (PEP 505)</p>
+
+                    <pre class="fragment"><code data-trim>
+a ??= 'value'
+                    </code></pre>
+
+                    <pre class="fragment"><code data-trim>
+a = a if a is not None else 'value'
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>@</h2>
+
+                    <p class="fragment">Dedicated infix operator for matrix multiplication (PEP 465)</p>
+                </section>
+
+                <section>
+                    <h2>|</h2>
+
+                    <p class="fragment">Union Operator to Dict (PEP 584)</p>
+
+                    <pre class="fragment"><code data-trim>
+dict1.update(dict2)     # in-place
+                    </code></pre>
+
+                    <pre class="fragment"><code data-trim>
+dict3 = dict1 | dict2
+                    </code></pre>
+
+                    <pre class="fragment"><code data-trim>
+dict1 |= dict2          # same as .update()
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>:=</h2>
+
+                    <p class="fragment">Assignment Operator (PEP 572)</p>
+
+                    <pre class="fragment"><code data-trim>
+while chunk := file.read(8192):
+    process(chunk)
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>@dict[key].attr[0].decorator</h2>
+
+                    <p class="fragment">Relaxing Grammar Restrictions On Decorators (PEP 614)</p>
+                </section>
+
+                <section>
+                    <h2>Steering Council <span class="fragment"> 🤔 </span></h2>
+                </section>
+                
+                <section>
+                    <h3>Python Positional-Only Parameters (PEP 570)</h3>
+
+                    <pre><code data-trim>
+pow(x, y, z=None, /)
+...
+
+&gt;&gt;&gt; pow(x=5, y=3)
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+TypeError: pow() takes no keyword arguments
+                    </code></pre>
+                </section>
+
+                <section>
+                    <p>"Without the ability to specify which parameters are
+                        positional-only, library authors must be careful when
+                        choosing appropriate parameter names."</p>
+
+                    <h1 class="fragment">🤦</h1>
+                </section>
+
+                <section>
+                    <img class="stretch" src="_images/chrysalis.jpeg" alt="">
+                </section>
+
+                <section>
+                    <img class="stretch" src="_images/oogway.jpeg" alt="">
+                </section>
+
+                <section>
+                    <img class="stretch" src="_images/fear.jpeg" alt="">
+                </section>
+
+                <section>
+                    <h1>??</h1>
+                </section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+                    <div class="semi-opaque">
+                        <ul class="empty">
+                            <li><a href="https://functional.cafe/@juliobiason">https://functional.cafe/@juliobiason</a></li>
+                            <li><a href="https://t.me/juliobiason">https://t.me/juliobiason</a></li>
+                            <li>julio.biason@pm.me</li>
+                            <li><a href="https://presentations.juliobiason.me">https://presentations.juliobiason.me</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
