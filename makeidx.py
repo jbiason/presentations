@@ -98,9 +98,8 @@ def main():
             # only files in the current directly will be checked
             continue
 
-        content = check_presentations(files)
-        # holy shit, talk about abusing Python internals
-        content.sort(cmp=lambda x, y: -1 if x['title'] < y['title'] else 1)
+        content = sorted(check_presentations(files),
+                         key=lambda r: r['title'])
         with open('index.json', 'w') as output:
             output.write(json.dumps(content))
 
