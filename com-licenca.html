@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Com Licença!</title>
+
+        <meta name="description" content="Por que você deveria aprender Rust">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none inside;
+				padding: 1px;
+            }
+
+            .revel ul.empty li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+            }
+
+            td.seen {
+                font-style: italic;
+                font-weight: bold;
+            }
+
+            .semi-opaque {
+                background-color: rgba(0, 0, 0, 0.7);
+				padding: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section data-background="_images/patrick-license.jpeg" data-header>
+						<h2 class="semi-opaque">Com Licença!</h2>
+					</section>
+				</section>
+
+				<section data-background="_images/avatar-20170726.png">
+					<div class="semi-opaque">
+						<img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
+
+						<div>
+							<ul class="empty">
+								<li>Júlio Biason</li>
+								<li><a href="https://functional.cafe/@juliobiason">https://functional.cafe/@juliobiason</a></li>
+								<li><a href="https://t.me/juliobiason">https://t.me/juliobiason</a></li>
+								<li>julio.biason@pm.me</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<section data-background="_images/avatar-20170726.png">
+					<div class="semi-opaque">
+						<ul>
+							<li>Coordenador do meetup <strong>Rust in POA</strong></li>
+							<li>Co-coordenador do meetup <strong>PyTche</strong></li>
+							<li>Co-coordenador do meetup <strong>Design de Código</strong></li>
+							<li>Palestrante do <strong>Tchelinux</strong></li>
+						</ul>
+					</div>
+				</section>
+
+				<section data-background="_images/avatar-20170726.png">
+					<div class="semi-opaque">
+						<h3>JulioBiason.me</h3>
+
+						<ul>
+							<li><a href="https://blog.juliobiason.me/">Blog</a></li>
+							<li><a href="https://presentations.juliobiason.me/">Presentations</a></li>
+							<li><a href="https://git.juliobiason.me/">Git</a></li>
+							<li><a href="https://resume.juliobiason.me/">CV/Resumé</a></li>
+							<li><a href="https://books.juliobiason.me/">Books</a></li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/copyright.jpeg" alt="">
+				</section>
+
+				<section data-background="_images/copyright.jpeg">
+					<div class="semi-opaque">
+						<p>
+Copyright é "Direito autoral ou direito de autor é um conjunto de prerrogativas
+conferidas por lei à pessoa física ou jurídica criadora da obra intelectual,
+para que ela possa usufruir de quaisquer benefícios morais e patrimoniais
+resultantes da exploração de suas criações."
+						</p>
+
+						<p>
+							<a href="https://pt.wikipedia.org/wiki/Direito_autoral">Wikipedia</a>
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/copyright.jpeg">
+					<div class="semi-opaque">
+						<p>
+							Tirando casos específicos, as licenças se baseam na
+							<strong>distribuição</strong> do conteúdo.
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/copyright.jpeg">
+					<div class="semi-opaque">
+						<p>
+							<strong>AVISO!</strong>
+						</p>
+
+						<p>
+							Eu não sou advogado, partes legais não são o meu
+							forte.
+						</p>
+					</div>
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/gpl-logo.png" alt="">
+				</section>
+
+				<section data-background="_images/gpl-logo.png">
+					<div class="semi-opaque">
+						<ul>
+							<li>GPL v2</li>
+							<li>GPL v3</li>
+							<li>LGPL (v2/v3)</li>
+							<li>AGPL (Affero General Public License ou GNU Affero General Public License)</li>
+						</ul>
+					</div>
+				</section>
+
+				<section data-background="_images/gpl-logo.png">
+					<div class="semi-opaque">
+						<h2>GPL v2</h2>
+
+						<ol>
+							<li>Executar a aplicação para qualquer fim;</li>
+							<li>Estudar como a aplicação funciona e modificar (código derivado);</li>
+							<li>Distribuir cópias livremente;</li>
+							<li>Distribuir cópias das modificações.</li>
+						</ol>
+					</div>
+				</section>
+
+				<section data-background="_images/gpl-logo.png">
+					<div class="semi-opaque">
+						<h2>GPL v3</h2>
+
+						<ol start="5">
+							<li>Se houver criptografia, a chave deve ser publicada (tivolization)</li>
+						</ol>
+					</div>
+				</section>
+				
+				<section data-background="_images/gpl-logo.png">
+					<div class="semi-opaque">
+						<p>
+							Se eu estou fazendo um software específico para
+							uma empresa, posso licenciar como GPL?
+						</p>
+
+						<p class="fragment">
+							<strong>Sim.</strong>
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/gpl-logo.png">
+					<div class="semi-opaque">
+						<p>
+							Se eu estou fazendo um software específico para uma
+							empresa, e licenciar pela GPL, posso cobrar por
+							isso?
+						</p>
+
+						<p class="fragment">
+							<strong>Sim.</strong>
+							<span class="fragment">
+								Apenas entregue os fontes junto.
+							</span>
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/gpl-logo.png">
+					<div class="semi-opaque">
+						<p>
+							Posso pegar um software GPL, fazer alterações
+							e cobrar por isso?
+						</p>
+
+						<p class="fragment">
+							<strong>Sim.</strong>
+							<span class="fragment">
+								Apenas entregue os fontes junto.
+							</span>
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/gpl-logo.png">
+					<div class="semi-opaque">
+						<p>
+							Posso pegar um software GPL, mudar o nome,
+							colocar meu nome nos Copyrights e distribuir?
+						</p>
+
+						<p class="fragment">
+							Sim, passando a ser considerado "código derivado".
+						</p>
+
+						<p class="fragment">
+							<strong>
+								Você não pode retirar o copyright atual.
+							</strong>
+						</p>
+
+						<p class="fragment">
+							Você precisa entregar os fontes junto.
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/gpl-logo.png">
+					<div class="semi-opaque">
+						<p>
+							Se eu fizer um serviço web qualquer e licenciar
+							como GPL, eu tenho que distribuir os fontes para
+							todo mundo que acessar o site?
+						</p>
+
+						<p class="fragment">
+							<strong>Não.</strong>
+							<span class="fragment">GPLv2/v3 cobrem apenas distribuição.</span>
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/gpl-logo.png">
+					<div class="semi-opaque">
+						<p>
+							Posso gerar uma aplicação mobile GPL e colocar no store?
+						</p>
+
+						<p class="fragment">Não.</p>
+
+						<p class="fragment">
+							<em>
+								O problema é que quem está distribuindo o
+								aplicativo (Apple/Google) não tem uma área
+								para distribuição dos fontes e não querem
+								se envolver com isso.
+							</em>
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/gpl-logo.png">
+					<div class="semi-opaque">
+						<p>
+							Se eu usar uma biblioteca/framework qualquer
+							que está licenciado sob a GPL, o que acontece?
+						</p>
+
+						<p class="fragment">
+							Seu código passa a ser distribuído pela GPL.
+						</p>
+
+						<p class="fragment">
+							<em>
+								É considerado código derivado.
+							</em>
+						</p>
+					</div>
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/lgpl-logo.png" alt="">
+				</section>
+
+				<section data-background="_images/lgpl-logo.png">
+					<div class="semi-opaque">
+						<h2>LGPL</h2>
+
+						<p>GNU Lesser General Public License</p>
+					</div>
+				</section>
+
+				<section data-background="_images/lgpl-logo.png">
+					<div class="semi-opaque">
+						<p>Igual a GPL, mas remove a cláusula de código derivado.</p>
+					</div>
+				</section>
+
+				<section data-background="_images/lgpl-logo.png">
+					<div class="semi-opaque">
+						<p>
+							Se eu usar uma biblioteca/framework qualquer
+							que está licenciado sob a LGPL, o que acontece?
+						</p>
+
+						<p class="fragment">
+							Nada. Você usa a biblioteca/framework.
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/lgpl-logo.png">
+					<div class="semi-opaque">
+						<p>
+							Se eu fizer um serviço web qualquer que use uma
+							biblioteca LGPL, eu tenho que distribuir os fontes
+							para todo mundo que acessar o site?
+						</p>
+
+						<p class="fragment">
+							<strong>Não.</strong>
+							<span class="fragment">LGPLv2/v3 cobrem apenas distribuição.</span>
+						</p>
+					</div>
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/agpl-logo.png" alt="">
+				</section>
+
+				<section data-background="_images/agpl-logo.png">
+					<div class="semi-opaque">
+						<ol start="6">
+							<li>Fontes devem ser fornecidos junto com o acesso.</li>
+						</ol>
+					</div>
+				</section>
+
+				<section data-background="_images/agpl-logo.png">
+					<div class="semi-opaque">
+						<p>
+							Se eu fizer um serviço web qualquer e licenciar
+							como AGPL, eu tenho que distribuir os fontes para
+							todo mundo que acessar o site?
+						</p>
+
+						<p class="fragment">
+							Sim.
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/agpl-logo.png">
+					<div class="semi-opaque">
+						<p>Se eu pegar um servidor web qualquer licenciado
+						sob a AGPL, eu tenho que distribuir os fontes para
+						todo mundo que acessar o site?</p>
+
+						<p class="fragment">
+							Sim.
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/gpl-logo.png">
+					<div class="semi-opaque">
+						<h2>Quem usa GPL?</h2>
+
+						<ul>
+							<li>Linux¹</li>
+							<li>MySQL</li>
+							<li>BusyBox</li>
+							<li>VLC</li>
+							<li>JVM</li>
+							<li>OpenJDK</li>
+						</ul>
+					</div>
+				</section>
+
+				<section data-background="_images/gpl-logo.png">
+					<div class="semi-opaque">
+						<h2>Linux</h2>
+
+						<p>
+							"This program is free software; you can redistribute
+							it and/or modify it under the terms of the GNU
+							General Public License as published by the Free
+							Software Foundation; 
+							<span class="fragment fade-out">either </span>version 2 
+							of the License<span class="fragment fade-out">,
+								or (at your option) any later version.</span>"
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/lgpl-logo.png">
+					<div class="semi-opaque">
+						<h2>Quem usa LGPL?</h2>
+
+						<img class="stretch" src="_images/github-lgpl.png" alt="">
+					</div>
+				</section>
+
+				<section data-background="_images/lgpl-logo.png">
+					<div class="semi-opaque">
+						<h2>Quem usa LGPL?</h2>
+
+						<ul>
+							<li>Qt</li>
+							<li>Cedega</li>
+							<li>LibVLC</li>
+							<li>Lazarus</li>
+						</ul>
+					</div>
+				</section>
+
+				<section data-background="_images/agpl-logo.png">
+					<div class="semi-opaque">
+						<h2>Quem usa AGPL?</h2>
+
+						<ul>
+							<li>Gitorious</li>
+							<li>Mastodon</li>
+							<li>Nextcloud</li>
+							<li>ScyllaDB</li>
+							<li>Launchpad</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/bsd.png" alt="">
+				</section>
+
+				<section data-background="_images/bsd.png">
+					<div class="semi-opaque">
+						<h2>BSD 0-Clause</h2>
+
+						<p>
+							Permission to use, copy, modify, and/or distribute
+							this software for any purpose with or without fee
+							is hereby granted.
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/bsd.png">
+					<div class="semi-opaque">
+						<h2>BSD 2-Clause</h2>
+
+						<p>
+							Redistribution and use in 
+							<span class="fragment highlight-blue">source and binary
+							forms</span>, with or without modification, are
+							permitted provided that the following conditions are
+							met:
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/bsd.png">
+					<div class="semi-opaque">
+						<h2>BSD 2-Clause</h2>
+						<ol>
+							<li>
+								Redistributions of source code must retain the
+								above copyright notice, this list of conditions
+								and the following disclaimer.
+							</li>
+
+							<li>
+								Redistributions in binary form must reproduce
+								the above copyright notice, this list of
+								conditions and the following disclaimer in the
+								documentation and/or other materials provided
+								with the distribution.
+							</li>
+						</ol>
+					</div>
+				</section>
+
+				<section data-background="_images/bsd.png">
+					<div class="semi-opaque">
+						<h2>BSD 3-Clause</h2>
+
+						<ol start="3">
+							<li>
+								Neither the name of the &lt;organization&gt; nor the
+								names of its contributors may be used to
+								endorse or promote products derived from this
+								software without specific prior written
+								permission.
+							</li>
+						</ol>
+					</div>
+				</section>
+
+				<section data-background="_images/bsd.png">
+					<div class="semi-opaque">
+						<h2>BSD 4-Clause</h2>
+
+						<ol start="4">
+							<li>
+								All advertising materials mentioning features
+								or use of this software must display the
+								following acknowledgement: This product
+								includes software developed by the
+								&lt;organization&gt;.
+							</li>
+						</ol>
+					</div>
+				</section>
+
+				<section data-background="_images/bsd.png">
+					<div class="semi-opaque">
+						<p>
+							Se eu estou fazendo um software específico para
+							uma empresa, posso licenciar como BSD?
+						</p>
+
+						<p class="fragment">
+							<strong>Sim.</strong>
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/bsd.png">
+					<div class="semi-opaque">
+						<p>
+							Posso pegar um software BSD, mudar o nome,
+							colocar meu nome nos Copyrights e distribuir?
+						</p>
+
+						<p class="fragment">
+							Sim.
+						</p>
+
+						<p class="fragment">
+							<strong>
+								Você não pode retirar o copyright atual.
+							</strong>
+						</p>
+
+						<p class="fragment">
+							<strong>
+								Você não precisa entregar os fontes.
+							</strong>
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/bsd.png">
+					<div class="semi-opaque">
+						<p>
+							Posso gerar uma aplicação mobile BSD e colocar no store?
+						</p>
+
+						<p class="fragment">Sim.</p>
+					</div>
+				</section>
+
+				<section data-background="_images/bsd.png">
+					<div class="semi-opaque">
+						<p>
+							Se eu fizer um serviço web qualquer que use uma
+							biblioteca BSD, eu tenho que distribuir os fontes
+							para todo mundo que acessar o site?
+						</p>
+
+						<p class="fragment">
+							Não.
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/bsd.png">
+					<div class="semi-opaque">
+						<h2>Quem usa BSD?</h2>
+
+						<ul>
+							<li>FreeBSD (2-clause)</li>
+							<li>NetBSD (2-clause)</li>
+							<li>OpenBSD (0-clause, ISC)</li>
+							<li>Anaconda (3-clause)</li>
+							<li>Django (3-clause)</li>
+							<li>Flask (0-clause)</li>
+							<li>go (3-clause)</li>
+							<li>Memcached (3-clause)</li>
+							<li>PHPUnit (3-clause)</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/MIT_logo.svg" alt="">
+				</section>
+
+				<section data-background="_images/MIT_logo.svg">
+					<div class="semi-opaque">
+						<h2>MIT</h2>
+
+						<p>
+							The above copyright notice and this permission
+							notice shall be included in all copies or
+							substantial portions of the Software.
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/MIT_logo.svg">
+					<div class="semi-opaque">
+						<h2>Quem usa MIT?</h2>
+
+						<ul>
+							<li>.NET core</li>
+							<li>AngularJS</li>
+							<li>React²</li>
+							<li>Babel</li>
+							<li>Godot</li>
+							<li>Lua</li>
+							<li>Pilhas de *.js</li>
+						</ul>
+					</div>
+				</section>
+
+				<section data-background="_images/MIT_logo.svg">
+					<div class="semi-opaque">
+						<h2>React</h2>
+
+						<p>
+							Em 2017, o Facebook mudou a licença do React para
+							que, caso a empresa seja processada <em>por
+							qualquer motivo</em>, o litigiante perde o direito
+							de uso do produto.
+						</p>
+					</div>
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/apache-license.png" alt="">
+				</section>
+
+				<section data-background="_images/apache-license.png">
+					<div class="semi-opaque">
+						<h2>Apache 2.0</h2>
+
+						<img src="_images/apache-license-2.0.png" alt="" style="max-height:5%">
+					</div>
+				</section>
+
+				<section data-background="_images/apache-license.png">
+					<div class="semi-opaque">
+						<h2>Apache 2.0</h2>
+						
+						<p>
+							Subject to the terms and conditions of this
+							License, each Contributor hereby grants to You a
+							perpetual, worldwide, non-exclusive, no-charge,
+							royalty-free, irrevocable copyright license to
+							reproduce, prepare Derivative Works of, publicly
+							display, publicly perform, sublicense, and
+							distribute the Work and such Derivative Works in
+							Source or Object form.
+						</p>
+					</div>
+				</section>
+
+				<section data-background="_images/apache-license.png">
+					<div class="semi-opaque">
+						<h2>Quem usa Apache?</h2>
+
+						<ul>
+							<li>Android</li>
+							<li>Apache *</li>
+							<li>Elixir</li>
+							<li>IntelliJ IDEA</li>
+							<li>Kotlin</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>E se eu não colocar nenhuma licença?</h2>
+				</section>
+
+				<section>
+					<img class="stretch" src="_images/public-domain.png" alt="">
+				</section>
+
+				<section data-background="_images/public-domain.png">
+					<div class="semi-opaque">
+						<h2>Public domain</h2>
+
+						<p>
+							The public domain consists of all the creative work
+							to which no exclusive intellectual property rights
+							apply. Those rights may have expired, been
+							forfeited, expressly waived, or may be
+							inapplicable.
+						</p>
+					</div>
+				</section>
+
+				<section data-background='_images/thats-all-folks.jpg'>
+					<div class="semi-opaque">
+						<ul class="empty">
+							<li><a href="https://functional.cafe/@juliobiason">https://functional.cafe/@juliobiason</a></li>
+							<li><a href="https://t.me/juliobiason">https://t.me/juliobiason</a></li>
+							<li>julio.biason@pm.me</li>
+							<li><a href="https://presentations.juliobiason.me">https://presentations.juliobiason.me</a></li>
+						</ul>
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.js"></script>
+
+		<script>
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				// showNotes: true,
+
+				transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+
+	</body>
+</html>

@@ -8,6 +8,22 @@
 }
 
 
+h1 {
+	background-color: inherit;
+	color: var(--accent);
+}
+
+header h1 {
+	font-size: 5rem;
+	width: 100%;
+	text-align: center;
+	height: 90%;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+}
+
 .button-container {
  display:table;
  margin-left:auto;
