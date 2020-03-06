@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>ActivityPub</title>
+
+        <meta name="description" content="Por que você deveria aprender Rust">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+            <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none inside;
+            }
+
+            .revel ul.empty li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+
+            img {
+                max-height: 90%;
+            }
+
+            td.seen {
+                font-style: italic;
+                font-weight: bold;
+            }
+
+            .semi-opaque {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+
+            .white {
+                background-color: white !important;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-background="_images/activitypub-logo.png" data-header>
+                    <h2 class="semi-opaque">ActivityPub</h2>
+                </section>
+
+                <section>
+                    <img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
+
+                    <div>
+                        <ul class="empty">
+                            <li>Júlio Biason</li>
+                            <li><a href="https://functional.cafe/@juliobiason">https://functional.cafe/@juliobiason</a></li>
+                            <li><a href="https://t.me/juliobiason">https://t.me/juliobiason</a></li>
+                            <li>julio.biason@pm.me</li>
+                            <li><a href="http://presentations.juliobiason.me">http://presentations.juliobiason.me</a></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section data-transition="slide">
+                    <img class="stretch" src="_images/internet.jpeg" alt="">
+
+                    <aside class="notes">
+                        Para entender ActivityPub -- e porque ele existe --
+                        precisamos dar um passo atrás e entender a internet.
+
+                        A internet foi criada para ser "anarquica", no
+                        sentido que não haveria um ponto central; se algum
+                        ponto da rede fosse destruído por uma bomba nuclear
+                        (porque assim eram os anos 60), outros pontos
+                        continuariam funcionando.
+                    </aside>
+                </section>
+
+                <section>
+                    <img class="stretch" src="_images/federation.png" title="(do latim: foederatio, de foedus: “liga, tratado, aliança”) ou Estado Federal é um Estado composto por diversas entidades territoriais autônomas dotadas de governo próprio.">
+
+                    <aside class="notes">
+                        De certa forma, as coisas funcionavam de forma
+                        "federada", cuja definição do dicionário para
+                        "federação" é: "(do latim: foederatio, de foedus:
+                        “liga, tratado, aliança”) ou Estado Federal é um
+                        Estado composto por diversas entidades territoriais
+                        autônomas dotadas de governo próprio."
+
+                        (E como eu sou fã de Jornada nas Estrelas, eu
+                        sempre lembro da "Federação dos Planetas Unidos",
+                        que tinha o mesmo significado: vários planetas,
+                        cada um com suas políticas, mas cada um funcionando
+                        da forma que quisesse.)
+                    </aside>
+                </section>
+
+                <section>
+                    <img class="stretch" src="_images/email.png" alt="">
+
+                    <aside class="notes">
+                        Um dos exemplos mais básicos de federação ainda em
+                        uso é o email: Existem vários servidores/serviços
+                        de email por aí, cada um tem suas definições do que
+                        é spam (ou como um email é definido como "spam"),
+                        quotas de espaço, aliases -- enfim, uma série de
+                        políticas -- mas os serviços conversam entre si
+                        para garantir que todos possam receber emails,
+                        mesmo estando em serviços (com políticas)
+                        diferentes.
+                    </aside>
+                </section>
+
+                <section>
+                    <img class="white stretch" src="_images/xmpp.png" alt="">
+
+                    <aside class="notes">
+                        Outro exemplo de federação é o XMPP, um protocolo
+                        criado para comunicação instantânea que era
+                        utilizado pelo Hangouts a muito tempo (hoje não é
+                        mais, é um protocolo fechado).
+                    </aside>
+                </section>
+
+                <section data-transition="slide">
+                    <img class="stretch" src="_images/socializing.jpeg" alt="">
+
+                    <aside class="notes">
+                        Apesar dos pesares, humanos são seres sociais e,
+                        apesar dos pesares, a internet é uma forma de
+                        socialização.
+                    </aside>
+                </section>
+
+                <section>
+                    <img class="stretch" src="_images/silo.jpeg" alt="">
+
+                    <aside class="notes">
+                        Infelizmente, a pouco tempo (em termos de tempo
+                        de vida de internet), o modelo começou a mudar
+                        para um modelo de "Silos", onde tudo fica no mesmo
+                        lugar (mesmo que o "mesmo lugar" sejam vários
+                        computadores em vários lugares).
+
+                        A ideia de coisas com "políticas diferentes que
+                        trabalham em forma de aliança" foi esquecida e
+                        agora boa parte das coisas que nós queremos
+                        compartilhar acaba ficando sob uma única política.
+                    </aside>
+                </section>
+
+                <section>
+                    <img class="stretch" src="_images/all-eggs.jpeg" alt="">
+
+                    <aside class="notes">
+                        Basicamente estamos colocando todos os ovos no
+                        mesmo sesto.
+                    </aside>
+                </section>
+
+                <section>
+                    <img class="stretch" src="_images/all-eggs-broken.jpeg" alt="">
+
+                    <aside class="notes">
+                        Basta lembrar o que acontece toda vez que algum
+                        juiz diz que é para bloquear o WhatsApp.
+
+                        (O resultado é que explodem os cadastros no
+                        Telegram, que sofre do mesmo problema.)
+                    </aside>
+                </section>
+
+                <section data-transition="slide">
+                    <img class="stretch white" src="_images/ActivityPub-logo.svg" alt="">
+
+                    <aside class="notes">
+                        E assim como temos o XMPP para conversas
+                        instantâneas, temos o ActivityPub para ações
+                        "sociais" -- no sentido de "coisas que fazemos com
+                        nossas vidas".
+                    </aside>
+                </section>
+
+                <section>
+                    <h4>Mas O Que é ActivityPub</h4>
+
+                    <ul>
+                        <li class="fragment">Protocolo certificado pela W3C.</li>
+                        <li class="fragment">Baseado em HTTP e JSON.</li>
+                        <li class="fragment">Tem vários conceitos iguais ao email.</li>
+                        <li class="fragment">Composto de outros protolocos: WebFinger, ActivityStreams, ActivityVocabulary e JSON-LD.</li>
+                    </ul>
+
+                    <aside class="notes">
+                        1. O protocolo é certificado (e padronizado) pela
+                           W3C, o que deixa o protocolo aberto para
+                           qualquer um implementar a sua própria versão (e
+                           existem várias implementações, que eu vou falar
+                           mais pra frente).
+                        2. Apesar d'eu ter comentado o email, que usa um
+                           protocolo específico, ActivityPub usa HTTP e JSON.
+                        3. E apesar de ser HTTP e JSON, ainda aproveita
+                           alguns conceitos do email -- e sim, eu estou
+                           andando em circulos, mas peraí.
+                        4. ActivityPub não é apenas um protocolo, mas é um
+                           protocolo construido sobre outros protocolos,
+                           como WebFinger para descoberta de informações de
+                           usuários, ActivityStreams que descreve o formato
+                           das atividades, ActivityVocabulary que inidica
+                           quais ações existentes e os tipos de objetos
+                           existentes e JSON-LD que define os formato dos
+                           objetos em JSON.
+                    </aside>
+                </section>
+
+                <section>
+                    <h4>O Que é ActivityPub</h4>
+                    <h3>Activity Vocabulary</h3>
+
+                    <ul>
+                        <li class="fragment">Actors <span class="fragment">(Person, Bot, Service)</span></li>
+                        <li class="fragment">Notes</li>
+                        <li class="fragment">Images</li>
+                        <li class="fragment">Links</li>
+                        <li class="fragment">...</li>
+                    </ul>
+
+                    <aside class="notes">
+                        Existem atores que aplicam as ações (person, bot,
+                        company/service), e as atividades tem coisas como o
+                        compartilhamento de notas (texto), imagens, links e
+                        outras coisas. Praticamente tudo que possa ser
+                        pensando em compartilhar.
+                    </aside>
+                </section>
+
+                <section>
+                    <h4>ActivityPub</h4>
+                    <h3>WebFinger</h3>
+
+                    <pre><code class="hljs json" data-trim>
+{"@context": "https://www.w3.org/ns/activitystreams",
+ "type": "Person",
+ "id": "https://social.example/alyssa/",
+ "name": "Alyssa P. Hacker",
+ "preferredUsername": "alyssa",
+ "summary": "Lisp enthusiast hailing from MIT",
+ "inbox": "https://social.example/alyssa/inbox/",
+ "outbox": "https://social.example/alyssa/outbox/",
+ "followers": "https://social.example/alyssa/followers/",
+ "following": "https://social.example/alyssa/following/",
+ "liked": "https://social.example/alyssa/liked/"}
+                    </code></pre>
+
+                    <aside class="notes">
+                        Essa é a estrutura de um ator. Existem algumas
+                        opções importantes/interessantes aqui.
+                    </aside>
+                </section>
+
+                <section>
+                    <h4>ActivityPub</h4>
+                    <pre><code class="hljs json" data-trim data-line-numbers="7">
+{"@context": "https://www.w3.org/ns/activitystreams",
+ "type": "Person",
+ "id": "https://social.example/alyssa/",
+ "name": "Alyssa P. Hacker",
+ "preferredUsername": "alyssa",
+ "summary": "Lisp enthusiast hailing from MIT",
+ "inbox": "https://social.example/alyssa/inbox/",
+ "outbox": "https://social.example/alyssa/outbox/",
+ "followers": "https://social.example/alyssa/followers/",
+ "following": "https://social.example/alyssa/following/",
+ "liked": "https://social.example/alyssa/liked/"}
+                    </code></pre>
+
+                    <aside class="notes">
+                        Essa informação sobre o ator (que eu estou
+                        mostrando do originador da mensagem) tem alguns
+                        valores que são importantes.
+
+                        Por exemplo, the "inbox" tem as mensagens que
+                        chegaram para esse usuário.
+
+                        Obviamente, não necessáriamente qualquer um pode
+                        acessar o inbox, mas a informação pertence ao ator.
+                    </aside>
+                </section>
+
+                <section>
+                    <h4>ActivityPub</h4>
+                    <pre><code class="hljs json" data-trim data-line-numbers="8">
+{"@context": "https://www.w3.org/ns/activitystreams",
+ "type": "Person",
+ "id": "https://social.example/alyssa/",
+ "name": "Alyssa P. Hacker",
+ "preferredUsername": "alyssa",
+ "summary": "Lisp enthusiast hailing from MIT",
+ "inbox": "https://social.example/alyssa/inbox/",
+ "outbox": "https://social.example/alyssa/outbox/",
+ "followers": "https://social.example/alyssa/followers/",
+ "following": "https://social.example/alyssa/following/",
+ "liked": "https://social.example/alyssa/liked/"}
+                    </code></pre>
+
+                    <aside class="notes">
+                        Assim como o "inbox", existe o "outbox" que é tudo
+                        que o ator enviou. Basicamente, essa é a lista de
+                        todas as atividades do usuário específico.
+                    </aside>
+                </section>
+
+                <section>
+                    <h4>ActivityPub</h4>
+                    <h3>Activity Stream</h3>
+
+                    <pre><code class="hljs json" data-trim>
+{"@context": "https://www.w3.org/ns/activitystreams",
+ "type": "Create",
+ "id": "https://social.example/alyssa/posts/a29a6843",
+ "to": ["https://chatty.example/ben/"],
+ "actor": "https://social.example/alyssa/",
+ "object": {"type": "Note",
+            "id": "https://social.example/alyssa/posts/49e2d03d",
+            "attributedTo": "https://social.example/alyssa/",
+            "to": ["https://chatty.example/ben/"],
+            "content": "Did you finish reading that book?"}}
+                    </code></pre>
+
+                    <aside class="notes">
+                        E uma atividade -- por exemplo, nosso ator acima
+                        enviando um texto para outro ator.
+                    </aside>
+                </section>
+
+                <section>
+                    <h4>ActivityPub</h4>
+                    <img class="white stretch" src="_images/ActivityPub-tutorial-image.png" alt="">
+                </section>
+
+                <section>
+                    <h4>ActivityPub</h4>
+                    <h3>Client to Server Activities</h3>
+
+                    <p class="fragment">
+                        create, update, delete, follow, add, remove, like,
+                        block, undo
+                    </p>
+                </section>
+
+                <section>
+                    <h4>ActivityPub</h4>
+                    <h3>Server to Server Activity</h3>
+
+                    <p class="fragment">
+                        create, update, delete, follow, accept (follow),
+                        reject (to follow), add, remove, like, announce
+                        (reposting/boosting), undo
+                    </p>
+                </section>
+
+                <section>
+                    <h4>ActivityPub</h4>
+                    <h3>Public</h3>
+
+                    <p class="fragment">https://www.w3.org/ns/activitystreams#Public</p>
+                </section>
+
+                <section>
+                    <h4>Suporte ao ActivityPub</h4>
+
+                    <ul>
+                        <li class="fragment">ForgeFed (Código, Github)</li>
+                        <li class="fragment">PixelFed (Fotos, Instagram)</li>
+                        <li class="fragment">PeerTube (Videos, YouTube)</li>
+                        <li class="fragment">HubZilla/Plume/WordPress ActivityPub Plugin (Blogging, WordPress)</li>
+                        <li class="fragment">DistBin (Snippets, Pastebin/Gist)</li>
+                        <li class="fragment">Diaspora (Social, Facebook)</li>
+                        <li class="fragment">Microblog/Honk/Plemora/Mastodon (Micro-blogging, Twitter)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h4>Suporte ao ActivityPub</h4>
+                    <h3>Mastodon</h3>
+
+                    <ul>
+                        <li class="fragment">2.629 instâncias</li>
+                        <li class="fragment">10.877.412 de contas criadas</li>
+                        <li class="fragment">157.437 usuários ativos (última semana de novembro)</li>
+                        <li class="fragment">1.562.887.737.129.765 toots</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h4>Suporte ao ActivityPub</h4>
+
+                    <p>
+                        <a href="https://fediverse.party">Fediverse</a>
+                    </p>
+                </section>
+
+                <section>
+                    <h4>Informações Técnicas</h4>
+
+                    <ul>
+                        <li><a href="https://www.w3.org/TR/activitypub/">ActivityPub, W3C Recommendation 23 January 2018</a></li>
+                        <li><a href="https://nextcloud.com/blog/activitypub-the-new-standard-for-decentralized-networks/">NextCloud: ActivityPub: the new standard for decentralized networks</a></li>
+                        <li><a href="https://hacks.mozilla.org/2018/11/decentralizing-social-interactions-with-activitypub/">Mozilla Hacks: Decentralizing Social Interactions with ActivityPub</a></li>
+                        <li><a href="https://activitypub.rocks/">ActivityPub Rocks!</a></li>
+                        <li><a href="https://flak.tedunangst.com/post/ActivityPub-as-it-has-been-understood">Honk: ActivityPub as it has been understood</a></li>
+                    </ul>
+                </section>
+
+                <section data-background='_images/thats-all-folks.jpg' data-transition="slide">
+                    <div class="semi-opaque">
+                        <ul class="empty">
+                            <li><a href="https://functional.cafe/@juliobiason">https://functional.cafe/@juliobiason</a></li>
+                            <li><a href="https://t.me/juliobiason">https://t.me/juliobiason</a></li>
+                            <li>julio.biason@pm.me</li>
+                            <li><a href="https://presentations.juliobiason.me">https://presentations.juliobiason.me</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>

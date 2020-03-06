@@ -48,6 +48,10 @@
 			li {
 				display: block;
 			}
+
+            .semi-opaque {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
         </style>
     </head>
 
@@ -67,10 +71,10 @@
                         <div>
                             <ul class="empty">
                                 <li>Júlio Biason</li>
-                                <li>@juliobiason</li>
-								<li>https://functional.cafe/@juliobiason</li>
-                                <li>julio.biason@gmail.com</li>
-                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+								<li><a href="https://functional.cafe/@juliobiason">https://functional.cafe/@juliobiason</a></li>
+								<li><a href="https://t.me/juliobiason">https://t.me/juliobiason</a></li>
+                                <li>julio.biason@pm.me</li>
+                                <li><a href="https://presentations.juliobiason.me">https://presentations.juliobiason.me</a></li>
                             </ul>
                         </div>
                     </section>
@@ -84,10 +88,6 @@
 							de passagem). Mas eu não fazia isso de propósito.
 						</aside>
                     </section>
-
-					<section>
-						<img src="_images/mini-hitler.jpg" alt="Me chamaram de Mini Hitler"/>
-					</section>
 
                     <section>
                         <img src="_images/filho-do-capeta.jpg" alt="... mas hoje eu vim botar os filho dos outro no go horse." class='stretch'/>
@@ -103,6 +103,14 @@
 
 						<img src="_images/patriarch.jpg" alt="... e eu sou meio não-ortodoxo sobre testes."/>
 					</section>
+
+					<aside class="notes">
+						Um aviso: muitas das coisas que eu vou discutir aqui,
+						não são as coisas que normalmente são discutidas quando
+						se fala sobre testes.
+
+						Fiquem avisados que muitas pessoas não concordam comigo.
+					</aside>
                 </section>
 
 				<section>
@@ -111,7 +119,7 @@
 					<ul>
 						<li>TDD Kent Beck Style.</li>
 						<li>Fast Test, Slow Tests.</li>
-						<li>Explosão de testes.</li>
+						<li>Explosão de testes lentos.</li>
 						<li>Coverage.</li>
 					</ul>
 				</section>
@@ -120,6 +128,14 @@
                     <section>
                         <img src="_images/tdd-where-it-went-wrong.png" alt="TDD: Where it went wrong" class="stretch"/>
                         <p>Ian Cooper: <a href="https://vimeo.com/68375232">"TDD, where did it all go wrong"</a></p>
+
+						<aside class="notes">
+							Boa parte das coisas que eu vou discutir aqui foram
+							influenciadas por esse video do Ian Cooper, em que
+							ele discute coisas sobre TDD no estilo discutido
+							por Kent Beck, que foi quem escreveu o livro que
+							trouxe o termo "TDD" para as massas.
+						</aside>
                     </section>
 
                     <section>
@@ -131,13 +147,44 @@
                             <li>"Run in isolation", nothing more, nothing less.</li>
                             <li>"Avoid testing implementation details, test behaviours"</li>
                         </ul>
+
+						<aside class="notes">
+							No seu livro, Kent Beck diz que "unit tests"
+							significam "rodam de forma isolada, nada mais, nada
+							menos". Esse é o _único_ significado de "unit
+							test"; "testes unitários" e não "testes de
+							unidade", na tradução correta.
+
+							Outra coisa que Kent Beck fala no seu livro é que
+							devem ser testados comportamentos, não
+							implementação. Pensem um pouco sobre isso: Se
+							estamos testando comportamento ao invés de
+							implementações, como é que podemos escrever um
+							teste de um objeto ou uma função? O que sabemos é
+							que uma aplicação tem um protocolo de entrada de
+							dados (terminal, web, GUI) e um protocolo de saída
+							(provavelmente o mesmo que o de entrada, no sentido
+							contrário) e como essa aplicação tem que se
+							comportar com relação à entrada.
+						</aside>
                     </section>
 
                     <section>
                         <h2>TDD</h2>
 
-                        <p>Discussões como "qual a unidade a ser testada" é que geraram
-                        coisas como BDD e ATDD (Acceptance Test-Driven Development).</p>
+                        <p>
+							Discussões como "qual a unidade a ser testada" é
+							que geraram coisas como BDD e ATDD (Acceptance
+							Test-Driven Development).
+						</p>
+
+						<aside class="notes">
+							Se vocês pensarem, essa questão de como uma
+							aplicação deve se comportar é exatamente que fez
+							com o BDD (behaviour driven development) e ATDD
+							surgiram -- e eles não são diferentes do que o que
+							Kent Beck quis dizer com o TDD.
+						</aside>
                     </section>
 
                     <section>
@@ -145,9 +192,31 @@
 
                         <p>Reddit: <a href="https://www.reddit.com/r/django/comments/5bearg/should_i_write_unit_tests_for_djangos_built_in/" target="_blank">Devo escrever testes para a validação interna do Django?</a></p>
 
+						<aside class="notes">
+							Uma boa pergunta uma vez surgiu no Reddit do Django
+							foi "Devo eu criar um teste para um campo inteiro
+							quando o Django já verifica que um campo inteiro
+							não possa ter caracteres?"
+						</aside>
+
                         <h1 class="fragment">SIM!</h1>
 
-						<p class="fragment">... bom, talvez sim.</p>
+						<aside class="notes">
+							A questão do teste não é relacionado com o tipo de
+							campo, mas o _significado_ do campo.
+
+							Exemplo, se o campo for "ano de nascimento",
+							obviamente "AAAA" não é um ano válido, e o Django
+							vai barrar isso se eu definir o campo como inteiro.
+							Mas eu poderia usar um campo caracter (por um
+							motivo qualquer) e eu teria que testar por ser um
+							inteiro.
+
+							Mas porque eu usaria um caracter ao invés de um
+							inteiro?
+
+							"Teste comportamento, não implementação".
+						</aside>
 					</section>
 
                     <section>
@@ -156,7 +225,8 @@
                         <p>Nossos testes End-to-End.</p>
 
                         <aside class="notes">
-                            Explicação do que aconteceu com os testes do gerenciador de alertas.
+							Explicação do que aconteceu com os testes do
+							gerenciador de alertas.
                         </aside>
                     </section>
 				</section>
@@ -267,7 +337,7 @@
                         <h2>Coverage</h2>
 						<h3>Exemplo</h3>
 
-                        <pre><code class="python">
+                        <pre><code class="python" data-trim>
 class Client:
     def __init__(self, name):
         self.name = name
@@ -286,7 +356,7 @@ class Client:
                         <h2>Coverage</h2>
 						<h3>Exemplo</h3>
 
-                        <pre><code class="python">
+                        <pre><code class="python" data-trim>
 def _multiple_names(name):
     split_names = name.split(' ')
     return len(split_names) > 1
@@ -306,7 +376,7 @@ class Client:
                         <h2>Coverage</h2>
 						<h3>Exemplo</h3>
 
-                        <pre><code class="python">
+                        <pre><code class="python" data-trim>
 import pytest
 
 def test_single_name():
@@ -321,7 +391,7 @@ def test_multiple_name():
                         <h2>Coverage</h2>
 						<h3>Exemplo</h3>
 
-                        <pre><code class="python">
+                        <pre><code class="python" data-trim>
 def test_valid_name():
     _validate_name('Julio Biason')
 
@@ -335,7 +405,7 @@ def test_invalid_name():
                         <h2>Coverage</h2>
 						<h3>Exemplo</h3>
 
-                        <pre><code class="python">
+                        <pre><code class="python" data-trim>
 def test_client_error():
     with pytest.raises(Exception):
         Client(name='Cher')
@@ -349,7 +419,7 @@ def test_client():
                         <h2>Coverage</h2>
 						<h3>Exemplo</h3>
 
-                        <pre><code>
+                        <pre><code data-trim>
 $ pytest client.py
 ==== test session starts ====
 rootdir: /home/jbiason/unitt, inifile:
@@ -365,7 +435,7 @@ client.py ......
                         <h2>Coverage</h2>
 						<h3>Exemplo</h3>
 
-                        <pre><code>
+                        <pre><code data-trim>
 $ pytest --cov=client client.py
 ==== test session starts ====
 plugins: cov-2.4.0
@@ -393,7 +463,7 @@ client.py      25      0   100%
                         <h2>Coverage</h2>
 						<h3>Exemplo</h3>
 
-                        <pre><code class="python">
+                        <pre><code class="python" data-trim>
 class Client:
     def __init__(self, name):
         self.name = name
@@ -404,7 +474,7 @@ class Client:
                         <h2>Coverage</h2>
 						<h3>Exemplo</h3>
 
-                        <pre><code>
+                        <pre><code data-trim>
 ==== FAILURES ====
 ____ test_client_error ____
 
@@ -422,7 +492,7 @@ client.py:37: Failed
                         <h2>Coverage</h2>
 						<h3>Exemplo</h3>
 
-                        <pre><code>
+                        <pre><code data-trim>
 $ pytest  client.py
 ==== test session starts ====
 rootdir: /home/jbiason/unitt, inifile:
@@ -439,7 +509,7 @@ client.py ......
                         <h2>Coverage</h2>
 						<h3>Exemplo</h3>
 
-                        <pre><code>
+                        <pre><code data-trim>
 $ pytest --cov=client  client.py
 ==== test session starts ====
 rootdir: /home/jbiason/unitt, inifile:
@@ -481,10 +551,10 @@ client.py      24      0   100%
 
 						<div class="fragment semi-opaque">
 							<ul>
-								<li>@juliobiason</li>
-								<li>https://functional.cafe/@juliobiason</li>
-                                <li>julio.biason@gmail.com</li>
-                                <li><a href="http://presentations.juliobiason.net">http://presentations.juliobiason.net</a></li>
+                                <li>Júlio Biason</li>
+                                <li>https://functional.cafe/@juliobiason</li>
+                                <li>julio.biason@pm.me</li>
+                                <li><a href="https://presentations.juliobiason.me">https://presentations.juliobiason.me</a></li>
 							</ul>
 						</div>
                     </section>
