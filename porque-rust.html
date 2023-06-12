@@ -72,372 +72,193 @@
     <body>
         <div class="reveal">
             <div class="slides">
-				<section data-background="_images/rust-ferris.png" data-header>
-					<h2 class="semi-opaque">Porque Você Deveria Aprender Rust</h2>
-				</section>
+                <section data-background="_images/rust-ferris.png" data-header>
+                    <h2 class="semi-opaque">Porque Você Deveria Aprender Rust</h2>
+                </section>
 
-				<section data-background="_images/rust-ferris.png">
-					<h2 class="semi-opaque">Porque Você DEVE Aprender Rust</h2>
+                <section data-background="_images/rust-ferris.png">
+                    <h2 class="semi-opaque">Porque Você DEVE Aprender Rust</h2>
 
-					<aside class="notes">
-						Eu ia falar do porque o pessoal deveria aprender Rust,
-						mas acho que faz mais sentido dizer que o pessoal TEM
-						QUE aprender Rust.
-					</aside>
-				</section>
+                    <aside class="notes">
+                        Eu ia falar do porque o pessoal deveria aprender Rust,
+                        mas acho que faz mais sentido dizer que o pessoal TEM
+                        QUE aprender Rust.
+                    </aside>
+                </section>
 
-				<section>
-					<img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
+                <section>
+                    <img src="_images/avatar-20170726.png" alt="Me" style="float:left;width:200px;" class="no-border">
 
-					<div>
-						<ul class="empty">
-							<li>Júlio Biason</li>
-							<li><a href="https://functional.cafe/@juliobiason">https://functional.cafe/@juliobiason</a></li>
-							<li><a href="https://t.me/juliobiason">https://t.me/juliobiason</a></li>
-							<li>julio.biason@pm.me</li>
-						</ul>
-					</div>
-				</section>
+                    <div>
+                        <ul class="empty">
+                            <li>Júlio Biason</li>
+                            <li><a href="https://functional.cafe/@juliobiason">https://functional.cafe/@juliobiason</a></li>
+                            <li><a href="https://t.me/juliobiason">https://t.me/juliobiason</a></li>
+                            <li>julio.biason@pm.me</li>
+                        </ul>
+                    </div>
+                </section>
 
-				<section>
-					<div>
-						<ul>
-							<li>Coordenador do meetup <strong>Rust in POA</strong></li>
-							<li>Co-coordenador do meetup <strong>PyTche</strong></li>
-							<li>Co-coordenador do meetup <strong>Design de Código</strong></li>
-							<li>Palestrante do <strong>Tchelinux</strong></li>
-						</ul>
-					</div>
-				</section>
+                <section>
+                    <div>
+                        <h3>JulioBiason.me</h3>
 
-				<section>
-					<div>
-						<h3>JulioBiason.me</h3>
+                        <ul>
+                            <li><a href="https://blog.juliobiason.me/">Blog</a></li>
+                            <li><a href="https://presentations.juliobiason.me/">Presentations</a></li>
+                            <li><a href="https://git.juliobiason.me/">Git</a></li>
+                            <li><a href="https://resume.juliobiason.me/">CV/Resumé</a></li>
+                            <li><a href="https://books.juliobiason.me/">Books</a></li>
+                        </ul>
+                    </div>
+                </section>
 
-						<ul>
-							<li><a href="https://blog.juliobiason.me/">Blog</a></li>
-							<li><a href="https://presentations.juliobiason.me/">Presentations</a></li>
-							<li><a href="https://git.juliobiason.me/">Git</a></li>
-							<li><a href="https://resume.juliobiason.me/">CV/Resumé</a></li>
-							<li><a href="https://books.juliobiason.me/">Books</a></li>
-						</ul>
-					</div>
-				</section>
+                <section>
+                    <h2>História</h2>
 
-				<section>
-					<h2>História</h2>
-
-					<ul>
-						<li>Criada em 2006 por Graydon Hoare.</li>
-						<li>Patrocinada pela Mozilla em 2009.</li>
-						<li>Versão 1.0 em 2015.</li>
-						<li>Versão atual: 1.41.1</li>
-					</ul>
+                    <ul>
+                        <li>Criada em 2006 por Graydon Hoare.</li>
+                        <li>Patrocinada pela Mozilla em 2009.</li>
+                        <li>Versão 1.0 em 2015.</li>
+                        <li>Versão atual: 1.70</li>
+                    </ul>
 
                     <aside class="notes">
                         Parte burocrática da apresentação.
 
-                        PS: Pode ser que, quando você essa apresentação, 1.38
+                        PS: Pode ser que, quando você essa apresentação, 1.70
                         não seja mais a versão atual; a cada 6 semanas, sai uma
                         nova versão do compilador.
                     </aside>
-				</section>
+                </section>
 
-				<section>
-					<h2>
-						História
-						<img src="_images/AYV1X0yv.png" alt="" style="width:100px;margin:0">
-					</h2>
+                <section>
+                    <h2>
+                        História
+                        <img src="_images/AYV1X0yv.png" alt="" style="width:100px;margin:0">
+                    </h2>
 
-					<p>
-						Basic (com números e estruturado), dBase III Plus,
-						Clipper, Pascal, Cobol, Delphi (ObjectPascal),
-						C, C++, ActionScript (Flash), PHP, JavaScript,
-						Python, Objective-C, Clojure, Java, Scala
-						<strong>, Rust.</strong>
-					</p>
+                    <p>
+                    Basic (com números e estruturado), dBase III Plus,
+                    Clipper, Pascal, Cobol, Delphi (ObjectPascal),
+                    C, C++, ActionScript (Flash), PHP, JavaScript,
+                    Python, Objective-C, Clojure, Java, Scala
+                    <strong>, Rust.</strong>
+                    </p>
 
-					<aside class="notes">
-						Um porque de história sobre esse que lhes apresenta
-						a linguagem:
+                    <aside class="notes">
+                        Um porque de história sobre esse que lhes apresenta
+                        a linguagem:
 
-						Eu já trabalhei com todas essas linguagens. Fora
-						essas, eu ainda sei ler 
+                        Eu já trabalhei com todas essas linguagens. Fora
+                        essas, eu ainda sei ler 
 
-						- Perl
-						- Ruby
-						- Haskell
-						- Swift
-					</aside>
-				</section>
+                        - Perl
+                        - Ruby
+                        - Haskell
+                        - Swift
+                    </aside>
+                </section>
 
-				<section>
-					<img src="_images/my_opinion.jpg" alt="">
+                <section>
+                    <div>
+                        A language that doesn't affect the way you think
+                        about programming, is not worth knowing.
+                    </div>
 
-					<aside class="notes">
-						Alerta: Tudo aqui é a minha opinião sobre Rust e o
-						contexto geral de linguagens de programação.
-					</aside>
-				</section>
+                    <div>
+                        -- Alan Perlis, "ALGOL"
+                    </div>
 
-				<section>
-					<div>
-						A language that doesn't affect the way you think
-						about programming, is not worth knowing.
-					</div>
+                    <aside class="notes">
+                        Apesar de ter todas essas linguagens, eu ainda
+                        preciso passar essa frase do Perlis, porque
+                        realmente Rust mudou a forma como eu penso em
+                        outras linguagens.
 
-					<div>
-						-- Alan Perlis, "ALGOL"
-					</div>
+                        Apesar do forte do Rust ser a proteção de memória,
+                        eu posso oficialmente dizer que agora eu entendo
+                        generics muito melhor por causa da forma como o
+                        Rust trabalha.
+                    </aside>
+                </section>
 
-					<aside class="notes">
-						Apesar de ter todas essas linguagens, eu ainda
-						preciso passar essa frase do Perlis, porque
-						realmente Rust mudou a forma como eu penso em
-						outras linguagens.
+                <section>
+                    <h2>O Que Rust Tem de Diferente?</h2>
+                </section>
 
-						Apesar do forte do Rust ser a proteção de memória,
-						eu posso oficialmente dizer que agora eu entendo
-						generics muito melhor por causa da forma como o
-						Rust trabalha.
-					</aside>
-				</section>
+                <section>
+                    <h2>Borrow Checker</h2>
 
-				<section>
-					<h2>1. A Linguagem Mais Amada</h2>
-					<p>
-						<a href="https://insights.stackoverflow.com/survey/2019">
-							A linguagem mais amada segundo o StackOverflow
-							Survey 2019
-						</a>
+                    <aside class="notes">
+                        O "Borrow Checker" é uma das principais novidades
+                        do Rust em comparação com outras linguagens.
 
-						<p class="fragment">... pelo 4⁰ ano seguido.</p>
+                        Ele basicamente controla como as variáveis vão ser
+                        alocadas, quando serão desalocadas, quem pode
+                        acessar o conteúdo da mesma e assim por diante.
+                    </aside>
+                </section>
 
-						<aside class="notes">
-							O resultado do StackOverflow é sobre qual
-							linguagem os programadores realmente gostam de
-							programar (e quais eles tem pavor de usar).
-
-							Pessoalmente, depois de 30 anos programando,
-							quando começei a brincar com Rust, eu
-							finalmente me diverti enquanto programava.
-						</aside>
-					</p>
-				</section>
-
-				<section>
-					<h2>2. "Low Level Language with High Level Abstractions"</h2>
-				</section>
-
-				<section>
-					<p>Resultado final com performance semelhante ao C...</p>
-
-					<img src="_images/rust-energy.png" alt="">
-
-					<aside class="notes">
-						Num estudo sobre quais linguagens consomem mais
-						energia, Rust chegou bem próximo de C.
-
-						Parte do trabalho de otimização do Rust vem da LLVM
-						(parte do pacote do Clang), mas a árvore de
-						abstração ainda é gerada pela linguagem -- o que
-						significa que o compilador Rust consegue "ajudar" o
-						LLVM a otimizar o código.
-					</aside>
-				</section>
-
-				<section>
-					<p>... mas com abstrações em algo nível</p>
-
-					<ul>
-						<li>Strings sem tamanho fixo</li>
-						<li>Listas</li>
-						<li>Mapas</li>
-					</ul>
-
-					<aside class="notes">
-						Ao contrário de C, em que só se mexe com ponteiros
-						pra cima e pra baixo, Rust tem todas as abstrações
-						de alto nível que estamos acostumados com outras
-						linguagens.
-
-						Honestamente, se surgir uma nova linguagem que
-						tenha mais proteções de memória, com performance
-						ainda melhor que C mas eu tiver que escrever uma
-						lista encadeada mais uma vez, eu destruo todas as
-						coisas tecnológicas ao meu redor...
-
-						E vou plantar batata.
-
-						... porque aprendemos absolutamente NADA sobre
-						desenvolvimento.
-					</aside>
-				</section>
-
-				<section>
-					<h2>3. Compilador Chato mas Amigável</h2>
-				</section>
-
-				<section>
-					<pre><code class="hljs rust" data-trim>
-fn main() -&gt; u8 {
-    let a = 2;
-    a = 3;
-    println!("{}", a);
-    a
-}
-					</code></pre>
-
-					<aside class="notes">
-						Primeiro contato com Rust: assim como C, tem uma
-						função `main`, que pode retornar um inteiro; para
-						atribuir variáveis, usa-se `let`.
-
-						Uma coisa: Rust é "strong and statically typed", o
-						que sigifnica que a linguagem tem tipos, mas por
-						padrão o compilador tenta inferir o tipo.
-
-						Uma outra forma de escrever o let seria:
-
-						```
-						let a: u8 = 2;
-						```
-					</aside>
-				</section>
-
-				<section>
-					<pre><code class="hljs" data-trim>
-3 |     let a = 2;
-  |         -
-  |         |
-  |         first assignment to `a`
-  |         help: make this binding mutable: `mut a`
-4 |     a = 3;
-  |     ^^^^^ cannot assign twice to immutable variable
-					</code></pre>
-
-					<aside class="notes">
-						Se você tentar mudar um dado depois de criado, o
-						compilador Rust não vai deixar.
-					</aside>
-				</section>
-
-				<section>
-					<pre><code class="hljs" data-trim data-line-numbers="7">
-3 |     let a = 2;
-  |         -
-  |         |
-  |         first assignment to `a`
-  |         help: make this binding mutable: `mut a`
-4 |     a = 3;
-  |     ^^^^^ cannot assign twice to immutable variable
-					</code></pre>
-
-					<aside class="notes">
-						... mas se tu olhar com calma, tu vai ver que não só o
-						compilador disse, claramente, o que era o problema...
-					</aside>
-				</section>
-
-				<section data-transition="fade">
-					<pre><code class="hljs" data-trim data-line-numbers="5">
-3 |     let a = 2;
-  |         -
-  |         |
-  |         first assignment to `a`
-  |         help: make this binding mutable: `mut a`
-4 |     a = 3;
-  |     ^^^^^ cannot assign twice to immutable variable
-					</code></pre>
-
-					<aside class="notes">
-						... como também vai dizer como resolver o problema.
-					</aside>
-				</section>
-
-				<section>
-					<img class="stretch" src="_images/Sorry-bout-that.gif" alt="">
-
-					<aside class="notes">
-						Ou seja, o compilador não só vai lá e diz: ERRADO!
-
-						... ele ainda dá uma dica de como resolver esse
-						problema.
-					</aside>
-				</section>
-
-				<section>
-					<h2>4. Borrow Checker</h2>
-
-					<aside class="notes">
-						O "Borrow Checker" é uma das principais novidades
-						do Rust em comparação com outras linguagens.
-
-						Ele basicamente controla como as variáveis vão ser
-						alocadas, quando serão desalocadas, quem pode
-						acessar o conteúdo da mesma e assim por diante.
-					</aside>
-				</section>
-
-				<section>
-					<pre><code class="hljs rust" data-trim>
+                <section>
+                    <pre><code class="hljs rust" data-trim>
 let a = String::from("hello");
-					</code></pre>
-				</section>
+                    </code></pre>
+                </section>
 
-				<section>
-					"Variável <code>a</code> tem o valor <code>"hello"</code>"
+                <section>
+                    "Variável <strong><code>a</code></strong> tem o valor <strong><code>"hello"</code></strong>"
 
-					<aside class="notes">
-						Em todas as linguagens que eu usei, sempre que via
-						uma atribuição, eu pensava "a variável X tem o
-						valor Y" -- mesmo em C.
-					</aside>
-				</section>
+                    <aside class="notes">
+                        Em todas as linguagens que eu usei, sempre que via
+                        uma atribuição, eu pensava "a variável X tem o
+                        valor Y" -- mesmo em C.
+                    </aside>
+                </section>
 
-				<section>
-					<div>
-						"Posição de memória apontada por <code>a</code> tem o valor <code>"hello"</code>"
-					</div>
+                <section>
+                    <div>
+                        "Posição de memória apontada por <strong><code>a</code></strong> tem o valor <strong><code>"hello"</code></strong>"
+                    </div>
 
-					<div class="fragment">
-						<pre><code>
+                    <div class="fragment">
+                        <pre><code>
 0x3f5cbf89 = "hello"
-						</code></pre>
-					</div>
+                        </code></pre>
+                    </div>
 
-					<aside class="notes">
-						Nunca uma linguagem me fez "despensar" no nome da
-						variável pra pensar que ela representa, na verdade,
-						uma posição de memória.
-					</aside>
-				</section>
+                    <aside class="notes">
+                        Nunca uma linguagem me fez "despensar" no nome da
+                        variável pra pensar que ela representa, na verdade,
+                        uma posição de memória.
+                    </aside>
+                </section>
 
-				<section>
-					<img src="_images/rust-memory.png" alt="" class="stretch">
+                <section>
+                    <img src="_images/rust-memory.png" alt="" class="stretch">
 
-					<aside class="notes">
-						É mais ou menos isso que Rust "pensa" internamente
-						quando vê uma variável: uma posição de memória, de
-						um tamanho já definido, de um tipo definido.
+                    <aside class="notes">
+                        É mais ou menos isso que Rust "pensa" internamente
+                        quando vê uma variável: uma posição de memória, de
+                        um tamanho já definido, de um tipo definido.
 
-						E essa posição de memória *pertence* apenas à
-						variável indicada.
-					</aside>
-				</section>
+                        E essa posição de memória *pertence* apenas à
+                        variável indicada.
+                    </aside>
+                </section>
 
-				<section>
-					<pre><code class="hljs rust" data-trim>
+                <section>
+                    <pre><code class="hljs rust" data-trim>
 fn main() {
     let a = String::from("hello");
     let _b = a;
     println!("{}", a)
 }
-					</code></pre>
-				</section>
+                    </code></pre>
+                </section>
 
-				<section>
-					<pre><code>
+                <section>
+                    <pre><code>
 error[E0382]: borrow of moved value: `a`
  --> src/main.rs:5:20
   |
@@ -449,241 +270,354 @@ error[E0382]: borrow of moved value: `a`
   = note: move occurs because `a` has type 
     `std::string::String`, which does not 
     implement the `Copy` trait
-					</code></pre>
+                    </code></pre>
 
-					<aside class="notes">
-						O borrow checked não deixa a variável "a" ser
-						utilizada: quando a atribuímos "_b" o valor de "a",
-						o que estamos fazendo é indicando que aquela
-						posição de memória agora é controlada por "_b" e
-						não mais por "a".
-					</aside>
-				</section>
+                    <aside class="notes">
+                        O borrow checked não deixa a variável "a" ser
+                        utilizada: quando a atribuímos "_b" o valor de "a",
+                        o que estamos fazendo é indicando que aquela
+                        posição de memória agora é controlada por "_b" e
+                        não mais por "a".
+                    </aside>
+                </section>
 
-				<section>
-					<p>E se eu precisar acessar a variável em mais de um lugar?</p>
+                <section>
+                    <p>Para ter mais de um acesso a mesma posição de memória, <strong>referências</strong></p>
 
-					<h3 class="fragment">References</h3>
+                    <aside class="notes">
+                        Assim como C++, Rust tem o conceito de "referências".
+                    </aside>
+                </section>
 
-					<aside class="notes">
-						Assim como C++, Rust tem o conceito de "referências".
-					</aside>
-				</section>
-
-				<section>
-					<pre><code class="hljs rust" data-trim>
+                <section>
+                    <pre><code class="hljs rust" data-trim>
 fn main() {
     let a = String::from("hello");
     let _b = &a;
     println!("{}", a)
 }
-					</code></pre>
-				</section>
+                    </code></pre>
+                </section>
 
-				<section>
-					<img src="_images/rust-reference.png" alt="" class="stretch">
+                <section>
+                    <img src="_images/rust-reference.png" alt="" class="stretch">
 
-					<aside class="notes">
-						Uma referência nada mais é que um ponteiro para um
-						"controlador" de uma região de memória.
-					</aside>
-				</section>
+                    <aside class="notes">
+                        Uma referência nada mais é que um ponteiro para um
+                        "controlador" de uma região de memória.
+                    </aside>
+                </section>
 
-				<section>
-					<h3>Regras do Borrow Checker</h3>
+                <section>
+                    <h3>Regras do Borrow Checker</h3>
 
-					<p class="fragment">
-						Uma região de memória tem apenas um dono.
-					</p>
+                    <p class="fragment">
+                    Uma região de memória tem apenas um dono.
+                    </p>
 
-					<p class="fragment">
-						Passar um valor (região de memória) de uma variável
-						para outra, troca o dono.
-					</p>
+                    <p class="fragment">
+                    Passar um valor (região de memória) de uma variável
+                    para outra, troca o dono.
+                    </p>
 
-					<p class="fragment">
-						A região é desalocada quando o dono sair de escopo.
-					</p>
+                    <p class="fragment">
+                    A região é desalocada quando o dono sair de escopo.
+                    </p>
 
-					<aside class="notes">
-						Uma coisa engraçada sobre "quando sair de escopo" é
-						que existe uma função semelhante ao "free()" do C,
-						chamada "drop". Essa função não tem nada no corpo,
-						e recebe um parâmetro (sem ser por referência), se
-						tornando a dona da memória; assim, como ela termina
-						exatamente naquele ponto, a região de memória é
-						liberada.
-					</aside>
-				</section>
+                    <aside class="notes">
+                        Uma coisa engraçada sobre "quando sair de escopo" é
+                        que existe uma função semelhante ao "free()" do C,
+                        chamada "drop". Essa função não tem nada no corpo,
+                        e recebe um parâmetro (sem ser por referência), se
+                        tornando a dona da memória; assim, como ela termina
+                        exatamente naquele ponto, a região de memória é
+                        liberada.
+                    </aside>
+                </section>
 
-				<section>
-					<h4>Drop</h4>
+                <section>
+                    <h4>Drop</h4>
 
-					<pre><code class="hljs rust">
+                    <pre><code class="hljs rust">
 pub fn drop&lt;T&gt;(_x: T) { }
-					</code></pre>
-				</section>
+                    </code></pre>
+                </section>
 
-				<section>
-					<h3>Regras do Borrow Checker</h3>
+                <section>
+                    <h3>Regras do Borrow Checker</h3>
 
-					<p class="fragment">
-						Uma região de memória pode ter infinitas referências.
-					</p>
+                    <p class="fragment">
+                    Uma região de memória pode ter infinitas referências.
+                    </p>
 
-					<p class="fragment">
-						... desde que elas não durem mais do que o dono.
-					</p>
+                    <p class="fragment">
+                    ... desde que elas não durem mais do que o dono.
+                    </p>
 
-					<aside class="notes">
-						Não é possível ter uma função que cria uma variável
-						e retorna apenas uma referência para essa variável:
-						no momento que a função for encerrada, ela irá
-						levar todas as variáveis com ela e as referências
-						se tornaram inválidas.
-					</aside>
-				</section>
+                    <aside class="notes">
+                        Não é possível ter uma função que cria uma variável
+                        e retorna apenas uma referência para essa variável:
+                        no momento que a função for encerrada, ela irá
+                        levar todas as variáveis com ela e as referências
+                        se tornaram inválidas.
+                    </aside>
+                </section>
 
-				<section>
-					<h3>Regras do Borrow Checker</h3>
+                <section>
+                    <h3>Regras do Borrow Checker</h3>
 
-					<p class="fragment">
-						É possível ter uma referência mutável de uma região de memória.
-					</p>
+                    <p class="fragment">
+                    É possível ter uma referência mutável de uma região de memória.
+                    </p>
 
-					<p class="fragment">
-						... mas para haver uma referência mutável ela deve ser
-						a <strong>única</strong> referência.
-					</p>
-				</section>
+                    <p class="fragment">
+                    ... mas para haver uma referência mutável ela deve ser
+                    a <strong>única</strong> referência.
+                    </p>
+                </section>
 
-				<section>
-					<img src="_images/dunno.jpg" alt="" class="stretch">
+                <section>
+                    <img src="_images/dunno.jpg" alt="" class="stretch">
 
-					<aside class="notes">
-						E o que isso ajuda, no final das contas?
-					</aside>
-				</section>
+                    <aside class="notes">
+                        E o que isso ajuda, no final das contas?
+                    </aside>
+                </section>
 
-				<section>
-					<img class="stretch" src="_images/40-years-processor-trend.png" alt="">
-				</section>
+                <section>
+                    <img class="stretch" src="_images/40-years-processor-trend.png" alt="">
+                </section>
 
-				<section>
-					<a href="https://www.zdnet.com/article/microsoft-70-percent-of-all-security-bugs-are-memory-safety-issues/">Microsoft: 70 percent of all security bugs are memory safety issues</a>
-				</section>
+                <section>
+                    <a href="https://www.zdnet.com/article/microsoft-70-percent-of-all-security-bugs-are-memory-safety-issues/">Microsoft: 70 percent of all security bugs are memory safety issues</a>
+                </section>
 
-				<section>
-					<p>
-						<a href="https://swift.org/blog/swift-5-exclusivity/">Swift 5 Exclusivity Enforcement</a>
-					</p>
+                <section>
+                    <h3>Regras do Borrow Checker</h3>
 
-					<aside class="notes">
-						A ideia do borrow checker é tão interessante que
-						até o Swift 5 agora tem o seu próprio borrow
-						checker (com outro nome, mas o princípio da coisa é
-						basicamente o mesmo, apesar de ser um pouco mais
-						leve no Swift).
-					</aside>
+                    <p>Uma região de memória tem apenas um dono.</p>
 
-					<p>
-						<a href="https://github.com/microsoft/verona">Verona: Research programming language for concurrent ownership</a>
-					</p>
-				</section>
+                    <p>Passar um valor (região de memória) de uma variável
+                    para outra, troca o dono.</p>
 
-				<section>
-					<h2>5. Tipos Algébricos</h2>
-				</section>
+                    <p class="fragment"><strong>Sem condições de corrida (race conditions)</strong></p>
+                </section>
 
-				<section>
-					<h3>enum</h3>
-					<pre><code class="hljs rust" data-trim>
-enum IpAddr {
-   V4,
-   V6
+                <section>
+                    <h3>Regras do Borrow Checker</h3>
+
+                    <p>A região é desalocada quando o dono sair de escopo.</p>
+
+                    <p class="fragment"><strong>
+                        Evita problemas de double-free ou não usar free e sem
+                        precisar de garbage collector.
+                    </strong></p>
+                </section>
+
+                <section>
+                    <h3>Regras do Borrow Checker</h3>
+
+                    <p>
+                    Uma região de memória pode ter infinitas referências.
+                    ... desde que elas não durem mais do que o dono.
+                    </p>
+
+                    <p class="fragment"><strong>
+                        Sem dangling-pointers.
+                    </strong></p>
+                </section>
+
+                <section>
+                    <h3>Regras do Borrow Checker</h3>
+
+                    <p>
+                    É possível ter uma referência mutável de uma região de memória.
+                    ... mas para haver uma referência mutável ela deve ser
+                    a <strong>única</strong> referência.
+                    </p>
+
+                    <p class="fragment"><Strong>Condição de corrida</strong></p>
+                </section>
+
+                <section>
+                    <h3>Além do borrow Checker</h3>
+
+                    <ul>
+                        <li>Uso extenso de iteradores para evitar out-of-bounds.</li>
+                        <li>Bound-check para casos sem iteradores (com custo).</li>
+                        <li>Sem coerção de tipos.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>MISRA-C / MISRA-C++</h3>
+
+                    <p>Conjunto de regras para uso de C/C++ para equipamentos
+                    aonde vidas humanas estão em jogo.</p>
+
+                    <p class="fragment">75% das regras já são obrigatórias pelo
+                    compilador (108 dos 141 casos)</p>
+                </section>
+
+                <section>
+                    <img src="_images/full-house-michelle-tanner.gif" alt="" class="stretch">
+                </section>
+
+                <section>
+                    <h2>A Linguagem Mais Amada</h2>
+                    <p>
+                    <a href="https://insights.stackoverflow.com/survey/2019">
+                        A linguagem mais amada segundo o StackOverflow
+                        Survey 2022
+                    </a>
+                    </p>
+
+                    <p class="fragment">... pelo 7⁰ ano seguido.</p>
+
+                    <aside class="notes">
+                        O resultado do StackOverflow é sobre qual
+                        linguagem os programadores realmente gostam de
+                        programar (e quais eles tem pavor de usar).
+
+                        Pessoalmente, depois de 30 anos programando,
+                        quando começei a brincar com Rust, eu
+                        finalmente me diverti enquanto programava.
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Green Energy Language</h2>
+
+                    <img src="_images/rust-energy.png" alt="">
+
+                    <aside class="notes">
+                        Num estudo sobre quais linguagens consomem mais
+                        energia, Rust chegou bem próximo de C.
+
+                        Parte do trabalho de otimização do Rust vem da LLVM
+                        (parte do pacote do Clang), mas a árvore de
+                        abstração ainda é gerada pela linguagem -- o que
+                        significa que o compilador Rust consegue "ajudar" o
+                        LLVM a otimizar o código.
+                    </aside>
+                </section>
+
+
+                <section>
+                    <h2>Compilador Chato mas Amigável</h2>
+                </section>
+
+                <section>
+                    <pre><code class="hljs rust" data-trim>
+fn main() -&gt; u8 {
+    let a = 2;
+    a = 3;
+    println!("{}", a);
 }
-					</code></pre>
-				</section>
+                    </code></pre>
 
-				<section>
-					<pre><code class="hljs rust" data-trim>
-enum IpAddr {
-    V4(String),
-    V6(String),
-}
-					</code></pre>
-				</section>
+                    <aside class="notes">
+                        Primeiro contato com Rust: assim como C, tem uma
+                        função `main`, que pode retornar um inteiro; para
+                        atribuir variáveis, usa-se `let`.
 
-				<section>
-					<pre><code class="hljs rust" data-trim>
-let home = IpAddr::V4(String::from("127.0.0.1"));
+                        Uma coisa: Rust é "strong and statically typed", o
+                        que sigifnica que a linguagem tem tipos, mas por
+                        padrão o compilador tenta inferir o tipo.
 
-match home {
-    V4(address) =&gt; println!("IPv4 addr: {}", address),
-    V6(address) =&gt; println!("Ipv6 addr: {}", address),
-}
-					</code></pre>
-				</section>
+                        Uma outra forma de escrever o let seria:
 
-				<section>
-					<h2>6. Error Control</h2>
-				</section>
+                        ```
+                        let a: u8 = 2;
+                        ```
+                    </aside>
+                </section>
 
-				<section>
-					<pre><code class="hljs python" data-trim>
-try:
-    something()
-except Exception:
-    pass
-					</code></pre>
-				</section>
+                <section>
+                    <pre><code class="hljs" data-trim>
+3 |     let a = 2;
+  |         -
+  |         |
+  |         first assignment to `a`
+  |         help: make this binding mutable: `mut a`
+4 |     a = 3;
+  |     ^^^^^ cannot assign twice to immutable variable
+                    </code></pre>
 
-				<section>
-					<pre><code class="hljs java" data-trim>
-var obj = null;
-try {
-   obj = get_object();
-} catch (Exception ex) {
-   System.out.println(ex);
-}
-obj.do_something();
-					</code></pre>
-				</section>
+                    <aside class="notes">
+                        Se você tentar mudar um dado depois de criado, o
+                        compilador Rust não vai deixar.
+                    </aside>
+                </section>
 
-				<section>
-					<pre><code class="hljs c" data-trim>
-FILE* f = fopen("someting.txt", "wb");
-fprintf(f, "Done!");
-fclose(f);
-					</code></pre>
-				</section>
+                <section>
+                    <pre><code class="hljs" data-trim data-line-numbers="7">
+3 |     let a = 2;
+  |         -
+  |         |
+  |         first assignment to `a`
+  |         help: make this binding mutable: `mut a`
+4 |     a = 3;
+  |     ^^^^^ cannot assign twice to immutable variable
+                    </code></pre>
 
-				<section>
-					<div>
-						Onde o erro foi tratado nisso?
-					</div>
-				</section>
+                    <aside class="notes">
+                        ... mas se tu olhar com calma, tu vai ver que não só o
+                        compilador disse, claramente, o que era o problema...
+                    </aside>
+                </section>
 
-				<section>
-					<pre><code class="hljs rust" data-trim>
+                <section data-transition="fade">
+                    <pre><code class="hljs" data-trim data-line-numbers="5">
+3 |     let a = 2;
+  |         -
+  |         |
+  |         first assignment to `a`
+  |         help: make this binding mutable: `mut a`
+4 |     a = 3;
+  |     ^^^^^ cannot assign twice to immutable variable
+                    </code></pre>
+
+                    <aside class="notes">
+                        ... como também vai dizer como resolver o problema.
+                    </aside>
+                </section>
+
+                <section>
+                    <img class="stretch" src="_images/Sorry-bout-that.gif" alt="">
+
+                    <aside class="notes">
+                        Ou seja, o compilador não só vai lá e diz: ERRADO!
+
+                        ... ele ainda dá uma dica de como resolver esse
+                        problema.
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Verificar Erros é Obrigatório</h2>
+                </section>
+
+                <section>
+                    <pre><code class="hljs rust" data-trim>
 enum Result&lt;T, E&gt; {
     Ok(T),
     Err(E),
 }
-					</code></pre>
-				</section>
+                    </code></pre>
+                </section>
 
-				<section>
-					<pre><code class="hljs rust" data-trim>
+                <section>
+                    <pre><code class="hljs rust" data-trim>
 match File::create("something.txt") {
     Ok(fp) =&gt; fp.write_all(b"Hello world"),
     Err(err) =&gt; println!("Failure! {}", err),
 }
-					</code></pre>
-				</section>
+                    </code></pre>
+                </section>
 
-				<section>
-					<pre><code class="hljs rust" data-trim>
+                <section>
+                    <pre><code class="hljs rust" data-trim>
 match File::create("something.txt") {
     Ok(fp) =&gt; match fp.write_all(b"Hello world") {
         Ok(_) =&gt; (),
@@ -691,168 +625,58 @@ match File::create("something.txt") {
     }
     Err(err) =&gt; println!("Failure! {}", err),
 }
-					</code></pre>
-				</section>
+                    </code></pre>
+                </section>
 
-				<section>
-					<pre><code class="hljs rust" data-trim>
+                <section>
+                    <pre><code class="hljs rust" data-trim>
 let mut file = File::create("something.txt").unwrap();
 file.write(b"Hello world").unwrap();
-					</code></pre>
-				</section>
+                    </code></pre>
+                </section>
 
-				<section>
-					<pre><code class="hljs rust" data-trim>
-let mut file = File::create("something.txt")
-    .expect("ERROR OPENING");
-file.write(b"Hello world")
-    .expect("ERROR WRITING");
-					</code></pre>
-				</section>
-
-				<section>
-					<pre><code class="hljs rust" data-trim>
+                <section>
+                    <pre><code class="hljs rust" data-trim>
 let mut file = File::create("something.txt")?;
 file.write(b"Hello world")?;
 OK(())
-					</code></pre>
-                </section>
-
-				<section>
-					<h2>7. Generics/Traits</h2>
-				</section>
-
-				<section>
-					<h3>Structs</h3>
-
-					<pre><code class="hljs rust" data-trim>
-struct Gift {
-    package_color: String,
-    content: String
-}
-					</code></pre>
-
-					<aside class="notes">
-						 Structs em Rust são basicamente o mesmo que em C.
-					</aside>
-				</section>
-
-				<section>
-					<h3>Structs</h3>
-
-					<pre><code class="hljs rust" data-trim>
-let presente = Gift { package_color: "red", content: "A GIFT!" };
-					</code></pre>
-				</section>
-
-				<section>
-					<h3>Structs Genéricas</h3>
-					<pre><code class="hljs rust" data-trim>
-struct Point&lt;T&gt; {
-    x: T,
-    y: T
-}
-					</code></pre>
-				</section>
-
-				<section>
-					<h3>Structs Genéricas</h3>
-
-					<pre><code class="hljs rust" data-trim>
-let my_point = Point&lt;f32&gt;(x: 1.0, y: 2.0);
-					</code></pre>
-
-                    <pre><code class="hljs rust fragment" data-trim>
-let my_point = Point(x: 1.0, y: 2.0);
                     </code></pre>
-				</section>
-
-				<section>
-					<h3>Enums Generics</h3>
-
-					<pre><code class="hljs rust" data-trim>
-enum Result&lt;T, E&gt; {
-    Ok(T),
-    Err(E),
-}
-					</code></pre>
-				</section>
-
-				<section>
-					<h3>Traits</h3>
-
-					<pre><code class="hljs rust" data-trim>
-trait Summary {
-    fn summarize(&amp;self) -&gt; String;
-}
-					</code></pre>
-				</section>
-
-				<section>
-					<h3>Traits</h3>
-
-					<pre><code class="hljs rust" data-trim>
-struct Phrase {
-    phrase: String
-}
-
-impl Summary for Phrase {
-    fn summarize(&amp;self) -&gt; String {
-        self.phrase
-            .split_whitespace()
-            .map(|word| word.chars().nth(0).unwrap())
-            .collect()
-    }
-}
-					</code></pre>
-				</section>
-				
-				<section>
-					<h3>Traits</h3>
-
-					<pre><code class="hljs rust" data-trim>
-fn get_summary&lt;T&gt;(summarizable: T) -&gt; String
-    where T: Summary
-{
-    ...
-}
-					</code></pre>
                 </section>
 
-				<section>
-					<h2>
-						<a href="https://doc.rust-lang.org/cargo/">
-							8. Cargo
-						</a>
-					</h2>
+                <section>
+                    <h2>
+                        <a href="https://doc.rust-lang.org/cargo/">
+                            Cargo
+                        </a>
+                    </h2>
 
-					<p>"Cargo is the Rust package manager"</p>
+                    <p>"Cargo is the Rust package manager"</p>
 
-					<p>
-						"Cargo downloads your Rust package’s dependencies,
-						compiles your packages, makes distributable
-						packages, and uploads them to crates.io, the Rust
-						community’s package registry."
-					</p>
+                    <p>
+                    "Cargo downloads your Rust package’s dependencies,
+                    compiles your packages, makes distributable
+                    packages, and uploads them to crates.io, the Rust
+                    community’s package registry."
+                    </p>
                 </section>
 
-				<section>
-					<h2>9. Tests</h2>
+                <section>
+                    <h2>Ferramenta Para Testes Já Presente</h2>
 
-					<pre><code class="hljs rust" data-trim>
+                    <pre><code class="hljs rust" data-trim>
 #[cfg(test)]
 mod tests {
     #[test]
     fn testing() {
     }
 }
-					</code></pre>
-				</section>
+                    </code></pre>
+                </section>
 
-				<section>
+                <section>
                     <h3>Tests</h3>
 
-					<pre><code>
+                    <pre><code>
 $ cargo test
    Compiling adder v0.1.0 (file:///projects/adder)
     Finished dev [unoptimized + debuginfo] target(s) in 0.22 secs
@@ -860,62 +684,12 @@ $ cargo test
 
 running 1 test
 test tests::testing ... ok
-					</code></pre>
-                </section>
-
-				<section>
-					<h2>10. Macros</h2>
-
-					<small class="fragment">?</small>
-				</section>
-
-				<section>
-					<h3>Macros: Log-Derive</h3>
-
-					<pre><code>
-#[logfn(ok = "TRACE", err = "ERROR")]
-fn call_isan(num: &amp;str) -&gt; Result&lt;Success, Error&gt; {
-    if num.len() &gt;= 10 &amp;&amp; num.len() &lt;= 15 {
-        Ok(Success)
-    } else {
-        Err(Error)
-    }
-}
-					</code></pre>
-                </section>
-
-				<section>
-					<h2>11. Crazy stuff</h2>
-				</section>
-
-				<section>
-					<img src="_images/rust-issues.png" alt="4.5k issues no Github" class="stretch">
-				</section>
-
-				<section>
-					<a href="https://rustup.rs/">rustup</a>
-
-					<div class="fragment">
-						<small>armv7-unknown-linux-gnueabihf</small>
-					</div>
-
-					<div class="fragment">
-						<small>wasm32-unknown-unknown</small> <small class="fragment">(WebAssembly)</small>
-					</div>
+                    </code></pre>
                 </section>
 
                 <section>
-                    <img src="_images/not-everything-is-flowers.jpg" alt="">
-                </section>
-
-                <section>
-                    <h3>Complicações de Rust:</h3>
-
-                    <ul>
-                        <li>Borrow checker</li>
-                        <li>Sem OO</li>
-                        <li>Tempo de compilação</li>
-                    </ul>
+                    <h2>Desenvolvimento Aberto</h2>
+                    <img src="_images/rust-issues.png" alt="4.5k issues no Github" class="stretch">
                 </section>
 
                 <section>
