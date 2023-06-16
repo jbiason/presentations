@@ -251,7 +251,7 @@ let a = String::from("hello");
                     <pre><code class="hljs rust" data-trim>
 fn main() {
     let a = String::from("hello");
-    let _b = a;
+    let b = a;
     println!("{}", a)
 }
                     </code></pre>
@@ -262,8 +262,8 @@ fn main() {
 error[E0382]: borrow of moved value: `a`
  --> src/main.rs:5:20
   |
-4 |     let _b = a;
-  |              - value moved here
+4 |     let b = a;
+  |             - value moved here
 5 |     println!("{}", a)
   |                    ^ value borrowed here after move
   |
@@ -274,9 +274,9 @@ error[E0382]: borrow of moved value: `a`
 
                     <aside class="notes">
                         O borrow checked não deixa a variável "a" ser
-                        utilizada: quando a atribuímos "_b" o valor de "a",
+                        utilizada: quando a atribuímos "b" o valor de "a",
                         o que estamos fazendo é indicando que aquela
-                        posição de memória agora é controlada por "_b" e
+                        posição de memória agora é controlada por "b" e
                         não mais por "a".
                     </aside>
                 </section>
@@ -293,7 +293,7 @@ error[E0382]: borrow of moved value: `a`
                     <pre><code class="hljs rust" data-trim>
 fn main() {
     let a = String::from("hello");
-    let _b = &a;
+    let b = &a;
     println!("{}", a)
 }
                     </code></pre>
@@ -333,14 +333,6 @@ fn main() {
                         exatamente naquele ponto, a região de memória é
                         liberada.
                     </aside>
-                </section>
-
-                <section>
-                    <h4>Drop</h4>
-
-                    <pre><code class="hljs rust">
-pub fn drop&lt;T&gt;(_x: T) { }
-                    </code></pre>
                 </section>
 
                 <section>
@@ -466,13 +458,13 @@ pub fn drop&lt;T&gt;(_x: T) { }
                 <section>
                     <h2>A Linguagem Mais Amada</h2>
                     <p>
-                    <a href="https://insights.stackoverflow.com/survey/2019">
-                        A linguagem mais amada segundo o StackOverflow
-                        Survey 2022
+                    <a href="https://survey.stackoverflow.co/2023/">
+			A linguagem mais amada (admirada) segundo o
+			StackOverflow Survey 2023
                     </a>
                     </p>
 
-                    <p class="fragment">... pelo 7⁰ ano seguido.</p>
+                    <p class="fragment">... pelo 8⁰ ano seguido.</p>
 
                     <aside class="notes">
                         O resultado do StackOverflow é sobre qual
@@ -608,21 +600,16 @@ enum Result&lt;T, E&gt; {
                 </section>
 
                 <section>
-                    <pre><code class="hljs rust" data-trim>
-match File::create("something.txt") {
-    Ok(fp) =&gt; fp.write_all(b"Hello world"),
-    Err(err) =&gt; println!("Failure! {}", err),
-}
+                    <pre><code class="hljs c" data-trim>
+FILE* fp = fopen("something.txt");
+fprintf(fp, "Hello world");
                     </code></pre>
                 </section>
 
                 <section>
                     <pre><code class="hljs rust" data-trim>
 match File::create("something.txt") {
-    Ok(fp) =&gt; match fp.write_all(b"Hello world") {
-        Ok(_) =&gt; (),
-        Err(err) =&gt; println!("Can't write! {}", err),
-    }
+    Ok(fp) =&gt; fp.write_all(b"Hello world"),
     Err(err) =&gt; println!("Failure! {}", err),
 }
                     </code></pre>
