@@ -162,6 +162,7 @@
                     <h3 class="fragment">(and lifetimes)</h3>
 
                     <h2 class="fragment">+ Good Syntax</h2>
+                    <h2 class="fragment">+ Helpful Errors</h2>
                 </section>
 
                 <section>
@@ -233,6 +234,8 @@ func foo() {
                 </section>
 
                 <section>
+                    <h2>Good Syntax</h2>
+
                     <p>
                     StackOverflow Survey 2023: "Most Admired Language" <span class="fragment">(84.6%)</span>
                     </p>
@@ -240,6 +243,87 @@ func foo() {
                     <p class="fragment">
                         ... pelo 8<sup>o</sup> ano seguido.
                     </p>
+                </section>
+
+                <section>
+                    <h2>Helpful Errors</h2>
+
+                    <pre><code class="hljs rust" data-trim>
+fn main() {
+    let a = 2;
+    a = 3;
+    println!("{}", a);
+}
+                    </code></pre>
+
+                    <aside class="notes">
+                        Primeiro contato com Rust: assim como C, tem uma
+                        função `main`, que pode retornar um inteiro; para
+                        atribuir variáveis, usa-se `let`.
+
+                        Uma coisa: Rust é "strong and statically typed", o
+                        que sigifnica que a linguagem tem tipos, mas por
+                        padrão o compilador tenta inferir o tipo.
+
+                        Uma outra forma de escrever o let seria:
+
+                        ```
+                        let a: u8 = 2;
+                        ```
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Helpful Errors</h2>
+                    <pre><code class="hljs" data-trim>
+3 |     let a = 2;
+  |         -
+  |         |
+  |         first assignment to `a`
+  |         help: make this binding mutable: `mut a`
+4 |     a = 3;
+  |     ^^^^^ cannot assign twice to immutable variable
+                    </code></pre>
+
+                    <aside class="notes">
+                        Se você tentar mudar um dado depois de criado, o
+                        compilador Rust não vai deixar.
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Helpful Errors</h2>
+                    <pre><code class="hljs" data-trim data-line-numbers="7">
+3 |     let a = 2;
+  |         -
+  |         |
+  |         first assignment to `a`
+  |         help: make this binding mutable: `mut a`
+4 |     a = 3;
+  |     ^^^^^ cannot assign twice to immutable variable
+                    </code></pre>
+
+                    <aside class="notes">
+                        ... mas se tu olhar com calma, tu vai ver que não só o
+                        compilador disse, claramente, o que era o problema...
+                    </aside>
+                </section>
+
+                <section data-transition="fade">
+                    <h2>Helpful Errors</h2>
+                    <pre><code class="hljs" data-trim data-line-numbers="5">
+3 |     let a = 2;
+  |         -
+  |         |
+  |         first assignment to `a`
+  |         help: make this binding mutable: `mut a`
+4 |     a = 3;
+  |     ^^^^^ cannot assign twice to immutable variable
+                    </code></pre>
+
+                    <aside class="notes">
+                        ... como também vai dizer como resolver o problema.
+                    </aside>
                 </section>
 
                 <section>
