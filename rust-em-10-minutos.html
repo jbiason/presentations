@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Rust Em 10 Minutos</title>
+
+        <meta name="description" content="Por que você deveria aprender Rust">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none inside;
+            }
+
+            .revel ul.empty li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+            }
+
+            td.seen {
+                font-style: italic;
+                font-weight: bold;
+            }
+
+            .semi-opaque {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-background="_images/rust-ferris.png" data-header>
+                    <h2 class="semi-opaque">Rust Em 10 Minutos</h2>
+                </section>
+
+                <section>
+                    <h2>
+                        História
+                        <img src="_images/rust-ferris.png" alt="" style="width:100px;margin:0">
+                    </h2>
+
+                    <ul>
+                        <li>Criada em 2006 por Graydon Hoare.</li>
+                        <li>Patrocinada pela Mozilla em 2009.</li>
+                        <li>Versão 1.0 em 2015.</li>
+                        <li>Versão atual: 1.72</li>
+                    </ul>
+
+                    <aside class="notes">
+                        Parte burocrática da apresentação.
+
+                        PS: Pode ser que, quando você essa apresentação, 1.70
+                        não seja mais a versão atual; a cada 6 semanas, sai uma
+                        nova versão do compilador.
+                    </aside>
+                </section>
+
+                <section>
+                    <img class="stretch" src="_images/40-years-processor-trend.png" alt="">
+                </section>
+
+                <section>
+                    <img class="stretch" src="_images/moores-law-2020.png">
+                </section>
+
+                <section>
+                    <p><a href="https://www.zdnet.com/article/microsoft-70-percent-of-all-security-bugs-are-memory-safety-issues/">Microsoft: 70 percent of all security bugs are memory safety issues</a></p>
+                    <p>(2019)</p>
+                </section>
+
+                <section>
+                    <img src="_images/rust-fearless-concurrency.png"/>
+                </section>
+
+                <section>
+                    <img src="_images/rust-blazingly-fast.png"/>
+                </section>
+
+
+                <section>
+                    <h2>Green Energy Language</h2>
+
+                    <img src="_images/rust-energy-full.png" alt="">
+
+                    <aside class="notes">
+                        Num estudo sobre quais linguagens consomem mais
+                        energia, Rust chegou bem próximo de C.
+
+                        Parte do trabalho de otimização do Rust vem da LLVM
+                        (parte do pacote do Clang), mas a árvore de
+                        abstração ainda é gerada pela linguagem -- o que
+                        significa que o compilador Rust consegue "ajudar" o
+                        LLVM a otimizar o código.
+                    </aside>
+                </section>
+
+                <section>
+                    <p>
+                        "Speaking of languages, it's time to halt starting any new
+                        projects in C/C++ and use Rust for those scenarios
+                        where a non-GC language is required. For the sake of
+                        security and reliability. the industry should declare
+                        those languages as deprecated"
+                    </p>
+
+                    <p>
+                        - <a href="https://www.zdnet.com/article/programming-languages-its-time-to-stop-using-c-and-c-for-new-projects-says-microsoft-azure-cto/">Mark Russinovich, Azure CTO</a>, 2022
+                    </p>
+                </section>
+
+                <section>
+                    <p>
+                    StackOverflow Survey 2023: "Most Admired Language" <span class="fragment">(84.6%)</span>
+                    </p>
+
+                    <p class="fragment">
+                        ... pelo 8<sup>o</sup> ano seguido.
+                    </p>
+                </section>
+
+                <section>
+                    <img src="_images/how.gif"/>
+                </section>
+
+                <section>
+                    <h2>Borrow Checker</h2>
+
+                    <h3 class="fragment">(and lifetimes)</h3>
+                </section>
+
+                <section>
+                    <pre><code>
+fn main() {
+    let hello = String::from("Hello!");
+    {
+       let world = String::from("World!");
+       println!("{hello} {world}");
+    }
+
+    println!("{hello} {world}");
+}
+                    </code></pre>
+                </section>
+
+                <section>
+                    <pre><code>
+fn i_own_this_now(s: String) {
+    println!("Hello {s}!")
+}
+
+fn main() {
+   let name = String::from("Julio");
+   i_own_this_now(name);
+   println!("Goodbye {name}");
+}
+                    </code></pre>
+                </section>
+
+                <section>
+                    <pre><code>
+fn can_i_borrow_it_for_a_second(s: &str) {
+   println!("Hello {s}");
+}
+
+fn main() {
+    let name = String::from("Julio");
+    can_i_borrow_it_for_a_second(&name);
+    println!("Goodbye {name}");
+}
+                    </code></pre>
+                </section>
+
+                <section>
+                    <pre><code>
+func foo() {
+  regalo := Gift { .. }
+  channel &lt;- regalo
+  regalo.open();
+}
+                    </code></pre>
+
+                    <small class="fragment">
+                        (<a href="https://nikomatsakis.github.io/rust-latam-2019/#29">
+                            Niko Matsakis, RustLatam 2019
+                        </a>)
+                    </small>
+                </section>
+
+                <section>
+                    <img src="_images/rust-languages.png" class="stretch">
+
+                    <small class="fragment">
+                        (<a href="https://nikomatsakis.github.io/rust-latam-2019/#29">
+                            Niko Matsakis, RustLatam 2019
+                        </a>)
+                    </small>
+                </section>
+
+                <section>
+                    <img src="_images/around-world.jpg" class="stretch">
+                </section>
+
+                <section>
+                    <h2>Cargo</h2>
+
+                    <ul>
+                        <li class="fragment">Dependency manager</li>
+                        <li class="fragment">Build tool</li>
+                        <li class="fragment">Distributable packages</li>
+                        <li class="fragment">Uploader to the registry (crates.io)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <p>
+                        <span class="fragment"><a href="https://serde.rs/">Serde</a></span>
+                        <span class="fragment" style="float:right"><a href="http://pest.rs/book/">Pest</a></span>
+                        <span class="fragment" style="float:left"><a href="https://ratatui-org.github.io/ratatui-book/index.html">Ratatui</a></span>
+                    </p>
+
+                    <h2><a href="https://doc.rust-lang.org/book/">The Rust Book</a></h2>
+
+                    <p>
+                        <span class="fragment"><a href="https://tokio.rs/tokio/tutorial">Tokio</a></span>
+                        <span class="fragment" style="float:left"><a href="https://book.async.rs/">Async-Std</a></span>
+                        <span class="fragment" style="float:right"><a href="https://actix.rs/docs/">Actix</a></span>
+                    </p>
+                </section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+				</section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
