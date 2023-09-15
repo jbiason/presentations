@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Licenças em 10 Minutos</title>
+
+        <meta name="description" content="Por que você deveria aprender Rust">
+        <meta name="author" content="Julio Biason">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <style type="text/css" media="screen">
+            .happy {
+                color: yellow;
+            }
+
+            .reveal section img {
+                border: none;
+            }
+
+            .reveal ul.empty {
+                list-style: none inside;
+            }
+
+            .revel ul.empty li {
+                display: block;
+            }
+
+            .cursor {
+                background-color: #666;
+                color: white;
+            }
+            
+            img {
+                max-height: 90%;
+            }
+
+            td.seen {
+                font-style: italic;
+                font-weight: bold;
+            }
+
+            .semi-opaque {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+					<section data-background="_images/patrick-license.jpeg" data-header>
+                    <h2 class="semi-opaque">Licenças Open Source Em 10 Minutos</h2>
+                </section>
+
+                <section>
+                    <h2>O que é Open Source?</h2>
+
+                    <p class="fragment">"É quando o fonte está aberto para todo mundo."</p>
+
+                    <img src="_images/false.gif" class="fragment"/>
+                </section>
+
+                <section>
+                    <img src="_images/osi_keyhole_300X300_90ppi_0.png" class="stretch"/>
+                </section>
+
+                <section>
+                    <h2><a href="https://opensource.org/licenses/">OSI Approved Licenses</a></h2>
+
+                    <ul>
+                        <li class="fragment">114 licenças</li>
+                        <li class="fragment">-17 "superseded"</li>
+                        <li class="fragment">-11 redudantes com opções mais populares</li>
+                        <li class="fragment">-5 aposentadas voluntariamente</li>
+                        <li class="fragment">-14 de propósito especial (tipo fontes)</li>
+                        <li class="fragment">= 67 licenças open source</li>
+                    </ul>
+
+                    <!--
+1-clause BSD License 	BSD-1-Clause 	Other/Miscellaneous
+Academic Free License v. 3.0 	AFL-3.0 	Redundant with more popular
+Adaptive Public License 1.0 	APL-1.0 	Other/Miscellaneous
+Apache License, Version 2.0 	Apache-2.0 	Popular / Strong Community
+Apache Software License, version 1.1 	Apache-1.1 	Superseded
+Apple Public Source License 2.0 	APSL-2.0 	Non-Reusable
+Artistic License (Perl) 1.0 	Artistic-1.0-Perl 	Superseded
+Artistic License 1.0 	Artistic-1.0 	Superseded
+Artistic License 2.0 	Artistic-2.0 	Other/Miscellaneous
+Attribution Assurance License 	AAL 	Redundant with more popular
+Boost Software License 1.0 	BSL-1.0 	Uncategorized
+BSD+Patent 	BSD-2-Clause-Patent 	Special Purpose
+Cea Cnrs Inria Logiciel Libre License, version 2.1 	CECILL-2.1 	International
+CERN Open Hardware Licence Version 2 – Permissive 	CERN-OHL-P-2.0 	Special Purpose
+CERN Open Hardware Licence Version 2 – Strongly Reciprocal 	CERN-OHL-S-2.0 	Special Purpose
+CERN Open Hardware Licence Version 2 – Weakly Reciprocal 	CERN-OHL-W-2.0 	Special Purpose
+Common Development and Distribution License 1.0 	CDDL-1.0 	Popular / Strong Community
+Common Public Attribution License Version 1.0 	CPAL-1.0 	Uncategorized
+Common Public License Version 1.0 	CPL-1.0 	Superseded
+Computer Associates Trusted Open Source License 1.1 	CATOSL-1.1 	Non-Reusable
+Cryptographic Autonomy License 	CAL-1.0 	Uncategorized
+CUA Office Public License 	CUA-OPL-1.0 	Voluntarily retired
+Eclipse Public License -v 1.0 	EPL-1.0 	Superseded
+Eclipse Public License version 2.0 	EPL-2.0 	Popular / Strong Community
+eCos License version 2.0 	eCos-2.0 	Non-Reusable
+Educational Community License, Version 1.0 	ECL-1.0 	Superseded
+Educational Community License, Version 2.0 	ECL-2.0 	Special Purpose
+Eiffel Forum License, version 1 	EFL-1.0 	Superseded
+Eiffel Forum License, Version 2 	EFL-2.0 	Redundant with more popular
+Entessa Public License Version. 1.0 	Entessa 	Non-Reusable
+EU DataGrid Software License 	EUDatagrid 	Non-Reusable
+European Union Public License, version 1.2 	EUPL-1.2 	International
+Fair License 	Fair 	Redundant with more popular
+Frameworx License 1.0 	Frameworx-1.0 	Non-Reusable
+GNU Affero General Public License version 3 	AGPL-3.0-only 	Uncategorized
+GNU General Public License version 2 	GPL-2.0 	Popular / Strong Community
+GNU General Public License version 3 	GPL-3.0-only 	Popular / Strong Community
+GNU General Public License, version 1 		Superseded
+GNU Lesser General Public License version 2.1 	LGPL-2.1 	Popular / Strong Community
+GNU Lesser General Public License version 3 	LGPL-3.0-only 	Popular / Strong Community
+GNU LGPL 		
+GNU Library General Public License version 2 	LGPL-2.0-only 	Popular / Strong Community
+Historical Permission Notice and Disclaimer 	HPND 	Redundant with more popular
+IBM Public License Version 1.0 	IPL-1.0 	Non-Reusable
+Intel Open Source License 	Intel 	Voluntarily retired
+IPA Font License 	IPA 	Special Purpose
+ISC License 	ISC 	Uncategorized
+Jabber Open Source License 		Voluntarily retired
+JAM License 	Jam 	Other/Miscellaneous
+LaTeX Project Public License, Version 1.3c 	LPPL-1.3c 	Non-Reusable
+Lawrence Berkeley National Labs BSD Variant License 	BSD-3-Clause-LBNL 	Special Purpose
+Licence Libre du Québec – Permissive version 1.1 	LiLiQ-P-1.1 	International
+Licence Libre du Québec – Réciprocité forte version 1.1 	LiLiQ-Rplus-1.1 	International
+Licence Libre du Québec – Réciprocité version 1.1 	LiLiQ-R-1.1 	International
+Lucent Public License Version 1.02 	LPL-1.02 	Redundant with more popular
+Lucent Public License, Plan 9, version 1.0 	LPL-1.0 	Superseded
+Microsoft Public License 	MS-PL 	Uncategorized
+Microsoft Reciprocal License 	MS-RL 	Uncategorized
+MirOS License 	MirOS 	Uncategorized
+MIT No Attribution License 	MIT-0 	Other/Miscellaneous
+MITRE Collaborative Virtual Workspace License 		Voluntarily retired
+Motosoto Open Source License 	Motosoto 	Non-Reusable
+Mozilla Public License 1.1 	MPL-1.1 	Superseded
+Mozilla Public License 2.0 	MPL-2.0 	Popular / Strong Community
+Mozilla Public License, version 1.0 	MPL-1.0 	Superseded
+Mulan Permissive Software License v2 	MulanPSL-2.0 	International
+Multics License 	Multics 	Non-Reusable
+NASA Open Source Agreement v1.3 	NASA-1.3 	Special Purpose
+NAUMEN Public License 	Naumen 	Non-Reusable
+Nokia Open Source License Version 1.0a 	NOKIA 	Non-Reusable
+Non-Profit Open Software License version 3.0 	NPOSL-3.0 	Uncategorized
+NTP License 	NTP 	Uncategorized
+Open Group Test Suite License 	OGTSL 	Uncategorized
+Open Logistics Foundation License v1.3 	OLFL-1.3 	Special Purpose
+Open Software License 2.1 	OSL-2.1 	Superseded
+Open Software License, version 1.0 	OSL-1.0 	Superseded
+OpenLDAP Public License Version 2.8 	OLDAP-2.8 	Redundant with more popular
+OSET Public License version 2.1 	OSET-PL-2.1 	Special Purpose
+PHP License 3.0 	PHP-3.0 	Superseded
+PHP License 3.01 	PHP-3.01 	Non-Reusable
+Python License, Version 2 	PSF-2.0 	Non-Reusable
+RealNetworks Public Source License Version 1.0 	RPSL-1.0 	Non-Reusable
+Reciprocal Public License 1.5 	RPL-1.5 	Uncategorized
+Reciprocal Public License, version 1.1 	RPL-1.1 	Superseded
+SIL OPEN FONT LICENSE 	OFL-1.1 	Special Purpose
+Simple Public License 	SimPL-2.0 	Uncategorized
+Sun Industry Standards Source License 	SISSL 	Voluntarily retired
+Sun Public License, Version 1.0 	SPL-1.0 	Non-Reusable
+The 2-Clause BSD License 	BSD-2-Clause 	Popular / Strong Community
+The 3-Clause BSD License 	BSD-3-Clause 	Popular / Strong Community
+The CNRI portion of the multi-part Python License 	CNRI-Python 	Non-Reusable
+The European Union Public License, version 1.1 	EUPL-1.1 	Superseded
+The MIT License 	MIT 	Popular / Strong Community
+The Nethack General Public License 	NGPL 	Non-Reusable
+The OCLC Research Public License 2.0 License 		Non-Reusable
+The Open Software License 3.0 	OSL-3.0 	Other/Miscellaneous
+The PostgreSQL Licence 	PostgreSQL 	Redundant with more popular
+The Q Public License Version 	QPL-1.0 	Other/Miscellaneous
+The Ricoh Source Code Public License 	RSCPL 	Non-Reusable
+The Sleepycat License 	Sleepycat 	Non-Reusable
+The Sybase Open Source Licence 	Watcom-1.0 	Non-Reusable
+The Universal Permissive License Version 1.0 	UPL-1.0 	Other/Miscellaneous
+The University of Illinois/NCSA Open Source License 	NCSA 	Redundant with more popular
+The Unlicense 	Unlicense 	Special Purpose
+The Vovida Software License v. 1.0 	VSL-0.1 	Non-Reusable
+The W3C® SOFTWARE NOTICE AND LICENSE 	W3C-20150513 	Non-Reusable
+The wxWindows Library Licence 	wxWindows 	Non-Reusable
+The X.Net, Inc. License 	Xnet 	Redundant with more popular
+The zlib/libpng License 	Zlib 	Other/Miscellaneous
+Unicode, Inc. License Agreement – Data Files and Software 	Unicode-DFS-2015 	Special Purpose
+Upstream Compatibility License v1.0 	UCL-1.0 	Special Purpose
+Zero-Clause BSD 	0BSD 	Other/Miscellaneous
+Zope Public License 2.0 	ZPL - 2.0 	Superseded
+Zope Public License 2.1 	ZPL - 2.1 	Redundant with more popular
+-->
+                </section>
+
+                <section>
+                    <h2>"Copyright"</h2>
+
+                    <p>"Lá fora" é relacionado com patentes</p>
+
+                    <p>No Brasil é sobre autoria (como em livros)</p>
+                </section>
+
+                <section>
+                    <h2>Obrigações/Direitos</h2>
+
+                    <h3 class="fragment">... depende.</h3>
+                </section>
+
+                <section>
+                    <h3>Obrigações/Direitos</h3>
+                    <h4>BSD 1-Clause</h4>
+                    <h5>Direitos</h5>
+
+                    <p>Usar o código como quiser</p>
+                    <p class="fragment">... inclui fazer um projeto proprietário fechado</p>
+                </section>
+
+                <section>
+                    <h3>Obrigações/Direitos</h3>
+                    <h4>BSD 1-Clause</h4>
+                    <h5>Obrigações</h5>
+
+                    <p>Manter/Mostrar o Copyright</p>
+                </section>
+
+                <section>
+                    <h3>Obrigações/Direitos</h3>
+                    <h4>GPL 3</h4>
+                    <h5>Direitos</h5>
+
+                    <ol>
+                        <li>Usar a aplicação como quiser</li>
+                        <li>estudar como o código funciona</li>
+                        <li>distribuir cópias do código original</li>
+                        <li>distribuir cópias do código modificado</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h3>Obrigações/Direitos</h3>
+                    <h4>GPL 3</h4>
+                    <h5>Obrigações</h5>
+
+                    <ol>
+                        <li>Manter/Mostrar o copyright</li>
+                        <li>permitir acesso ao código na distribuição</li>
+                        <li>manter a licença em código derivado</li>
+                        <li>distribuir chaves de autorização (tivolization)</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h2>E na vida real?</h2>
+                </section>
+
+                <section>
+                    <h2>OpenFOAM</h2>
+                    
+                    <p>
+                        Licença: GPL3<br/>
+                        Pode: usar o código<br/>
+                        Tem: permitir acesso ao código junto com binário, tem
+                        que manter copyright
+                    </p>
+                </section>
+
+                <section>
+                    <h2>OpenMPI</h2>
+
+                    <p>
+                    Licença: BSD 3-Clause<br/>
+                    Pode: usar o código<br/>
+                    Tem: que manter o copyright, colocar que usa o software nas
+                    propagandas<br/>
+                    </p>
+
+                    <small class="fragment">VTK também</small>
+                </section>
+
+                <section>
+                    <h2>Scotch</h2>
+
+                    <p>
+                    Licença: CeCILL-C<br/>
+                    Pode: Basicamente o mesmo que GPL.<br/>
+                    Tem: Basicamente o mesmo que GPL.<br/>
+                </section>
+
+                <section>
+                    <h2>FFTW</h2>
+
+                    <p>
+                    Licença: GPL2 ou superior<br/>
+                    Pode: GPL.</br>
+                    Tem: GPL.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>KaHIP</h2>
+
+                    <p>
+                    Licença: MIT<br/>
+                    Pode: BSD 1-clause.<br/>
+                    Tem: BSD 1-clause.<br/>
+                    </p>
+                </section>
+
+                <section>
+                    <h2>TBB</h2>
+
+                    <p>
+                    Licença: Apache<br/>
+                    Pode: Mesmo que BSD<br/>
+                    Tem: Mesmo que BSD, mas quem contrui para o projeto
+                    automaticamente passa as patentes para o projeto,
+                    perde acesso às patentes se processar alguém do projeto.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>E aquela história de "É quando o fonte está aberto para
+                        todo mundo."?</h2>
+                </section>
+
+                <section data-background='_images/thats-all-folks.jpg'>
+				</section>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                // showNotes: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+
+    </body>
+</html>
